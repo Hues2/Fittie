@@ -12,6 +12,9 @@
 		2EC6CABF2BEE8F2F009C7002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */; };
 		2EC6CAC22BEE8F2F009C7002 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CAC12BEE8F2F009C7002 /* Preview Assets.xcassets */; };
 		2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAC92BEE9116009C7002 /* HomeView.swift */; };
+		2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CACD2BEE91F4009C7002 /* AppScreen.swift */; };
+		2EC6CAD12BEE92C2009C7002 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CAD02BEE92C2009C7002 /* Localizable.strings */; };
+		2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAD22BEE9378009C7002 /* AppTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EC6CAC12BEE8F2F009C7002 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2EC6CAC92BEE9116009C7002 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2EC6CACD2BEE91F4009C7002 /* AppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreen.swift; sourceTree = "<group>"; };
+		2EC6CAD02BEE92C2009C7002 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		2EC6CAD22BEE9378009C7002 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +59,10 @@
 		2EC6CAB92BEE8F2C009C7002 /* TrackingSpotter */ = {
 			isa = PBXGroup;
 			children = (
+				2EC6CACF2BEE9291009C7002 /* Utils */,
+				2EC6CACB2BEE9174009C7002 /* App */,
 				2EC6CAC82BEE8FB6009C7002 /* Home */,
-				2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */,
-				2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */,
+				2EC6CACC2BEE91DF009C7002 /* Navigation */,
 				2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */,
 				2EC6CAC02BEE8F2F009C7002 /* Preview Content */,
 			);
@@ -76,6 +83,32 @@
 				2EC6CAC92BEE9116009C7002 /* HomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		2EC6CACB2BEE9174009C7002 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */,
+				2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2EC6CACC2BEE91DF009C7002 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6CACD2BEE91F4009C7002 /* AppScreen.swift */,
+				2EC6CAD22BEE9378009C7002 /* AppTabView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		2EC6CACF2BEE9291009C7002 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6CAD02BEE92C2009C7002 /* Localizable.strings */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EC6CAC22BEE8F2F009C7002 /* Preview Assets.xcassets in Resources */,
+				2EC6CAD12BEE92C2009C7002 /* Localizable.strings in Resources */,
 				2EC6CABF2BEE8F2F009C7002 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +185,8 @@
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */,
+				2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */,
+				2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
