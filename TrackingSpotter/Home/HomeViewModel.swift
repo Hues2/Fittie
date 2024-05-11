@@ -56,4 +56,8 @@ extension HomeViewModel {
         let stepTarget = UserDefaults.standard.integer(forKey: Constants.UserDefaults.stepTargetKey)
         return (stepTarget == 0) ? 10_000 : stepTarget
     }
+    
+    func setStepTarget() {
+        
+    }
 }

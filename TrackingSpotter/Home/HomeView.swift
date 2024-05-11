@@ -8,7 +8,9 @@ struct HomeView: View {
             backgroundColor
             
             VStack {
-                StepCountView(steps: viewModel.steps, stepTarget: viewModel.stepTarget)
+                StepCountView(steps: viewModel.steps, stepTarget: viewModel.stepTarget) {
+                    viewModel.setStepTarget()
+                }
             }
             .padding(.horizontal, Constants.horizontalPadding)
         }

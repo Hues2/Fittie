@@ -9,10 +9,13 @@ struct StepCountView: View {
     var body: some View {
         card
             .onTapGesture {
-                withAnimation {
-                    self.showSheet = true
-                }
+                self.showSheet = true                
             }
+            .sheet(isPresented: $showSheet, content: {
+                Text("Change step target")
+                    .presentationDetents([.fraction(0.3)])
+                    .presentationDragIndicator(.visible)
+            })
     }
 }
 
@@ -67,5 +70,7 @@ private extension StepCountView {
 }
 
 #Preview {
-    StepCountView(steps: 337, stepTarget: 10000)
+    StepCountView(steps: 337, stepTarget: 10000) {
+        
+    }
 }
