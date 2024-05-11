@@ -4,22 +4,16 @@ import Charts
 struct DailyStepsView: View {
     let dailySteps : [DailyStep]
     let stepGoal : Int
-    let healthKitContentIsAvailable : Bool
     let isLoading : Bool
     
     var body: some View {
         VStack {
-            if !healthKitContentIsAvailable {
-                CustomContentUnavailableView()
-            } else if isLoading {
+            if isLoading {
                 loadingView
             } else {
                 chart
             }
         }
-        .padding()
-        .background(Color.darkGray)
-        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
 }
 
@@ -49,7 +43,6 @@ private extension DailyStepsView {
                                           DailyStep(date: Date(), steps: 922),
                                           DailyStep(date: Date(), steps: 2408)],
                    stepGoal: 1400,
-                   healthKitContentIsAvailable: true,
                    isLoading: false)
     .frame(width: 300)
 }

@@ -1,44 +1,19 @@
 import SwiftUI
 
-struct StepCountView: View {
-    @State private var presentSheet: Bool = false
-    @State private var detentHeight: CGFloat = 0
-    
+struct StepCountView: View {    
     let steps : Int?
-    @Binding var stepGoal : Int
-    let healthKitContentIsAvailable : Bool
+    let stepGoal : Int
     let isLoading : Bool
     
     var body: some View {
         VStack {
-            if !healthKitContentIsAvailable {
-                CustomContentUnavailableView()
-            } else if isLoading {
+            if isLoading {
                 loadingView
             } else {
                 stepsContent
             }
         }
-        .foregroundStyle(Color.customWhite)
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.darkGray)
-        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-        .onTapGesture {
-            self.presentSheet = true
-        }
-        .sheet(isPresented: $presentSheet, content: {
-            UpdateStepTargetView(stepGoal: $stepGoal)
-                .presentationCornerRadius(Constants.sheetCornerRadius)
-                .readHeight()
-                .onPreferenceChange(HeightPreferenceKey.self) { height in
-                    if let height {
-                        self.detentHeight = height
-                    }
-                }
-                .presentationDetents([.height(self.detentHeight)])
-        })
-        
+        .foregroundStyle(Color.customWhite)        
     }
 }
 
@@ -85,8 +60,7 @@ private extension StepCountView {
 #Preview {
     HStack {
         StepCountView(steps: 337,
-                      stepGoal: .constant(10000),
-                      healthKitContentIsAvailable: true,
+                      stepGoal: 10000,
                       isLoading: false)
         Spacer()
             .frame(width: 175)
