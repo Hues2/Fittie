@@ -20,24 +20,11 @@ class HomeViewModel : ObservableObject {
     }
     
     private func addSubscriptions() {
-        subscribeToSteps()
         subscribeToStepGoal()
     }
 }
 
 private extension HomeViewModel {
-    func subscribeToSteps() {
-        self.healthKitManager.steps
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] steps in
-                guard let self, let steps else { return }
-                withAnimation {
-                    self.steps = Int(steps)
-                }
-            }
-            .store(in: &cancellables)
-    }
-    
     func subscribeToStepGoal() {
         self.$stepGoal
             .dropFirst()
@@ -61,7 +48,12 @@ extension HomeViewModel {
     }
     
     func getTodaysSteps() {
-        healthKitManager.fetchTodaySteps()
+        healthKitManager.fetchTodaySteps { [weak self] steps in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.steps = Int(steps)
+            }
+        }
     }
     
     func getStepTarget() -> Int {
@@ -71,5 +63,13 @@ extension HomeViewModel {
     
     func setStepTarget(_ newStepGoal : Int) {
         UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.stepGoalKey)
+    }
+    
+    func getPast7DaysSteps() {
+        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date.startOfDay)
+        guard let startDate else { return }
+        healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] dailySteps in
+            print("DAILY STEPS --> \(dailySteps)")
+        }
     }
 }

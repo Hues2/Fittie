@@ -15,6 +15,7 @@ struct HomeView: View {
         .task {
             await viewModel.requestAuthorization()
             viewModel.getTodaysSteps()
+            viewModel.getPast7DaysSteps()
         }
     }
 }
