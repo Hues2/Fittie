@@ -41,7 +41,7 @@ private extension HomeViewModel {
     func subscribeToStepGoal() {
         self.$stepGoal
             .dropFirst()
-            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.75), scheduler: DispatchQueue.main)
             .sink { [weak self] newStepGoal in
                 guard let self else { return }
                 self.setStepTarget(newStepGoal)
