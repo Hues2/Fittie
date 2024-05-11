@@ -8,24 +8,22 @@ struct StepCountView: View {
     @Binding var stepGoal : Int
     
     var body: some View {
-        VStack {
-            title
-            card
-                .onTapGesture {
-                    self.presentSheet = true
-                }
-                .sheet(isPresented: $presentSheet, content: {
-                    UpdateStepTargetView(stepGoal: $stepGoal)
-                        .presentationCornerRadius(Constants.sheetCornerRadius)
-                        .readHeight()
-                        .onPreferenceChange(HeightPreferenceKey.self) { height in
-                            if let height {
-                                self.detentHeight = height
-                            }
+        card
+            .onTapGesture {
+                self.presentSheet = true
+            }
+            .sheet(isPresented: $presentSheet, content: {
+                UpdateStepTargetView(stepGoal: $stepGoal)
+                    .presentationCornerRadius(Constants.sheetCornerRadius)
+                    .readHeight()
+                    .onPreferenceChange(HeightPreferenceKey.self) { height in
+                        if let height {
+                            self.detentHeight = height
                         }
-                        .presentationDetents([.height(self.detentHeight)])
-                })
-        }
+                    }
+                    .presentationDetents([.height(self.detentHeight)])
+            })
+        
     }
 }
 
@@ -37,17 +35,10 @@ private extension StepCountView {
         }
         .foregroundStyle(Color.customWhite)
         .padding()
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.darkGray)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-    }
-    
-    var title : some View {
-        Text("steps_title")
-            .font(.largeTitle)
-            .fontWeight(.semibold)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
+    }        
     
     @ViewBuilder func valueView(_ title : LocalizedStringKey,
                                 _ value : Int?,
@@ -72,7 +63,7 @@ private extension StepCountView {
             .font(.title2)
             .fontWeight(.light)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
 }
 

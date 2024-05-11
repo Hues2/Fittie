@@ -73,7 +73,6 @@ extension HomeViewModel {
             guard let self else { return }
             DispatchQueue.main.async {
                 self.dailySteps = dailySteps.sorted(by: { $0.date < $1.date })
-                print("DAILY STEPS --> \(self.dailySteps)")
             }
         }
     }

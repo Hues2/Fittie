@@ -18,7 +18,7 @@ private extension UpdateStepTargetView {
         Text("update_step_target_title")
             .foregroundStyle(Color.customWhite)
             .font(.title)
-            .fontWeight(.semibold)
+            .fontWeight(.medium)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
