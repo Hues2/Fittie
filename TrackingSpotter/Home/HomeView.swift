@@ -31,27 +31,15 @@ private extension HomeView {
             VStack(alignment: .leading) {
                 title
                 HStack {
-                    StepCountView(steps: viewModel.steps,
-                                  stepGoal: $viewModel.stepGoal,
-                                  healthKitContentIsAvailable: viewModel.healthKitContentIsAvailable,
-                                  isLoading: viewModel.stepsIsLoading)
-                    .frame(height: 250)
+                    stepCountView
                     
-                    DailyStepsView(dailySteps: viewModel.dailySteps,
-                                   stepGoal: viewModel.stepGoal,
-                                   healthKitContentIsAvailable: viewModel.healthKitContentIsAvailable,
-                                   isLoading: viewModel.dailyStepsIsLoading)
-                    .frame(height: 250)
+                    dailyStepView
                 }
             }
             .padding(.horizontal, Constants.horizontalPadding)
         }
         .clipped()
     }
-}
-
-// MARK: - Card UI
-private extension HomeView {
 }
 
 // MARK: - Steps title
@@ -62,5 +50,27 @@ private extension HomeView {
             .fontWeight(.semibold)
             .frame(maxWidth: .infinity, alignment: .leading)
         
+    }
+}
+
+// MARK: - Step Count View
+private extension HomeView {
+    var stepCountView : some View {
+        StepCountView(steps: viewModel.steps,
+                      stepGoal: $viewModel.stepGoal,
+                      healthKitContentIsAvailable: viewModel.healthKitContentIsAvailable,
+                      isLoading: viewModel.stepsIsLoading)
+        .frame(height: 250)
+    }
+}
+
+// MARK: - Daily Steps View
+private extension HomeView {
+    var dailyStepView : some View {
+        DailyStepsView(dailySteps: viewModel.dailySteps,
+                       stepGoal: viewModel.stepGoal,
+                       healthKitContentIsAvailable: viewModel.healthKitContentIsAvailable,
+                       isLoading: viewModel.dailyStepsIsLoading)
+        .frame(height: 250)
     }
 }
