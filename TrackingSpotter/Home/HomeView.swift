@@ -9,6 +9,8 @@ struct HomeView: View {
             
             VStack {
                 StepCountView(steps: viewModel.steps, stepGoal: $viewModel.stepGoal)
+                
+                Past7DaysStepsView(dailySteps: viewModel.dailySteps)
             }
             .padding(.horizontal, Constants.horizontalPadding)
         }

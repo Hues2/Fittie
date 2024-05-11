@@ -6,6 +6,7 @@ class HomeViewModel : ObservableObject {
     // Steps
     @Published private(set) var steps : Int?
     @Published var stepGoal : Int = 0
+    @Published private(set) var dailySteps : [DailyStep] = []
     
     // Errors
     @Published var healthKitError : CustomError?
@@ -66,10 +67,14 @@ extension HomeViewModel {
     }
     
     func getPast7DaysSteps() {
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date.startOfDay)
+        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: Date.startOfDay)
         guard let startDate else { return }
         healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] dailySteps in
-            print("DAILY STEPS --> \(dailySteps)")
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.dailySteps = dailySteps.sorted(by: { $0.date < $1.date })
+                print("DAILY STEPS --> \(self.dailySteps)")
+            }
         }
     }
 }

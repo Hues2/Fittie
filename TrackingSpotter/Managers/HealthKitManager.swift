@@ -19,20 +19,20 @@ class HealthKitManager {
         healthStore.execute(query)
     }
     
-    func fetchDailySteps(startDate : Date, _ completion : @escaping ([Date : Double]) -> Void) {
+    func fetchDailySteps(startDate : Date, _ completion : @escaping ([DailyStep]) -> Void) {
         let steps = HKQuantityType(.stepCount)
         let interval = DateComponents(day: 1)
         let query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: nil, anchorDate: startDate, intervalComponents: interval)
         
         query.initialResultsHandler = { query, result, error in
             guard let result else {
-                completion([:])
+                completion([])
                 return
             }
             
-            var dailySteps : [Date : Double] = [:]
+            var dailySteps : [DailyStep] = []
             result.enumerateStatistics(from: startDate, to: Date()) { statistics, stop in
-                dailySteps[statistics.endDate] = statistics.sumQuantity()?.doubleValue(for: .count())
+                dailySteps.append(DailyStep(date: statistics.endDate, steps: Int(statistics.sumQuantity()?.doubleValue(for: .count()) ?? 0)))
             }
             
             completion(dailySteps)
