@@ -8,7 +8,7 @@ struct HomeView: View {
             backgroundColor
             
             VStack {
-                StepCountView(steps: viewModel.steps, stepTarget: viewModel.stepTarget) {
+                StepCountView(steps: viewModel.steps, stepGoal: $viewModel.stepGoal) {
                     viewModel.setStepTarget()
                 }
             }

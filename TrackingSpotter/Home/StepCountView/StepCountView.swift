@@ -1,33 +1,40 @@
 import SwiftUI
 
 struct StepCountView: View {
-    @State private var showSheet : Bool = false
+    @State private var presentSheet: Bool = false
+    @State private var detentHeight: CGFloat = 0
+    
     let steps : Int?
-    let stepTarget : Int?
+    @Binding var stepGoal : Int
     let changeStepTarget : () -> Void
     
     var body: some View {
-        card
-            .onTapGesture {
-                self.showSheet = true                
-            }
-            .sheet(isPresented: $showSheet, content: {
-                Text("Change step target")
-                    .presentationDetents([.fraction(0.3)])
-                    .presentationDragIndicator(.visible)
-            })
+        VStack {
+            title
+            card
+                .onTapGesture {
+                    self.presentSheet = true
+                }
+                .sheet(isPresented: $presentSheet, content: {
+                    UpdateStepTargetView(stepGoal: $stepGoal)
+                        .presentationCornerRadius(Constants.sheetCornerRadius)
+                        .readHeight()
+                        .onPreferenceChange(HeightPreferenceKey.self) { height in
+                            if let height {
+                                self.detentHeight = height
+                            }
+                        }
+                        .presentationDetents([.height(self.detentHeight)])
+                })
+        }
     }
 }
 
 private extension StepCountView {
     var card : some View {
-        VStack(spacing: 16) {
-            title
-            
-            VStack {
-                valueView("current_steps_title", steps)
-                valueView("target_steps_title", stepTarget)
-            }
+        VStack(spacing: 12) {
+            valueView("current_steps_title", steps, "figure.walk")
+            valueView("target_steps_title", stepGoal, "target")
         }
         .foregroundStyle(Color.customWhite)
         .padding()
@@ -37,23 +44,24 @@ private extension StepCountView {
     }
     
     var title : some View {
-        HStack {
-            Text("steps_title")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Image(systemName: "figure.walk")
-                .foregroundStyle(.accent)
-                .font(.title)
-        }
+        Text("steps_title")
+            .font(.largeTitle)
+            .fontWeight(.semibold)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
     
-    @ViewBuilder func valueView(_ title : LocalizedStringKey, _ value : Int?) -> some View {
-        HStack(spacing: 0) {
-            Text(title)
-                .font(.title2)
-                .fontWeight(.medium)
+    @ViewBuilder func valueView(_ title : LocalizedStringKey,
+                                _ value : Int?,
+                                _ icon : String) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.medium)
+                Image(systemName: icon)
+                    .foregroundStyle(.accent)
+                    .font(.title)
+            }
             
             Group {
                 if let value {
@@ -62,7 +70,7 @@ private extension StepCountView {
                     Text("-")
                 }
             }
-            .font(.title3)
+            .font(.title2)
             .fontWeight(.light)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -70,7 +78,11 @@ private extension StepCountView {
 }
 
 #Preview {
-    StepCountView(steps: 337, stepTarget: 10000) {
-        
+    HStack {
+        StepCountView(steps: 337, stepGoal: .constant(10000)) {
+            
+        }
+        Spacer()
+            .frame(width: 175)
     }
 }

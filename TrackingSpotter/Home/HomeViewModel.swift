@@ -5,7 +5,7 @@ import Factory
 class HomeViewModel : ObservableObject {
     // Steps
     @Published private(set) var steps : Int?
-    @Published private(set) var stepTarget : Int?
+    @Published var stepGoal : Int = 0
     
     // Errors
     @Published var healthKitError : CustomError?
@@ -15,7 +15,7 @@ class HomeViewModel : ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.stepTarget = getStepTarget()
+        self.stepGoal = getStepTarget()
         addSubscriptions()
     }
     
@@ -53,8 +53,8 @@ extension HomeViewModel {
     }
     
     func getStepTarget() -> Int {
-        let stepTarget = UserDefaults.standard.integer(forKey: Constants.UserDefaults.stepTargetKey)
-        return (stepTarget == 0) ? 10_000 : stepTarget
+        let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.stepTargetKey)
+        return (stepGoal == 0) ? 10_000 : stepGoal
     }
     
     func setStepTarget() {
