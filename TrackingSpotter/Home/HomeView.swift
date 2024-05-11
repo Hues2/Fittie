@@ -24,7 +24,7 @@ private extension HomeView {
     }
 }
 
-// MARK: - Steps title
+// MARK: - Home View Content
 private extension HomeView {
     var content : some View {
         ScrollView(.vertical) {
@@ -48,6 +48,10 @@ private extension HomeView {
         }
         .clipped()
     }
+}
+
+// MARK: - Card UI
+private extension HomeView {
 }
 
 // MARK: - Steps title

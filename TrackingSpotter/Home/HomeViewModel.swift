@@ -9,7 +9,7 @@ class HomeViewModel : ObservableObject {
     @Published private(set) var stepsIsLoading : Bool = true
     
     // Daily steps
-    @Published private(set) var dailySteps : [DailyStep] = []
+    @Published var dailySteps : [DailyStep] = []
     @Published private(set) var dailyStepsIsLoading : Bool = true
     
     // Errors
@@ -56,8 +56,10 @@ extension HomeViewModel {
         healthKitManager.fetchTodaySteps { [weak self] steps in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.stepsIsLoading = false
-                self.steps = Int(steps)
+                withAnimation {
+                    self.steps = Int(steps)
+                    self.stepsIsLoading = false
+                }
             }
         }
     }
@@ -72,13 +74,15 @@ extension HomeViewModel {
     }
     
     func getPast7DaysSteps() {
-        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: Date.startOfDay)
+        let startDate = Calendar.current.date(byAdding: .day, value: -(Constants.numberOfDaysInChart - 1), to: Date.startOfDay)
         guard let startDate else { return }
         healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] dailySteps in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.dailyStepsIsLoading = false
-                self.dailySteps = dailySteps.sorted(by: { $0.date < $1.date })
+                withAnimation {
+                    self.dailySteps = dailySteps.sorted(by: { $0.date < $1.date })
+                    self.dailyStepsIsLoading = false
+                }
             }
         }
     }

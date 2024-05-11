@@ -32,8 +32,9 @@ private extension DailyStepsView {
     var chart : some View {
         Chart {
             ForEach(dailySteps) { dailyStep in
-                BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day), y: .value("Steps", dailyStep.steps))
-                    .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accent : Color.red)
+                BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
+                        y: .value("Steps", dailyStep.steps))
+                .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accent : Color.red)
             }
         }
     }
@@ -41,12 +42,12 @@ private extension DailyStepsView {
 
 #Preview {
     DailyStepsView(dailySteps: [DailyStep(date: Date(), steps: 11632),
-                                    DailyStep(date: Date(), steps: 1789),
-                                    DailyStep(date: Date(), steps: 1686),
-                                    DailyStep(date: Date(), steps: 1478),
-                                    DailyStep(date: Date(), steps: 1397),
-                                    DailyStep(date: Date(), steps: 922),
-                                    DailyStep(date: Date(), steps: 2408)],
+                                          DailyStep(date: Date(), steps: 1789),
+                                          DailyStep(date: Date(), steps: 1686),
+                                          DailyStep(date: Date(), steps: 1478),
+                                          DailyStep(date: Date(), steps: 1397),
+                                          DailyStep(date: Date(), steps: 922),
+                                          DailyStep(date: Date(), steps: 2408)],
                    stepGoal: 1400,
                    healthKitContentIsAvailable: true,
                    isLoading: false)

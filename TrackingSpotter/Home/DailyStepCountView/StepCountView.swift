@@ -75,8 +75,8 @@ private extension StepCountView {
                     Text("-")
                 }
             }
-            .font(.title2)
-            .fontWeight(.light)
+            .font(.title)
+            .fontWeight(.ultraLight)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
