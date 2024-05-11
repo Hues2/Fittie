@@ -6,6 +6,6 @@ class Constants {
     static let horizontalPadding : CGFloat = 12
     
     struct UserDefaults {
-        static let stepTargetKey = "step_target"
+        static let stepGoalKey = "step_goal"
     }
 }

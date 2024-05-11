@@ -6,7 +6,6 @@ struct StepCountView: View {
     
     let steps : Int?
     @Binding var stepGoal : Int
-    let changeStepTarget : () -> Void
     
     var body: some View {
         VStack {
@@ -79,9 +78,7 @@ private extension StepCountView {
 
 #Preview {
     HStack {
-        StepCountView(steps: 337, stepGoal: .constant(10000)) {
-            
-        }
+        StepCountView(steps: 337, stepGoal: .constant(10000))
         Spacer()
             .frame(width: 175)
     }

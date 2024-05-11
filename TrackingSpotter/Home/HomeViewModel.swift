@@ -21,6 +21,7 @@ class HomeViewModel : ObservableObject {
     
     private func addSubscriptions() {
         subscribeToSteps()
+        subscribeToStepGoal()
     }
 }
 
@@ -28,11 +29,22 @@ private extension HomeViewModel {
     func subscribeToSteps() {
         self.healthKitManager.steps
             .receive(on: DispatchQueue.main)
-            .sink { steps in
-                guard let steps else { return }
+            .sink { [weak self] steps in
+                guard let self, let steps else { return }
                 withAnimation {
                     self.steps = Int(steps)
                 }
+            }
+            .store(in: &cancellables)
+    }
+    
+    func subscribeToStepGoal() {
+        self.$stepGoal
+            .dropFirst()
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .sink { [weak self] newStepGoal in
+                guard let self else { return }
+                self.setStepTarget(newStepGoal)
             }
             .store(in: &cancellables)
     }
@@ -53,11 +65,11 @@ extension HomeViewModel {
     }
     
     func getStepTarget() -> Int {
-        let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.stepTargetKey)
+        let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.stepGoalKey)
         return (stepGoal == 0) ? 10_000 : stepGoal
     }
     
-    func setStepTarget() {
-        
+    func setStepTarget(_ newStepGoal : Int) {
+        UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.stepGoalKey)
     }
 }

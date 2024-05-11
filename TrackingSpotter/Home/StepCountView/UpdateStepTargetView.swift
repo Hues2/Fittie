@@ -24,7 +24,7 @@ private extension UpdateStepTargetView {
     
     var inputView : some View {
         HStack {
-            button("minus") {
+            button("minus", (stepGoal == 100)) {
                 guard stepGoal >= 200 else { return }
                 self.stepGoal -= 100
             }
@@ -33,14 +33,14 @@ private extension UpdateStepTargetView {
                 .font(.title)
                 .frame(maxWidth: .infinity)
             
-            button("plus") {
+            button("plus", (stepGoal == 100_000)) {
                 guard stepGoal <= 99_900 else { return }
                 self.stepGoal += 100
             }
         }
     }
     
-    func button(_ icon : String, _ action : @escaping () -> Void) -> some View {
+    func button(_ icon : String, _ isDisabled : Bool, _ action : @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
@@ -50,7 +50,7 @@ private extension UpdateStepTargetView {
                 .fontWeight(.bold)
                 .padding()
                 .frame(width: 50, height: 50)
-                .background(Color.accentColor)
+                .background(isDisabled ? Color.lightGray : Color.accentColor)
                 .clipShape(Circle())
                 .frame(maxWidth: .infinity)
         }
@@ -59,5 +59,5 @@ private extension UpdateStepTargetView {
 }
 
 #Preview {
-    UpdateStepTargetView(stepGoal: .constant(6000))
+    UpdateStepTargetView(stepGoal: .constant(100_000))
 }
