@@ -156,6 +156,7 @@
 				2EC6CAC92BEE9116009C7002 /* HomeView.swift */,
 				2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */,
 				2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */,
+				2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -210,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				2EC6CAE42BEED789009C7002 /* StepCountView.swift */,
-				2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */,
 			);
 			path = DailyStepCountView;
 			sourceTree = "<group>";

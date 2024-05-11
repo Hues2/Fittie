@@ -12,9 +12,6 @@ class HomeViewModel : ObservableObject {
     @Published var dailySteps : [DailyStep] = []
     @Published private(set) var dailyStepsIsLoading : Bool = true
     
-    // Errors
-    @Published var healthKitContentIsAvailable : Bool = true
-    
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
     private var cancellables = Set<AnyCancellable>()
@@ -45,11 +42,7 @@ private extension HomeViewModel {
 // MARK: - Steps
 extension HomeViewModel {
     func requestAuthorization() async {
-        do {
-            try await healthKitManager.requestAuthorization()
-        } catch {
-            self.healthKitContentIsAvailable = false
-        }
+        try? await healthKitManager.requestAuthorization()
     }
     
     func getTodaysSteps() {
@@ -78,6 +71,7 @@ extension HomeViewModel {
         guard let startDate else { return }
         healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] dailySteps in
             guard let self else { return }
+            
             DispatchQueue.main.async {
                 withAnimation {
                     self.dailySteps = dailySteps.sorted(by: { $0.date < $1.date })

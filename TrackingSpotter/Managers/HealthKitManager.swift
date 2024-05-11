@@ -13,7 +13,7 @@ class HealthKitManager {
         let steps = HKQuantityType(.stepCount)
         let predicate = HKQuery.predicateForSamples(withStart: Date.startOfDay, end: Date())
         let query = HKStatisticsQuery(quantityType: steps, quantitySamplePredicate: predicate) { _, result, error in
-            guard let totalSteps = result?.sumQuantity()?.doubleValue(for: .count()), error == nil else { return }
+            guard let totalSteps = result?.sumQuantity()?.doubleValue(for: .count()), error == nil else { completion(0); return }
             completion(totalSteps)
         }
         healthStore.execute(query)
@@ -25,7 +25,7 @@ class HealthKitManager {
         let query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: nil, anchorDate: startDate, intervalComponents: interval)
         
         query.initialResultsHandler = { query, result, error in
-            guard let result else {
+            guard let result, error == nil else {
                 completion([])
                 return
             }

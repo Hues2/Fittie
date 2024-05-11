@@ -2,33 +2,33 @@ import SwiftUI
 import Charts
 
 struct DailyStepsView: View {
-    let dailySteps : [DailyStep]
+    @State var dailySteps : [DailyStep]
     let stepGoal : Int
-    let isLoading : Bool
     
     var body: some View {
-        VStack {
-            if isLoading {
-                loadingView
-            } else {
-                chart
-            }
-        }
+        chart()
     }
 }
 
-private extension DailyStepsView {
-    var loadingView : some View {
-        ProgressView()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-    
-    var chart : some View {
+private extension DailyStepsView {    
+    @ViewBuilder func chart() -> some View {
+        let max = dailySteps.max { item1, item2 in
+            return item2.steps > item1.steps
+        }?.steps ?? 0
+        
         Chart {
             ForEach(dailySteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
-                        y: .value("Steps", dailyStep.steps))
+                        y: .value("Steps", dailyStep.animate ? dailyStep.steps : 0))
                 .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accent : Color.red)
+            }
+        }
+        .chartYScale(domain: 0...(max + 5000))
+        .onAppear {
+            for (index, _) in dailySteps.enumerated() {
+                withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.1)) {
+                    dailySteps[index].animate = true
+                }
             }
         }
     }
@@ -42,7 +42,6 @@ private extension DailyStepsView {
                                           DailyStep(date: Date(), steps: 1397),
                                           DailyStep(date: Date(), steps: 922),
                                           DailyStep(date: Date(), steps: 2408)],
-                   stepGoal: 1400,
-                   isLoading: false)
+                   stepGoal: 1400)
     .frame(width: 300)
 }

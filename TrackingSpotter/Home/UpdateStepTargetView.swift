@@ -45,7 +45,7 @@ private extension UpdateStepTargetView {
             action()
         } label: {
             Image(systemName: icon)
-                .foregroundStyle(Color.customWhite)
+                .foregroundStyle(Color.darkGray)
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
@@ -53,6 +53,7 @@ private extension UpdateStepTargetView {
                 .background(isDisabled ? Color.lightGray : Color.accentColor)
                 .clipShape(Circle())
                 .frame(maxWidth: .infinity)
+                .contentShape(Circle())
         }
         .buttonRepeatBehavior(.enabled)
     }

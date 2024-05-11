@@ -65,14 +65,35 @@ private extension HomeView {
     }
 }
 
-// MARK: - Card View
+// MARK: - Steps View
 private extension HomeView {
-    func cardView(_ contentIsAvailable : Bool, _ view : some View) -> some View {
+    @ViewBuilder var stepCountView : some View {
+        if viewModel.stepsIsLoading {
+            loadingView
+                .frame(height: 200)
+                .withCardModifier()
+        } else {
+            StepCountView(steps: viewModel.steps,
+                          stepGoal: viewModel.stepGoal,
+                          isLoading: viewModel.stepsIsLoading)
+            .frame(height: 200)
+            .withCardModifier()
+            .onTapGesture {
+                self.presentSheet = true
+            }
+        }
+    }
+}
+
+// MARK: - Daily Steps View
+private extension HomeView {
+    @ViewBuilder var dailyStepsView : some View {
         VStack {
-            if !contentIsAvailable {
-                CustomContentUnavailableView()
+            if viewModel.dailyStepsIsLoading {
+                loadingView
             } else {
-                view
+                DailyStepsView(dailySteps: viewModel.dailySteps,
+                               stepGoal: viewModel.stepGoal)
             }
         }
         .frame(height: 200)
@@ -80,23 +101,10 @@ private extension HomeView {
     }
 }
 
-// MARK: - Steps View
+// MARK: - Loading View
 private extension HomeView {
-    var stepCountView : some View {
-        cardView(viewModel.healthKitContentIsAvailable, StepCountView(steps: viewModel.steps,
-                                                                      stepGoal: viewModel.stepGoal,
-                                                                      isLoading: viewModel.stepsIsLoading))
-        .onTapGesture {
-            self.presentSheet = true
-        }
-    }
-}
-
-// MARK: - Daily Steps View
-private extension HomeView {
-    var dailyStepsView : some View {
-        cardView(viewModel.healthKitContentIsAvailable, DailyStepsView(dailySteps: viewModel.dailySteps,
-                                                                       stepGoal: viewModel.stepGoal,
-                                                                       isLoading: viewModel.dailyStepsIsLoading))
+    var loadingView : some View {
+        ProgressView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
