@@ -3,3 +3,7 @@
 "exercises_tab_label" = "Exercises";
 "calendar_tab_label" = "Calendar";
 
+// Step Counter
+"steps_title" = "Steps";
+"current_steps_title" = "Current: ";
+"target_steps_title" = "Target: ";

@@ -23,7 +23,7 @@ extension AppScreen {
     @ViewBuilder var destination: some View {
         switch self {
         case .home:
-            Text("Home")
+            HomeView()
         case .exercises:
             Text("Exercises")
         case .calendar:

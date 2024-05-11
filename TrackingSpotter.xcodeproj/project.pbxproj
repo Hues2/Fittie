@@ -15,6 +15,14 @@
 		2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CACD2BEE91F4009C7002 /* AppScreen.swift */; };
 		2EC6CAD12BEE92C2009C7002 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CAD02BEE92C2009C7002 /* Localizable.strings */; };
 		2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAD22BEE9378009C7002 /* AppTabView.swift */; };
+		2EC6CAD62BEEBF37009C7002 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 2EC6CAD52BEEBF37009C7002 /* Factory */; };
+		2EC6CAD92BEEBF52009C7002 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAD82BEEBF52009C7002 /* HealthKitManager.swift */; };
+		2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CADD2BEEC2A5009C7002 /* Containers.swift */; };
+		2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */; };
+		2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE12BEED1D5009C7002 /* CustomError.swift */; };
+		2EC6CAE52BEED789009C7002 /* StepCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE42BEED789009C7002 /* StepCountView.swift */; };
+		2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE82BEEDD46009C7002 /* Constants.swift */; };
+		2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAEB2BEEEBB5009C7002 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +35,15 @@
 		2EC6CACD2BEE91F4009C7002 /* AppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreen.swift; sourceTree = "<group>"; };
 		2EC6CAD02BEE92C2009C7002 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		2EC6CAD22BEE9378009C7002 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
+		2EC6CAD82BEEBF52009C7002 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		2EC6CADA2BEEBF7F009C7002 /* TrackingSpotter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrackingSpotter.entitlements; sourceTree = "<group>"; };
+		2EC6CADB2BEEBFBB009C7002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2EC6CADD2BEEC2A5009C7002 /* Containers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Containers.swift; sourceTree = "<group>"; };
+		2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2EC6CAE12BEED1D5009C7002 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		2EC6CAE42BEED789009C7002 /* StepCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCountView.swift; sourceTree = "<group>"; };
+		2EC6CAE82BEEDD46009C7002 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2EC6CAEB2BEEEBB5009C7002 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EC6CAD62BEEBF37009C7002 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,10 +77,14 @@
 		2EC6CAB92BEE8F2C009C7002 /* TrackingSpotter */ = {
 			isa = PBXGroup;
 			children = (
-				2EC6CACF2BEE9291009C7002 /* Utils */,
+				2EC6CADB2BEEBFBB009C7002 /* Info.plist */,
+				2EC6CADA2BEEBF7F009C7002 /* TrackingSpotter.entitlements */,
+				2EC6CADC2BEEC146009C7002 /* Factory */,
+				2EC6CAD72BEEBF42009C7002 /* Managers */,
 				2EC6CACB2BEE9174009C7002 /* App */,
 				2EC6CAC82BEE8FB6009C7002 /* Home */,
 				2EC6CACC2BEE91DF009C7002 /* Navigation */,
+				2EC6CACF2BEE9291009C7002 /* Utils */,
 				2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */,
 				2EC6CAC02BEE8F2F009C7002 /* Preview Content */,
 			);
@@ -80,7 +102,9 @@
 		2EC6CAC82BEE8FB6009C7002 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2EC6CAE32BEED76D009C7002 /* StepCountView */,
 				2EC6CAC92BEE9116009C7002 /* HomeView.swift */,
+				2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -106,9 +130,44 @@
 		2EC6CACF2BEE9291009C7002 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2EC6CAEA2BEEEBAB009C7002 /* Extensions */,
 				2EC6CAD02BEE92C2009C7002 /* Localizable.strings */,
+				2EC6CAE12BEED1D5009C7002 /* CustomError.swift */,
+				2EC6CAE82BEEDD46009C7002 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2EC6CAD72BEEBF42009C7002 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6CAD82BEEBF52009C7002 /* HealthKitManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		2EC6CADC2BEEC146009C7002 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6CADD2BEEC2A5009C7002 /* Containers.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		2EC6CAE32BEED76D009C7002 /* StepCountView */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6CAE42BEED789009C7002 /* StepCountView.swift */,
+			);
+			path = StepCountView;
+			sourceTree = "<group>";
+		};
+		2EC6CAEA2BEEEBAB009C7002 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6CAEB2BEEEBB5009C7002 /* Date.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +186,9 @@
 			dependencies = (
 			);
 			name = TrackingSpotter;
+			packageProductDependencies = (
+				2EC6CAD52BEEBF37009C7002 /* Factory */,
+			);
 			productName = TrackingSpotter;
 			productReference = 2EC6CAB72BEE8F2C009C7002 /* TrackingSpotter.app */;
 			productType = "com.apple.product-type.application";
@@ -155,6 +217,9 @@
 				Base,
 			);
 			mainGroup = 2EC6CAAE2BEE8F2C009C7002;
+			packageReferences = (
+				2EC6CAD42BEEBF37009C7002 /* XCRemoteSwiftPackageReference "Factory" */,
+			);
 			productRefGroup = 2EC6CAB82BEE8F2C009C7002 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -183,9 +248,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
+				2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */,
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
+				2EC6CAD92BEEBF52009C7002 /* HealthKitManager.swift in Sources */,
+				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */,
+				2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */,
+				2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */,
 				2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */,
+				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
+				2EC6CAE52BEED789009C7002 /* StepCountView.swift in Sources */,
 				2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,17 +389,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TrackingSpotter/TrackingSpotter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TrackingSpotter/Preview Content\"";
 				DEVELOPMENT_TEAM = UD7DDMT4QH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrackingSpotter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need your permission to read your steps";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please give your permission to read your steps";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +412,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.greg-ross.TrackingSpotter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -346,17 +427,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TrackingSpotter/TrackingSpotter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TrackingSpotter/Preview Content\"";
 				DEVELOPMENT_TEAM = UD7DDMT4QH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrackingSpotter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need your permission to read your steps";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please give your permission to read your steps";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,9 +450,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.greg-ross.TrackingSpotter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -392,6 +482,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2EC6CAD42BEEBF37009C7002 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2EC6CAD52BEEBF37009C7002 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2EC6CAD42BEEBF37009C7002 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2EC6CAAF2BEE8F2C009C7002 /* Project object */;
 }
