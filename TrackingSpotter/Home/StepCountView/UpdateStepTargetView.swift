@@ -25,7 +25,8 @@ private extension UpdateStepTargetView {
     var inputView : some View {
         HStack {
             button("minus") {
-                
+                guard stepGoal >= 200 else { return }
+                self.stepGoal -= 100
             }
             
             Text("\(stepGoal)")
@@ -33,7 +34,8 @@ private extension UpdateStepTargetView {
                 .frame(maxWidth: .infinity)
             
             button("plus") {
-                
+                guard stepGoal <= 99_900 else { return }
+                self.stepGoal += 100
             }
         }
     }
@@ -52,7 +54,7 @@ private extension UpdateStepTargetView {
                 .clipShape(Circle())
                 .frame(maxWidth: .infinity)
         }
-        
+        .buttonRepeatBehavior(.enabled)
     }
 }
 
