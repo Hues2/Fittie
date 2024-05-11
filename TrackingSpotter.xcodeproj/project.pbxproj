@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */; };
+		2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */; };
 		2EA3733B2BEF8E2500843FCA /* UpdateStepTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */; };
 		2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */; };
-		2EA373412BEFCB7A00843FCA /* Past7DaysStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373402BEFCB7A00843FCA /* Past7DaysStepsView.swift */; };
+		2EA373412BEFCB7A00843FCA /* DailyStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373402BEFCB7A00843FCA /* DailyStepsView.swift */; };
 		2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373432BEFD69700843FCA /* DailyStep.swift */; };
 		2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */; };
 		2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */; };
@@ -30,9 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStack.swift; sourceTree = "<group>"; };
+		2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
 		2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStepTargetView.swift; sourceTree = "<group>"; };
 		2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHeightViewModifier.swift; sourceTree = "<group>"; };
-		2EA373402BEFCB7A00843FCA /* Past7DaysStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Past7DaysStepsView.swift; sourceTree = "<group>"; };
+		2EA373402BEFCB7A00843FCA /* DailyStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStepsView.swift; sourceTree = "<group>"; };
 		2EA373432BEFD69700843FCA /* DailyStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStep.swift; sourceTree = "<group>"; };
 		2EC6CAB72BEE8F2C009C7002 /* TrackingSpotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingSpotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSpotterApp.swift; sourceTree = "<group>"; };
@@ -66,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E53A2FD2BEFF42C00D81297 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		2EA3733C2BEF978900843FCA /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,12 +86,12 @@
 			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
-		2EA3733F2BEFCB4100843FCA /* Past7DaysStepsView */ = {
+		2EA3733F2BEFCB4100843FCA /* DailyStepsView */ = {
 			isa = PBXGroup;
 			children = (
-				2EA373402BEFCB7A00843FCA /* Past7DaysStepsView.swift */,
+				2EA373402BEFCB7A00843FCA /* DailyStepsView.swift */,
 			);
-			path = Past7DaysStepsView;
+			path = DailyStepsView;
 			sourceTree = "<group>";
 		};
 		2EA373422BEFD67E00843FCA /* Models */ = {
@@ -117,6 +129,7 @@
 				2EC6CAD72BEEBF42009C7002 /* Managers */,
 				2EC6CAC82BEE8FB6009C7002 /* Home */,
 				2EC6CACC2BEE91DF009C7002 /* Navigation */,
+				2E53A2FD2BEFF42C00D81297 /* Components */,
 				2EC6CACF2BEE9291009C7002 /* Utils */,
 				2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */,
 				2EC6CAC02BEE8F2F009C7002 /* Preview Content */,
@@ -135,10 +148,11 @@
 		2EC6CAC82BEE8FB6009C7002 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2EA3733F2BEFCB4100843FCA /* Past7DaysStepsView */,
+				2EA3733F2BEFCB4100843FCA /* DailyStepsView */,
 				2EC6CAE32BEED76D009C7002 /* DailyStepCountView */,
 				2EC6CAC92BEE9116009C7002 /* HomeView.swift */,
 				2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */,
+				2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -283,9 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */,
 				2EA3733B2BEF8E2500843FCA /* UpdateStepTargetView.swift in Sources */,
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
-				2EA373412BEFCB7A00843FCA /* Past7DaysStepsView.swift in Sources */,
+				2EA373412BEFCB7A00843FCA /* DailyStepsView.swift in Sources */,
 				2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */,
 				2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */,
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
@@ -298,6 +313,7 @@
 				2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */,
 				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
 				2EC6CAE52BEED789009C7002 /* StepCountView.swift in Sources */,
+				2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */,
 				2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

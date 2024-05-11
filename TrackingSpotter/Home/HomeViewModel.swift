@@ -6,10 +6,14 @@ class HomeViewModel : ObservableObject {
     // Steps
     @Published private(set) var steps : Int?
     @Published var stepGoal : Int = 0
+    @Published private(set) var stepsIsLoading : Bool = true
+    
+    // Daily steps
     @Published private(set) var dailySteps : [DailyStep] = []
+    @Published private(set) var dailyStepsIsLoading : Bool = true
     
     // Errors
-    @Published var healthKitError : CustomError?
+    @Published var healthKitContentIsAvailable : Bool = true
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
@@ -44,7 +48,7 @@ extension HomeViewModel {
         do {
             try await healthKitManager.requestAuthorization()
         } catch {
-            self.healthKitError = .healhKitAuthError(error.localizedDescription)
+            self.healthKitContentIsAvailable = false
         }
     }
     
@@ -52,6 +56,7 @@ extension HomeViewModel {
         healthKitManager.fetchTodaySteps { [weak self] steps in
             guard let self else { return }
             DispatchQueue.main.async {
+                self.stepsIsLoading = false
                 self.steps = Int(steps)
             }
         }
@@ -72,6 +77,7 @@ extension HomeViewModel {
         healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] dailySteps in
             guard let self else { return }
             DispatchQueue.main.async {
+                self.dailyStepsIsLoading = false
                 self.dailySteps = dailySteps.sorted(by: { $0.date < $1.date })
             }
         }

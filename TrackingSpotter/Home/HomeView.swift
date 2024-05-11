@@ -31,15 +31,22 @@ private extension HomeView {
             VStack(alignment: .leading) {
                 title
                 HStack {
-                    StepCountView(steps: viewModel.steps, stepGoal: $viewModel.stepGoal)
-                        .frame(height: 250)
+                    StepCountView(steps: viewModel.steps,
+                                  stepGoal: $viewModel.stepGoal,
+                                  healthKitContentIsAvailable: viewModel.healthKitContentIsAvailable,
+                                  isLoading: viewModel.stepsIsLoading)
+                    .frame(height: 250)
                     
-                    Past7DaysStepsView(dailySteps: viewModel.dailySteps, stepGoal: viewModel.stepGoal)
-                        .frame(height: 250)
+                    DailyStepsView(dailySteps: viewModel.dailySteps,
+                                   stepGoal: viewModel.stepGoal,
+                                   healthKitContentIsAvailable: viewModel.healthKitContentIsAvailable,
+                                   isLoading: viewModel.dailyStepsIsLoading)
+                    .frame(height: 250)
                 }
             }
             .padding(.horizontal, Constants.horizontalPadding)
         }
+        .clipped()
     }
 }
 

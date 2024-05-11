@@ -6,39 +6,54 @@ struct StepCountView: View {
     
     let steps : Int?
     @Binding var stepGoal : Int
+    let healthKitContentIsAvailable : Bool
+    let isLoading : Bool
     
     var body: some View {
-        card
-            .onTapGesture {
-                self.presentSheet = true
+        VStack {
+            if !healthKitContentIsAvailable {
+                CustomContentUnavailableView()
+            } else if isLoading {
+                loadingView
+            } else {
+                stepsContent
             }
-            .sheet(isPresented: $presentSheet, content: {
-                UpdateStepTargetView(stepGoal: $stepGoal)
-                    .presentationCornerRadius(Constants.sheetCornerRadius)
-                    .readHeight()
-                    .onPreferenceChange(HeightPreferenceKey.self) { height in
-                        if let height {
-                            self.detentHeight = height
-                        }
-                    }
-                    .presentationDetents([.height(self.detentHeight)])
-            })
-        
-    }
-}
-
-private extension StepCountView {
-    var card : some View {
-        VStack(spacing: 12) {
-            valueView("current_steps_title", steps, "figure.walk")
-            valueView("target_steps_title", stepGoal, "target")
         }
         .foregroundStyle(Color.customWhite)
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.darkGray)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-    }        
+        .onTapGesture {
+            self.presentSheet = true
+        }
+        .sheet(isPresented: $presentSheet, content: {
+            UpdateStepTargetView(stepGoal: $stepGoal)
+                .presentationCornerRadius(Constants.sheetCornerRadius)
+                .readHeight()
+                .onPreferenceChange(HeightPreferenceKey.self) { height in
+                    if let height {
+                        self.detentHeight = height
+                    }
+                }
+                .presentationDetents([.height(self.detentHeight)])
+        })
+        
+    }
+}
+
+private extension StepCountView {
+    var loadingView : some View {
+        ProgressView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    var stepsContent : some View {
+        VStack(spacing: 12) {
+            valueView("current_steps_title", steps, "figure.walk")
+            valueView("target_steps_title", stepGoal, "target")
+        }
+    }
     
     @ViewBuilder func valueView(_ title : LocalizedStringKey,
                                 _ value : Int?,
@@ -69,7 +84,10 @@ private extension StepCountView {
 
 #Preview {
     HStack {
-        StepCountView(steps: 337, stepGoal: .constant(10000))
+        StepCountView(steps: 337,
+                      stepGoal: .constant(10000),
+                      healthKitContentIsAvailable: true,
+                      isLoading: false)
         Spacer()
             .frame(width: 175)
     }
