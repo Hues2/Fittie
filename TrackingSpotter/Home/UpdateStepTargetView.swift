@@ -10,6 +10,7 @@ struct UpdateStepTargetView: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 24)
+        .padding(.bottom, 8)
     }
 }
 

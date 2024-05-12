@@ -26,6 +26,8 @@ struct HomeView: View {
                 }
                 .presentationDetents([.height(self.detentHeight)])
         })
+        .navigationTitle("home_nav_title")
+        .toolbarBackground(.automatic, for: .navigationBar)
     }
 }
 
@@ -41,12 +43,9 @@ private extension HomeView {
 private extension HomeView {
     var content : some View {
         ScrollView(.vertical) {
-            VStack(alignment: .leading) {
-                title
-                HStack {
-                    stepCountView
-                    dailyStepsView
-                }
+            VStack(alignment: .leading, spacing: 0) {
+                stepsSection
+                    .padding(.top)
             }
             .padding(.horizontal, Constants.horizontalPadding)
         }
@@ -54,19 +53,25 @@ private extension HomeView {
     }
 }
 
-// MARK: - Steps title
+// MARK: - Steps Section
 private extension HomeView {
-    var title : some View {
-        Text("steps_title")
-            .font(.largeTitle)
-            .fontWeight(.semibold)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        
+    var stepsSection : some View {
+        VStack(alignment: .leading, spacing: 8) {
+            stepsTitle
+            HStack {
+                stepCountView
+                dailyStepsView
+            }
+        }
     }
-}
-
-// MARK: - Steps View
-private extension HomeView {
+    
+    var stepsTitle : some View {
+        Text("steps_title")
+            .font(.title2)
+            .fontWeight(.regular)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
     @ViewBuilder var stepCountView : some View {
         if viewModel.stepsIsLoading {
             loadingView
@@ -83,10 +88,7 @@ private extension HomeView {
             }
         }
     }
-}
-
-// MARK: - Daily Steps View
-private extension HomeView {
+    
     @ViewBuilder var dailyStepsView : some View {
         VStack {
             if viewModel.dailyStepsIsLoading {
@@ -107,4 +109,8 @@ private extension HomeView {
         ProgressView()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+}
+
+#Preview {
+    HomeView()
 }

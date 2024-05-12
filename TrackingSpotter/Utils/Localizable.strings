@@ -3,6 +3,9 @@
 "exercises_tab_label" = "Exercises";
 "calendar_tab_label" = "Calendar";
 
+// Home View
+"home_nav_title" = "Overview";
+
 // Step Counter
 "steps_title" = "Steps";
 "current_steps_title" = "Today";
