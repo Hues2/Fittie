@@ -32,6 +32,7 @@
 		2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE82BEEDD46009C7002 /* Constants.swift */; };
 		2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAEB2BEEEBB5009C7002 /* Date.swift */; };
 		2ED7F5A12BF14CFB00720874 /* StreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A02BF14CFB00720874 /* StreakView.swift */; };
+		2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		2EC6CAE82BEEDD46009C7002 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2EC6CAEB2BEEEBB5009C7002 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		2ED7F5A02BF14CFB00720874 /* StreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakView.swift; sourceTree = "<group>"; };
+		2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetHeight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */,
 				2E756ED42BF0161A0041A8D9 /* CardViewModifier.swift */,
+				2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */,
 				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
 				2EC6CAE52BEED789009C7002 /* DailyStepCountView.swift in Sources */,
+				2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */,
 				2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */,
 				2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */,
 			);

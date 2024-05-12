@@ -2,8 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @State private var presentSheet: Bool = false
-    @State private var detentHeight: CGFloat = 0
+    @State private var presentDailyStepGoalSheet: Bool = false
     
     var body: some View {
         ZStack {
@@ -15,16 +14,9 @@ struct HomeView: View {
             viewModel.getDailySteps()
             viewModel.getWeeklySteps()
         }
-        .sheet(isPresented: $presentSheet, content: {
+        .sheet(isPresented: $presentDailyStepGoalSheet, content: {
             UpdateStepTargetView(stepGoal: $viewModel.dailyStepGoal)
-                .presentationCornerRadius(Constants.sheetCornerRadius)
-                .readHeight()
-                .onPreferenceChange(HeightPreferenceKey.self) { height in
-                    if let height {
-                        self.detentHeight = height
-                    }
-                }
-                .presentationDetents([.height(self.detentHeight)])
+                .withCustomSheetHeight()
         })
         .navigationTitle("home_nav_title")
     }
@@ -37,16 +29,16 @@ private extension HomeView {
             .ignoresSafeArea()
     }
     
+    var loadingView : some View {
+        ProgressView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
     func sectionTitle(_ title : LocalizedStringKey) -> some View {
         Text(title)
             .font(.title2)
             .fontWeight(.thin)
             .frame(maxWidth: .infinity, alignment: .leading)
-    }
-    
-    var loadingView : some View {
-        ProgressView()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     func cardView(_ title : LocalizedStringKey, _ cardContent : @escaping () -> some View) -> some View {
@@ -56,6 +48,21 @@ private extension HomeView {
         }
         .frame(height: Constants.cardHeight)
         .withCardModifier()
+    }
+}
+
+// MARK: - Home View Content
+private extension HomeView {
+    var content : some View {
+        ScrollView(.vertical) {
+            VStack(alignment: .leading, spacing: 24) {
+                firstSection
+                    .padding(.top)
+                secondSection
+            }
+            .padding(.horizontal, Constants.horizontalPadding)
+        }
+        .clipped()
     }
 }
 
@@ -76,21 +83,6 @@ private extension HomeView {
     }
 }
 
-// MARK: - Home View Content
-private extension HomeView {
-    var content : some View {
-        ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 24) {
-                firstSection
-                    .padding(.top)
-                secondSection
-            }
-            .padding(.horizontal, Constants.horizontalPadding)
-        }
-        .clipped()
-    }
-}
-
 // MARK: - Daily Steps
 private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
@@ -104,7 +96,7 @@ private extension HomeView {
                                   isLoading: viewModel.dailyStepsAreLoading)
                     .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                     .onTapGesture {
-                        self.presentSheet = true
+                        self.presentDailyStepGoalSheet = true
                     }
                 }
             }
@@ -140,6 +132,7 @@ private extension HomeView {
     var streakView : some View {
         cardView("streak_title") {
             StreakView(streak: 5)
+                .frame(maxHeight: .infinity)
         }
     }
 }
