@@ -40,8 +40,22 @@ private extension HomeView {
     func sectionTitle(_ title : LocalizedStringKey) -> some View {
         Text(title)
             .font(.title2)
-            .fontWeight(.regular)
+            .fontWeight(.thin)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    var loadingView : some View {
+        ProgressView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    func cardView(_ title : LocalizedStringKey, _ cardContent : @escaping () -> some View) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            sectionTitle(title)
+            cardContent()
+        }
+        .frame(height: Constants.cardHeight)
+        .withCardModifier()
     }
 }
 
@@ -77,11 +91,10 @@ private extension HomeView {
     }
 }
 
-// MARK: - Steps Section
+// MARK: - Daily Steps
 private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
-        VStack(alignment: .leading, spacing: 8) {
-            sectionTitle("daily_steps_title")
+        cardView("daily_steps_title") {
             VStack {
                 if viewModel.dailyStepsAreLoading {
                     loadingView
@@ -96,8 +109,6 @@ private extension HomeView {
                 }
             }
         }
-        .frame(height: Constants.cardHeight)
-        .withCardModifier()
         .overlay(alignment: .topTrailing) {
             if !viewModel.dailyStepsAreLoading {
                 Image(systemName: "hand.tap.fill")
@@ -106,10 +117,12 @@ private extension HomeView {
             }
         }
     }
-    
+}
+
+// MARK: - Weekly Steps
+private extension HomeView {
     @ViewBuilder var weeklyStepsView : some View {
-        VStack(alignment: .leading, spacing: 8) {
-            sectionTitle("weekly_steps_title")
+        cardView("weekly_steps_title") {
             VStack {
                 if viewModel.weeklyStepsAreLoading {
                     loadingView
@@ -119,28 +132,15 @@ private extension HomeView {
                 }
             }
         }
-        .frame(height: Constants.cardHeight)
-        .withCardModifier(nil)
     }
 }
 
 // MARK: - Streak View
 private extension HomeView {
     var streakView : some View {
-        VStack(alignment: .leading, spacing: 8) {
-            sectionTitle("streak_title")
+        cardView("streak_title") {
             StreakView(streak: 5)
         }
-        .frame(height: Constants.cardHeight)
-        .withCardModifier()
-    }
-}
-
-// MARK: - Loading View
-private extension HomeView {
-    var loadingView : some View {
-        ProgressView()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
