@@ -23,7 +23,8 @@ private extension DailyStepsView {
                 .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accent : Color.red)
             }
         }
-        .chartYScale(domain: 0...(max + 5000))
+        .chartYScale(domain: 0...10_000)
+//        .chartYScale(domain: 0...(max + 1000))
         .onAppear {
             for (index, _) in dailySteps.enumerated() {
                 withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.1)) {
