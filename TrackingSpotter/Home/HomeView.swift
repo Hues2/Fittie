@@ -71,15 +71,12 @@ private extension HomeView {
     var firstSection : some View {
         HStack {
             dailyStepCountView
-            weeklyStepsView
+            streakView
         }
     }
     
     var secondSection : some View {
-        HStack {
-            streakView
-            streakView
-        }
+        weeklyStepsView        
     }
 }
 
