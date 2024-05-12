@@ -6,11 +6,12 @@ struct StreakView: View {
     var body: some View {
         HStack {
             Text("\(streak)")
-            Text("🔥")
         }
-        .font(.largeTitle)
+        .font(.system(size: 75))
         .foregroundStyle(Color.customText)
         .fontWeight(.black)
+        .lineLimit(1)
+        .minimumScaleFactor(0.3)
     }
 }
 

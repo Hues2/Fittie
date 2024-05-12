@@ -12,6 +12,7 @@ class Constants {
     
     // MARK: - User Defaults
     struct UserDefaults {
-        static let stepGoalKey = "step_goal"
+        static let dailyStepGoalKey = "daily_step_goal"
+        static let workoutStreak = "workout_streak"
     }
 }

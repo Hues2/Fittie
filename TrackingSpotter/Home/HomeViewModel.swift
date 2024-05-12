@@ -12,12 +12,16 @@ class HomeViewModel : ObservableObject {
     @Published var weeklySteps : [DailyStep] = []
     @Published private(set) var weeklyStepsAreLoading : Bool = true
     
+    // Workout streak
+    @Published var workoutStreak : Int = 0
+    
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         self.dailyStepGoal = getStepTarget()
+        self.workoutStreak = getWorkoutStreak()
         addSubscriptions()
     }
     
@@ -57,13 +61,13 @@ extension HomeViewModel {
         }
     }
     
-    func getStepTarget() -> Int {
-        let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.stepGoalKey)
+    private func getStepTarget() -> Int {
+        let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.dailyStepGoalKey)
         return (stepGoal == 0) ? 10_000 : stepGoal
     }
     
     func setStepTarget(_ newStepGoal : Int) {
-        UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.stepGoalKey)
+        UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.dailyStepGoalKey)
     }
     
     func getWeeklySteps() {
@@ -79,5 +83,12 @@ extension HomeViewModel {
                 }
             }
         }
+    }
+}
+
+// MARK: - Workout Streak
+extension HomeViewModel {
+    private func getWorkoutStreak() -> Int {
+        UserDefaults.standard.integer(forKey: Constants.UserDefaults.workoutStreak)
     }
 }

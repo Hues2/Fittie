@@ -131,8 +131,14 @@ private extension HomeView {
 private extension HomeView {
     var streakView : some View {
         cardView("streak_title") {
-            StreakView(streak: 5)
-                .frame(maxHeight: .infinity)
+            StreakView(streak: viewModel.workoutStreak)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .overlay(alignment: .topTrailing) {
+            if !viewModel.dailyStepsAreLoading {
+                Text("🔥")
+                    .padding(4)
+            }
         }
     }
 }
