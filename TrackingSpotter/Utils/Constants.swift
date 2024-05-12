@@ -8,7 +8,7 @@ class Constants {
     static let cardHeight : CGFloat = 200
     
     // MARK: - Values
-    static let numberOfDaysInChart : Int = 14
+    static let numberOfDaysInChart : Int = 30
     
     // MARK: - User Defaults
     struct UserDefaults {

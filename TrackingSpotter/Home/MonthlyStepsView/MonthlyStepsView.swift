@@ -1,8 +1,8 @@
 import SwiftUI
 import Charts
 
-struct WeeklyStepsView: View {
-    @State var weeklySteps : [DailyStep]
+struct MonthlyStepsView: View {
+    @State var monthlySteps : [DailyStep]
     let stepGoal : Int
     
     var body: some View {
@@ -11,10 +11,10 @@ struct WeeklyStepsView: View {
     }
 }
 
-private extension WeeklyStepsView {    
+private extension MonthlyStepsView {
     @ViewBuilder func chart() -> some View {
         Chart {
-            ForEach(weeklySteps) { dailyStep in
+            ForEach(monthlySteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
                         y: .value("Steps", dailyStep.animate ? dailyStep.steps : 0))
                 .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accent : Color.red)
@@ -22,9 +22,9 @@ private extension WeeklyStepsView {
         }
         .chartYScale(domain: 0...(stepGoal + 1000))
         .onAppear {
-            for (index, _) in weeklySteps.enumerated() {
-                withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.05)) {
-                    weeklySteps[index].animate = true
+            for (index, _) in monthlySteps.enumerated() {
+                withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
+                    monthlySteps[index].animate = true
                 }
             }
         }
@@ -33,7 +33,7 @@ private extension WeeklyStepsView {
 }
 
 #Preview {
-    WeeklyStepsView(weeklySteps: [DailyStep(date: Date(), steps: 11632),
+    MonthlyStepsView(monthlySteps: [DailyStep(date: Date(), steps: 11632),
                                   DailyStep(date: Date(), steps: 1789),
                                   DailyStep(date: Date(), steps: 1686),
                                   DailyStep(date: Date(), steps: 1478),

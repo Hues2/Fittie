@@ -19,7 +19,7 @@ class HealthKitManager {
         healthStore.execute(query)
     }
     
-    func fetchDailySteps(startDate : Date, _ completion : @escaping ([DailyStep]) -> Void) {
+    func fetchMonthlySteps(startDate : Date, _ completion : @escaping ([DailyStep]) -> Void) {
         let steps = HKQuantityType(.stepCount)
         let interval = DateComponents(day: 1)
         let query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: nil, anchorDate: startDate, intervalComponents: interval)

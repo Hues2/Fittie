@@ -8,7 +8,7 @@
 
 // Step Counter
 "daily_steps_title" = "Daily Steps";
-"weekly_steps_title" = "Weekly Steps";
+"monthly_steps_title" = "Monthly Steps";
 "current_steps_title" = "Today";
 "target_steps_title" = "Goal";
 "update_step_target_title" = "Daily Step Goal";

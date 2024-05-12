@@ -12,7 +12,7 @@ struct HomeView: View {
         .task {
             await viewModel.requestAuthorization()
             viewModel.getDailySteps()
-            viewModel.getWeeklySteps()
+            viewModel.getMonthlySteps()
         }
         .sheet(isPresented: $presentDailyStepGoalSheet, content: {
             UpdateStepTargetView(stepGoal: $viewModel.dailyStepGoal)
@@ -56,7 +56,7 @@ private extension HomeView {
     var content : some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 16) {
-                firstSection                    
+                firstSection
                 secondSection
             }
             .padding(.horizontal, Constants.horizontalPadding)
@@ -75,7 +75,7 @@ private extension HomeView {
     }
     
     var secondSection : some View {
-        weeklyStepsView
+        monthlyStepsView
     }
 }
 
@@ -107,13 +107,13 @@ private extension HomeView {
 
 // MARK: - Weekly Steps
 private extension HomeView {
-    @ViewBuilder var weeklyStepsView : some View {
-        cardView("weekly_steps_title", 275) {
-            if viewModel.weeklyStepsAreLoading {
+    @ViewBuilder var monthlyStepsView : some View {
+        cardView("monthly_steps_title", 275) {
+            if viewModel.monthlyStepsAreLoading {
                 loadingView
             } else {
-                WeeklyStepsView(weeklySteps: viewModel.weeklySteps,
-                                stepGoal: viewModel.dailyStepGoal)
+                MonthlyStepsView(monthlySteps: viewModel.monthlySteps,
+                                 stepGoal: viewModel.dailyStepGoal)
             }
         }
     }

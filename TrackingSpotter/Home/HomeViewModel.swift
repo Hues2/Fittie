@@ -9,8 +9,8 @@ class HomeViewModel : ObservableObject {
     @Published private(set) var dailyStepsAreLoading : Bool = true
     
     // Daily steps
-    @Published var weeklySteps : [DailyStep] = []
-    @Published private(set) var weeklyStepsAreLoading : Bool = true
+    @Published var monthlySteps : [DailyStep] = []
+    @Published private(set) var monthlyStepsAreLoading : Bool = true
     
     // Workout streak
     @Published var workoutStreak : Int = 0
@@ -70,16 +70,16 @@ extension HomeViewModel {
         UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.dailyStepGoalKey)
     }
     
-    func getWeeklySteps() {
+    func getMonthlySteps() {
         let startDate = Calendar.current.date(byAdding: .day, value: -(Constants.numberOfDaysInChart - 1), to: Date.startOfDay)
         guard let startDate else { return }
-        healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] weeklySteps in
+        healthKitManager.fetchMonthlySteps(startDate: startDate) { [weak self] monthlySteps in
             guard let self else { return }
             
             DispatchQueue.main.async {
                 withAnimation {
-                    self.weeklySteps = weeklySteps.sorted(by: { $0.date < $1.date })
-                    self.weeklyStepsAreLoading = false
+                    self.monthlySteps = monthlySteps.sorted(by: { $0.date < $1.date })
+                    self.monthlyStepsAreLoading = false
                 }
             }
         }
