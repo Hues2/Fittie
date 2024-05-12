@@ -17,7 +17,7 @@ struct UpdateStepTargetView: View {
 private extension UpdateStepTargetView {
     var title : some View {
         Text("update_step_target_title")
-            .foregroundStyle(Color.customWhite)
+            .foregroundStyle(Color.customText)
             .font(.title)
             .fontWeight(.medium)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -46,7 +46,7 @@ private extension UpdateStepTargetView {
             action()
         } label: {
             Image(systemName: icon)
-                .foregroundStyle(Color.darkGray)
+                .foregroundStyle(Color.cardBackground)
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()

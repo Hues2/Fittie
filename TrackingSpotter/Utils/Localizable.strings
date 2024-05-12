@@ -7,7 +7,8 @@
 "home_nav_title" = "Overview";
 
 // Step Counter
-"steps_title" = "Steps";
+"daily_steps_title" = "Daily Steps";
+"weekly_steps_title" = "Weekly Steps";
 "current_steps_title" = "Today";
 "target_steps_title" = "Goal";
 "update_step_target_title" = "Daily Step Goal";
@@ -15,3 +16,6 @@
 // Content Unavailable
 "not_available_title" = "Not Available";
 "not_available_description" = "Please review your permission settings";
+
+// Streak View
+"streak_title" = "Streak";

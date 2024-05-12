@@ -4,20 +4,20 @@ import Factory
 
 class HomeViewModel : ObservableObject {
     // Steps
-    @Published private(set) var steps : Int?
-    @Published var stepGoal : Int = 0
-    @Published private(set) var stepsIsLoading : Bool = true
+    @Published private(set) var dailySteps : Int?
+    @Published var dailyStepGoal : Int = 0
+    @Published private(set) var dailyStepsAreLoading : Bool = true
     
     // Daily steps
-    @Published var dailySteps : [DailyStep] = []
-    @Published private(set) var dailyStepsIsLoading : Bool = true
+    @Published var weeklySteps : [DailyStep] = []
+    @Published private(set) var weeklyStepsAreLoading : Bool = true
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.stepGoal = getStepTarget()
+        self.dailyStepGoal = getStepTarget()
         addSubscriptions()
     }
     
@@ -28,7 +28,7 @@ class HomeViewModel : ObservableObject {
 
 private extension HomeViewModel {
     func subscribeToStepGoal() {
-        self.$stepGoal
+        self.$dailyStepGoal
             .dropFirst()
             .debounce(for: .seconds(0.75), scheduler: DispatchQueue.main)
             .sink { [weak self] newStepGoal in
@@ -45,13 +45,13 @@ extension HomeViewModel {
         try? await healthKitManager.requestAuthorization()
     }
     
-    func getTodaysSteps() {
+    func getDailySteps() {
         healthKitManager.fetchTodaySteps { [weak self] steps in
             guard let self else { return }
             DispatchQueue.main.async {
                 withAnimation {
-                    self.steps = Int(steps)
-                    self.stepsIsLoading = false
+                    self.dailySteps = Int(steps)
+                    self.dailyStepsAreLoading = false
                 }
             }
         }
@@ -66,16 +66,16 @@ extension HomeViewModel {
         UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.stepGoalKey)
     }
     
-    func getPast7DaysSteps() {
+    func getWeeklySteps() {
         let startDate = Calendar.current.date(byAdding: .day, value: -(Constants.numberOfDaysInChart - 1), to: Date.startOfDay)
         guard let startDate else { return }
-        healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] dailySteps in
+        healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] weeklySteps in
             guard let self else { return }
             
             DispatchQueue.main.async {
                 withAnimation {
-                    self.dailySteps = dailySteps.sorted(by: { $0.date < $1.date })
-                    self.dailyStepsIsLoading = false
+                    self.weeklySteps = weeklySteps.sorted(by: { $0.date < $1.date })
+                    self.weeklyStepsAreLoading = false
                 }
             }
         }

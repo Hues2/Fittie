@@ -12,11 +12,11 @@ struct HomeView: View {
         }
         .task {
             await viewModel.requestAuthorization()
-            viewModel.getTodaysSteps()
-            viewModel.getPast7DaysSteps()
+            viewModel.getDailySteps()
+            viewModel.getWeeklySteps()
         }
         .sheet(isPresented: $presentSheet, content: {
-            UpdateStepTargetView(stepGoal: $viewModel.stepGoal)
+            UpdateStepTargetView(stepGoal: $viewModel.dailyStepGoal)
                 .presentationCornerRadius(Constants.sheetCornerRadius)
                 .readHeight()
                 .onPreferenceChange(HeightPreferenceKey.self) { height in
@@ -30,11 +30,35 @@ struct HomeView: View {
     }
 }
 
-// MARK: - Background
+// MARK: - Views
 private extension HomeView {
     var backgroundColor : some View {
-        Color.customBlack
+        Color.customBackground
             .ignoresSafeArea()
+    }
+    
+    func sectionTitle(_ title : LocalizedStringKey) -> some View {
+        Text(title)
+            .font(.title2)
+            .fontWeight(.regular)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+// MARK: - Row Sections
+private extension HomeView {
+    var firstSection : some View {
+        HStack {
+            dailyStepCountView
+            weeklyStepsView
+        }
+    }
+    
+    var secondSection : some View {
+        HStack {
+            streakView
+            streakView
+        }
     }
 }
 
@@ -42,9 +66,10 @@ private extension HomeView {
 private extension HomeView {
     var content : some View {
         ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 0) {
-                stepsSection
+            VStack(alignment: .leading, spacing: 24) {
+                firstSection
                     .padding(.top)
+                secondSection
             }
             .padding(.horizontal, Constants.horizontalPadding)
         }
@@ -54,38 +79,27 @@ private extension HomeView {
 
 // MARK: - Steps Section
 private extension HomeView {
-    var stepsSection : some View {
+    @ViewBuilder var dailyStepCountView : some View {
         VStack(alignment: .leading, spacing: 8) {
-            stepsTitle
-            HStack {
-                stepCountView
-                dailyStepsView
+            sectionTitle("daily_steps_title")
+            VStack {
+                if viewModel.dailyStepsAreLoading {
+                    loadingView
+                } else {
+                    DailyStepCountView(steps: viewModel.dailySteps,
+                                  stepGoal: viewModel.dailyStepGoal,
+                                  isLoading: viewModel.dailyStepsAreLoading)
+                    .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                    .onTapGesture {
+                        self.presentSheet = true
+                    }
+                }
             }
         }
-    }
-    
-    var stepsTitle : some View {
-        Text("steps_title")
-            .font(.title2)
-            .fontWeight(.regular)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-    
-    @ViewBuilder var stepCountView : some View {
-        if viewModel.stepsIsLoading {
-            loadingView
-                .frame(height: 200)
-                .withCardModifier()
-        } else {
-            StepCountView(steps: viewModel.steps,
-                          stepGoal: viewModel.stepGoal,
-                          isLoading: viewModel.stepsIsLoading)
-            .frame(height: 200)
-            .withCardModifier()
-            .onTapGesture {
-                self.presentSheet = true
-            }
-            .overlay(alignment: .topTrailing) {
+        .frame(height: Constants.cardHeight)
+        .withCardModifier()
+        .overlay(alignment: .topTrailing) {
+            if !viewModel.dailyStepsAreLoading {
                 Image(systemName: "hand.tap.fill")
                     .foregroundStyle(Color.lightGray)
                     .padding(4)
@@ -93,16 +107,31 @@ private extension HomeView {
         }
     }
     
-    @ViewBuilder var dailyStepsView : some View {
-        VStack {
-            if viewModel.dailyStepsIsLoading {
-                loadingView
-            } else {
-                DailyStepsView(dailySteps: viewModel.dailySteps,
-                               stepGoal: viewModel.stepGoal)
+    @ViewBuilder var weeklyStepsView : some View {
+        VStack(alignment: .leading, spacing: 8) {
+            sectionTitle("weekly_steps_title")
+            VStack {
+                if viewModel.weeklyStepsAreLoading {
+                    loadingView
+                } else {
+                    WeeklyStepsView(weeklySteps: viewModel.weeklySteps,
+                                   stepGoal: viewModel.dailyStepGoal)
+                }
             }
         }
-        .frame(height: 200)
+        .frame(height: Constants.cardHeight)
+        .withCardModifier(nil)
+    }
+}
+
+// MARK: - Streak View
+private extension HomeView {
+    var streakView : some View {
+        VStack(alignment: .leading, spacing: 8) {
+            sectionTitle("streak_title")
+            StreakView(streak: 5)
+        }
+        .frame(height: Constants.cardHeight)
         .withCardModifier()
     }
 }

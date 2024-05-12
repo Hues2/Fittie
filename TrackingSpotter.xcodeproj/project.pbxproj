@@ -13,7 +13,7 @@
 		2E756ED52BF0161A0041A8D9 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E756ED42BF0161A0041A8D9 /* CardViewModifier.swift */; };
 		2EA3733B2BEF8E2500843FCA /* UpdateStepTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */; };
 		2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */; };
-		2EA373412BEFCB7A00843FCA /* DailyStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373402BEFCB7A00843FCA /* DailyStepsView.swift */; };
+		2EA373412BEFCB7A00843FCA /* WeeklyStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373402BEFCB7A00843FCA /* WeeklyStepsView.swift */; };
 		2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373432BEFD69700843FCA /* DailyStep.swift */; };
 		2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */; };
 		2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */; };
@@ -28,9 +28,10 @@
 		2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CADD2BEEC2A5009C7002 /* Containers.swift */; };
 		2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */; };
 		2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE12BEED1D5009C7002 /* CustomError.swift */; };
-		2EC6CAE52BEED789009C7002 /* StepCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE42BEED789009C7002 /* StepCountView.swift */; };
+		2EC6CAE52BEED789009C7002 /* DailyStepCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE42BEED789009C7002 /* DailyStepCountView.swift */; };
 		2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE82BEEDD46009C7002 /* Constants.swift */; };
 		2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAEB2BEEEBB5009C7002 /* Date.swift */; };
+		2ED7F5A12BF14CFB00720874 /* StreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A02BF14CFB00720874 /* StreakView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,7 @@
 		2E756ED42BF0161A0041A8D9 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStepTargetView.swift; sourceTree = "<group>"; };
 		2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHeightViewModifier.swift; sourceTree = "<group>"; };
-		2EA373402BEFCB7A00843FCA /* DailyStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStepsView.swift; sourceTree = "<group>"; };
+		2EA373402BEFCB7A00843FCA /* WeeklyStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStepsView.swift; sourceTree = "<group>"; };
 		2EA373432BEFD69700843FCA /* DailyStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStep.swift; sourceTree = "<group>"; };
 		2EC6CAB72BEE8F2C009C7002 /* TrackingSpotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingSpotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSpotterApp.swift; sourceTree = "<group>"; };
@@ -57,9 +58,10 @@
 		2EC6CADD2BEEC2A5009C7002 /* Containers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Containers.swift; sourceTree = "<group>"; };
 		2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2EC6CAE12BEED1D5009C7002 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
-		2EC6CAE42BEED789009C7002 /* StepCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCountView.swift; sourceTree = "<group>"; };
+		2EC6CAE42BEED789009C7002 /* DailyStepCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStepCountView.swift; sourceTree = "<group>"; };
 		2EC6CAE82BEEDD46009C7002 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2EC6CAEB2BEEEBB5009C7002 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		2ED7F5A02BF14CFB00720874 /* StreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +93,12 @@
 			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
-		2EA3733F2BEFCB4100843FCA /* DailyStepsView */ = {
+		2EA3733F2BEFCB4100843FCA /* WeeklyStepsView */ = {
 			isa = PBXGroup;
 			children = (
-				2EA373402BEFCB7A00843FCA /* DailyStepsView.swift */,
+				2EA373402BEFCB7A00843FCA /* WeeklyStepsView.swift */,
 			);
-			path = DailyStepsView;
+			path = WeeklyStepsView;
 			sourceTree = "<group>";
 		};
 		2EA373422BEFD67E00843FCA /* Models */ = {
@@ -153,8 +155,9 @@
 		2EC6CAC82BEE8FB6009C7002 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2ED7F59F2BF14CE100720874 /* StreakView */,
 				2EC6CAE32BEED76D009C7002 /* DailyStepCountView */,
-				2EA3733F2BEFCB4100843FCA /* DailyStepsView */,
+				2EA3733F2BEFCB4100843FCA /* WeeklyStepsView */,
 				2EC6CAC92BEE9116009C7002 /* HomeView.swift */,
 				2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */,
 				2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */,
@@ -213,7 +216,7 @@
 		2EC6CAE32BEED76D009C7002 /* DailyStepCountView */ = {
 			isa = PBXGroup;
 			children = (
-				2EC6CAE42BEED789009C7002 /* StepCountView.swift */,
+				2EC6CAE42BEED789009C7002 /* DailyStepCountView.swift */,
 			);
 			path = DailyStepCountView;
 			sourceTree = "<group>";
@@ -224,6 +227,14 @@
 				2EC6CAEB2BEEEBB5009C7002 /* Date.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2ED7F59F2BF14CE100720874 /* StreakView */ = {
+			isa = PBXGroup;
+			children = (
+				2ED7F5A02BF14CFB00720874 /* StreakView.swift */,
+			);
+			path = StreakView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,7 +317,8 @@
 				2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */,
 				2EA3733B2BEF8E2500843FCA /* UpdateStepTargetView.swift in Sources */,
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
-				2EA373412BEFCB7A00843FCA /* DailyStepsView.swift in Sources */,
+				2ED7F5A12BF14CFB00720874 /* StreakView.swift in Sources */,
+				2EA373412BEFCB7A00843FCA /* WeeklyStepsView.swift in Sources */,
 				2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */,
 				2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */,
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
@@ -320,7 +332,7 @@
 				2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */,
 				2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */,
 				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
-				2EC6CAE52BEED789009C7002 /* StepCountView.swift in Sources */,
+				2EC6CAE52BEED789009C7002 /* DailyStepCountView.swift in Sources */,
 				2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */,
 				2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */,
 			);
@@ -469,6 +481,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -507,6 +520,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

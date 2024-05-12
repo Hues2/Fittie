@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StepCountView: View {    
+struct DailyStepCountView: View {    
     let steps : Int?
     let stepGoal : Int
     let isLoading : Bool
@@ -13,11 +13,11 @@ struct StepCountView: View {
                 stepsContent
             }
         }
-        .foregroundStyle(Color.customWhite)        
+        .foregroundStyle(Color.customText)        
     }
 }
 
-private extension StepCountView {
+private extension DailyStepCountView {
     var loadingView : some View {
         ProgressView()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -59,7 +59,7 @@ private extension StepCountView {
 
 #Preview {
     HStack {
-        StepCountView(steps: 337,
+        DailyStepCountView(steps: 337,
                       stepGoal: 10000,
                       isLoading: false)
         Spacer()
