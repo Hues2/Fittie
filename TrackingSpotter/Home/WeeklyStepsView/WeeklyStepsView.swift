@@ -7,6 +7,7 @@ struct WeeklyStepsView: View {
     
     var body: some View {
         chart()
+            .padding(.top, 4)
     }
 }
 
@@ -27,6 +28,7 @@ private extension WeeklyStepsView {
                 }
             }
         }
+        .clipped()
     }
 }
 

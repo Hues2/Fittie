@@ -41,12 +41,12 @@ private extension HomeView {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
-    func cardView(_ title : LocalizedStringKey, _ cardContent : @escaping () -> some View) -> some View {
+    func cardView(_ title : LocalizedStringKey, _ height : CGFloat, @ViewBuilder cardContent : @escaping () -> some View) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             sectionTitle(title)
             cardContent()
         }
-        .frame(height: Constants.cardHeight)
+        .frame(height: height)
         .withCardModifier()
     }
 }
@@ -55,9 +55,8 @@ private extension HomeView {
 private extension HomeView {
     var content : some View {
         ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 24) {
-                firstSection
-                    .padding(.top)
+            VStack(alignment: .leading, spacing: 16) {
+                firstSection                    
                 secondSection
             }
             .padding(.horizontal, Constants.horizontalPadding)
@@ -76,25 +75,23 @@ private extension HomeView {
     }
     
     var secondSection : some View {
-        weeklyStepsView        
+        weeklyStepsView
     }
 }
 
 // MARK: - Daily Steps
 private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
-        cardView("daily_steps_title") {
-            VStack {
-                if viewModel.dailyStepsAreLoading {
-                    loadingView
-                } else {
-                    DailyStepCountView(steps: viewModel.dailySteps,
-                                  stepGoal: viewModel.dailyStepGoal,
-                                  isLoading: viewModel.dailyStepsAreLoading)
-                    .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                    .onTapGesture {
-                        self.presentDailyStepGoalSheet = true
-                    }
+        cardView("daily_steps_title", Constants.cardHeight) {
+            if viewModel.dailyStepsAreLoading {
+                loadingView
+            } else {
+                DailyStepCountView(steps: viewModel.dailySteps,
+                                   stepGoal: viewModel.dailyStepGoal,
+                                   isLoading: viewModel.dailyStepsAreLoading)
+                .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                .onTapGesture {
+                    self.presentDailyStepGoalSheet = true
                 }
             }
         }
@@ -102,7 +99,7 @@ private extension HomeView {
             if !viewModel.dailyStepsAreLoading {
                 Image(systemName: "hand.tap.fill")
                     .foregroundStyle(Color.lightGray)
-                    .padding(4)
+                    .padding(6)
             }
         }
     }
@@ -111,14 +108,12 @@ private extension HomeView {
 // MARK: - Weekly Steps
 private extension HomeView {
     @ViewBuilder var weeklyStepsView : some View {
-        cardView("weekly_steps_title") {
-            VStack {
-                if viewModel.weeklyStepsAreLoading {
-                    loadingView
-                } else {
-                    WeeklyStepsView(weeklySteps: viewModel.weeklySteps,
-                                   stepGoal: viewModel.dailyStepGoal)
-                }
+        cardView("weekly_steps_title", 275) {
+            if viewModel.weeklyStepsAreLoading {
+                loadingView
+            } else {
+                WeeklyStepsView(weeklySteps: viewModel.weeklySteps,
+                                stepGoal: viewModel.dailyStepGoal)
             }
         }
     }
@@ -127,14 +122,14 @@ private extension HomeView {
 // MARK: - Streak View
 private extension HomeView {
     var streakView : some View {
-        cardView("streak_title") {
+        cardView("streak_title", Constants.cardHeight) {
             StreakView(streak: viewModel.workoutStreak)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .overlay(alignment: .topTrailing) {
             if !viewModel.dailyStepsAreLoading {
                 Text("🔥")
-                    .padding(4)
+                    .padding(6)
             }
         }
     }
