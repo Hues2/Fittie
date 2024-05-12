@@ -27,7 +27,6 @@ struct HomeView: View {
                 .presentationDetents([.height(self.detentHeight)])
         })
         .navigationTitle("home_nav_title")
-        .toolbarBackground(.automatic, for: .navigationBar)
     }
 }
 
@@ -85,6 +84,11 @@ private extension HomeView {
             .withCardModifier()
             .onTapGesture {
                 self.presentSheet = true
+            }
+            .overlay(alignment: .topTrailing) {
+                Image(systemName: "hand.tap.fill")
+                    .foregroundStyle(Color.lightGray)
+                    .padding(4)
             }
         }
     }
