@@ -123,7 +123,7 @@ private extension HomeView {
 private extension HomeView {
     var streakView : some View {
         cardView("streak_title", Constants.cardHeight) {
-            StreakView(streak: viewModel.workoutStreak)
+            StreakView(streak: viewModel.streak)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .overlay(alignment: .topTrailing) {
