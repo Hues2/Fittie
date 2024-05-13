@@ -2,7 +2,13 @@ import Foundation
 import Factory
 
 extension Container {
-    var healthKitManager: Factory<HealthKitManager> {
+    // MARK: - HealthKit Manager
+    var healthKitManager : Factory<HealthKitManager> {
         self { HealthKitManager() }
+    }
+    
+    // MARK: - Streak Manager
+    var streakManager : Factory<StreakManager> {
+        self { StreakManager() }
     }
 }
