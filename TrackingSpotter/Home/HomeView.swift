@@ -105,7 +105,7 @@ private extension HomeView {
     }
 }
 
-// MARK: - Weekly Steps
+// MARK: - Monthly Steps
 private extension HomeView {
     @ViewBuilder var monthlyStepsView : some View {
         cardView("monthly_steps_title", 275) {
@@ -128,8 +128,9 @@ private extension HomeView {
         }
         .overlay(alignment: .topTrailing) {
             if !viewModel.dailyStepsAreLoading {
-                Text("🔥")
+                Image(systemName: "flame")
                     .padding(6)
+                    .foregroundStyle(Color.orange)                    
             }
         }
     }
