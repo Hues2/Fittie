@@ -18,6 +18,10 @@ struct HomeView: View {
             UpdateStepTargetView(stepGoal: $viewModel.dailyStepGoal)
                 .withCustomSheetHeight()
         })
+        .sheet(isPresented: $viewModel.presentStreakPrompt, content: {
+            StreakPromptView()
+                .withCustomSheetHeight()
+        })
         .navigationTitle("home_nav_title")
     }
 }

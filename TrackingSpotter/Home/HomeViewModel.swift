@@ -14,7 +14,7 @@ class HomeViewModel : ObservableObject {
     
     // Workout streak
     @Published private(set) var streak : Int = 0
-    @Published private(set) var shouldShowStreakPrompt : Bool = false
+    @Published var presentStreakPrompt : Bool = false
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
@@ -60,7 +60,7 @@ private extension HomeViewModel {
             .sink { [weak self] shouldShowPrompt in
                 guard let self else { return }
                 print("Should show prompt --> \(shouldShowPrompt)")
-                self.shouldShowStreakPrompt = shouldShowPrompt
+                self.presentStreakPrompt = shouldShowPrompt
             }
             .store(in: &cancellables)
     }
