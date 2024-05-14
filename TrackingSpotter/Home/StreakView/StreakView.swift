@@ -17,9 +17,7 @@ struct StreakView: View {
             Image(systemName: "flame")
                 .padding(6)
                 .foregroundStyle(Color.orange)
-        }
-        .onChange(of: streak) {
-            print("changed")
+                .symbolEffect(.bounce, value: streak)                
         }
     }
 }
