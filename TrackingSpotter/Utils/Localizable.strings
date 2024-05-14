@@ -19,3 +19,6 @@
 
 // Streak View
 "streak_title" = "Streak";
+"streak_prompt_title" = "Have you worked out today?";
+"streak_prompt_no" = "No";
+"streak_prompt_yes" = "Yes";

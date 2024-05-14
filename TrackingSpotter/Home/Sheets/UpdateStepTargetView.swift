@@ -4,13 +4,10 @@ struct UpdateStepTargetView: View {
     @Binding var stepGoal : Int
     
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 28) {
             title
             inputView
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 24)
-        .padding(.bottom, 8)
+        }        
     }
 }
 

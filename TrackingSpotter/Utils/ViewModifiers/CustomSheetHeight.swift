@@ -5,6 +5,9 @@ struct CustomSheetHeight : ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .padding(.horizontal)
+            .padding(.vertical, 32)
+            .padding(.bottom, 8)
             .presentationCornerRadius(Constants.sheetCornerRadius)
             .readHeight()
             .onPreferenceChange(HeightPreferenceKey.self) { height in
@@ -13,6 +16,7 @@ struct CustomSheetHeight : ViewModifier {
                 }
             }
             .presentationDetents([.height(self.detentHeight)])
+            .presentationDragIndicator(.visible)
     }
 }
 

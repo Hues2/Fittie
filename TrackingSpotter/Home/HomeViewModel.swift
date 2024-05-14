@@ -114,4 +114,8 @@ extension HomeViewModel {
     private func getWorkoutStreak() -> Int {
         0
     }
+    
+    func updateStreak(_ userHasWorkedOut : Bool) {
+        
+    }
 }

@@ -19,8 +19,10 @@ struct HomeView: View {
                 .withCustomSheetHeight()
         })
         .sheet(isPresented: $viewModel.presentStreakPrompt, content: {
-            StreakPromptView()
-                .withCustomSheetHeight()
+            StreakPromptView { userHasWorkedOut in
+                viewModel.updateStreak(userHasWorkedOut)
+            }
+            .withCustomSheetHeight()            
         })
         .navigationTitle("home_nav_title")
     }
