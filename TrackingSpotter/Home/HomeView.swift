@@ -131,6 +131,10 @@ private extension HomeView {
         cardView("streak_title", Constants.cardHeight) {
             StreakView(streak: viewModel.streak)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                .onTapGesture {
+                    self.viewModel.presentStreakPrompt = true
+                }
         }
         .overlay(alignment: .topTrailing) {
             if !viewModel.dailyStepsAreLoading {

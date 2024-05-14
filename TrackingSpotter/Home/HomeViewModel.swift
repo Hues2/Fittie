@@ -15,6 +15,7 @@ class HomeViewModel : ObservableObject {
     // Workout streak
     @Published private(set) var streak : Int = 0
     @Published var presentStreakPrompt : Bool = false
+    @Published private(set) var userHasAlreadyLoggedStreak : Bool = false
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
@@ -24,12 +25,13 @@ class HomeViewModel : ObservableObject {
     init() {
         self.dailyStepGoal = getStepTarget()
         addSubscriptions()
+        self.presentStreakPrompt = self.streakManager.shouldShowPrompt()
+        self.userHasAlreadyLoggedStreak = presentStreakPrompt
     }
     
     private func addSubscriptions() {
         subscribeToStepGoal()
         subscribeToStreak()
-        subscribeToStreakPrompt()
     }
 }
 
@@ -48,19 +50,8 @@ private extension HomeViewModel {
     func subscribeToStreak() {
         self.streakManager.streak
             .sink { [weak self] streak in
-                guard let self else { return }
-                print("Streak value --> \(streak)")
+                guard let self else { return }                
                 self.streak = streak
-            }
-            .store(in: &cancellables)
-    }
-    
-    func subscribeToStreakPrompt() {
-        self.streakManager.shouldShowPrompt
-            .sink { [weak self] shouldShowPrompt in
-                guard let self else { return }
-                print("Should show prompt --> \(shouldShowPrompt)")
-                self.presentStreakPrompt = shouldShowPrompt
             }
             .store(in: &cancellables)
     }
@@ -110,12 +101,8 @@ extension HomeViewModel {
 }
 
 // MARK: - Workout Streak
-extension HomeViewModel {
-    private func getWorkoutStreak() -> Int {
-        0
-    }
-    
+extension HomeViewModel {    
     func updateStreak(_ userHasWorkedOut : Bool) {
-        
+        self.streakManager.updateStreak(userHasWorkedOut)
     }
 }

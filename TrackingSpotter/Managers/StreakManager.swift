@@ -3,7 +3,6 @@ import Combine
 
 class StreakManager {
     var streak = CurrentValueSubject<Int, Never>(0)
-    var shouldShowPrompt = CurrentValueSubject<Bool, Never>(false)
     
     private let streakKey = "workout_streak"
     private let lastSavedDateKey = "previous_workout_streak_date"
@@ -11,7 +10,6 @@ class StreakManager {
     
     init() {
         self.getStreak()
-        self.showPrompt()
     }
     
     private func getStreak() {
@@ -23,14 +21,28 @@ class StreakManager {
         self.streak.send(savedStreak)
     }
     
-    func showPrompt() {
-        self.shouldShowPrompt.send(lastSavedStreakWasOverADay())
+    func shouldShowPrompt() -> Bool {
+        let savedDate = userDefaults.value(forKey: lastSavedDateKey) as? Date
+        guard let savedDate else {
+            return true            
+        }
+        let calendar = Calendar.current
+        let savedDay = calendar.component(.day, from: savedDate)
+        let currentDay = calendar.component(.day, from: Date())
+        print("Should show prompt --> \(currentDay >= (savedDay + 1))")
+        return (currentDay >= (savedDay + 1))
     }
     
     private func lastSavedStreakWasOverADay() -> Bool {
-        let lastSavedDate = userDefaults.value(forKey: lastSavedDateKey) as? Date
-        guard let lastSavedDate, let deadlineDate = Calendar.current.date(byAdding: .day, value: 1, to: lastSavedDate) else { return true }
-        return Date() > deadlineDate
+        let savedDate = userDefaults.value(forKey: lastSavedDateKey) as? Date
+        guard let savedDate else { return true }
+        let calendar = Calendar.current
+        let savedDay = calendar.component(.day, from: savedDate)
+        let currentDay = calendar.component(.day, from: Date())
+        print("SAVED DATE -> \(savedDay)")
+        print("CURRENT DATE -> \(currentDay)")
+        print("RESULT \(currentDay >= (savedDay + 2))")
+        return currentDay >= (savedDay + 2)
     }
     
     private func resetStreak() {
@@ -38,8 +50,8 @@ class StreakManager {
         self.streak.send(0)
     }
     
-    func updateStreak(_ userWorkedOut : Bool) {
-        let newStreak = userWorkedOut ? (streak.value + 1) : 0
+    func updateStreak(_ userHasWorkedOut : Bool) {
+        let newStreak = userHasWorkedOut ? (streak.value + 1) : 0
         self.streak.send(newStreak)
         userDefaults.set(newStreak, forKey: streakKey)
         userDefaults.set(Date(), forKey: lastSavedDateKey)

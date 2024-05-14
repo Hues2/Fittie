@@ -6,8 +6,8 @@ struct CustomSheetHeight : ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(.horizontal)
-            .padding(.vertical, 32)
-            .padding(.bottom, 8)
+            .padding(.top, 36)
+            .padding(.bottom, 24)
             .presentationCornerRadius(Constants.sheetCornerRadius)
             .readHeight()
             .onPreferenceChange(HeightPreferenceKey.self) { height in

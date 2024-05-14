@@ -39,7 +39,6 @@ private extension StreakPromptView {
                 .background(color)
                 .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
-
     }
 }
 
