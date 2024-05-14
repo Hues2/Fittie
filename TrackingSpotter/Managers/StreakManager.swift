@@ -29,7 +29,6 @@ class StreakManager {
         let calendar = Calendar.current
         let savedDay = calendar.component(.day, from: savedDate)
         let currentDay = calendar.component(.day, from: Date())
-        print("Should show prompt --> \(currentDay >= (savedDay + 1))")
         return (currentDay >= (savedDay + 1))
     }
     
@@ -39,9 +38,6 @@ class StreakManager {
         let calendar = Calendar.current
         let savedDay = calendar.component(.day, from: savedDate)
         let currentDay = calendar.component(.day, from: Date())
-        print("SAVED DATE -> \(savedDay)")
-        print("CURRENT DATE -> \(currentDay)")
-        print("RESULT \(currentDay >= (savedDay + 2))")
         return currentDay >= (savedDay + 2)
     }
     

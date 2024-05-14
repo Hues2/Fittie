@@ -7,7 +7,7 @@
 "home_nav_title" = "Overview";
 
 // Step Counter
-"daily_steps_title" = "Daily Steps";
+"daily_steps_title" = "Today's Steps";
 "monthly_steps_title" = "Monthly Steps";
 "current_steps_title" = "Today";
 "target_steps_title" = "Goal";
@@ -22,3 +22,4 @@
 "streak_prompt_title" = "Have you worked out today?";
 "streak_prompt_no" = "No";
 "streak_prompt_yes" = "Yes";
+"streak_already_logged_activity" = "You've already logged your activity for today.\n\nKeep up the streak!";

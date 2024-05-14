@@ -7,7 +7,9 @@ struct UpdateStepTargetView: View {
         VStack(spacing: 28) {
             title
             inputView
-        }        
+        }    
+        .padding(.horizontal)
+        .padding(.vertical, 40)
     }
 }
 

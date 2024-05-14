@@ -19,8 +19,9 @@ struct HomeView: View {
                 .withCustomSheetHeight()
         })
         .sheet(isPresented: $viewModel.presentStreakPrompt, content: {
-            StreakPromptView { userHasWorkedOut in
-                viewModel.updateStreak(userHasWorkedOut)
+            StreakPromptView(userHasAlreadyLoggedActivity: viewModel.userHasAlreadyLoggedActivity) { userHasWorkedOut in
+                if userHasWorkedOut { viewModel.updateStreak(userHasWorkedOut) }
+                viewModel.presentStreakPrompt = false
             }
             .withCustomSheetHeight()            
         })
