@@ -23,7 +23,7 @@ private extension MonthlyStepsView {
         .chartYScale(domain: 0...(stepGoal + 1000))
         .onAppear {
             for (index, _) in monthlySteps.enumerated() {
-                withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.02)) {
+                withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
                     monthlySteps[index].animate = true
                 }
             }

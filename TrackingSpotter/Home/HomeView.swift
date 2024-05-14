@@ -23,7 +23,7 @@ struct HomeView: View {
                 if userHasWorkedOut { viewModel.updateStreak(userHasWorkedOut) }
                 viewModel.presentStreakPrompt = false
             }
-            .withCustomSheetHeight()            
+            .withCustomSheetHeight()
         })
         .navigationTitle("home_nav_title")
     }
@@ -34,27 +34,6 @@ private extension HomeView {
     var backgroundColor : some View {
         Color.customBackground
             .ignoresSafeArea()
-    }
-    
-    var loadingView : some View {
-        ProgressView()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-    
-    func sectionTitle(_ title : LocalizedStringKey) -> some View {
-        Text(title)
-            .font(.title2)
-            .fontWeight(.thin)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-    
-    func cardView(_ title : LocalizedStringKey, _ height : CGFloat, @ViewBuilder cardContent : @escaping () -> some View) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            sectionTitle(title)
-            cardContent()
-        }
-        .frame(height: height)
-        .withCardModifier()
     }
 }
 
@@ -89,25 +68,10 @@ private extension HomeView {
 // MARK: - Daily Steps
 private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
-        cardView("daily_steps_title", Constants.cardHeight) {
-            if viewModel.dailyStepsAreLoading {
-                loadingView
-            } else {
-                DailyStepCountView(steps: viewModel.dailySteps,
-                                   stepGoal: viewModel.dailyStepGoal,
-                                   isLoading: viewModel.dailyStepsAreLoading)
-                .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                .onTapGesture {
-                    self.presentDailyStepGoalSheet = true
-                }
-            }
-        }
-        .overlay(alignment: .topTrailing) {
-            if !viewModel.dailyStepsAreLoading {
-                Image(systemName: "hand.tap.fill")
-                    .foregroundStyle(Color.lightGray)
-                    .padding(6)
-            }
+        DailyStepCountView(steps: viewModel.dailySteps,
+                           stepGoal: viewModel.dailyStepGoal,
+                           isLoading: viewModel.dailyStepsAreLoading) {
+            self.presentDailyStepGoalSheet = true
         }
     }
 }
@@ -115,9 +79,9 @@ private extension HomeView {
 // MARK: - Monthly Steps
 private extension HomeView {
     @ViewBuilder var monthlyStepsView : some View {
-        cardView("monthly_steps_title", 275) {
+        CardView(title: "monthly_steps_title", height: 275) {
             if viewModel.monthlyStepsAreLoading {
-                loadingView
+                LoadingView()
             } else {
                 MonthlyStepsView(monthlySteps: viewModel.monthlySteps,
                                  stepGoal: viewModel.dailyStepGoal)
@@ -129,20 +93,8 @@ private extension HomeView {
 // MARK: - Streak View
 private extension HomeView {
     var streakView : some View {
-        cardView("streak_title", Constants.cardHeight) {
-            StreakView(streak: viewModel.streak)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                .onTapGesture {
-                    self.viewModel.presentStreakPrompt = true
-                }
-        }
-        .overlay(alignment: .topTrailing) {
-            if !viewModel.dailyStepsAreLoading {
-                Image(systemName: "flame")
-                    .padding(6)
-                    .foregroundStyle(Color.orange)                    
-            }
+        StreakView(streak: $viewModel.streak) {
+            self.viewModel.presentStreakPrompt = true
         }
     }
 }

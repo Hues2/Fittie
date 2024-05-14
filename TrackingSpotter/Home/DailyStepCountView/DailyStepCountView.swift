@@ -4,23 +4,36 @@ struct DailyStepCountView: View {
     let steps : Int?
     let stepGoal : Int
     let isLoading : Bool
+    let action : () -> Void
     
     var body: some View {
-        VStack {
-            if isLoading {
-                loadingView
-            } else {
-                stepsContent
+        CardView(title: "daily_steps_title", height: Constants.cardHeight) {
+            content
+        }
+        .overlay(alignment: .topTrailing) {
+            if !isLoading {
+                Image(systemName: "hand.tap.fill")
+                    .foregroundStyle(Color.lightGray)
+                    .padding(6)
             }
         }
-        .foregroundStyle(Color.customText)        
     }
 }
 
 private extension DailyStepCountView {
-    var loadingView : some View {
-        ProgressView()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    var content : some View {
+        VStack {
+            if isLoading {
+                LoadingView()
+            } else {
+                stepsContent
+            }
+        }
+        .foregroundStyle(Color.customText)
+        .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        .onTapGesture {
+            action()
+        }
     }
     
     var stepsContent : some View {
@@ -61,7 +74,9 @@ private extension DailyStepCountView {
     HStack {
         DailyStepCountView(steps: 337,
                       stepGoal: 10000,
-                      isLoading: false)
+                           isLoading: false) {
+            
+        }
         Spacer()
             .frame(width: 175)
     }

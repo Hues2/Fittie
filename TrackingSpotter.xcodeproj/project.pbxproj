@@ -17,6 +17,8 @@
 		2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373432BEFD69700843FCA /* DailyStep.swift */; };
 		2EB361E72BF2BF6A00636431 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB361E62BF2BF6A00636431 /* StreakManager.swift */; };
 		2EB361E92BF2D44500636431 /* StreakPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB361E82BF2D44500636431 /* StreakPromptView.swift */; };
+		2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */; };
+		2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */; };
 		2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */; };
 		2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */; };
 		2EC6CABF2BEE8F2F009C7002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		2EA373432BEFD69700843FCA /* DailyStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStep.swift; sourceTree = "<group>"; };
 		2EB361E62BF2BF6A00636431 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
 		2EB361E82BF2D44500636431 /* StreakPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakPromptView.swift; sourceTree = "<group>"; };
+		2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		2EC6CAB72BEE8F2C009C7002 /* TrackingSpotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingSpotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSpotterApp.swift; sourceTree = "<group>"; };
 		2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */,
+				2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */,
+				2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -342,9 +348,11 @@
 				2EC6CAD92BEEBF52009C7002 /* HealthKitManager.swift in Sources */,
 				2EB361E92BF2D44500636431 /* StreakPromptView.swift in Sources */,
 				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,
+				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */,
 				2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */,
 				2E756ED52BF0161A0041A8D9 /* CardViewModifier.swift in Sources */,
+				2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */,
 				2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */,
 				2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */,
 				2EB361E72BF2BF6A00636431 /* StreakManager.swift in Sources */,

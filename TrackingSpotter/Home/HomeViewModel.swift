@@ -13,7 +13,7 @@ class HomeViewModel : ObservableObject {
     @Published private(set) var monthlyStepsAreLoading : Bool = true
     
     // Workout streak
-    @Published private(set) var streak : Int = 0
+    @Published var streak : Int = 0
     @Published var presentStreakPrompt : Bool = false
     @Published private(set) var userHasAlreadyLoggedActivity : Bool = false
     
