@@ -28,9 +28,6 @@ class StreakManager {
         // 2. Check if this has already been performed today, by checking if the last saved date == today
         guard !savedDate.isSameDay(as: today) else { return }
         
-        print("\(savedDate.formatted())")
-        print("\(today.formatted())")
-        
         // 3. Perform a query with the start of the last saved date and the start of todays date
         self.healthKitManager.fetchDailySteps(startDate: savedDate, endDate: yesterday) { [weak self] dailySteps in
             guard let self else { return }
@@ -47,7 +44,7 @@ class StreakManager {
             self.streak.send(currentStreak)
             
             // 5. Save todays date as the last saved date
-//            userDefaults.set(Date(), forKey: lastSavedDateKey)
+            userDefaults.set(Date(), forKey: lastSavedDateKey)
             userDefaults.setValue(currentStreak, forKey: streakKey)
         }
     }
