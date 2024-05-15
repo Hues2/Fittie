@@ -11,9 +11,9 @@ struct SetStepGoalView: View {
             StepperView(stepGoal: $stepGoal)
                 .frame(maxHeight: .infinity)
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .padding(.vertical, 32)
-        .padding(.top, 32)
+        .padding(.vertical, 32)        
     }
 }
 
@@ -23,7 +23,6 @@ private extension SetStepGoalView {
             .foregroundStyle(Color.customText)
             .font(.largeTitle)
             .fontWeight(.medium)
-            .frame(maxWidth: .infinity, alignment: .center)
     }
     
     var subtitle : some View {
@@ -31,8 +30,7 @@ private extension SetStepGoalView {
             .foregroundStyle(Color.customText)
             .font(.headline)
             .fontWeight(.regular)
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: .infinity, alignment: .center)
+            .multilineTextAlignment(.center)            
     }
 }
 

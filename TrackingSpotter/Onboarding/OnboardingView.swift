@@ -17,22 +17,46 @@ struct OnboardingView: View {
                     SetStepGoalView(stepGoal: $viewModel.stepGoal) {
                         viewModel.setStepGoal()
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .transition(.move(edge: .leading))
                 case .getHealthKitPermission:
                     Text("REQUEST HEALTH KIT AUTH")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .transition(.move(edge: .trailing))
                 }
             }
-            .frame(maxHeight: .infinity)
+            .padding(.top, 40)
             
             pageControlView
+        }
+        .overlay(alignment: .topLeading) {
+            backButton
+                .padding(16)
         }
     }
 }
 
 private extension OnboardingView {
+    @ViewBuilder var backButton : some View {
+        if onBoardingPage != .setStepGoal {
+            Button {
+                previousPage()
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "chevron.left")
+                    Text("Back")
+                }
+                .font(.title3)
+                .foregroundStyle(Color.accentColor)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+            }
+            .transition(.move(edge: .top).combined(with: .opacity))
+        }
+    }
+    
     var pageControlView : some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             pageControlCircleView
             nextPageButton
         }
@@ -52,11 +76,14 @@ private extension OnboardingView {
     var nextPageButton : some View {
         CustomButton(title: onBoardingPage == OnboardingPage.allCases.last ?
                      "onboarding_finish_button_title" : "onboarding_next_button_title") {
-            nextpage()
+            nextPage()
         }
     }
-    
-    private func nextpage() {
+}
+
+// MARK: Buttomn functionality
+private extension OnboardingView {
+    private func nextPage() {
         if let nextPage = OnboardingPage(rawValue: onBoardingPage.rawValue + 1) {
             withAnimation {
                 onBoardingPage = nextPage
@@ -65,8 +92,21 @@ private extension OnboardingView {
             viewModel.finishOnboarding()
         }
     }
+    
+    private func previousPage() {
+        if let previousPage = OnboardingPage(rawValue: onBoardingPage.rawValue - 1) {
+            withAnimation {
+                onBoardingPage = previousPage
+            }
+        }
+    }
 }
 
 #Preview {
-    OnboardingView()
+    VStack {
+        Text("")
+    }
+    .sheet(isPresented: .constant(true), content: {
+        OnboardingView()
+    })
 }
