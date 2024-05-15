@@ -12,7 +12,7 @@ extension Date {
         return date1 == date2
     }
     
-    static func daysBefore(date : Date, days : Int) -> Date? {
+    static func getDayFrom(date : Date, days : Int) -> Date? {
         return Calendar.current.date(byAdding: .day, value: days, to: date)
     }
     

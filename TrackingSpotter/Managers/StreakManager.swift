@@ -17,7 +17,7 @@ class StreakManager {
         getStreak()
                 
         let today = Date().startOfDay
-        let yesterday = Date.daysBefore(date: today, days: -1)
+        let yesterday = Date.getDayFrom(date: today, days: -1)
         var currentStreak = userDefaults.integer(forKey: streakKey)
         let dailyStepGoal = userDefaults.integer(forKey: dailyStepGoalKey)
         guard let yesterday else { return }
