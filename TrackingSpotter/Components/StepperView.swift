@@ -1,25 +1,10 @@
 import SwiftUI
 
-struct UpdateStepTargetView: View {
+struct StepperView: View {
     @Binding var stepGoal : Int
     
     var body: some View {
-        VStack(spacing: 28) {
-            title
-            inputView
-        }    
-        .padding(.horizontal)
-        .padding(.vertical, 40)
-    }
-}
-
-private extension UpdateStepTargetView {
-    var title : some View {
-        Text("set_step_goal_title")
-            .foregroundStyle(Color.customText)
-            .font(.title)
-            .fontWeight(.medium)
-            .frame(maxWidth: .infinity, alignment: .leading)
+        inputView
     }
     
     var inputView : some View {
@@ -60,5 +45,5 @@ private extension UpdateStepTargetView {
 }
 
 #Preview {
-    UpdateStepTargetView(stepGoal: .constant(100_000))
+    StepperView(stepGoal: .constant(10_000))
 }

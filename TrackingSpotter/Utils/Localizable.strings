@@ -3,6 +3,18 @@
 "exercises_tab_label" = "Exercises";
 "calendar_tab_label" = "Calendar";
 
+// Onboarding
+"onboarding_next_button_title" = "Next";
+"onboarding_finish_button_title" = "Finish";
+
+// Set step goal
+"onboarding_set_step_goal_title" = "Daily step goal";
+"onboarding_set_step_goal_subtitle" = "Set Your Daily Goal and boost your streak by reaching your step goal each day";
+
+// Request Health Kit Authorization
+"onboarding_request_auth_title" = "";
+"onboarding_request_auth_subtitle" = "";
+
 // Home View
 "home_nav_title" = "Overview";
 
@@ -11,7 +23,6 @@
 "monthly_steps_title" = "Monthly Steps";
 "current_steps_title" = "Today";
 "target_steps_title" = "Goal";
-"update_step_target_title" = "Daily Step Goal";
 
 // Content Unavailable
 "not_available_title" = "Not Available";

@@ -11,6 +11,11 @@
 		2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */; };
 		2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */; };
 		2E756ED52BF0161A0041A8D9 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E756ED42BF0161A0041A8D9 /* CardViewModifier.swift */; };
+		2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806042BF54AE300E12456 /* OnboardingView.swift */; };
+		2E8806072BF5548200E12456 /* SetStepGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806062BF5548200E12456 /* SetStepGoalView.swift */; };
+		2E8806092BF5568400E12456 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806082BF5568400E12456 /* OnboardingViewModel.swift */; };
+		2E88060B2BF562CC00E12456 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88060A2BF562CC00E12456 /* CustomButton.swift */; };
+		2E88060D2BF5636400E12456 /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88060C2BF5636400E12456 /* StepperView.swift */; };
 		2EA3733B2BEF8E2500843FCA /* UpdateStepTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */; };
 		2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */; };
 		2EA373412BEFCB7A00843FCA /* MonthlyStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373402BEFCB7A00843FCA /* MonthlyStepsView.swift */; };
@@ -44,6 +49,11 @@
 		2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStack.swift; sourceTree = "<group>"; };
 		2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
 		2E756ED42BF0161A0041A8D9 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
+		2E8806042BF54AE300E12456 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		2E8806062BF5548200E12456 /* SetStepGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStepGoalView.swift; sourceTree = "<group>"; };
+		2E8806082BF5568400E12456 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		2E88060A2BF562CC00E12456 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		2E88060C2BF5636400E12456 /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStepTargetView.swift; sourceTree = "<group>"; };
 		2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHeightViewModifier.swift; sourceTree = "<group>"; };
 		2EA373402BEFCB7A00843FCA /* MonthlyStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStepsView.swift; sourceTree = "<group>"; };
@@ -92,8 +102,20 @@
 				2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */,
 				2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */,
 				2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */,
+				2E88060A2BF562CC00E12456 /* CustomButton.swift */,
+				2E88060C2BF5636400E12456 /* StepperView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		2E8806032BF54AAE00E12456 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2E8806042BF54AE300E12456 /* OnboardingView.swift */,
+				2E8806062BF5548200E12456 /* SetStepGoalView.swift */,
+				2E8806082BF5568400E12456 /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		2EA3733C2BEF978900843FCA /* ViewModifiers */ = {
@@ -147,6 +169,7 @@
 				2EA373422BEFD67E00843FCA /* Models */,
 				2EC6CADC2BEEC146009C7002 /* Factory */,
 				2EC6CAD72BEEBF42009C7002 /* Managers */,
+				2E8806032BF54AAE00E12456 /* Onboarding */,
 				2EC6CAC82BEE8FB6009C7002 /* Home */,
 				2EC6CACC2BEE91DF009C7002 /* Navigation */,
 				2E53A2FD2BEFF42C00D81297 /* Components */,
@@ -337,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E88060D2BF5636400E12456 /* StepperView.swift in Sources */,
 				2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */,
 				2EA3733B2BEF8E2500843FCA /* UpdateStepTargetView.swift in Sources */,
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
@@ -349,11 +373,15 @@
 				2EB361E92BF2D44500636431 /* StreakPromptView.swift in Sources */,
 				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
+				2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */,
+				2E88060B2BF562CC00E12456 /* CustomButton.swift in Sources */,
 				2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */,
 				2E756ED52BF0161A0041A8D9 /* CardViewModifier.swift in Sources */,
+				2E8806092BF5568400E12456 /* OnboardingViewModel.swift in Sources */,
 				2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */,
 				2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */,
+				2E8806072BF5548200E12456 /* SetStepGoalView.swift in Sources */,
 				2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */,
 				2EB361E72BF2BF6A00636431 /* StreakManager.swift in Sources */,
 				2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */,

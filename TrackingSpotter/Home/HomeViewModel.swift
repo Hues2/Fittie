@@ -80,12 +80,12 @@ extension HomeViewModel {
     }
     
     private func getStepGoal() -> Int {
-        let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.dailyStepGoalKey)
+        let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.dailyStepGoal)
         return (stepGoal == 0) ? 10_000 : stepGoal
     }
     
     func setStepTarget(_ newStepGoal : Int) {
-        UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.dailyStepGoalKey)
+        UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.dailyStepGoal)
     }
     
     func getMonthlySteps() {

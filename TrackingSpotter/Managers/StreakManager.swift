@@ -7,7 +7,7 @@ class StreakManager {
     
     private let streakKey = "step_streak"
     private let lastSavedDateKey = "last_saved_date"
-    private let dailyStepGoalKey = Constants.UserDefaults.dailyStepGoalKey
+    private let dailyStepGoalKey = Constants.UserDefaults.dailyStepGoal
     private let userDefaults = UserDefaults.standard
     
     @Injected(\.healthKitManager) private var healthKitManager
