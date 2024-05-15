@@ -2,16 +2,12 @@ import SwiftUI
 
 struct StreakView: View {
     @Binding var streak : Int
-    let action : () -> Void
     
     var body: some View {
         CardView(title: "streak_title", height: Constants.cardHeight) {
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                .onTapGesture {
-                    action()
-                }
         }
         .overlay(alignment: .topTrailing) {
             Image(systemName: "flame")
@@ -38,12 +34,10 @@ private extension StreakView {
 
 #Preview {
     HStack {
-        StreakView(streak: .constant(5)) {
-            
-        }
-        .frame(height: 200)
-        .withCardModifier()
-        .padding()
+        StreakView(streak: .constant(5))
+            .frame(height: 200)
+            .withCardModifier()
+            .padding()
         
         Spacer()
             .frame(width: 175)

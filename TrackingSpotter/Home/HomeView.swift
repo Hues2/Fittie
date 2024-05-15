@@ -13,17 +13,11 @@ struct HomeView: View {
             await viewModel.requestAuthorization()
             viewModel.getDailySteps()
             viewModel.getMonthlySteps()
+            viewModel.getStreak()
         }
         .sheet(isPresented: $presentDailyStepGoalSheet, content: {
             UpdateStepTargetView(stepGoal: $viewModel.dailyStepGoal)
                 .withCustomSheetHeight()
-        })
-        .sheet(isPresented: $viewModel.presentStreakPrompt, content: {
-            StreakPromptView(userHasAlreadyLoggedActivity: viewModel.userHasAlreadyLoggedActivity) { userHasWorkedOut in
-                if userHasWorkedOut { viewModel.updateStreak(userHasWorkedOut) }
-                viewModel.presentStreakPrompt = false
-            }
-            .withCustomSheetHeight()
         })
         .navigationTitle("home_nav_title")
     }
@@ -93,9 +87,7 @@ private extension HomeView {
 // MARK: - Streak View
 private extension HomeView {
     var streakView : some View {
-        StreakView(streak: $viewModel.streak) {
-            self.viewModel.presentStreakPrompt = true
-        }
+        StreakView(streak: $viewModel.streak)
     }
 }
 

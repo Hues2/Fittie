@@ -14,8 +14,6 @@ class HomeViewModel : ObservableObject {
     
     // Workout streak
     @Published var streak : Int = 0
-    @Published var presentStreakPrompt : Bool = false
-    @Published private(set) var userHasAlreadyLoggedActivity : Bool = false
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
@@ -23,10 +21,8 @@ class HomeViewModel : ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.dailyStepGoal = getStepTarget()
+        self.dailyStepGoal = getStepGoal()
         addSubscriptions()
-        self.presentStreakPrompt = self.streakManager.shouldShowPrompt()
-        self.userHasAlreadyLoggedActivity = !presentStreakPrompt
     }
     
     private func addSubscriptions() {
@@ -38,6 +34,7 @@ class HomeViewModel : ObservableObject {
 private extension HomeViewModel {
     func subscribeToStepGoal() {
         self.$dailyStepGoal
+            .receive(on: DispatchQueue.main)
             .dropFirst()
             .debounce(for: .seconds(0.75), scheduler: DispatchQueue.main)
             .sink { [weak self] newStepGoal in
@@ -49,11 +46,18 @@ private extension HomeViewModel {
     
     func subscribeToStreak() {
         self.streakManager.streak
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] streak in
                 guard let self else { return }                
                 self.streak = streak
             }
             .store(in: &cancellables)
+    }
+}
+
+extension HomeViewModel {
+    func getStreak() {
+        self.streakManager.performDailyStreakCheck()
     }
 }
 
@@ -75,7 +79,7 @@ extension HomeViewModel {
         }
     }
     
-    private func getStepTarget() -> Int {
+    private func getStepGoal() -> Int {
         let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.dailyStepGoalKey)
         return (stepGoal == 0) ? 10_000 : stepGoal
     }
@@ -85,9 +89,9 @@ extension HomeViewModel {
     }
     
     func getMonthlySteps() {
-        let startDate = Calendar.current.date(byAdding: .day, value: -(Constants.numberOfDaysInChart - 1), to: Date.startOfDay)
+        let startDate = Calendar.current.date(byAdding: .day, value: -(Constants.numberOfDaysInChart - 1), to: Date().startOfDay)
         guard let startDate else { return }
-        healthKitManager.fetchMonthlySteps(startDate: startDate) { [weak self] monthlySteps in
+        healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] monthlySteps in
             guard let self else { return }
             
             DispatchQueue.main.async {
@@ -97,13 +101,5 @@ extension HomeViewModel {
                 }
             }
         }
-    }
-}
-
-// MARK: - Workout Streak
-extension HomeViewModel {    
-    func updateStreak(_ userHasWorkedOut : Bool) {
-        self.streakManager.updateStreak(userHasWorkedOut)
-        self.userHasAlreadyLoggedActivity = true
     }
 }
