@@ -13,6 +13,10 @@ struct MonthlyStepsView: View {
 
 private extension MonthlyStepsView {
     @ViewBuilder func chart() -> some View {
+        let max = monthlySteps.max { item1, item2 in
+            return item2.steps > item1.steps
+        }?.steps ?? 0
+        
         Chart {
             ForEach(monthlySteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
@@ -20,7 +24,7 @@ private extension MonthlyStepsView {
                 .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accent : Color.red)
             }
         }
-        .chartYScale(domain: 0...(stepGoal + 1000))
+        .chartYScale(domain: 0...(max + 1000))
         .onAppear {
             for (index, _) in monthlySteps.enumerated() {
                 withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
