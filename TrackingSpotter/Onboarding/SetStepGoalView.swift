@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SetStepGoalView: View {
     @Binding var stepGoal : Int
-    let action : () -> Void
     
     var body: some View {
         VStack(alignment: .center, spacing: 40) {
@@ -35,7 +34,5 @@ private extension SetStepGoalView {
 }
 
 #Preview {
-    SetStepGoalView(stepGoal: .constant(10000)) {
-        
-    }
+    SetStepGoalView(stepGoal: .constant(10000))
 }

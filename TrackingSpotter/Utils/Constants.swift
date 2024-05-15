@@ -12,7 +12,7 @@ class Constants {
     
     // MARK: - User Defaults
     struct UserDefaults {
-        static let hasSeenOnBoarding = "has_seen_onboarding"
+        static let hasSeenOnboarding = "has_seen_onboarding"
         static let dailyStepGoal = "daily_step_goal"
     }
 }

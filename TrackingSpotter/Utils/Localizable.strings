@@ -6,6 +6,7 @@
 // Onboarding
 "onboarding_next_button_title" = "Next";
 "onboarding_finish_button_title" = "Finish";
+"onboarding_back_button_title" = "Back";
 
 // Set step goal
 "onboarding_set_step_goal_title" = "Daily step goal";

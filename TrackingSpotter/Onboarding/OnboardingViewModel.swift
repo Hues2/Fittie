@@ -6,17 +6,28 @@ class OnboardingViewModel : ObservableObject {
     
     @Injected(\.healthKitManager) private var healthKitManager
     
-    func setStepGoal() {
-        UserDefaults.standard.setValue(stepGoal, forKey: Constants.UserDefaults.dailyStepGoal)
-    }
-    
-    func requestAuthorization() {
+    func finishOnboarding(_ dismiss : @escaping () -> Void) {
+        self.setHasSeenOnboarding()
+        self.setStepGoal()
         Task {
-            try? await healthKitManager.requestAuthorization()
+            do {
+                try await self.requestAuthorization()
+                dismiss()
+            } catch {
+                dismiss()
+            }
         }
     }
     
-    func finishOnboarding() {
-        UserDefaults.standard.setValue(true, forKey: Constants.UserDefaults.hasSeenOnBoarding)
+    private func setHasSeenOnboarding() {
+        UserDefaults.standard.setValue(true, forKey: Constants.UserDefaults.hasSeenOnboarding)
+    }
+    
+    private func setStepGoal() {
+        UserDefaults.standard.setValue(stepGoal, forKey: Constants.UserDefaults.dailyStepGoal)
+    }
+    
+    private func requestAuthorization() async throws {
+        try await healthKitManager.requestAuthorization()
     }
 }

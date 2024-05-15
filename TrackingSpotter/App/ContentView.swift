@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedTab: AppScreen? = .home
     @State private var presentOnboarding : Bool = false
-    private let hasSeenOnboarding = UserDefaults.standard.bool(forKey: Constants.UserDefaults.hasSeenOnBoarding)
+    @State private var hasSeenOnboarding : Bool = UserDefaults.standard.bool(forKey: Constants.UserDefaults.hasSeenOnboarding)
     
     var body: some View {
         if  !hasSeenOnboarding {
@@ -22,7 +22,7 @@ private extension ContentView {
                 self.presentOnboarding = true                
             }
             .sheet(isPresented: $presentOnboarding, content: {
-                OnboardingView()
+                OnboardingView(hasSeenOnboarding: $hasSeenOnboarding)
                     .interactiveDismissDisabled(true)
             })
     }

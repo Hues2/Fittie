@@ -9,8 +9,7 @@ struct HomeView: View {
             backgroundColor
             content
         }
-        .task {
-            await viewModel.requestAuthorization()
+        .task {            
             viewModel.getDailySteps()
             viewModel.getMonthlySteps()
             viewModel.getStreak()
