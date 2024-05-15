@@ -9,6 +9,7 @@ class Constants {
     
     // MARK: - Values
     static let numberOfDaysInChart : Int = 30
+    static let defaultStepGoal : Int = 7500
     
     // MARK: - User Defaults
     struct UserDefaults {

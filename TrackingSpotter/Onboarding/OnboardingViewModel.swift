@@ -2,7 +2,7 @@ import Foundation
 import Factory
 
 class OnboardingViewModel : ObservableObject {
-    @Published var stepGoal : Int = 10_000
+    @Published var stepGoal : Int = Constants.defaultStepGoal
     
     @Injected(\.healthKitManager) private var healthKitManager
     
