@@ -28,7 +28,7 @@ private extension StreakView {
         .foregroundStyle(Color.customText)
         .fontWeight(.black)
         .lineLimit(1)
-        .minimumScaleFactor(0.3)
+        .minimumScaleFactor(Constants.minimumScaleFactor)
     }
 }
 

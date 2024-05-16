@@ -8,11 +8,12 @@ struct SetStepGoalView: View {
             title
             subtitle
             StepperView(stepGoal: $stepGoal)
-                .frame(maxHeight: .infinity)
+                .frame(maxHeight: .infinity)    
+                .padding(.horizontal, 24)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal)
-        .padding(.vertical, 32)        
+        .frame(maxWidth: .infinity)        
+        .padding(.vertical, 32)     
+        .padding(.horizontal, 24)
     }
 }
 
@@ -21,7 +22,7 @@ private extension SetStepGoalView {
         Text("onboarding_set_step_goal_title")
             .foregroundStyle(Color.customText)
             .font(.largeTitle)
-            .fontWeight(.medium)
+            .fontWeight(.bold)
     }
     
     var subtitle : some View {

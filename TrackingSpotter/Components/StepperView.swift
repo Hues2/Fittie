@@ -15,7 +15,9 @@ struct StepperView: View {
             }
             
             Text("\(stepGoal)")
-                .font(.title)
+                .font(.system(size: 50))
+                .lineLimit(1)
+                .minimumScaleFactor(Constants.minimumScaleFactor)
                 .frame(maxWidth: .infinity)
             
             button("plus", (stepGoal == 100_000)) {
@@ -34,10 +36,9 @@ struct StepperView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
-                .frame(width: 50, height: 50)
+                .frame(width: 55, height: 55)
                 .background(isDisabled ? Color.lightGray : Color.accentColor)
                 .clipShape(Circle())
-                .frame(maxWidth: .infinity)
                 .contentShape(Circle())
         }
         .buttonRepeatBehavior(.enabled)

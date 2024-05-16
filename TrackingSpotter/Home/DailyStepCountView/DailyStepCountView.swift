@@ -4,7 +4,6 @@ struct DailyStepCountView: View {
     let steps : Int?
     let stepGoal : Int
     let isLoading : Bool
-    let action : () -> Void
     
     var body: some View {
         CardView(title: "daily_steps_title", height: Constants.cardHeight) {
@@ -31,9 +30,6 @@ private extension DailyStepCountView {
         }
         .foregroundStyle(Color.customText)
         .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-        .onTapGesture {
-            action()
-        }
     }
     
     var stepsContent : some View {
@@ -74,9 +70,7 @@ private extension DailyStepCountView {
     HStack {
         DailyStepCountView(steps: 337,
                       stepGoal: 10000,
-                           isLoading: false) {
-            
-        }
+                           isLoading: false)
         Spacer()
             .frame(width: 175)
     }

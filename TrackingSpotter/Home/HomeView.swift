@@ -2,7 +2,6 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @State private var presentDailyStepGoalSheet: Bool = false
     
     var body: some View {
         ZStack {
@@ -14,10 +13,6 @@ struct HomeView: View {
             viewModel.getMonthlySteps()
             viewModel.getStreak()
         }
-        .sheet(isPresented: $presentDailyStepGoalSheet, content: {
-            UpdateStepTargetView(stepGoal: $viewModel.dailyStepGoal)
-                .withCustomSheetHeight()
-        })
         .navigationTitle("home_nav_title")
     }
 }
@@ -63,9 +58,7 @@ private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
         DailyStepCountView(steps: viewModel.dailySteps,
                            stepGoal: viewModel.dailyStepGoal,
-                           isLoading: viewModel.dailyStepsAreLoading) {
-            self.presentDailyStepGoalSheet = true
-        }
+                           isLoading: viewModel.dailyStepsAreLoading)
     }
 }
 

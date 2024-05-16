@@ -13,22 +13,20 @@ struct OnboardingView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                switch onBoardingPage {
-                case .setStepGoal:
-                    SetStepGoalView(stepGoal: $viewModel.stepGoal)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .transition(.move(edge: .leading))
-                case .getHealthKitPermission:
-                    Text("REQUEST HEALTH KIT AUTH")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .transition(.move(edge: .trailing))
-                }
+            TabView(selection: $onBoardingPage) {
+                SetStepGoalView(stepGoal: $viewModel.stepGoal)
+                    .tag(OnboardingPage.setStepGoal)
+                
+                Text("REQUEST HEALTH KIT AUTH")
+                    .tag(OnboardingPage.getHealthKitPermission)
             }
-            .padding(.top, 40)
+            .tabViewStyle(.page(indexDisplayMode: .never))
             
             pageControlView
+                .padding(.horizontal, 24)
         }
+        .padding(.bottom)
+        .padding(.top, 40)
         .overlay(alignment: .topLeading) {
             backButton
                 .padding(16)
@@ -62,7 +60,6 @@ private extension OnboardingView {
             pageControlCircleView
             nextPageButton
         }
-        .padding()
     }
     
     var pageControlCircleView : some View {
