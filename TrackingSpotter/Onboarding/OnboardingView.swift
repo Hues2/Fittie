@@ -31,6 +31,10 @@ struct OnboardingView: View {
             backButton
                 .padding(16)
         }
+        .onAppear {
+            // Block the swipe gesture for the tab view
+            UIScrollView.appearance().isScrollEnabled = false
+        }
     }
 }
 
@@ -80,7 +84,7 @@ private extension OnboardingView {
     }
 }
 
-// MARK: Buttomn functionality
+// MARK: Button functionality
 private extension OnboardingView {
     private func nextPage() {
         if let nextPage = OnboardingPage(rawValue: onBoardingPage.rawValue + 1) {
