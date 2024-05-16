@@ -7,22 +7,44 @@ struct MonthlyStepsView: View {
     
     var body: some View {
         VStack {
-            Text("Total: \(monthlySteps.reduce(0, { $0 + $1.steps }))")
-                .font(.footnote)
-                .fontWeight(.semibold)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            chart()                
+            totalSteps
+            chart()
+            chartLegend
+                .padding(.top, 8)
         }
     }
 }
 
 private extension MonthlyStepsView {
+    var totalSteps : some View {
+        Text("Total: \(monthlySteps.reduce(0, { $0 + $1.steps }))")
+            .font(.footnote)
+            .fontWeight(.semibold)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    var chartLegend : some View {
+        HStack {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color.pink)
+                .frame(height: 1)
+                .frame(width: 20)
+            
+            Text("monthly_steps_chart_legend_step_goal")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+// MARK: Chart
+private extension MonthlyStepsView {
     @ViewBuilder func chart() -> some View {
         Chart {
             RuleMark(y: .value("Step Goal", stepGoal))
                 .foregroundStyle(Color.pink.gradient)
-                .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
             
             ForEach(monthlySteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
