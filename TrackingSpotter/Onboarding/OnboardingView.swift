@@ -17,7 +17,7 @@ struct OnboardingView: View {
                 SetStepGoalView(stepGoal: $viewModel.stepGoal)
                     .tag(OnboardingPage.setStepGoal)
                 
-                Text("REQUEST HEALTH KIT AUTH")
+                ActivityPermissionsView()
                     .tag(OnboardingPage.getHealthKitPermission)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
@@ -26,7 +26,7 @@ struct OnboardingView: View {
                 .padding(.horizontal, 24)
         }
         .padding(.bottom)
-        .padding(.top, 40)
+        .padding(.top, 52)
         .overlay(alignment: .topLeading) {
             backButton
                 .padding(16)

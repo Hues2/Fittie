@@ -35,7 +35,6 @@ private extension HomeView {
             }
             .padding(.horizontal, Constants.horizontalPadding)
         }
-        .clipped()
     }
 }
 

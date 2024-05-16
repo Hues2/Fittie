@@ -12,8 +12,7 @@ struct StreakView: View {
         .overlay(alignment: .topTrailing) {
             Image(systemName: "flame")
                 .padding(6)
-                .foregroundStyle(Color.orange)
-                .symbolEffect(.bounce, value: streak)                
+                .foregroundStyle(Color.orange)                          
         }
     }
 }

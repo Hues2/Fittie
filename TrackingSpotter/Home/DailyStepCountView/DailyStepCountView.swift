@@ -34,7 +34,7 @@ private extension DailyStepCountView {
     
     var stepsContent : some View {
         VStack(spacing: 12) {
-            valueView("current_steps_title", steps, "figure.walk")
+            valueView("current_steps_title", steps, "shoeprints.fill")
             valueView("target_steps_title", stepGoal, "target")
         }
     }

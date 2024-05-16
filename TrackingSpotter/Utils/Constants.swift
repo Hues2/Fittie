@@ -7,6 +7,7 @@ class Constants {
     static let horizontalPadding : CGFloat = 12
     static let cardHeight : CGFloat = 200
     static let minimumScaleFactor : CGFloat = 0.3
+    static let lineSpacing : CGFloat = 2
     
     // MARK: - Values
     static let numberOfDaysInChart : Int = 30
