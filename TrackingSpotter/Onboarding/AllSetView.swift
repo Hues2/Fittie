@@ -47,6 +47,7 @@ private extension AllSetView {
             Text(title)
                 .font(.title3)
                 .fontWeight(.regular)
+                .lineSpacing(Constants.lineSpacing)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }

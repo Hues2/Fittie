@@ -37,8 +37,4 @@
 "not_available_description" = "Please review your permission settings";
 
 // Streak View
-"streak_title" = "Streak";
-"streak_prompt_title" = "Have you worked out today?";
-"streak_prompt_no" = "No";
-"streak_prompt_yes" = "Yes";
-"streak_already_logged_activity" = "You've already logged your activity for today.\n\nKeep up the streak!";
+"streak_title" = "Step Streak";
