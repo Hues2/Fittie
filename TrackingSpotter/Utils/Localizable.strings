@@ -34,6 +34,7 @@
 // Monthly Steps
 "monthly_steps_title" = "Monthly Steps";
 "monthly_steps_chart_legend_step_goal" = "Step Goal";
+"monthly_steps_average_steps" = "Avg: %@";
 
 // Content Unavailable
 "not_available_title" = "Not Available";

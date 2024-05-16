@@ -17,11 +17,15 @@ struct MonthlyStepsView: View {
 
 private extension MonthlyStepsView {
     var totalSteps : some View {
-        Text("Total: \(monthlySteps.reduce(0, { $0 + $1.steps }))")
+        Text(String(format: NSLocalizedString("monthly_steps_average_steps", comment: "Avg:"), averageSteps()))
             .font(.footnote)
             .fontWeight(.semibold)
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    func averageSteps() -> String {
+        (monthlySteps.reduce(0, { $0 + $1.steps }) / monthlySteps.count).toString
     }
     
     var chartLegend : some View {
