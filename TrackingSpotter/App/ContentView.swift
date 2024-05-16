@@ -24,6 +24,7 @@ private extension ContentView {
             .sheet(isPresented: $presentOnboarding, content: {
                 OnboardingView(hasSeenOnboarding: $hasSeenOnboarding)
                     .interactiveDismissDisabled(true)
+                    .presentationCornerRadius(Constants.sheetCornerRadius)
             })
     }
 }

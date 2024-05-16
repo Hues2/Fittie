@@ -6,17 +6,20 @@ class OnboardingViewModel : ObservableObject {
     
     @Injected(\.healthKitManager) private var healthKitManager
     
-    func finishOnboarding(_ dismiss : @escaping () -> Void) {
-        self.setHasSeenOnboarding()
-        self.setStepGoal()
+    func setPermissions(_ completion : @escaping () -> Void) {
         Task {
             do {
                 try await self.requestAuthorization()
-                dismiss()
+                completion()
             } catch {
-                dismiss()
+                completion()
             }
         }
+    }
+    
+    func finishOnboarding() {
+        self.setHasSeenOnboarding()
+        self.setStepGoal()
     }
     
     private func setHasSeenOnboarding() {

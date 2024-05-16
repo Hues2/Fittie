@@ -5,16 +5,23 @@
 
 // Onboarding
 "onboarding_next_button_title" = "Next";
-"onboarding_finish_button_title" = "Set permissions";
+"onboarding_set_permissions_button_title" = "Set permissions";
+"onboarding_finish_button_title" = "Finish";
 "onboarding_back_button_title" = "Back";
 
-// Set step goal
-"onboarding_set_step_goal_title" = "Daily step goal";
+// Set Step Goal
+"onboarding_set_step_goal_title" = "Daily Step Goal";
 "onboarding_set_step_goal_subtitle" = "Set Your Daily Goal and boost your streak by reaching your step goal each day";
 
 // Activity Permissions
 "onboarding_request_auth_title" = "Activity Permissions";
 "onboarding_request_auth_subtitle" = "Granting permission to access your step count allows us to display your activity data accurately, helping you track your progress and achieve your fitness goals effectively.";
+
+// All Set
+"onboarding_all_set_title" = "All Set!";
+"onboarding_all_set_checkmark_1" = "Track your daily steps effortlessly";
+"onboarding_all_set_checkmark_2" = "Build and maintain a streak by hitting your step goal every day";
+"onboarding_all_set_checkmark_3" = "Log your workouts for easy tracking and analysis";
 
 // Home View
 "home_nav_title" = "Overview";
