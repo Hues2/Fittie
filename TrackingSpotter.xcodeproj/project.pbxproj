@@ -15,7 +15,7 @@
 		2E5FF2C62BF6A0FA00779ADC /* AllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */; };
 		2E5FF2C82BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */; };
 		2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64893E2BF6CFDC00D083FB /* Int.swift */; };
-		2E756ED52BF0161A0041A8D9 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E756ED42BF0161A0041A8D9 /* CardViewModifier.swift */; };
+		2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */; };
 		2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806042BF54AE300E12456 /* OnboardingView.swift */; };
 		2E8806072BF5548200E12456 /* SetStepGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806062BF5548200E12456 /* SetStepGoalView.swift */; };
 		2E8806092BF5568400E12456 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806082BF5568400E12456 /* OnboardingViewModel.swift */; };
@@ -58,7 +58,7 @@
 		2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetView.swift; sourceTree = "<group>"; };
 		2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitleAndSubtitle.swift; sourceTree = "<group>"; };
 		2E64893E2BF6CFDC00D083FB /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
-		2E756ED42BF0161A0041A8D9 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
+		2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardGroupBoxStyle.swift; sourceTree = "<group>"; };
 		2E8806042BF54AE300E12456 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2E8806062BF5548200E12456 /* SetStepGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStepGoalView.swift; sourceTree = "<group>"; };
 		2E8806082BF5568400E12456 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */,
-				2E756ED42BF0161A0041A8D9 /* CardViewModifier.swift */,
 				2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */,
+				2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -385,6 +385,7 @@
 				2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */,
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
 				2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */,
+				2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */,
 				2EC6CAD92BEEBF52009C7002 /* HealthKitManager.swift in Sources */,
 				2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */,
 				2EB361E92BF2D44500636431 /* StreakPromptView.swift in Sources */,
@@ -395,7 +396,6 @@
 				2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */,
 				2E88060B2BF562CC00E12456 /* CustomButton.swift in Sources */,
 				2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */,
-				2E756ED52BF0161A0041A8D9 /* CardViewModifier.swift in Sources */,
 				2E8806092BF5568400E12456 /* OnboardingViewModel.swift in Sources */,
 				2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */,
 				2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */,

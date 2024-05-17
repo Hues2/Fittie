@@ -29,7 +29,7 @@ private extension HomeView {
 private extension HomeView {
     var content : some View {
         ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading) {
                 firstSection
                 secondSection
             }

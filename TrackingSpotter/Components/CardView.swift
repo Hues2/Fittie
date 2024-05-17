@@ -6,18 +6,19 @@ struct CardView<CardContent : View> : View {
     let cardContent : CardContent
     
     init(title: LocalizedStringKey, height: CGFloat, @ViewBuilder cardContent: () -> CardContent) {
-            self.title = title
-            self.height = height
-            self.cardContent = cardContent()
-        }
+        self.title = title
+        self.height = height
+        self.cardContent = cardContent()        
+    }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            sectionTitle(title)
+        GroupBox {
             cardContent
+            
+        } label: {
+            Text(title)
         }
-        .frame(height: height)
-        .withCardModifier()
+        .groupBoxStyle(HomeCardGroupBoxStyle(height: height))
     }
     
     func sectionTitle(_ title : LocalizedStringKey) -> some View {
@@ -26,4 +27,8 @@ struct CardView<CardContent : View> : View {
             .fontWeight(.thin)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
+}
+
+#Preview {
+    DailyStepCountView(steps: 1025, stepGoal: 5000, isLoading: false)
 }

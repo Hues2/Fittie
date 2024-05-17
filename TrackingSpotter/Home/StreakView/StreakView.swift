@@ -34,8 +34,7 @@ private extension StreakView {
 #Preview {
     HStack {
         StreakView(streak: .constant(5))
-            .frame(height: 200)
-            .withCardModifier()
+            .frame(height: 200)            
             .padding()
         
         Spacer()

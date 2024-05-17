@@ -25,7 +25,8 @@ private extension MonthlyStepsView {
     }
     
     func averageSteps() -> String {
-        (monthlySteps.reduce(0, { $0 + $1.steps }) / monthlySteps.count).toString
+        guard monthlySteps.count > 0 else { return "0" }
+        return (monthlySteps.reduce(0, { $0 + $1.steps }) / monthlySteps.count).toString
     }
     
     var chartLegend : some View {
@@ -101,7 +102,7 @@ private extension MonthlyStepsView {
             mockData.append(dailyStep)
         }
 
-        return mockData
+        return mockData.sorted(by: { $0.date < $1.date })
     }
     return MonthlyStepsView(monthlySteps: generateMockData(),
                             stepGoal: Int.random(in: 500...10_000))
