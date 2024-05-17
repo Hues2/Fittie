@@ -8,11 +8,14 @@ struct HomeCardGroupBoxStyle : GroupBoxStyle {
             configuration.label
                 .foregroundStyle(Color.pink)
             configuration.content
-            
+                .frame(height: height)
         }
-        .frame(height: height)
         .padding()
         .background(Material.thin)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
+}
+
+#Preview {
+    DailyStepCountView(steps: 1025, stepGoal: 5000, isLoading: false)
 }

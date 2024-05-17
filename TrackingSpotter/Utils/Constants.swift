@@ -5,7 +5,7 @@ class Constants {
     static let cornerRadius : CGFloat = 8
     static let sheetCornerRadius : CGFloat = 24
     static let horizontalPadding : CGFloat = 12
-    static let cardHeight : CGFloat = 200
+    static let cardHeight : CGFloat = 150
     static let minimumScaleFactor : CGFloat = 0.3
     static let lineSpacing : CGFloat = 2
     

@@ -7,7 +7,15 @@ struct DailyStepCountView: View {
     
     var body: some View {
         CardView(title: "daily_steps_title", height: Constants.cardHeight) {
-            content
+            VStack {
+                if isLoading {
+                    LoadingView()
+                } else {
+                    content
+                }
+            }
+            .foregroundStyle(Color.customText)
+            .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
         .overlay(alignment: .topTrailing) {
             if !isLoading {
@@ -21,19 +29,7 @@ struct DailyStepCountView: View {
 
 private extension DailyStepCountView {
     var content : some View {
-        VStack {
-            if isLoading {
-                LoadingView()
-            } else {
-                stepsContent
-            }
-        }
-        .foregroundStyle(Color.customText)
-        .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-    }
-    
-    var stepsContent : some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 0) {
             valueView("current_steps_title", steps, "shoeprints.fill")
             valueView("target_steps_title", stepGoal, "target")
         }
@@ -49,7 +45,7 @@ private extension DailyStepCountView {
                     .fontWeight(.medium)
                 Image(systemName: icon)
                     .foregroundStyle(.accent)
-                    .font(.title)
+                    .font(.title2)
             }
             
             Group {
@@ -60,7 +56,8 @@ private extension DailyStepCountView {
                 }
             }
             .font(.title)
-            .fontWeight(.ultraLight)
+            .fontWeight(.light)
+            .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
