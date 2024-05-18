@@ -17,5 +17,5 @@ struct HomeCardGroupBoxStyle : GroupBoxStyle {
 }
 
 #Preview {
-    DailyStepCountView(steps: 1025, stepGoal: 5000, isLoading: false)
+    DailyStepCountView(steps: 1025, isLoading: false)
 }

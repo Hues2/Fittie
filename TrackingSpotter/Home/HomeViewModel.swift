@@ -5,68 +5,58 @@ import Factory
 class HomeViewModel : ObservableObject {
     // Steps
     @Published private(set) var dailySteps : Int?
-    @Published var dailyStepGoal : Int = 0
+    @Published var stepGoal : Int = 0
     @Published private(set) var dailyStepsAreLoading : Bool = true
     
     // Daily steps
     @Published var monthlySteps : [DailyStep] = []
     @Published private(set) var monthlyStepsAreLoading : Bool = true
     
-    // Workout streak
-    @Published var streak : Int = 0
+    // Number of daily step goals achieved
+    @Published private(set) var achievedStepGoals : Int = 0
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
-    @Injected(\.streakManager) private var streakManager
+    @Injected(\.stepGoalManager) private var stepGoalManager
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.dailyStepGoal = getStepGoal()
+        self.stepGoal = getStepGoal()
         addSubscriptions()
     }
     
     private func addSubscriptions() {
         subscribeToStepGoal()
-        subscribeToStreak()
+        subscribeTonumberOfDailyStepGoalsAchieved()
     }
 }
 
 private extension HomeViewModel {
     func subscribeToStepGoal() {
-        self.$dailyStepGoal
+        self.$stepGoal
             .receive(on: DispatchQueue.main)
             .dropFirst()
             .debounce(for: .seconds(0.75), scheduler: DispatchQueue.main)
             .sink { [weak self] newStepGoal in
                 guard let self else { return }
-                self.setStepTarget(newStepGoal)
+                self.setStepGoal(newStepGoal)
             }
             .store(in: &cancellables)
     }
     
-    func subscribeToStreak() {
-        self.streakManager.streak
+    func subscribeTonumberOfDailyStepGoalsAchieved() {
+        self.stepGoalManager.achievedStepGoals
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] streak in
-                guard let self else { return }                
-                self.streak = streak
+            .sink { [weak self] achievedStepGoals in
+                guard let self else { return }
+                self.achievedStepGoals = achievedStepGoals
             }
             .store(in: &cancellables)
-    }
-}
-
-extension HomeViewModel {
-    func getStreak() {
-        self.streakManager.performDailyStreakCheck()
     }
 }
 
 // MARK: - Steps
 extension HomeViewModel {
-    func requestAuthorization() async {
-        try? await healthKitManager.requestAuthorization()
-    }
-    
     func getDailySteps() {
         healthKitManager.fetchTodaySteps { [weak self] steps in
             guard let self else { return }
@@ -80,12 +70,11 @@ extension HomeViewModel {
     }
     
     private func getStepGoal() -> Int {
-        let stepGoal = UserDefaults.standard.integer(forKey: Constants.UserDefaults.dailyStepGoal)
-        return (stepGoal == 0) ? 10_000 : stepGoal
+        self.stepGoalManager.getStepGoal()
     }
     
-    func setStepTarget(_ newStepGoal : Int) {
-        UserDefaults.standard.setValue(newStepGoal, forKey: Constants.UserDefaults.dailyStepGoal)
+    func setStepGoal(_ newStepGoal : Int) {
+        self.stepGoalManager.setStepGoal(newStepGoal)
     }
     
     func getMonthlySteps() {
@@ -101,5 +90,9 @@ extension HomeViewModel {
                 }
             }
         }
+    }
+    
+    func getAchievedStepGoals() {
+        self.stepGoalManager.getNumberOfDailyStepGoalsAchieved()
     }
 }

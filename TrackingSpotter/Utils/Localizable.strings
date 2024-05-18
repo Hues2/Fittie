@@ -11,7 +11,7 @@
 
 // Set Step Goal
 "onboarding_set_step_goal_title" = "Daily Step Goal";
-"onboarding_set_step_goal_subtitle" = "Set Your Daily Goal and boost your streak by reaching your step goal each day";
+"onboarding_set_step_goal_subtitle" = "Set Your Daily Goal and boost your score by reaching your step goal each day";
 
 // Activity Permissions
 "onboarding_request_auth_title" = "Activity Permissions";
@@ -20,7 +20,7 @@
 // All Set
 "onboarding_all_set_title" = "All Set!";
 "onboarding_all_set_checkmark_1" = "Track your daily steps effortlessly";
-"onboarding_all_set_checkmark_2" = "Build and maintain a streak by hitting your step goal every day";
+"onboarding_all_set_checkmark_2" = "Reach your step goal every day to boost your step goal score";
 "onboarding_all_set_checkmark_3" = "Log your workouts for easy tracking and analysis";
 
 // Home View
@@ -28,8 +28,6 @@
 
 // Step Counter
 "daily_steps_title" = "Today's Steps";
-"current_steps_title" = "Today";
-"target_steps_title" = "Goal";
 
 // Monthly Steps
 "monthly_steps_title" = "Monthly Steps";
@@ -40,5 +38,7 @@
 "not_available_title" = "Not Available";
 "not_available_description" = "Please review your permission settings";
 
-// Streak View
-"streak_title" = "Step Streak";
+// Achieved Step Goal View
+"step_goal_title" = "Step Goal";
+"step_goal_goal_title" = "Goal";
+"step_goal_achieved" = "Achieved";

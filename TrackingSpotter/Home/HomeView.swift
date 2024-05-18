@@ -11,7 +11,7 @@ struct HomeView: View {
         .task {            
             viewModel.getDailySteps()
             viewModel.getMonthlySteps()
-            viewModel.getStreak()
+            viewModel.getAchievedStepGoals()
         }
         .navigationTitle("home_nav_title")
     }
@@ -43,7 +43,7 @@ private extension HomeView {
     var firstSection : some View {
         HStack {
             dailyStepCountView
-            streakView
+            stepGoal
         }
     }
     
@@ -56,7 +56,6 @@ private extension HomeView {
 private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
         DailyStepCountView(steps: viewModel.dailySteps,
-                           stepGoal: viewModel.dailyStepGoal,
                            isLoading: viewModel.dailyStepsAreLoading)
     }
 }
@@ -69,16 +68,16 @@ private extension HomeView {
                 LoadingView()
             } else {
                 MonthlyStepsView(monthlySteps: viewModel.monthlySteps,
-                                 stepGoal: viewModel.dailyStepGoal)
+                                 stepGoal: viewModel.stepGoal)
             }
         }
     }
 }
 
-// MARK: - Streak View
+// MARK: - Achieved Step Goals View
 private extension HomeView {
-    var streakView : some View {
-        StreakView(streak: $viewModel.streak)
+    var stepGoal : some View {
+        StepGoalView(stepGoal: viewModel.stepGoal, achievedStepGoals: viewModel.achievedStepGoals)
     }
 }
 

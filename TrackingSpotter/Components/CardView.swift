@@ -14,7 +14,7 @@ struct CardView<CardContent : View> : View {
     var body: some View {
         GroupBox {
             cardContent
-            
+                .frame(maxWidth: .infinity)
         } label: {
             Text(title)
         }
@@ -30,5 +30,5 @@ struct CardView<CardContent : View> : View {
 }
 
 #Preview {
-    DailyStepCountView(steps: 1025, stepGoal: 5000, isLoading: false)
+    DailyStepCountView(steps: 1025, isLoading: false)
 }

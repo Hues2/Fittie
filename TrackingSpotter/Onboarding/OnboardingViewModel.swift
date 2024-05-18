@@ -27,7 +27,7 @@ class OnboardingViewModel : ObservableObject {
     }
     
     private func setStepGoal() {
-        UserDefaults.standard.setValue(stepGoal, forKey: Constants.UserDefaults.dailyStepGoal)
+        UserDefaults.standard.setValue(stepGoal, forKey: Constants.UserDefaults.stepGoal)
     }
     
     private func requestAuthorization() async throws {

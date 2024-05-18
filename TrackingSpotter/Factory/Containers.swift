@@ -7,8 +7,8 @@ extension Container {
         self { HealthKitManager() }
     }
     
-    // MARK: - Streak Manager
-    var streakManager : Factory<StreakManager> {
-        self { StreakManager() }
+    // MARK: - Step Goal Manager
+    var stepGoalManager : Factory<StepGoalManager> {
+        self { StepGoalManager() }
     }
 }
