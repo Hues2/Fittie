@@ -55,6 +55,15 @@ private extension HomeView {
     }
 }
 
+// MARK: - Achieved Step Goals View
+private extension HomeView {
+    var stepGoal : some View {
+        StepGoalView(stepGoal: viewModel.stepGoal,
+                     achievedStepGoals: viewModel.achievedStepGoals,
+                     isLoading: viewModel.achievedStepGoalsIsLoading)
+    }
+}
+
 // MARK: - Average Steps
 private extension HomeView {
     @ViewBuilder var averageStepsView : some View {
@@ -64,18 +73,9 @@ private extension HomeView {
             } else {
                 AverageStepsView(steps: $viewModel.selectedPeriodSteps,
                                  selectedPeriod: $viewModel.selectedPeriod,
-                                 stepGoal: viewModel.stepGoal)
+                                 stepGoal: $viewModel.stepGoal)
             }
         }
-    }
-}
-
-// MARK: - Achieved Step Goals View
-private extension HomeView {
-    var stepGoal : some View {
-        StepGoalView(stepGoal: viewModel.stepGoal,
-                     achievedStepGoals: viewModel.achievedStepGoals,
-                     isLoading: viewModel.achievedStepGoalsIsLoading)
     }
 }
 

@@ -5,7 +5,7 @@ struct AverageStepsView: View {
     @Binding var steps : [DailyStep]
     @Binding var selectedPeriod : TimePeriod
     @State private var displayedSteps : [DailyStep] = []
-    let stepGoal : Int
+    @Binding var stepGoal : Int
     
     var body: some View {
         VStack {
@@ -102,7 +102,9 @@ private extension AverageStepsView {
             return item2.steps > item1.steps
         }?.steps ?? 0
     }
+    
     func animateGraph() {
+        guard displayedSteps.count != steps.count else { return }
         self.displayedSteps = steps
         for (index, _) in displayedSteps.enumerated() {
             withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
@@ -134,6 +136,6 @@ private extension AverageStepsView {
     }
     return AverageStepsView(steps: .constant(generateMockData()),
                             selectedPeriod: .constant(.month),
-                            stepGoal: Int.random(in: 500...10_000))
+                            stepGoal: .constant(Int.random(in: 500...10_000)))
     .frame(height: 275)
 }
