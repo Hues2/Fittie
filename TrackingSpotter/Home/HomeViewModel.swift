@@ -27,6 +27,11 @@ class HomeViewModel : ObservableObject {
     init() {
         self.stepGoal = getStepGoal()
         addSubscriptions()
+        
+        // Fetch the needed data
+        getDailySteps()
+        getAchievedStepGoals()
+        getStepsForTimePeriod()
     }
     
     private func addSubscriptions() {

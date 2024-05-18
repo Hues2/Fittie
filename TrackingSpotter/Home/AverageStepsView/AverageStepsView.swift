@@ -4,6 +4,7 @@ import Charts
 struct AverageStepsView: View {
     @Binding var steps : [DailyStep]
     @Binding var selectedPeriod : TimePeriod
+    @State private var displayedSteps : [DailyStep] = []
     let stepGoal : Int
     
     var body: some View {
@@ -12,6 +13,9 @@ struct AverageStepsView: View {
             chart()
             chartLegend
                 .padding(.top, 8)
+        }
+        .onChange(of: steps) {
+            animateGraph()
         }
     }
 }
@@ -45,8 +49,8 @@ private extension AverageStepsView {
     }
     
     func averageSteps() -> String {
-        guard steps.count > 0 else { return "0" }
-        return (steps.reduce(0, { $0 + $1.steps }) / steps.count).toString
+        guard displayedSteps.count > 0 else { return "0" }
+        return (displayedSteps.reduce(0, { $0 + $1.steps }) / displayedSteps.count).toString
     }
     
     var chartLegend : some View {
@@ -71,7 +75,7 @@ private extension AverageStepsView {
             RuleMark(y: .value("Step Goal", stepGoal))
                 .foregroundStyle(Color.pink.gradient)                
             
-            ForEach(steps) { dailyStep in
+            ForEach(displayedSteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
                         y: .value("Steps", dailyStep.animate ? dailyStep.steps : 0))
                 .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accent.gradient : Color.pink.gradient)
@@ -91,20 +95,18 @@ private extension AverageStepsView {
         .onAppear {
             animateGraph()
         }
-        .onChange(of: steps) {
-            animateGraph()
-        }
     }
     
     func getMax() -> Int {
-        return steps.max { item1, item2 in
+        return displayedSteps.max { item1, item2 in
             return item2.steps > item1.steps
         }?.steps ?? 0
     }
     func animateGraph() {
-        for (index, _) in steps.enumerated() {
+        self.displayedSteps = steps
+        for (index, _) in displayedSteps.enumerated() {
             withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
-                steps[index].animate = true
+                displayedSteps[index].animate = true
             }
         }
     }

@@ -7,12 +7,7 @@ struct HomeView: View {
         ZStack {
             backgroundColor
             content
-        }
-        .task {            
-            viewModel.getDailySteps()
-            viewModel.getAchievedStepGoals()
-            viewModel.getStepsForTimePeriod()
-        }
+        }        
         .navigationTitle("home_nav_title")
     }
 }
