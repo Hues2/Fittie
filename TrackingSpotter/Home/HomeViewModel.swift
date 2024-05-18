@@ -3,19 +3,20 @@ import Combine
 import Factory
 
 class HomeViewModel : ObservableObject {
-    // Steps
-    @Published private(set) var dailySteps : Int?
-    @Published var stepGoal : Int = 0
+    // Todays Steps
+    @Published private(set) var todaysSteps : Int?
     @Published private(set) var dailyStepsAreLoading : Bool = true
     
     // Number of daily step goals achieved
+    @Published var stepGoal : Int = 0
     @Published private(set) var achievedStepGoals : Int = 0
     @Published private(set) var achievedStepGoalsIsLoading : Bool = true
     
     // Step Chart
+    @Published var chartSteps : [DailyStep] = []
+    @Published private var montlhySteps : [DailyStep] = []
+    @Published private var weeklySteps : [DailyStep] = []
     @Published var stepsAreLoading : Bool = true
-    @Published var montlhySteps : [DailyStep] = []
-    @Published var weeklySteps : [DailyStep] = []
     @Published var selectedPeriod : TimePeriod = .month
     
     
@@ -37,6 +38,7 @@ class HomeViewModel : ObservableObject {
     private func addSubscriptions() {
         subscribeToStepGoal()
         subscribeTonumberOfDailyStepGoalsAchieved()
+        subscribeToSelectedTimePeriod()
     }
 }
 
@@ -63,6 +65,17 @@ private extension HomeViewModel {
             }
             .store(in: &cancellables)
     }
+    
+    func subscribeToSelectedTimePeriod() {
+        self.$selectedPeriod
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink { [weak self] selectedTimePeriod in
+                guard let self else { return }
+                self.setChartSteps(selectedTimePeriod)
+            }
+            .store(in: &cancellables)
+    }
 }
 
 // MARK: - Steps
@@ -72,7 +85,7 @@ extension HomeViewModel {
             guard let self else { return }
             DispatchQueue.main.async {
                 withAnimation {
-                    self.dailySteps = Int(steps)
+                    self.todaysSteps = Int(steps)
                     self.dailyStepsAreLoading = false
                 }
             }
@@ -100,6 +113,7 @@ extension HomeViewModel {
                     
                     self.montlhySteps = steps
                     self.weeklySteps = weeklySteps
+                    self.setChartSteps(self.selectedPeriod)
                     self.stepsAreLoading = false
                 }
             }
@@ -108,5 +122,14 @@ extension HomeViewModel {
     
     func getAchievedStepGoals() {
         self.stepGoalManager.getNumberOfDailyStepGoalsAchieved()
+    }
+    
+    private func setChartSteps(_ selectedTimePeriod : TimePeriod) {
+        switch selectedTimePeriod {
+        case .month:
+            self.chartSteps = self.montlhySteps
+        case .week:
+            self.chartSteps = self.weeklySteps
+        }
     }
 }

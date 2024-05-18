@@ -50,7 +50,7 @@ private extension HomeView {
 // MARK: - Daily Steps
 private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
-        DailyStepCountView(steps: viewModel.dailySteps,
+        DailyStepCountView(steps: viewModel.todaysSteps,
                            isLoading: viewModel.dailyStepsAreLoading)
     }
 }
@@ -67,7 +67,7 @@ private extension HomeView {
 // MARK: - Average Steps
 private extension HomeView {
     @ViewBuilder var averageStepsView : some View {
-        AverageStepsView(steps: (viewModel.selectedPeriod == .month) ? $viewModel.montlhySteps : $viewModel.weeklySteps,
+        AverageStepsView(steps: $viewModel.chartSteps,
                          stepGoal: $viewModel.stepGoal,
                          isLoading: viewModel.stepsAreLoading,
                          selectedPeriod: $viewModel.selectedPeriod)
