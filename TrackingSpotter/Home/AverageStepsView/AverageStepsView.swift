@@ -2,11 +2,10 @@ import SwiftUI
 import Charts
 
 struct AverageStepsView: View {
-    @Binding var monthlySteps : [DailyStep]
-    @Binding var weeklySteps : [DailyStep]
+    @Binding var steps : [DailyStep]
     @Binding var stepGoal : Int
-    @Binding var isLoading : Bool
-    @State private var selectedPeriod : TimePeriod = .month
+    let isLoading : Bool
+    @Binding var selectedPeriod : TimePeriod
     @State private var displayedSteps : [DailyStep] = []
     
     var body: some View {
@@ -140,13 +139,9 @@ private extension AverageStepsView {
     
     func animateGraph() {
         // This stops the graph from animating when switching tabs
-        if selectedPeriod == .month {
-            guard displayedSteps.count != monthlySteps.count else { return }
-        } else {
-            guard displayedSteps.count != weeklySteps.count else { return }
-        }
+        guard displayedSteps.count != steps.count else { return }
 
-        self.displayedSteps = (selectedPeriod == .month) ? monthlySteps : weeklySteps
+        self.displayedSteps = steps
         
         for (index, _) in displayedSteps.enumerated() {
             withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
@@ -176,9 +171,9 @@ private extension AverageStepsView {
 
         return mockData.sorted(by: { $0.date < $1.date })
     }
-    return AverageStepsView(monthlySteps: .constant(generateMockData()),
-                            weeklySteps: .constant(generateMockData()),
+    return AverageStepsView(steps: .constant(generateMockData()),
                             stepGoal: .constant(Int.random(in: 500...10_000)),
-                            isLoading: .constant(false))
+                            isLoading: false,
+                            selectedPeriod: .constant(.month))
     .frame(height: 275)
 }

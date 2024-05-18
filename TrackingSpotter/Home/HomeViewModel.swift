@@ -16,6 +16,7 @@ class HomeViewModel : ObservableObject {
     @Published var stepsAreLoading : Bool = true
     @Published var montlhySteps : [DailyStep] = []
     @Published var weeklySteps : [DailyStep] = []
+    @Published var selectedPeriod : TimePeriod = .month
     
     
     // Dependencies

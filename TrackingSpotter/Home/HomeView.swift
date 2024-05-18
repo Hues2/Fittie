@@ -67,10 +67,10 @@ private extension HomeView {
 // MARK: - Average Steps
 private extension HomeView {
     @ViewBuilder var averageStepsView : some View {
-        AverageStepsView(monthlySteps: $viewModel.montlhySteps,
-                         weeklySteps: $viewModel.weeklySteps,
+        AverageStepsView(steps: (viewModel.selectedPeriod == .month) ? $viewModel.montlhySteps : $viewModel.weeklySteps,
                          stepGoal: $viewModel.stepGoal,
-                         isLoading: $viewModel.stepsAreLoading)
+                         isLoading: viewModel.stepsAreLoading,
+                         selectedPeriod: $viewModel.selectedPeriod)
     }
 }
 
