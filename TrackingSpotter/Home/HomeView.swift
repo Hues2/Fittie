@@ -10,8 +10,8 @@ struct HomeView: View {
         }
         .task {            
             viewModel.getDailySteps()
-            viewModel.getMonthlySteps()
             viewModel.getAchievedStepGoals()
+            viewModel.getStepsForTimePeriod()
         }
         .navigationTitle("home_nav_title")
     }
@@ -48,7 +48,7 @@ private extension HomeView {
     }
     
     var secondSection : some View {
-        monthlyStepsView
+        averageStepsView
     }
 }
 
@@ -60,14 +60,15 @@ private extension HomeView {
     }
 }
 
-// MARK: - Monthly Steps
+// MARK: - Average Steps
 private extension HomeView {
-    @ViewBuilder var monthlyStepsView : some View {
-        CardView(title: "monthly_steps_title", height: 275) {
-            if viewModel.monthlyStepsAreLoading {
+    @ViewBuilder var averageStepsView : some View {
+        CardView(title: "average_steps_title", height: 275) {
+            if viewModel.timePeriodStepsAreLoading {
                 LoadingView()
             } else {
-                MonthlyStepsView(monthlySteps: viewModel.monthlySteps,
+                AverageStepsView(steps: $viewModel.selectedPeriodSteps,
+                                 selectedPeriod: $viewModel.selectedPeriod,
                                  stepGoal: viewModel.stepGoal)
             }
         }

@@ -29,10 +29,10 @@
 // Step Counter
 "daily_steps_title" = "Today's Steps";
 
-// Monthly Steps
-"monthly_steps_title" = "Monthly Steps";
-"monthly_steps_chart_legend_step_goal" = "Step Goal";
-"monthly_steps_average_steps" = "Avg: %@";
+// Average Steps
+"average_steps_title" = "Average Steps";
+"average_steps_chart_legend_step_goal" = "Step Goal";
+"average_steps_average_steps" = "Avg: %@";
 
 // Content Unavailable
 "not_available_title" = "Not Available";

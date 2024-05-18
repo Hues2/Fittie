@@ -1,8 +1,9 @@
 import SwiftUI
 import Charts
 
-struct MonthlyStepsView: View {
-    @State var monthlySteps : [DailyStep]
+struct AverageStepsView: View {
+    @Binding var steps : [DailyStep]
+    @Binding var selectedPeriod : TimePeriod
     let stepGoal : Int
     
     var body: some View {
@@ -15,24 +16,37 @@ struct MonthlyStepsView: View {
     }
 }
 
-private extension MonthlyStepsView {
+private extension AverageStepsView {
+    var picker : some View {
+        Picker("", selection: $selectedPeriod) {
+            ForEach(TimePeriod.allCases) { period in
+                Text(period.rawValue).tag(period)
+            }
+        }
+        .pickerStyle(.segmented)
+    }
+    
     var averageStepsView : some View {
         HStack(spacing: 4) {
-            Text(String(format: NSLocalizedString("monthly_steps_average_steps", comment: "Avg:"), averageSteps()))
-                .font(.footnote)
-                .fontWeight(.semibold)
-                .foregroundStyle(.secondary)
+            HStack {
+                Text(String(format: NSLocalizedString("average_steps_average_steps", comment: "Avg:"), averageSteps()))
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+                
+                Image(systemName: "shoeprints.fill")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
-            Image(systemName: "shoeprints.fill")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
+            picker
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     func averageSteps() -> String {
-        guard monthlySteps.count > 0 else { return "0" }
-        return (monthlySteps.reduce(0, { $0 + $1.steps }) / monthlySteps.count).toString
+        guard steps.count > 0 else { return "0" }
+        return (steps.reduce(0, { $0 + $1.steps }) / steps.count).toString
     }
     
     var chartLegend : some View {
@@ -42,7 +56,7 @@ private extension MonthlyStepsView {
                 .frame(height: 1)
                 .frame(width: 20)
             
-            Text("monthly_steps_chart_legend_step_goal")
+            Text("average_steps_chart_legend_step_goal")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -51,13 +65,13 @@ private extension MonthlyStepsView {
 }
 
 // MARK: Chart
-private extension MonthlyStepsView {
+private extension AverageStepsView {
     @ViewBuilder func chart() -> some View {
         Chart {
             RuleMark(y: .value("Step Goal", stepGoal))
                 .foregroundStyle(Color.pink.gradient)                
             
-            ForEach(monthlySteps) { dailyStep in
+            ForEach(steps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
                         y: .value("Steps", dailyStep.animate ? dailyStep.steps : 0))
                 .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accent.gradient : Color.pink.gradient)
@@ -75,18 +89,24 @@ private extension MonthlyStepsView {
         }
         .chartXAxis(.hidden)
         .onAppear {
-            for (index, _) in monthlySteps.enumerated() {
-                withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
-                    monthlySteps[index].animate = true
-                }
-            }
+            animateGraph()
+        }
+        .onChange(of: steps) {
+            animateGraph()
         }
     }
     
     func getMax() -> Int {
-        return monthlySteps.max { item1, item2 in
+        return steps.max { item1, item2 in
             return item2.steps > item1.steps
         }?.steps ?? 0
+    }
+    func animateGraph() {
+        for (index, _) in steps.enumerated() {
+            withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
+                steps[index].animate = true
+            }
+        }
     }
 }
 
@@ -110,7 +130,8 @@ private extension MonthlyStepsView {
 
         return mockData.sorted(by: { $0.date < $1.date })
     }
-    return MonthlyStepsView(monthlySteps: generateMockData(),
+    return AverageStepsView(steps: .constant(generateMockData()),
+                            selectedPeriod: .constant(.month),
                             stepGoal: Int.random(in: 500...10_000))
     .frame(height: 275)
 }
