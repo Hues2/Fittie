@@ -4,10 +4,10 @@ import Charts
 struct AverageStepsView: View {
     @Binding var monthlySteps : [DailyStep]
     @Binding var weeklySteps : [DailyStep]
-    @State var selectedPeriod : TimePeriod = .month
-    @State private var displayedSteps : [DailyStep] = []
     @Binding var stepGoal : Int
-    var isLoading : Bool
+    @Binding var isLoading : Bool
+    @State private var selectedPeriod : TimePeriod = .month
+    @State private var displayedSteps : [DailyStep] = []
     
     var body: some View {
         CardView(title: "average_steps_title", height: 275) {
@@ -109,23 +109,9 @@ private extension AverageStepsView {
                 AxisValueLabel()
             }
         }
-//        .chartXAxis {
-//            switch selectedPeriod {
-//            case .month:
-//                AxisMarks()
-//            case .week:
-//                AxisMarks(values: .stride(by: .day)) { value in
-//                    if let dateValue = value.as(Date.self) {
-//                        AxisValueLabel(centered: true) {
-//                            Text(DateFormatter.dayOfWeek.string(from: dateValue))
-//                        }
-//                    }
-//                }
-//            }
-//        }
         .onChange(of: selectedPeriod) {
             animateGraph()
-        }
+        }        
     }
     
     func getMax() -> Int {
@@ -141,10 +127,8 @@ private extension AverageStepsView {
         } else {
             guard displayedSteps.count != weeklySteps.count else { return }
         }
-        
-        withAnimation {
-            self.displayedSteps = (selectedPeriod == .month) ? monthlySteps : weeklySteps
-        }
+
+        self.displayedSteps = (selectedPeriod == .month) ? monthlySteps : weeklySteps
         
         for (index, _) in displayedSteps.enumerated() {
             withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
@@ -177,6 +161,6 @@ private extension AverageStepsView {
     return AverageStepsView(monthlySteps: .constant(generateMockData()),
                             weeklySteps: .constant(generateMockData()),
                             stepGoal: .constant(Int.random(in: 500...10_000)),
-                            isLoading: false)
+                            isLoading: .constant(false))
     .frame(height: 275)
 }

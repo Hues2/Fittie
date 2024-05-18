@@ -70,7 +70,7 @@ private extension HomeView {
         AverageStepsView(monthlySteps: $viewModel.montlhySteps,
                          weeklySteps: $viewModel.weeklySteps,
                          stepGoal: $viewModel.stepGoal,
-                         isLoading: viewModel.stepsAreLoading)
+                         isLoading: $viewModel.stepsAreLoading)
     }
 }
 

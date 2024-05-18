@@ -10,10 +10,10 @@ class HomeViewModel : ObservableObject {
     
     // Number of daily step goals achieved
     @Published private(set) var achievedStepGoals : Int = 0
-    @Published private(set) var achievedStepGoalsIsLoading : Bool = false
+    @Published private(set) var achievedStepGoalsIsLoading : Bool = true
     
     // Step Chart
-    @Published private(set) var stepsAreLoading : Bool = false
+    @Published var stepsAreLoading : Bool = true
     @Published var montlhySteps : [DailyStep] = []
     @Published var weeklySteps : [DailyStep] = []
     
@@ -30,8 +30,7 @@ class HomeViewModel : ObservableObject {
         // Fetch the needed data
         getDailySteps()
         getAchievedStepGoals()
-        getStepsForTimePeriod(.month)
-        getStepsForTimePeriod(.week)
+        getStepsForTimePeriod()
     }
     
     private func addSubscriptions() {
@@ -88,30 +87,25 @@ extension HomeViewModel {
     }
     
     func getStepsForTimePeriod(_ selectedPeriod : TimePeriod = .month) {
-        if selectedPeriod == .month {
-            self.stepsAreLoading = true
-        }
-        
-        let startDate = Calendar.current.date(byAdding: .day, value: -(selectedPeriod.numberOfDaysAgo - 1), to: Date().startOfDay)
+        let startDate = Calendar.current.date(byAdding: .day, value: -(selectedPeriod.numberOfDays - 1), to: Date().startOfDay)
         guard let startDate else { return }
         healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] steps in
             guard let self else { return }
                 
             DispatchQueue.main.async {
                 withAnimation {
-                    if selectedPeriod == .month {
-                        self.montlhySteps = steps.sorted(by: { $0.date < $1.date })
-                        self.stepsAreLoading = false
-                    } else if selectedPeriod == .week {
-                        self.weeklySteps = steps.sorted(by: { $0.date < $1.date })
-                    }
+                    let steps = steps.sorted(by: { $0.date < $1.date })
+                    let weeklySteps = Array(steps.suffix(TimePeriod.week.numberOfDays))
+                    
+                    self.montlhySteps = steps
+                    self.weeklySteps = weeklySteps
+                    self.stepsAreLoading = false
                 }
             }
         }
     }
     
     func getAchievedStepGoals() {
-        self.achievedStepGoalsIsLoading = true
         self.stepGoalManager.getNumberOfDailyStepGoalsAchieved()
     }
 }

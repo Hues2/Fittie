@@ -4,7 +4,7 @@ enum TimePeriod: String, CaseIterable, Identifiable {
     case week = "Week"
     case month = "Month"
     
-    var numberOfDaysAgo : Int {
+    var numberOfDays : Int {
         switch self {
         case .week:
             return 7
