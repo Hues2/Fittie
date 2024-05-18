@@ -7,7 +7,7 @@ struct MonthlyStepsView: View {
     
     var body: some View {
         VStack {
-            totalSteps
+            averageStepsView
             chart()
             chartLegend
                 .padding(.top, 8)
@@ -16,12 +16,18 @@ struct MonthlyStepsView: View {
 }
 
 private extension MonthlyStepsView {
-    var totalSteps : some View {
-        Text(String(format: NSLocalizedString("monthly_steps_average_steps", comment: "Avg:"), averageSteps()))
-            .font(.footnote)
-            .fontWeight(.semibold)
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity, alignment: .leading)
+    var averageStepsView : some View {
+        HStack(spacing: 4) {
+            Text(String(format: NSLocalizedString("monthly_steps_average_steps", comment: "Avg:"), averageSteps()))
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .foregroundStyle(.secondary)
+            
+            Image(systemName: "shoeprints.fill")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     func averageSteps() -> String {

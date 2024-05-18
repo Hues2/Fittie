@@ -22,7 +22,7 @@ struct DailyStepCountView: View {
 private extension DailyStepCountView {
     var content : some View {
         HStack {
-            Text("\(steps ?? 0)")
+            Text("\(steps ?? 0)")            
         }
         .font(.system(size: 50))
         .foregroundStyle(Color.customText)
