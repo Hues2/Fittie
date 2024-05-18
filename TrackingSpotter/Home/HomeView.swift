@@ -77,7 +77,9 @@ private extension HomeView {
 // MARK: - Achieved Step Goals View
 private extension HomeView {
     var stepGoal : some View {
-        StepGoalView(stepGoal: viewModel.stepGoal, achievedStepGoals: viewModel.achievedStepGoals)
+        StepGoalView(stepGoal: viewModel.stepGoal,
+                     achievedStepGoals: viewModel.achievedStepGoals,
+                     isLoading: viewModel.achievedStepGoalsIsLoading)
     }
 }
 

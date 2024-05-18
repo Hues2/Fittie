@@ -3,12 +3,18 @@ import SwiftUI
 struct StepGoalView: View {
     let stepGoal : Int
     let achievedStepGoals : Int
+    let isLoading : Bool
     
     var body: some View {
         CardView(title: "step_goal_title", height: Constants.cardHeight) {
-            content
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+            VStack {
+                if isLoading {
+                    LoadingView()
+                } else {
+                    content
+                }
+            }
+            .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
     }
 }
@@ -53,7 +59,7 @@ private extension StepGoalView {
 
 #Preview {
     HStack {
-        StepGoalView(stepGoal: 1500, achievedStepGoals: 5)
+        StepGoalView(stepGoal: 1500, achievedStepGoals: 5, isLoading: false)
             .frame(height: 200)
             .padding()
         

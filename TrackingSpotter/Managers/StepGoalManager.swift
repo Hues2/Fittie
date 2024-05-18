@@ -27,7 +27,7 @@ extension StepGoalManager {
     func getNumberOfDailyStepGoalsAchieved() {
         let installDate = userDefaults.value(forKey: Constants.UserDefaults.installDate) as? Date ?? Date().startOfDay
         self.healthKitManager.fetchDailySteps(startDate: installDate, endDate: Date()) { [weak self] dailySteps in
-            guard let self else { return }
+            guard let self else { return }            
             let stepGoalsAchieved = dailySteps.filter({ $0.steps > self.getStepGoal() }).count
             self.achievedStepGoals.send(stepGoalsAchieved)
         }

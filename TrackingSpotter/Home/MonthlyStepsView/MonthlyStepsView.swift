@@ -49,7 +49,7 @@ private extension MonthlyStepsView {
     @ViewBuilder func chart() -> some View {
         Chart {
             RuleMark(y: .value("Step Goal", stepGoal))
-                .foregroundStyle(Color.pink.gradient)
+                .foregroundStyle(Color.pink.gradient)                
             
             ForEach(monthlySteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),

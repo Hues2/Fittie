@@ -14,6 +14,7 @@ class HomeViewModel : ObservableObject {
     
     // Number of daily step goals achieved
     @Published private(set) var achievedStepGoals : Int = 0
+    @Published private(set) var achievedStepGoalsIsLoading : Bool = false
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
@@ -50,6 +51,7 @@ private extension HomeViewModel {
             .sink { [weak self] achievedStepGoals in
                 guard let self else { return }
                 self.achievedStepGoals = achievedStepGoals
+                self.achievedStepGoalsIsLoading = false
             }
             .store(in: &cancellables)
     }
@@ -93,6 +95,7 @@ extension HomeViewModel {
     }
     
     func getAchievedStepGoals() {
+        self.achievedStepGoalsIsLoading = true
         self.stepGoalManager.getNumberOfDailyStepGoalsAchieved()
     }
 }
