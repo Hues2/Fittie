@@ -2,25 +2,37 @@ import SwiftUI
 import Charts
 
 struct AverageStepsView: View {
-    @Binding var steps : [DailyStep]
-    @Binding var selectedPeriod : TimePeriod
+    @Binding var monthlySteps : [DailyStep]
+    @Binding var weeklySteps : [DailyStep]
+    @State var selectedPeriod : TimePeriod = .month
     @State private var displayedSteps : [DailyStep] = []
     @Binding var stepGoal : Int
+    var isLoading : Bool
     
     var body: some View {
+        CardView(title: "average_steps_title", height: 275) {
+            if isLoading {
+                LoadingView()
+            } else {
+                content
+                    .onAppear {
+                        animateGraph()
+                    }
+            }
+        }
+    }
+}
+
+private extension AverageStepsView {
+    var content : some View {
         VStack {
             averageStepsView
             chart()
             chartLegend
                 .padding(.top, 8)
         }
-        .onChange(of: steps) {
-            animateGraph()
-        }
     }
-}
-
-private extension AverageStepsView {
+    
     var picker : some View {
         Picker("", selection: $selectedPeriod) {
             ForEach(TimePeriod.allCases) { period in
@@ -111,7 +123,7 @@ private extension AverageStepsView {
 //                }
 //            }
 //        }
-        .onAppear {
+        .onChange(of: selectedPeriod) {
             animateGraph()
         }
     }
@@ -123,10 +135,17 @@ private extension AverageStepsView {
     }
     
     func animateGraph() {
-        guard displayedSteps.count != steps.count else { return }
-        withAnimation {
-            self.displayedSteps = steps
+        // This stops the graph from animating when switching tabs
+        if selectedPeriod == .month {
+            guard displayedSteps.count != monthlySteps.count else { return }
+        } else {
+            guard displayedSteps.count != weeklySteps.count else { return }
         }
+        
+        withAnimation {
+            self.displayedSteps = (selectedPeriod == .month) ? monthlySteps : weeklySteps
+        }
+        
         for (index, _) in displayedSteps.enumerated() {
             withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
                 displayedSteps[index].animate = true
@@ -155,8 +174,9 @@ private extension AverageStepsView {
 
         return mockData.sorted(by: { $0.date < $1.date })
     }
-    return AverageStepsView(steps: .constant(generateMockData()),
-                            selectedPeriod: .constant(.month),
-                            stepGoal: .constant(Int.random(in: 500...10_000)))
+    return AverageStepsView(monthlySteps: .constant(generateMockData()),
+                            weeklySteps: .constant(generateMockData()),
+                            stepGoal: .constant(Int.random(in: 500...10_000)),
+                            isLoading: false)
     .frame(height: 275)
 }

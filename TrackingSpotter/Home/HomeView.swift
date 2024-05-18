@@ -67,15 +67,10 @@ private extension HomeView {
 // MARK: - Average Steps
 private extension HomeView {
     @ViewBuilder var averageStepsView : some View {
-        CardView(title: "average_steps_title", height: 275) {
-            if viewModel.timePeriodStepsAreLoading {
-                LoadingView()
-            } else {
-                AverageStepsView(steps: $viewModel.selectedPeriodSteps,
-                                 selectedPeriod: $viewModel.selectedPeriod,
-                                 stepGoal: $viewModel.stepGoal)
-            }
-        }
+        AverageStepsView(monthlySteps: $viewModel.montlhySteps,
+                         weeklySteps: $viewModel.weeklySteps,
+                         stepGoal: $viewModel.stepGoal,
+                         isLoading: viewModel.stepsAreLoading)
     }
 }
 

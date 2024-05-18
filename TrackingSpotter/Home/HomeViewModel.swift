@@ -8,16 +8,15 @@ class HomeViewModel : ObservableObject {
     @Published var stepGoal : Int = 0
     @Published private(set) var dailyStepsAreLoading : Bool = true
     
-    // Daily steps
-    @Published var selectedPeriodSteps : [DailyStep] = []
-    @Published private(set) var timePeriodStepsAreLoading : Bool = true
-    
     // Number of daily step goals achieved
     @Published private(set) var achievedStepGoals : Int = 0
     @Published private(set) var achievedStepGoalsIsLoading : Bool = false
     
     // Step Chart
-    @Published var selectedPeriod : TimePeriod = .month
+    @Published private(set) var stepsAreLoading : Bool = false
+    @Published var montlhySteps : [DailyStep] = []
+    @Published var weeklySteps : [DailyStep] = []
+    
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
@@ -31,13 +30,13 @@ class HomeViewModel : ObservableObject {
         // Fetch the needed data
         getDailySteps()
         getAchievedStepGoals()
-        getStepsForTimePeriod()
+        getStepsForTimePeriod(.month)
+        getStepsForTimePeriod(.week)
     }
     
     private func addSubscriptions() {
         subscribeToStepGoal()
         subscribeTonumberOfDailyStepGoalsAchieved()
-        subscribeToSelectedPeriod()
     }
 }
 
@@ -61,17 +60,6 @@ private extension HomeViewModel {
                 guard let self else { return }
                 self.achievedStepGoals = achievedStepGoals
                 self.achievedStepGoalsIsLoading = false
-            }
-            .store(in: &cancellables)
-    }
-    
-    func subscribeToSelectedPeriod() {
-        self.$selectedPeriod
-            .receive(on: DispatchQueue.main)
-            .dropFirst()
-            .sink { [weak self] selectedPeriod in
-                guard let self else { return }
-                self.getStepsForTimePeriod(selectedPeriod)
             }
             .store(in: &cancellables)
     }
@@ -100,19 +88,23 @@ extension HomeViewModel {
     }
     
     func getStepsForTimePeriod(_ selectedPeriod : TimePeriod = .month) {
+        if selectedPeriod == .month {
+            self.stepsAreLoading = true
+        }
+        
         let startDate = Calendar.current.date(byAdding: .day, value: -(selectedPeriod.numberOfDaysAgo - 1), to: Date().startOfDay)
         guard let startDate else { return }
         healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] steps in
             guard let self else { return }
-            
-            for step in steps.sorted(by: { $0.date < $1.date }) {
-                print("----> \(step.date.formatted())")
-            }
-            
+                
             DispatchQueue.main.async {
                 withAnimation {
-                    self.selectedPeriodSteps = steps.sorted(by: { $0.date < $1.date })
-                    self.timePeriodStepsAreLoading = false
+                    if selectedPeriod == .month {
+                        self.montlhySteps = steps.sorted(by: { $0.date < $1.date })
+                        self.stepsAreLoading = false
+                    } else if selectedPeriod == .week {
+                        self.weeklySteps = steps.sorted(by: { $0.date < $1.date })
+                    }
                 }
             }
         }
