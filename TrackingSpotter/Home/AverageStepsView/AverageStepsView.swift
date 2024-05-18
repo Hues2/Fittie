@@ -20,6 +20,7 @@ struct AverageStepsView: View {
     }
 }
 
+// MARK: Content
 private extension AverageStepsView {
     var content : some View {
         VStack {
@@ -29,7 +30,10 @@ private extension AverageStepsView {
                 .padding(.top, 8)
         }
     }
-    
+}
+
+// MARK: Picker
+private extension AverageStepsView {
     var picker : some View {
         Picker("", selection: $selectedPeriod) {
             ForEach(TimePeriod.allCases) { period in
@@ -38,7 +42,10 @@ private extension AverageStepsView {
         }
         .pickerStyle(.segmented)
     }
-    
+}
+
+// MARK: Average Steps
+private extension AverageStepsView {
     var averageStepsView : some View {
         HStack(spacing: 4) {
             HStack {
@@ -61,20 +68,6 @@ private extension AverageStepsView {
         guard displayedSteps.count > 0 else { return "0" }
         return (displayedSteps.reduce(0, { $0 + $1.steps }) / displayedSteps.count).toString
     }
-    
-    var chartLegend : some View {
-        HStack {
-            RoundedRectangle(cornerRadius: 2)
-                .fill(Color.pink)
-                .frame(height: 1)
-                .frame(width: 20)
-            
-            Text("average_steps_chart_legend_step_goal")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
 }
 
 // MARK: Chart
@@ -82,7 +75,7 @@ private extension AverageStepsView {
     @ViewBuilder func chart() -> some View {
         Chart {
             RuleMark(y: .value("Step Goal", stepGoal))
-                .foregroundStyle(Color.pink.gradient)                
+                .foregroundStyle(Color.pink.gradient)
             
             ForEach(displayedSteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
@@ -101,9 +94,20 @@ private extension AverageStepsView {
             }
         }
         .chartXAxis {
-            AxisMarks { mark in
-                AxisTick()
-                AxisValueLabel()
+            switch selectedPeriod {
+            case .month:
+                AxisMarks { mark in
+                    AxisTick()
+                    AxisValueLabel()
+                }
+            case .week:
+                AxisMarks(values: .stride(by: .day)) { value in
+                    if let date = value.as(Date.self) {
+                        AxisValueLabel(centered: true) {
+                            Text(DateFormatter.dayOfWeek.string(from: date))
+                        }
+                    }
+                }
             }
         }
         .onAppear {
@@ -112,6 +116,20 @@ private extension AverageStepsView {
         .onChange(of: selectedPeriod) {
             animateGraph()
         }        
+    }
+    
+    var chartLegend : some View {
+        HStack {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color.pink)
+                .frame(height: 1)
+                .frame(width: 20)
+            
+            Text("average_steps_chart_legend_step_goal")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     func getMax() -> Int {
