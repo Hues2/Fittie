@@ -15,9 +15,6 @@ struct AverageStepsView: View {
                 LoadingView()
             } else {
                 content
-                    .onAppear {
-                        animateGraph()
-                    }
             }
         }
     }
@@ -108,6 +105,9 @@ private extension AverageStepsView {
                 AxisTick()
                 AxisValueLabel()
             }
+        }
+        .onAppear {
+            animateGraph()
         }
         .onChange(of: selectedPeriod) {
             animateGraph()
