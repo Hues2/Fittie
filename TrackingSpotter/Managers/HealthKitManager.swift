@@ -32,7 +32,7 @@ class HealthKitManager {
             
             var dailySteps : [DailyStep] = []
             result.enumerateStatistics(from: startDate, to: endDate) { statistics, stop in
-                dailySteps.append(DailyStep(date: statistics.endDate, steps: Int(statistics.sumQuantity()?.doubleValue(for: .count()) ?? 0)))
+                dailySteps.append(DailyStep(date: statistics.startDate, steps: Int(statistics.sumQuantity()?.doubleValue(for: .count()) ?? 0)))
             }
             
             completion(dailySteps)

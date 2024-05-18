@@ -15,6 +15,7 @@
 		2E5FF2C62BF6A0FA00779ADC /* AllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */; };
 		2E5FF2C82BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */; };
 		2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64893E2BF6CFDC00D083FB /* Int.swift */; };
+		2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */; };
 		2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */; };
 		2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */; };
 		2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */; };
@@ -58,6 +59,7 @@
 		2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetView.swift; sourceTree = "<group>"; };
 		2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitleAndSubtitle.swift; sourceTree = "<group>"; };
 		2E64893E2BF6CFDC00D083FB /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardGroupBoxStyle.swift; sourceTree = "<group>"; };
 		2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGoalManager.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				2EC6CAEB2BEEEBB5009C7002 /* Date.swift */,
 				2E64893E2BF6CFDC00D083FB /* Int.swift */,
+				2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */,
 				2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */,
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
+				2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */,
 				2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */,
 				2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */,
 				2EC6CAD92BEEBF52009C7002 /* HealthKitManager.swift in Sources */,

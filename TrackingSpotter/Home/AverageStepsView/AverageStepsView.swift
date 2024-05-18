@@ -91,7 +91,26 @@ private extension AverageStepsView {
                     
             }
         }
-        .chartXAxis(.hidden)
+        .chartXAxis {
+            AxisMarks { mark in
+                AxisTick()
+                AxisValueLabel()
+            }
+        }
+//        .chartXAxis {
+//            switch selectedPeriod {
+//            case .month:
+//                AxisMarks()
+//            case .week:
+//                AxisMarks(values: .stride(by: .day)) { value in
+//                    if let dateValue = value.as(Date.self) {
+//                        AxisValueLabel(centered: true) {
+//                            Text(DateFormatter.dayOfWeek.string(from: dateValue))
+//                        }
+//                    }
+//                }
+//            }
+//        }
         .onAppear {
             animateGraph()
         }
@@ -105,7 +124,9 @@ private extension AverageStepsView {
     
     func animateGraph() {
         guard displayedSteps.count != steps.count else { return }
-        self.displayedSteps = steps
+        withAnimation {
+            self.displayedSteps = steps
+        }
         for (index, _) in displayedSteps.enumerated() {
             withAnimation(.easeInOut(duration: 0.8).delay(Double(index) * 0.03)) {
                 displayedSteps[index].animate = true

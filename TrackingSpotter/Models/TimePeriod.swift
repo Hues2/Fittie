@@ -9,7 +9,7 @@ enum TimePeriod: String, CaseIterable, Identifiable {
         case .week:
             return 7
         case .month:
-            return 30
+            return 31
         }
     }
     

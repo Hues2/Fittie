@@ -105,6 +105,10 @@ extension HomeViewModel {
         healthKitManager.fetchDailySteps(startDate: startDate) { [weak self] steps in
             guard let self else { return }
             
+            for step in steps.sorted(by: { $0.date < $1.date }) {
+                print("----> \(step.date.formatted())")
+            }
+            
             DispatchQueue.main.async {
                 withAnimation {
                     self.selectedPeriodSteps = steps.sorted(by: { $0.date < $1.date })
