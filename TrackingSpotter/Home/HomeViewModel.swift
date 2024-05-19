@@ -37,7 +37,6 @@ class HomeViewModel : ObservableObject {
     
     private func addSubscriptions() {
         subscribeToStepGoal()
-        subscribeTonumberOfDailyStepGoalsAchieved()
         subscribeToSelectedTimePeriod()
     }
 }
@@ -51,17 +50,6 @@ private extension HomeViewModel {
             .sink { [weak self] newStepGoal in
                 guard let self else { return }
                 self.setStepGoal(newStepGoal)
-            }
-            .store(in: &cancellables)
-    }
-    
-    func subscribeTonumberOfDailyStepGoalsAchieved() {
-        self.stepGoalManager.achievedStepGoals
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] achievedStepGoals in
-                guard let self else { return }
-                self.achievedStepGoals = achievedStepGoals
-                self.achievedStepGoalsIsLoading = false
             }
             .store(in: &cancellables)
     }
@@ -122,7 +110,14 @@ extension HomeViewModel {
     }
     
     func getAchievedStepGoals() {
-        self.stepGoalManager.getNumberOfDailyStepGoalsAchieved()
+        self.stepGoalManager.getNumberOfDailyStepGoalsAchieved { achievedStepGoals in
+            DispatchQueue.main.async {
+                withAnimation {
+                    self.achievedStepGoals = achievedStepGoals
+                    self.achievedStepGoalsIsLoading = false
+                }
+            }
+        }
     }
     
     private func setChartSteps(_ selectedTimePeriod : TimePeriod) {

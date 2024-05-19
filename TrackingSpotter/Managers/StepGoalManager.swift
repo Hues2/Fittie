@@ -1,10 +1,7 @@
 import Foundation
-import Combine
 import Factory
 
 class StepGoalManager {
-    var achievedStepGoals = CurrentValueSubject<Int, Never>(0)
-    
     private let userDefaults = UserDefaults.standard
     
     @Injected(\.healthKitManager) private var healthKitManager
@@ -24,12 +21,12 @@ extension StepGoalManager {
 
 // MARK: Number of daily step goals achieved
 extension StepGoalManager {
-    func getNumberOfDailyStepGoalsAchieved() {
+    func getNumberOfDailyStepGoalsAchieved(_ completion : @escaping (Int) -> Void) {
         let installDate = userDefaults.value(forKey: Constants.UserDefaults.installDate) as? Date ?? Date().startOfDay
         self.healthKitManager.fetchDailySteps(startDate: installDate, endDate: Date()) { [weak self] dailySteps in
             guard let self else { return }            
             let stepGoalsAchieved = dailySteps.filter({ $0.steps > self.getStepGoal() }).count
-            self.achievedStepGoals.send(stepGoalsAchieved)
+            completion(stepGoalsAchieved)
         }
     }
 }
