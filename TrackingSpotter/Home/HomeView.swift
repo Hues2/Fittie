@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         ZStack {
@@ -9,6 +10,11 @@ struct HomeView: View {
             content
         }        
         .navigationTitle("home_nav_title")
+        .onChange(of: scenePhase) { (oldPhase, newPhase) in
+            if newPhase == .active {
+                viewModel.getDailySteps()
+            }
+        }
     }
 }
 

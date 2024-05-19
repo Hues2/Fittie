@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-enum TimePeriod: CaseIterable, Identifiable {
+enum TimePeriod: String, CaseIterable, Identifiable {
     case week
     case month
     

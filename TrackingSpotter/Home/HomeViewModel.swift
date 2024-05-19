@@ -27,10 +27,10 @@ class HomeViewModel : ObservableObject {
     
     init() {
         self.stepGoal = getStepGoal()
+        self.selectedPeriod = getSelectedTimePeriod()
         addSubscriptions()
         
         // Fetch the needed data
-        getDailySteps()
         getAchievedStepGoals()
         getStepsForTimePeriod()
     }
@@ -61,6 +61,7 @@ private extension HomeViewModel {
             .sink { [weak self] selectedTimePeriod in
                 guard let self else { return }
                 self.setChartSteps(selectedTimePeriod)
+                self.saveSelectedTimePeriod()
             }
             .store(in: &cancellables)
     }
@@ -69,7 +70,7 @@ private extension HomeViewModel {
 // MARK: - Steps
 extension HomeViewModel {
     func getDailySteps() {
-        healthKitManager.fetchTodaySteps { [weak self] steps in
+        healthKitManager.fetchTodaySteps { [weak self] steps in            
             guard let self else { return }
             DispatchQueue.main.async {
                 withAnimation {
@@ -127,5 +128,18 @@ extension HomeViewModel {
         case .week:
             self.chartSteps = self.weeklySteps
         }
+    }
+}
+
+// MARK: Selected time period
+private extension HomeViewModel {
+    func getSelectedTimePeriod() -> TimePeriod {
+        let savedTimePeriodRawValue = UserDefaults.standard.value(forKey: Constants.UserDefaults.selectedTimePeriod) as? String
+        guard let savedTimePeriodRawValue, let timePeriod = TimePeriod(rawValue: savedTimePeriodRawValue) else { return .month }
+        return timePeriod
+    }
+    
+    func saveSelectedTimePeriod() {
+        UserDefaults.standard.setValue(self.selectedPeriod.rawValue, forKey: Constants.UserDefaults.selectedTimePeriod)
     }
 }

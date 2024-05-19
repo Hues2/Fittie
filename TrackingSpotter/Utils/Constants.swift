@@ -18,5 +18,6 @@ class Constants {
         static let hasSeenOnboarding = "has_seen_onboarding"
         static let stepGoal = "step_goal"
         static let installDate = "install_date"
+        static let selectedTimePeriod = "selected_time_period"
     }
 }
