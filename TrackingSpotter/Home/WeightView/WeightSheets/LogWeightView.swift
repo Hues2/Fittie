@@ -38,7 +38,6 @@ private extension LogWeightView {
     
     var weightInput : some View {
         TextField("", value: $weight, format: .number, prompt: Text("80.4"))
-//        TextField(text: $weight, prompt: Text("80.4")) { }
             .font(.system(size: Constants.bigTextSize))
             .foregroundStyle(weightIsValid ? Color.primary : Color.red)
             .multilineTextAlignment(.center)
