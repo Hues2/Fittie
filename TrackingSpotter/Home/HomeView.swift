@@ -10,11 +10,6 @@ struct HomeView: View {
             .onAppear {
                 viewModel.getDailySteps()
             }
-//            .onChange(of: scenePhase) { (oldPhase, newPhase) in
-//                if newPhase == .active {
-//                    viewModel.getDailySteps()
-//                }
-//            }
     }
 }
 

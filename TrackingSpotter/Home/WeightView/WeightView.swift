@@ -9,7 +9,7 @@ struct WeightView: View {
     @State private var weightToUpdate : Weight?
     
     var body: some View {
-        CardView(title: "weight_title", height: Constants.graphCardHeight - 75) {
+        CardView(title: "weight_title", height: Constants.graphCardHeight - 25) {
             VStack {
                 if loggedWeights.isEmpty {
                     contentUnavailable
