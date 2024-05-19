@@ -2,15 +2,16 @@ import SwiftUI
 import SwiftData
 
 struct LogWeightView: View {
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     @FocusState private var isFocused : Bool
     @State private var weight : String = ""
-    @State private var weightIsValid : Bool = true
+    @State private var weightIsValid : Bool = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 40) {
             title
-            weightInput
+            inputWithLabel
             saveButton
         }
         .padding(.horizontal, 24)
@@ -26,6 +27,13 @@ private extension LogWeightView {
             .fontWeight(.bold)
             .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .center)
+    }
+    
+    var inputWithLabel : some View {
+        VStack {
+            weightInput
+            kgLabel
+        }
     }
     
     var weightInput : some View {
@@ -48,10 +56,29 @@ private extension LogWeightView {
             }
     }
     
+    var kgLabel : some View {
+        Text("log_weight_kg_label")
+            .font(.title2)
+            .foregroundStyle(.secondary)
+    }
+    
     var saveButton : some View {
         CustomButton(title: "log_weight_save_button_title") {
             // Save weight
+            guard let weightDouble = Double(weight), weightIsValid else { return }
+            let weight = Weight(date: .now, kg: weightDouble)
+            let weight1 = Weight(date: Date.getDayFrom(date: .now, days: 1)!, kg: 72)
+            let weight2 = Weight(date: Date.getDayFrom(date: .now, days: 3)!, kg: 74)
+            let weight3 = Weight(date: Date.getDayFrom(date: .now, days: 6)!, kg: 79)
+            let weight4 = Weight(date: Date.getDayFrom(date: .now, days: 9)!, kg: 73)
+//            context.insert(weight)
+            context.insert(weight1)
+            context.insert(weight2)
+            context.insert(weight3)
+            context.insert(weight4)
+            dismiss()
         }
+        .disabled(!self.weightIsValid)
     }
 }
 

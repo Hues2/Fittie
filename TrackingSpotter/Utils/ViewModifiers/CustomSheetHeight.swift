@@ -5,7 +5,7 @@ struct CustomSheetHeight : ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .dynamicTypeSize(.small ... .xxLarge)
+            .dynamicTypeSize(Constants.dynamicTypeSizeRange)
             .presentationCornerRadius(Constants.sheetCornerRadius)
             .readHeight()
             .onPreferenceChange(HeightPreferenceKey.self) { height in

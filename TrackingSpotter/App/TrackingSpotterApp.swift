@@ -16,7 +16,7 @@ struct TrackingSpotterApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .dynamicTypeSize(.small ... .xxLarge)
+                .dynamicTypeSize(Constants.dynamicTypeSizeRange)
                 .onAppear {
                     let installDate = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date
                     guard installDate != nil else {
