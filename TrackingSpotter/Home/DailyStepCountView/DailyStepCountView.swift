@@ -13,7 +13,6 @@ struct DailyStepCountView: View {
                     content
                 }
             }
-            .foregroundStyle(Color.customText)
             .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
     }
@@ -24,8 +23,7 @@ private extension DailyStepCountView {
         HStack {
             Text("\(steps ?? 0)")            
         }
-        .font(.system(size: 50))
-        .foregroundStyle(Color.customText)
+        .font(.system(size: 50))        
         .fontWeight(.black)
         .lineLimit(1)
         .minimumScaleFactor(Constants.minimumScaleFactor)

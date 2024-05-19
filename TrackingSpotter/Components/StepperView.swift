@@ -32,7 +32,7 @@ struct StepperView: View {
             action()
         } label: {
             Image(systemName: icon)
-                .foregroundStyle(Color.cardBackground)
+                .foregroundStyle(Material.thick)
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()

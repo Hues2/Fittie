@@ -70,7 +70,7 @@ private extension HomeViewModel {
 // MARK: - Steps
 extension HomeViewModel {
     func getDailySteps() {
-        healthKitManager.fetchTodaySteps { [weak self] steps in            
+        healthKitManager.fetchTodaySteps { [weak self] steps in
             guard let self else { return }
             DispatchQueue.main.async {
                 withAnimation {

@@ -6,13 +6,11 @@ struct OnboardingTitleAndSubtitle: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 40) {
-            Text(title)
-                .foregroundStyle(Color.customText)
+            Text(title)                
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
-            Text(subtitle)
-                .foregroundStyle(Color.customText)
+            Text(subtitle)                
                 .font(.headline)
                 .fontWeight(.regular)
                 .multilineTextAlignment(.center)
