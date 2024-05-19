@@ -32,7 +32,6 @@
 		2EA2F5D02BFAB171003E3526 /* UpdateWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5CF2BFAB171003E3526 /* UpdateWeightView.swift */; };
 		2EA2F5D22BFAB665003E3526 /* WeightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5D12BFAB665003E3526 /* WeightChartView.swift */; };
 		2EA2F5D42BFAB7B7003E3526 /* WeightContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5D32BFAB7B7003E3526 /* WeightContentUnavailableView.swift */; };
-		2EA3733B2BEF8E2500843FCA /* UpdateStepTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */; };
 		2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */; };
 		2EA373412BEFCB7A00843FCA /* AverageStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373402BEFCB7A00843FCA /* AverageStepsView.swift */; };
 		2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373432BEFD69700843FCA /* DailyStep.swift */; };
@@ -84,7 +83,6 @@
 		2EA2F5CF2BFAB171003E3526 /* UpdateWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWeightView.swift; sourceTree = "<group>"; };
 		2EA2F5D12BFAB665003E3526 /* WeightChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartView.swift; sourceTree = "<group>"; };
 		2EA2F5D32BFAB7B7003E3526 /* WeightContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightContentUnavailableView.swift; sourceTree = "<group>"; };
-		2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStepTargetView.swift; sourceTree = "<group>"; };
 		2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHeightViewModifier.swift; sourceTree = "<group>"; };
 		2EA373402BEFCB7A00843FCA /* AverageStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageStepsView.swift; sourceTree = "<group>"; };
 		2EA373432BEFD69700843FCA /* DailyStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStep.swift; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 				2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */,
 				2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */,
 				2EA2F5C32BFA3D25003E3526 /* WeightView */,
-				2ED7F5A42BF17ABE00720874 /* Sheets */,
 				2ED7F59F2BF14CE100720874 /* StepGoalView */,
 				2EC6CAE32BEED76D009C7002 /* DailyStepCountView */,
 				2EA3733F2BEFCB4100843FCA /* AverageStepsView */,
@@ -333,14 +330,6 @@
 			path = StepGoalView;
 			sourceTree = "<group>";
 		};
-		2ED7F5A42BF17ABE00720874 /* Sheets */ = {
-			isa = PBXGroup;
-			children = (
-				2EA3733A2BEF8E2500843FCA /* UpdateStepTargetView.swift */,
-			);
-			path = Sheets;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,7 +409,6 @@
 			files = (
 				2E88060D2BF5636400E12456 /* StepperView.swift in Sources */,
 				2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */,
-				2EA3733B2BEF8E2500843FCA /* UpdateStepTargetView.swift in Sources */,
 				2EA2F5C92BFA72BA003E3526 /* LogWeightView.swift in Sources */,
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
 				2ED7F5A12BF14CFB00720874 /* StepGoalView.swift in Sources */,
