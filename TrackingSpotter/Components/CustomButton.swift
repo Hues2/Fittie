@@ -4,7 +4,7 @@ struct CustomButton: View {
     let title : LocalizedStringKey
     let action : () -> Void
     let backgroundColor : Color = Color.accentColor
-    let foregroundColor : Color = Color.customBackground
+    let foregroundColor : Color = Color.white
     
     var body: some View {
         Button {
@@ -21,4 +21,8 @@ struct CustomButton: View {
                 .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
     }
+}
+
+#Preview {
+    OnboardingView(hasSeenOnboarding: .constant(false))
 }

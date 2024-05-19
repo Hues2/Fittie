@@ -16,7 +16,7 @@ struct ContentView: View {
 
 private extension ContentView {
     var onBoardingView : some View {
-        Color.customBackground
+        Color.clear
             .ignoresSafeArea()
             .onAppear {
                 self.presentOnboarding = true                

@@ -5,24 +5,13 @@ struct HomeView: View {
     @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
-        ZStack {
-            backgroundColor
-            content
-        }        
-        .navigationTitle("home_nav_title")
-        .onChange(of: scenePhase) { (oldPhase, newPhase) in
-            if newPhase == .active {
-                viewModel.getDailySteps()
+        content
+            .navigationTitle("home_nav_title")
+            .onChange(of: scenePhase) { (oldPhase, newPhase) in
+                if newPhase == .active {
+                    viewModel.getDailySteps()
+                }
             }
-        }
-    }
-}
-
-// MARK: - Views
-private extension HomeView {
-    var backgroundColor : some View {
-        Color.customBackground
-            .ignoresSafeArea()
     }
 }
 
