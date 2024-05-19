@@ -42,3 +42,7 @@
 "step_goal_title" = "Step Goal";
 "step_goal_goal_title" = "Goal";
 "step_goal_achieved" = "Achieved";
+
+// Time Period
+"time_period_week" = "Week";
+"time_period_month" = "Month";

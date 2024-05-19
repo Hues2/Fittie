@@ -36,10 +36,10 @@ private extension AverageStepsView {
     var picker : some View {
         Picker("", selection: $selectedPeriod) {
             ForEach(TimePeriod.allCases) { period in
-                Text(period.rawValue).tag(period)
+                Text(period.title).tag(period)
             }
         }
-        .pickerStyle(.segmented)
+        .pickerStyle(.menu)
     }
 }
 

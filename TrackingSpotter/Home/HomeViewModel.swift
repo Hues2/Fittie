@@ -113,6 +113,7 @@ extension HomeViewModel {
                     
                     self.montlhySteps = steps
                     self.weeklySteps = weeklySteps
+                    // This is to set the chart steps list for the first time (on app launch)
                     self.setChartSteps(self.selectedPeriod)
                     self.stepsAreLoading = false
                 }
