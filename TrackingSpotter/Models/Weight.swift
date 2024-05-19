@@ -3,8 +3,8 @@ import SwiftData
 
 @Model
 class Weight {
-    let date : Date
-    let kg : Double
+    var date : Date
+    var kg : Double
     
     init(date: Date, kg: Double) {
         self.date = date

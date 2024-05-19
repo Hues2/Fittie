@@ -1,12 +1,12 @@
 import SwiftUI
 import SwiftData
 
-struct LogWeightView: View {
+struct UpdateWeightView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var context
     @FocusState private var isFocused : Bool
-    @State private var weight : String = ""
     @State private var weightIsValid : Bool = false
+    @State private var weight : Double?
+    @Bindable var todaysWeight : Weight
     
     var body: some View {
         VStack(alignment: .center, spacing: 40) {
@@ -16,11 +16,14 @@ struct LogWeightView: View {
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 12)
-        .padding(.top, 24)        
+        .padding(.top, 24)
+        .onAppear {
+            self.weight = todaysWeight.kg
+        }
     }
 }
 
-private extension LogWeightView {
+private extension UpdateWeightView {
     var title : some View {
         Text("log_weight_view_title")
             .font(.title)
@@ -37,7 +40,7 @@ private extension LogWeightView {
     }
     
     var weightInput : some View {
-        TextField(text: $weight, prompt: Text("80.4")) { }
+        TextField("", value: $weight, format: .number, prompt: Text("80.4"))
             .font(.system(size: Constants.bigTextSize))
             .foregroundStyle(weightIsValid ? Color.primary : Color.red)
             .multilineTextAlignment(.center)
@@ -48,7 +51,7 @@ private extension LogWeightView {
                 self.isFocused = true
             }
             .onChange(of: weight) { oldValue, newValue in
-                guard Double(weight) != nil else {
+                guard newValue != nil else {
                     self.weightIsValid = false
                     return
                 }
@@ -65,27 +68,10 @@ private extension LogWeightView {
     var saveButton : some View {
         CustomButton(title: "log_weight_save_button_title") {
             // Save weight
-            guard let weightDouble = Double(weight), weightIsValid else { return }
-            let weight = Weight(date: .now, kg: weightDouble)
-            let weight1 = Weight(date: Date.getDayFrom(date: .now, days: 1)!, kg: 72)
-            let weight2 = Weight(date: Date.getDayFrom(date: .now, days: 3)!, kg: 74)
-            let weight3 = Weight(date: Date.getDayFrom(date: .now, days: 6)!, kg: 79)
-            let weight4 = Weight(date: Date.getDayFrom(date: .now, days: 9)!, kg: 73)
-//            context.insert(weight)
-            context.insert(weight1)
-            context.insert(weight2)
-            context.insert(weight3)
-            context.insert(weight4)
+            guard let updatedWeight = weight else { return }
+            self.todaysWeight.kg = updatedWeight
             dismiss()
         }
         .disabled(!self.weightIsValid)
     }
-}
-
-#Preview {
-    Color.clear
-        .sheet(isPresented: .constant(true), content: {
-            LogWeightView()
-                .withCustomSheetHeight()
-        })
 }

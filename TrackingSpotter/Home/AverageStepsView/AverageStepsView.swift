@@ -83,7 +83,7 @@ private extension AverageStepsView {
                 .cornerRadius(2)
             }
         }
-        .chartYScale(domain: 0...(getMax() + 1000))
+        .chartYScale(domain: 0...getMax())
         .chartYAxis {
             AxisMarks { mark in
                 AxisValueLabel()
@@ -132,9 +132,8 @@ private extension AverageStepsView {
     }
     
     func getMax() -> Int {
-        return displayedSteps.max { item1, item2 in
-            return item2.steps > item1.steps
-        }?.steps ?? 0
+        let max = displayedSteps.map({ $0.steps }).max()
+        return (max ?? .zero) + 500
     }
     
     func animateGraph() {

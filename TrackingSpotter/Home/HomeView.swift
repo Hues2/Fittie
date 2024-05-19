@@ -80,7 +80,7 @@ private extension HomeView {
 
 // MARK: - Weight Section
 private extension HomeView {
-    @ViewBuilder var weightView : some View {
+    var weightView : some View {
         WeightView()
     }
 }

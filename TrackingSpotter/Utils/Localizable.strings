@@ -53,6 +53,9 @@
 "weight_content_unavailable_title" = "No weight data";
 "weight_content_unavailable_description" = "It looks like you haven't logged any weight data yet. Start tracking your weight to see your progress over time.";
 "weight_content_unavailable_button_title" = "Log your first entry";
+"logged_weight_view_title" = "Current Weight:";
+"weight_update_button_title" = "Update today's weight";
+"weight_log_button_title" = "Log today's weight";
 
 // Log Weight View
 "log_weight_view_title" = "Log your weight";
