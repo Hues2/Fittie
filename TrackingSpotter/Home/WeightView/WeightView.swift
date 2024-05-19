@@ -9,7 +9,7 @@ struct WeightView: View {
     @State private var weightToUpdate : Weight?
     
     var body: some View {
-        CardView(title: "weight_title", height: Constants.graphCardHeight - 25) {
+        CardView(title: "weight_title", height: Constants.graphCardHeight - 75) {
             VStack {
                 if loggedWeights.isEmpty {
                     contentUnavailable
@@ -18,9 +18,15 @@ struct WeightView: View {
                 } else {
                     chartView
                 }
-                deleteButton
+//                deleteButton
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .overlay(alignment: .topTrailing) {
+            if !loggedWeights.isEmpty {
+                addAndUpdateWeightButton
+                    .padding()
+            }
         }
         .sheet(isPresented: $isAddingWeight) {
             LogWeightView()
@@ -67,20 +73,14 @@ private extension WeightView {
 // MARK: Line Chart
 private extension WeightView {
     var chartView : some View {
-        VStack {
-            WeightChartView(loggedWeights: self.loggedWeights)
-            addAndUpdateWeightButton
-        }
+        WeightChartView(loggedWeights: self.loggedWeights)
     }
 }
 
 // MARK: Logged Weight
 private extension WeightView {
     func loggedWeightView(_ loggedWeight : Weight) -> some View {
-        VStack {
-            LoggedWeightView(loggedWeight: loggedWeight)
-            addAndUpdateWeightButton
-        }
+        LoggedWeightView(loggedWeight: loggedWeight)
     }
 }
 

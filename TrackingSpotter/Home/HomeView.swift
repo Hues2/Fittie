@@ -82,6 +82,7 @@ private extension HomeView {
 private extension HomeView {
     var weightView : some View {
         WeightView()
+            .padding(.bottom, 12)
     }
 }
 
