@@ -6,8 +6,10 @@ class Constants {
     static let sheetCornerRadius : CGFloat = 24
     static let horizontalPadding : CGFloat = 12
     static let cardHeight : CGFloat = 150
+    static let graphCardHeight : CGFloat = 275
     static let minimumScaleFactor : CGFloat = 0.3
     static let lineSpacing : CGFloat = 2
+    static let bigTextSize : CGFloat = 50
     
     // MARK: - Values
     static let numberOfDaysInChart : Int = 30

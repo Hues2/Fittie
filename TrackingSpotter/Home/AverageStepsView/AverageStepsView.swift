@@ -9,7 +9,7 @@ struct AverageStepsView: View {
     @State private var displayedSteps : [DailyStep] = []
     
     var body: some View {
-        CardView(title: "average_steps_title", height: 275) {
+        CardView(title: "average_steps_title", height: Constants.graphCardHeight) {
             if isLoading {
                 LoadingView()
             } else {
@@ -47,7 +47,7 @@ private extension AverageStepsView {
 private extension AverageStepsView {
     var averageStepsView : some View {
         HStack(spacing: 4) {
-            HStack {
+            HStack(spacing: 2) {
                 Text(String(format: NSLocalizedString("average_steps_average_steps", comment: "Avg:"), averageSteps()))
                     .font(.footnote)
                     .fontWeight(.semibold)

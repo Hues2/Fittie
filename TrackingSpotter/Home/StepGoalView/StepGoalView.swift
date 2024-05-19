@@ -30,7 +30,7 @@ private extension StepGoalView {
     @ViewBuilder func valueView(_ title : LocalizedStringKey,
                                 _ value : Int?,
                                 _ icon : String) -> some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(title)
                     .font(.title2)

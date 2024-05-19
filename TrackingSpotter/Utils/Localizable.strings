@@ -46,3 +46,14 @@
 // Time Period
 "time_period_week" = "Week";
 "time_period_month" = "Month";
+
+// Weight
+"weight_title" = "Weight";
+"goal_weight" = "Goal weight";
+"weight_content_unavailable_title" = "No data";
+"weight_content_unavailable_description" = "It looks like you haven't logged any weight data yet. Start tracking your weight to see your progress over time.";
+"weight_content_unavailable_button_title" = "Log Your First Entry";
+
+// Log Weight View
+"log_weight_view_title" = "Log your weight";
+"log_weight_save_button_title" = "Save weight";

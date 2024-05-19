@@ -23,8 +23,9 @@ private extension DailyStepCountView {
         HStack {
             Text("\(steps ?? 0)")            
         }
-        .font(.system(size: 50))        
-        .fontWeight(.black)
+        .font(.system(size: Constants.bigTextSize))        
+        .fontWeight(.semibold)
+        .foregroundStyle(.primary)
         .lineLimit(1)
         .minimumScaleFactor(Constants.minimumScaleFactor)
     }

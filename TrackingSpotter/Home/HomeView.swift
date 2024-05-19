@@ -7,11 +7,14 @@ struct HomeView: View {
     var body: some View {
         content
             .navigationTitle("home_nav_title")
-            .onChange(of: scenePhase) { (oldPhase, newPhase) in
-                if newPhase == .active {
-                    viewModel.getDailySteps()
-                }
+            .onAppear {
+                viewModel.getDailySteps()
             }
+//            .onChange(of: scenePhase) { (oldPhase, newPhase) in
+//                if newPhase == .active {
+//                    viewModel.getDailySteps()
+//                }
+//            }
     }
 }
 
@@ -22,9 +25,11 @@ private extension HomeView {
             VStack(alignment: .leading) {
                 firstSection
                 secondSection
+                thirdSection
             }
             .padding(.horizontal, Constants.horizontalPadding)
         }
+        .scrollIndicators(.hidden)
     }
 }
 
@@ -39,6 +44,10 @@ private extension HomeView {
     
     var secondSection : some View {
         averageStepsView
+    }
+    
+    var thirdSection : some View {
+        weightView
     }
 }
 
@@ -66,6 +75,13 @@ private extension HomeView {
                          stepGoal: $viewModel.stepGoal,
                          isLoading: viewModel.stepsAreLoading,
                          selectedPeriod: $viewModel.selectedPeriod)
+    }
+}
+
+// MARK: - Weight Section
+private extension HomeView {
+    @ViewBuilder var weightView : some View {
+        WeightView()
     }
 }
 
