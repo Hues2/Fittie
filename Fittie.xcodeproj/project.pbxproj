@@ -86,7 +86,7 @@
 		2EA373432BEFD69700843FCA /* DailyStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStep.swift; sourceTree = "<group>"; };
 		2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		2EC6CAB72BEE8F2C009C7002 /* TrackingSpotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingSpotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EC6CAB72BEE8F2C009C7002 /* Fittie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fittie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSpotterApp.swift; sourceTree = "<group>"; };
 		2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		2EC6CAAE2BEE8F2C009C7002 = {
 			isa = PBXGroup;
 			children = (
-				2EC6CAB92BEE8F2C009C7002 /* TrackingSpotter */,
+				2EC6CAB92BEE8F2C009C7002 /* Fittie */,
 				2EC6CAB82BEE8F2C009C7002 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -205,12 +205,12 @@
 		2EC6CAB82BEE8F2C009C7002 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2EC6CAB72BEE8F2C009C7002 /* TrackingSpotter.app */,
+				2EC6CAB72BEE8F2C009C7002 /* Fittie.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2EC6CAB92BEE8F2C009C7002 /* TrackingSpotter */ = {
+		2EC6CAB92BEE8F2C009C7002 /* Fittie */ = {
 			isa = PBXGroup;
 			children = (
 				2EC6CADB2BEEBFBB009C7002 /* Info.plist */,
@@ -227,7 +227,7 @@
 				2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */,
 				2EC6CAC02BEE8F2F009C7002 /* Preview Content */,
 			);
-			path = TrackingSpotter;
+			path = Fittie;
 			sourceTree = "<group>";
 		};
 		2EC6CAC02BEE8F2F009C7002 /* Preview Content */ = {
@@ -330,9 +330,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2EC6CAB62BEE8F2C009C7002 /* TrackingSpotter */ = {
+		2EC6CAB62BEE8F2C009C7002 /* Fittie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2EC6CAC52BEE8F2F009C7002 /* Build configuration list for PBXNativeTarget "TrackingSpotter" */;
+			buildConfigurationList = 2EC6CAC52BEE8F2F009C7002 /* Build configuration list for PBXNativeTarget "Fittie" */;
 			buildPhases = (
 				2EC6CAB32BEE8F2C009C7002 /* Sources */,
 				2EC6CAB42BEE8F2C009C7002 /* Frameworks */,
@@ -342,12 +342,12 @@
 			);
 			dependencies = (
 			);
-			name = TrackingSpotter;
+			name = Fittie;
 			packageProductDependencies = (
 				2EC6CAD52BEEBF37009C7002 /* Factory */,
 			);
 			productName = TrackingSpotter;
-			productReference = 2EC6CAB72BEE8F2C009C7002 /* TrackingSpotter.app */;
+			productReference = 2EC6CAB72BEE8F2C009C7002 /* Fittie.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -365,7 +365,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2EC6CAB22BEE8F2C009C7002 /* Build configuration list for PBXProject "TrackingSpotter" */;
+			buildConfigurationList = 2EC6CAB22BEE8F2C009C7002 /* Build configuration list for PBXProject "Fittie" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -381,7 +381,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2EC6CAB62BEE8F2C009C7002 /* TrackingSpotter */,
+				2EC6CAB62BEE8F2C009C7002 /* Fittie */,
 			);
 		};
 /* End PBXProject section */
@@ -577,14 +577,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TrackingSpotter/TrackingSpotter.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Fittie/Fittie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TrackingSpotter/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Fittie/Preview Content\"";
 				DEVELOPMENT_TEAM = UD7DDMT4QH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TrackingSpotter/Info.plist;
+				INFOPLIST_FILE = Fittie/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need your permission to read your steps";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please give your permission to read your steps";
@@ -598,7 +598,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.greg-ross.TrackingSpotter";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greg-ross.Fittie";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -615,14 +615,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TrackingSpotter/TrackingSpotter.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Fittie/Fittie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TrackingSpotter/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Fittie/Preview Content\"";
 				DEVELOPMENT_TEAM = UD7DDMT4QH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TrackingSpotter/Info.plist;
+				INFOPLIST_FILE = Fittie/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need your permission to read your steps";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please give your permission to read your steps";
@@ -636,7 +636,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.greg-ross.TrackingSpotter";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greg-ross.Fittie";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -651,7 +651,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2EC6CAB22BEE8F2C009C7002 /* Build configuration list for PBXProject "TrackingSpotter" */ = {
+		2EC6CAB22BEE8F2C009C7002 /* Build configuration list for PBXProject "Fittie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2EC6CAC32BEE8F2F009C7002 /* Debug */,
@@ -660,7 +660,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2EC6CAC52BEE8F2F009C7002 /* Build configuration list for PBXNativeTarget "TrackingSpotter" */ = {
+		2EC6CAC52BEE8F2F009C7002 /* Build configuration list for PBXNativeTarget "Fittie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2EC6CAC62BEE8F2F009C7002 /* Debug */,
