@@ -68,7 +68,6 @@ private extension LogWeightView {
             guard let weight, weightIsValid else { return }
             let newWeight = Weight(date: .now.startOfDay, kg: weight)
             context.insert(newWeight)
-            dismiss()
         }
         .disabled(!self.weightIsValid)
     }
