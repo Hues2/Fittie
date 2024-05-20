@@ -13,8 +13,15 @@ private extension WeightChartView {
     var lineChart : some View {
         Chart {
             ForEach(loggedWeights) { loggedWeight in
-                LineMark(x: .value("Date", loggedWeight.date),
-                         y: .value("Weight", loggedWeight.kg))
+                LineMark(
+                    x: .value("Date", loggedWeight.date),
+                    y: .value("Weight", loggedWeight.kg)
+                )
+                
+                PointMark(
+                    x: .value("Date", loggedWeight.date),
+                    y: .value("Weight", loggedWeight.kg)
+                )
             }
         }
         .chartYScale(domain: getMinYValue()...getMaxYValue())

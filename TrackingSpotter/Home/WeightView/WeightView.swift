@@ -13,8 +13,6 @@ struct WeightView: View {
             VStack {
                 if loggedWeights.isEmpty {
                     contentUnavailable
-                } else if loggedWeights.count == 1, let loggedWeight = loggedWeights.first {
-                    loggedWeightView(loggedWeight)
                 } else {
                     chartView
                 }
@@ -74,13 +72,6 @@ private extension WeightView {
 private extension WeightView {
     var chartView : some View {
         WeightChartView(loggedWeights: self.loggedWeights)
-    }
-}
-
-// MARK: Logged Weight
-private extension WeightView {
-    func loggedWeightView(_ loggedWeight : Weight) -> some View {
-        LoggedWeightView(loggedWeight: loggedWeight)
     }
 }
 
