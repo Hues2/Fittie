@@ -36,7 +36,7 @@
 		2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373432BEFD69700843FCA /* DailyStep.swift */; };
 		2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */; };
 		2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */; };
-		2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */; };
+		2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABA2BEE8F2C009C7002 /* FittieApp.swift */; };
 		2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */; };
 		2EC6CABF2BEE8F2F009C7002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */; };
 		2EC6CAC22BEE8F2F009C7002 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CAC12BEE8F2F009C7002 /* Preview Assets.xcassets */; };
@@ -87,7 +87,7 @@
 		2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		2EC6CAB72BEE8F2C009C7002 /* Fittie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fittie.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSpotterApp.swift; sourceTree = "<group>"; };
+		2EC6CABA2BEE8F2C009C7002 /* FittieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittieApp.swift; sourceTree = "<group>"; };
 		2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EC6CAC12BEE8F2F009C7002 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 		2EC6CACB2BEE9174009C7002 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				2EC6CABA2BEE8F2C009C7002 /* TrackingSpotterApp.swift */,
+				2EC6CABA2BEE8F2C009C7002 /* FittieApp.swift */,
 				2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */,
 			);
 			path = App;
@@ -425,7 +425,7 @@
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */,
 				2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */,
-				2EC6CABB2BEE8F2C009C7002 /* TrackingSpotterApp.swift in Sources */,
+				2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */,
 				2EA2F5C72BFA444A003E3526 /* Weight.swift in Sources */,
 				2E88060B2BF562CC00E12456 /* CustomButton.swift in Sources */,
 				2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */,

@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct TrackingSpotterApp: App {
+struct FittieApp: App {
     var container : ModelContainer {
         let schema = Schema([Weight.self])
         do {
