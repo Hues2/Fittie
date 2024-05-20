@@ -96,7 +96,7 @@
 		2EC6CAD02BEE92C2009C7002 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		2EC6CAD22BEE9378009C7002 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		2EC6CAD82BEEBF52009C7002 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
-		2EC6CADA2BEEBF7F009C7002 /* TrackingSpotter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrackingSpotter.entitlements; sourceTree = "<group>"; };
+		2EC6CADA2BEEBF7F009C7002 /* Fittie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fittie.entitlements; sourceTree = "<group>"; };
 		2EC6CADB2BEEBFBB009C7002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2EC6CADD2BEEC2A5009C7002 /* Containers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Containers.swift; sourceTree = "<group>"; };
 		2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				2EC6CADB2BEEBFBB009C7002 /* Info.plist */,
-				2EC6CADA2BEEBF7F009C7002 /* TrackingSpotter.entitlements */,
+				2EC6CADA2BEEBF7F009C7002 /* Fittie.entitlements */,
 				2EC6CACB2BEE9174009C7002 /* App */,
 				2EA373422BEFD67E00843FCA /* Models */,
 				2EC6CADC2BEEC146009C7002 /* Factory */,
