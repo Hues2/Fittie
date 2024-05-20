@@ -17,6 +17,7 @@ private extension WeightChartView {
                     x: .value("Date", loggedWeight.date),
                     y: .value("Weight", loggedWeight.kg)
                 )
+                .interpolationMethod(.catmullRom)
                 
                 PointMark(
                     x: .value("Date", loggedWeight.date),
