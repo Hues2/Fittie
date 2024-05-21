@@ -2,74 +2,49 @@ import SwiftUI
 import SwiftData
 
 struct LogWeightView: View {
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
-    @FocusState private var isFocused : Bool
     @State private var weight : Double?
-    @State private var weightIsValid : Bool = false
     
     var body: some View {
-        VStack(alignment: .center, spacing: 40) {
-            title
-            inputWithLabel
-            saveButton
-        }
-        .padding(.horizontal, 24)
-        .padding(.vertical, 12)
-        .padding(.top, 24)        
+        WeightInputView(weight: $weight, saveAction: {
+            saveAction()
+        })
     }
 }
 
 private extension LogWeightView {
-    var title : some View {
-        Text("log_weight_view_title")
-            .font(.title)
-            .fontWeight(.bold)
-            .lineLimit(1)
-            .frame(maxWidth: .infinity, alignment: .center)
-    }
-    
-    var inputWithLabel : some View {
-        VStack {
-            weightInput
-            kgLabel
-        }
-    }
-    
-    var weightInput : some View {
-        TextField("", value: $weight, format: .number, prompt: Text("80.4"))
-            .font(.system(size: Constants.bigTextSize))
-            .foregroundStyle(weightIsValid ? Color.primary : Color.red)
-            .multilineTextAlignment(.center)
-            .keyboardType(.decimalPad)
-            .focused($isFocused)
-            .frame(maxWidth: .infinity, alignment: .center)
-            .onAppear {
-                self.isFocused = true
-            }
-            .onChange(of: weight) { oldValue, newValue in
-                guard weight != nil else {
-                    self.weightIsValid = false
-                    return
-                }
-                self.weightIsValid = true
-            }
-    }
-    
-    var kgLabel : some View {
-        Text("log_weight_kg_label")
-            .font(.title2)
-            .foregroundStyle(.secondary)
-    }
-    
-    var saveButton : some View {
-        CustomButton(title: "log_weight_save_button_title") {
-            // Save weight
-            guard let weight, weightIsValid else { return }
-            let newWeight = Weight(date: .now.startOfDay, kg: weight)
-            context.insert(newWeight)
-        }
-        .disabled(!self.weightIsValid)
+    func saveAction() {        
+        guard let weight else { return }
+        let newWeight = Weight(date: .now.startOfDay, kg: weight)
+        let newWeight1 = Weight(date: Date.getDayFrom(date: .now, days: 1)!, kg: 87)
+        let newWeight2 = Weight(date: Date.getDayFrom(date: .now, days: 3)!, kg: 83)
+        let newWeight3 = Weight(date: Date.getDayFrom(date: .now, days: 5)!, kg: 90)
+        
+        let newWeight4 = Weight(date: Date.getDayFrom(date: .now, days: 8)!, kg: 87)
+        let newWeight5 = Weight(date: Date.getDayFrom(date: .now, days: 12)!, kg: 83)
+        let newWeight6 = Weight(date: Date.getDayFrom(date: .now, days: 15)!, kg: 90)
+        
+        let newWeight7 = Weight(date: Date.getDayFrom(date: .now, days: 137)!, kg: 87)
+        let newWeight8 = Weight(date: Date.getDayFrom(date: .now, days: 165)!, kg: 83)
+        let newWeight9 = Weight(date: Date.getDayFrom(date: .now, days: 196)!, kg: 90)
+        
+        let newWeight10 = Weight(date: Date.getDayFrom(date: .now, days: 203)!, kg: 87)
+        let newWeight11 = Weight(date: Date.getDayFrom(date: .now, days: 270)!, kg: 83)
+        let newWeight12 = Weight(date: Date.getDayFrom(date: .now, days: 365)!, kg: 90)
+        
+        context.insert(newWeight)
+        context.insert(newWeight1)
+        context.insert(newWeight2)
+        context.insert(newWeight3)
+        context.insert(newWeight4)
+        context.insert(newWeight5)
+        context.insert(newWeight6)
+//            context.insert(newWeight7)
+//            context.insert(newWeight8)
+//            context.insert(newWeight9)
+//            context.insert(newWeight10)
+//            context.insert(newWeight11)
+//            context.insert(newWeight12)
     }
 }
 

@@ -10,6 +10,8 @@
 		2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E39A9AB2BF03D7C00A93F19 /* Utils.swift */; };
 		2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */; };
 		2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */; };
+		2E5868A32BFD471300222850 /* WeightInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A22BFD471300222850 /* WeightInput.swift */; };
+		2E5868A52BFD47A000222850 /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A42BFD47A000222850 /* WeightInputView.swift */; };
 		2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */; };
 		2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */; };
 		2E5FF2C62BF6A0FA00779ADC /* AllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */; };
@@ -60,6 +62,8 @@
 		2E39A9AB2BF03D7C00A93F19 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStack.swift; sourceTree = "<group>"; };
 		2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
+		2E5868A22BFD471300222850 /* WeightInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInput.swift; sourceTree = "<group>"; };
+		2E5868A42BFD47A000222850 /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
 		2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPermissionsView.swift; sourceTree = "<group>"; };
 		2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetView.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				2E88060A2BF562CC00E12456 /* CustomButton.swift */,
 				2E88060C2BF5636400E12456 /* StepperView.swift */,
 				2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */,
+				2E5868A22BFD471300222850 /* WeightInput.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			children = (
 				2EA2F5C82BFA72BA003E3526 /* LogWeightView.swift */,
 				2EA2F5CF2BFAB171003E3526 /* UpdateWeightView.swift */,
+				2E5868A42BFD47A000222850 /* WeightInputView.swift */,
 			);
 			path = WeightSheets;
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */,
+				2E5868A32BFD471300222850 /* WeightInput.swift in Sources */,
 				2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */,
 				2EA2F5C72BFA444A003E3526 /* Weight.swift in Sources */,
@@ -431,6 +438,7 @@
 				2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */,
 				2E8806092BF5568400E12456 /* OnboardingViewModel.swift in Sources */,
 				2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */,
+				2E5868A52BFD47A000222850 /* WeightInputView.swift in Sources */,
 				2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */,
 				2EA2F5D22BFAB665003E3526 /* WeightChartView.swift in Sources */,
 				2E8806072BF5548200E12456 /* SetStepGoalView.swift in Sources */,
