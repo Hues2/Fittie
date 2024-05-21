@@ -6,7 +6,7 @@ struct StepGoalView: View {
     let isLoading : Bool
     
     var body: some View {
-        CardView(title: "step_goal_title", height: Constants.cardHeight) {
+        CardView(icon: "target", title: "step_goal_title", height: Constants.cardHeight) {
             VStack {
                 if isLoading {
                     LoadingView()

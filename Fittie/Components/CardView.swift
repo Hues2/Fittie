@@ -1,11 +1,13 @@
 import SwiftUI
 
 struct CardView<CardContent : View> : View {
+    let icon : String
     let title : LocalizedStringKey
     let height : CGFloat
     let cardContent : CardContent
     
-    init(title: LocalizedStringKey, height: CGFloat, @ViewBuilder cardContent: () -> CardContent) {
+    init(icon : String, title: LocalizedStringKey, height: CGFloat, @ViewBuilder cardContent: () -> CardContent) {
+        self.icon = icon
         self.title = title
         self.height = height
         self.cardContent = cardContent()        
@@ -18,7 +20,7 @@ struct CardView<CardContent : View> : View {
         } label: {
             Text(title)
         }
-        .groupBoxStyle(HomeCardGroupBoxStyle(height: height))
+        .groupBoxStyle(HomeCardGroupBoxStyle(height: height, icon: icon))
     }
     
     func sectionTitle(_ title : LocalizedStringKey) -> some View {

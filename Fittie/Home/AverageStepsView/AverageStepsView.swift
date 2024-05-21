@@ -9,7 +9,7 @@ struct AverageStepsView: View {
     @State private var displayedSteps : [DailyStep] = []
     
     var body: some View {
-        CardView(title: "average_steps_title", height: Constants.graphCardHeight) {
+        CardView(icon: "figure.walk", title: "average_steps_title", height: Constants.graphCardHeight) {
             if isLoading {
                 LoadingView()
             } else {

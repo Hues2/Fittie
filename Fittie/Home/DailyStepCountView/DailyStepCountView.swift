@@ -5,7 +5,7 @@ struct DailyStepCountView: View {
     let isLoading : Bool
     
     var body: some View {
-        CardView(title: "daily_steps_title", height: Constants.cardHeight) {
+        CardView(icon: "shoeprints.fill", title: "daily_steps_title", height: Constants.cardHeight) {
             VStack {
                 if isLoading {
                     LoadingView()

@@ -250,10 +250,10 @@
 				2EC6CAC92BEE9116009C7002 /* HomeView.swift */,
 				2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */,
 				2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */,
-				2EA2F5C32BFA3D25003E3526 /* WeightView */,
 				2ED7F59F2BF14CE100720874 /* StepGoalView */,
 				2EC6CAE32BEED76D009C7002 /* DailyStepCountView */,
 				2EA3733F2BEFCB4100843FCA /* AverageStepsView */,
+				2EA2F5C32BFA3D25003E3526 /* WeightView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
