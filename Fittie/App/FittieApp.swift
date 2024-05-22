@@ -17,19 +17,7 @@ struct FittieApp: App {
         WindowGroup {
             ContentView()
                 .dynamicTypeSize(Constants.dynamicTypeSizeRange)
-                .onAppear {
-                    setInstallDate()
-                }
                 .modelContainer(container)
-        }
-    }
-    
-    private func setInstallDate() {
-        let installDate = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date
-        guard installDate != nil else {
-            // Install date hasn't been set yet
-            UserDefaults.standard.setValue(Date().startOfDay, forKey: Constants.UserDefaults.installDate)
-            return
         }
     }
 }

@@ -2,12 +2,15 @@ import SwiftUI
 
 enum OnboardingPage : Int, CaseIterable {
     case setStepGoal = 0
-    case getHealthKitPermission = 1
-    case allSet = 2
+    case setWeightGoal = 1
+    case getHealthKitPermission = 2
+    case allSet = 3
     
     var buttonTitle : LocalizedStringKey {
         switch self {
         case .setStepGoal:
+            return "onboarding_next_button_title"
+        case .setWeightGoal:
             return "onboarding_next_button_title"
         case .getHealthKitPermission:
             return "onboarding_set_permissions_button_title"
@@ -28,6 +31,9 @@ struct OnboardingView: View {
             TabView(selection: $onBoardingPage) {
                 SetStepGoalView(stepGoal: $viewModel.stepGoal)
                     .tag(OnboardingPage.setStepGoal)
+                
+                SetWeightGoalView(weightGoal: $viewModel.weightGoal)
+                    .tag(OnboardingPage.setWeightGoal)
                 
                 ActivityPermissionsView()
                     .tag(OnboardingPage.getHealthKitPermission)
@@ -105,6 +111,8 @@ private extension OnboardingView {
     private func buttonAction() {
         switch onBoardingPage {
         case .setStepGoal:
+            nextPage()
+        case .setWeightGoal:
             nextPage()
         case .getHealthKitPermission:
             viewModel.setPermissions {

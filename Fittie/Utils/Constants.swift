@@ -9,7 +9,7 @@ class Constants {
     static let cardHeight : CGFloat = 72
     static let graphCardHeight : CGFloat = 272
     static let minimumScaleFactor : CGFloat = 0.3
-    static let lineSpacing : CGFloat = 2
+    static let lineSpacing : CGFloat = 4
     static let bigCardTextSize : CGFloat = 40
     static let bigTextInputTextSize : CGFloat = 50
     static let dynamicTypeSizeRange : ClosedRange<DynamicTypeSize> = .small ... .xxLarge
@@ -21,7 +21,7 @@ class Constants {
     struct UserDefaults {
         static let hasSeenOnboarding = "has_seen_onboarding"
         static let stepGoal = "step_goal"
-        static let installDate = "install_date"
+        static let weightGoal = "weight_goal"
         static let selectedTimePeriod = "selected_time_period"
     }
 }

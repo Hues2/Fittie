@@ -3,8 +3,11 @@ import Factory
 
 class OnboardingViewModel : ObservableObject {
     @Published var stepGoal : Int = Constants.defaultStepGoal
+    @Published var weightGoal : Double?
     
     @Injected(\.healthKitManager) private var healthKitManager
+    @Injected(\.stepGoalManager) private var stepGoalManager
+    @Injected(\.weightGoalManager) private var weightGoalManager
     
     func setPermissions(_ completion : @escaping () -> Void) {
         Task {
@@ -18,8 +21,9 @@ class OnboardingViewModel : ObservableObject {
     }
     
     func finishOnboarding() {
-        self.setHasSeenOnboarding()
         self.setStepGoal()
+        self.setWeightGoal()
+        self.setHasSeenOnboarding()
     }
     
     private func setHasSeenOnboarding() {
@@ -27,7 +31,12 @@ class OnboardingViewModel : ObservableObject {
     }
     
     private func setStepGoal() {
-        UserDefaults.standard.setValue(stepGoal, forKey: Constants.UserDefaults.stepGoal)
+        self.stepGoalManager.setStepGoal(stepGoal)
+    }
+    
+    private func setWeightGoal() {
+        guard let weightGoal else { return }
+        self.weightGoalManager.setWeightGoal(weightGoal)
     }
     
     private func requestAuthorization() async throws {

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StepperView: View {
+struct StepGoalStepperView: View {
     @Binding var stepGoal : Int
     
     var body: some View {
@@ -46,5 +46,5 @@ struct StepperView: View {
 }
 
 #Preview {
-    StepperView(stepGoal: .constant(10_000))
+    StepGoalStepperView(stepGoal: .constant(10_000))
 }

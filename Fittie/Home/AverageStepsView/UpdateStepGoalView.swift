@@ -6,7 +6,7 @@ struct UpdateStepGoalView: View {
     var body: some View {
         VStack(spacing: 40) {
             title
-            StepperView(stepGoal: $stepGoal)
+            StepGoalStepperView(stepGoal: $stepGoal)
                 .padding(.horizontal, 24)
         }
         .padding(.horizontal, 24)

@@ -88,5 +88,7 @@ private extension HomeView {
 }
 
 #Preview {
-    HomeView()
+    NavigationView {
+        HomeView()
+    }
 }

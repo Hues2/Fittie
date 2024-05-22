@@ -7,8 +7,8 @@ struct SetStepGoalView: View {
         VStack(alignment: .center, spacing: 40) {
             OnboardingTitleAndSubtitle(title: "onboarding_set_step_goal_title",
                                        subtitle: "onboarding_set_step_goal_subtitle")
-            StepperView(stepGoal: $stepGoal)
-                .frame(maxHeight: .infinity)    
+            StepGoalStepperView(stepGoal: $stepGoal)
+                .frame(maxHeight: .infinity)
                 .padding(.horizontal, 24)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)        

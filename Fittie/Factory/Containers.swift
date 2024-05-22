@@ -11,4 +11,9 @@ extension Container {
     var stepGoalManager : Factory<StepGoalManager> {
         self { StepGoalManager() }
     }
+    
+    // MARK: - Weight Goal Manager
+    var weightGoalManager : Factory<WeightGoalManager> {
+        self { WeightGoalManager() }
+    }
 }

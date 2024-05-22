@@ -13,6 +13,10 @@
 "onboarding_set_step_goal_title" = "Daily Step Goal";
 "onboarding_set_step_goal_subtitle" = "Set Your Daily Goal and boost your score by reaching your step goal each day";
 
+// Set Weight Goal
+"onboarding_set_weight_goal_title" = "Weight Goal";
+"onboarding_set_weight_goal_subtitle" = "Define Your Weight Goal and stay motivated with daily tracking";
+
 // Activity Permissions
 "onboarding_request_auth_title" = "Activity Permissions";
 "onboarding_request_auth_subtitle" = "Granting permission to access your step count allows us to display your activity data accurately, helping you track your progress and achieve your fitness goals effectively.";
@@ -43,7 +47,7 @@
 "not_available_description" = "Please review your permission settings";
 
 // Active Burned Energy
-"active_burned_energy_title" = "Energy burned";
+"active_burned_energy_title" = "Burned";
 "active_burned_energy_kilocalorie_unit" = "Kcal";
 
 // Time Period
