@@ -143,7 +143,7 @@ extension HomeViewModel {
 private extension HomeViewModel {
     func getSelectedTimePeriod() -> TimePeriod {
         let savedTimePeriodRawValue = UserDefaults.standard.value(forKey: Constants.UserDefaults.selectedTimePeriod) as? String
-        guard let savedTimePeriodRawValue, let timePeriod = TimePeriod(rawValue: savedTimePeriodRawValue) else { return .month }
+        guard let savedTimePeriodRawValue, let timePeriod = TimePeriod(rawValue: savedTimePeriodRawValue) else { return .week }
         return timePeriod
     }
     
