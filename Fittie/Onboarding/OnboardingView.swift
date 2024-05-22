@@ -108,6 +108,8 @@ private extension OnboardingView {
         CustomButton(title: self.onBoardingPage.buttonTitle) {
             buttonAction()
         }
+        .padding(.bottom, 4)
+        .animation(.none, value: onBoardingPage)
     }
 }
 

@@ -19,6 +19,7 @@ struct CustomButton: View {
                 .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                 .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                .compositingGroup()
         }
     }
 }

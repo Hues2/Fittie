@@ -9,11 +9,16 @@ struct SetWeightGoalView: View {
         VStack(alignment: .center, spacing: 40) {
             OnboardingTitleAndSubtitle(title: "onboarding_set_weight_goal_title",
                                        subtitle: "onboarding_set_weight_goal_subtitle")
-            WeightInput(value: $weightGoal,
-                        weightIsValid: $weightIsValid,
-                        isFocused: $isFocused,
-                        formatStyle: .number,
-                        promptText: "80.4")
+            VStack {
+                WeightInput(value: $weightGoal,
+                            weightIsValid: $weightIsValid,
+                            isFocused: $isFocused,
+                            formatStyle: .number,
+                            promptText: "80.4")
+                Text("log_weight_kg_label")
+                    .font(.title2)
+                    .foregroundStyle(.secondary)                
+            }
             .frame(maxHeight: .infinity)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
