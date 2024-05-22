@@ -17,14 +17,36 @@ struct WeightChartView: View {
     
     var body: some View {
         VStack(spacing: 12) {
+            averageWeightView
             lineChart
             chartLegend
         }
-        .clipped()
-        .frame(maxHeight: .infinity)        
     }
 }
 
+// MARK: Average weight
+private extension WeightChartView {
+    var averageWeightView : some View {
+        HStack(spacing: 2) {
+            Text(String(format: NSLocalizedString("average_steps_average_steps", comment: "Avg:"), averageWeight()))
+                .font(.footnote)            
+                .foregroundStyle(.secondary)
+            
+            Text("log_weight_kg_label")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    func averageWeight() -> String {
+        guard loggedWeights.count > 0 else { return "-" }
+        let average : Double = loggedWeights.reduce(0, { $0 + $1.kg }) / Double(loggedWeights.count)
+        return average.toTwoDecimalPlacesString()
+    }
+}
+
+// MARK: Chart
 private extension WeightChartView {
     var lineChart : some View {
         Chart {
@@ -92,7 +114,10 @@ private extension WeightChartView {
         }
         return maxValue + 2
     }
-    
+}
+
+// MARK: Chart legend
+private extension WeightChartView {
     var chartLegend : some View {
         HomeViewChartLegend(title: "weight_chart_legend_weight_goal")
     }

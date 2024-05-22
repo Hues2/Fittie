@@ -65,8 +65,7 @@ private extension AverageStepsView {
         HStack(spacing: 4) {
             HStack(spacing: 2) {
                 Text(String(format: NSLocalizedString("average_steps_average_steps", comment: "Avg:"), averageSteps()))
-                    .font(.footnote)
-                    .fontWeight(.semibold)
+                    .font(.footnote)                    
                     .foregroundStyle(.secondary)
                 
                 Image(systemName: "shoeprints.fill")
