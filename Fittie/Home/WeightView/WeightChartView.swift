@@ -3,7 +3,8 @@ import Charts
 
 struct WeightChartView: View {
     let loggedWeights : [Weight]
-    let gradient = LinearGradient(
+    @Binding var weightGoal : Double?
+    private let gradient = LinearGradient(
         gradient: Gradient (
             colors: [
                 Color.accentColor.opacity(0.4),
@@ -25,6 +26,11 @@ struct WeightChartView: View {
 private extension WeightChartView {
     var lineChart : some View {
         Chart {
+            if let weightGoal {
+                RuleMark(y: .value("Weight Goal", weightGoal))
+                    .foregroundStyle(Color.pink.gradient)
+            }
+            
             ForEach(loggedWeights) { loggedWeight in
                 LineMark(
                     x: .value("Date", loggedWeight.date),
@@ -70,12 +76,18 @@ private extension WeightChartView {
     }
     
     func getMinYValue() -> Double {
-        let min = loggedWeights.map({ $0.kg }).min()
-        return (min ?? .zero) - 2
+        var minValue = loggedWeights.map({ $0.kg }).min() ?? .zero
+        if let weightGoal {
+            minValue = min(minValue, weightGoal)
+        }
+        return minValue - 2
     }
     
     func getMaxYValue() -> Double {
-        let max = loggedWeights.map({ $0.kg }).max()
-        return (max ?? .zero) + 2
+        var maxValue = loggedWeights.map({ $0.kg }).max() ?? .zero
+        if let weightGoal {
+            maxValue = max(maxValue, weightGoal)
+        }
+        return maxValue + 2
     }
 }

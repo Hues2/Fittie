@@ -35,7 +35,6 @@ class OnboardingViewModel : ObservableObject {
     }
     
     private func setWeightGoal() {
-        guard let weightGoal else { return }
         self.weightGoalManager.setWeightGoal(weightGoal)
     }
     

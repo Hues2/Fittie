@@ -21,9 +21,13 @@ class HomeViewModel : ObservableObject {
     @Published var activeBurnedEnergy : Double = .zero
     @Published private(set) var burnedEnergyIsLoading : Bool = true
     
+    // Weight
+    @Published var weightGoal : Double?
+    
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
     @Injected(\.stepGoalManager) private var stepGoalManager
+    @Injected(\.weightGoalManager) private var weightGoalManager
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -33,6 +37,7 @@ class HomeViewModel : ObservableObject {
         
         // Fetch the needed data
         getStepsForTimePeriod()
+        getWeightGoal()
     }
     
     private func addSubscriptions() {
@@ -144,5 +149,12 @@ private extension HomeViewModel {
     
     func saveSelectedTimePeriod() {
         UserDefaults.standard.setValue(self.selectedPeriod.rawValue, forKey: Constants.UserDefaults.selectedTimePeriod)
+    }
+}
+
+// MARK: Weight Goal
+private extension HomeViewModel {
+    func getWeightGoal() {
+        self.weightGoal = weightGoalManager.getWeightGoal()
     }
 }

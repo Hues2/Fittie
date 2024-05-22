@@ -82,7 +82,7 @@ private extension HomeView {
 // MARK: - Weight Section
 private extension HomeView {
     var weightView : some View {
-        WeightView()
+        WeightView(weightGoal: $viewModel.weightGoal)
             .padding(.bottom, 12)
     }
 }

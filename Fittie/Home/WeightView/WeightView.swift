@@ -7,6 +7,7 @@ struct WeightView: View {
     @Query(sort: \Weight.date) private var loggedWeights : [Weight]
     @State private var isAddingWeight : Bool = false
     @State private var weightToUpdate : Weight?
+    @Binding var weightGoal : Double?
     
     var body: some View {
         CardView(icon: "scalemass.fill", title: "weight_title", height: Constants.graphCardHeight - 25) {
@@ -71,7 +72,7 @@ private extension WeightView {
 // MARK: Line Chart
 private extension WeightView {
     var chartView : some View {
-        WeightChartView(loggedWeights: self.loggedWeights)
+        WeightChartView(loggedWeights: self.loggedWeights, weightGoal: $weightGoal)
     }
 }
 
