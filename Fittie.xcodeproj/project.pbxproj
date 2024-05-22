@@ -147,11 +147,11 @@
 			children = (
 				2E8806042BF54AE300E12456 /* OnboardingView.swift */,
 				2E8806062BF5548200E12456 /* SetStepGoalView.swift */,
+				2E90E7912BFE6554003DE59F /* SetWeightGoalView.swift */,
 				2E8806082BF5568400E12456 /* OnboardingViewModel.swift */,
 				2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */,
 				2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */,
 				2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */,
-				2E90E7912BFE6554003DE59F /* SetWeightGoalView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";

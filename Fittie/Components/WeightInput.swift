@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct WeightInput<F: ParseableFormatStyle>: View where F.FormatOutput == String, F.FormatInput: Equatable {
-    @FocusState private var isFocused : Bool
     @Binding var value : F.FormatInput?
     @Binding var weightIsValid : Bool
+    @FocusState.Binding var isFocused : Bool
     let formatStyle: F
     let promptText : String
 
@@ -15,10 +15,7 @@ struct WeightInput<F: ParseableFormatStyle>: View where F.FormatOutput == String
             .multilineTextAlignment(.center)
             .keyboardType(.decimalPad)
             .focused($isFocused)
-            .frame(maxWidth: .infinity, alignment: .center)
-            .onAppear {
-                self.isFocused = true
-            }
+            .frame(maxWidth: .infinity, alignment: .center)            
             .onChange(of: value) { oldValue, newValue in
                 guard newValue != nil else {
                     self.weightIsValid = false
@@ -27,8 +24,4 @@ struct WeightInput<F: ParseableFormatStyle>: View where F.FormatOutput == String
                 self.weightIsValid = true
             }
     }
-}
-
-#Preview {
-    WeightInput(value: .constant(86.6), weightIsValid: .constant(true), formatStyle: .number, promptText: "80.4")
 }

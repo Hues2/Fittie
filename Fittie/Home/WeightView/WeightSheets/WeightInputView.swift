@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WeightInputView: View {
     @Environment(\.dismiss) private var dismiss
+    @FocusState private var isFocused : Bool
     @State private var weightIsValid : Bool = false
     @Binding var weight : Double?
     let saveAction : () -> Void
@@ -15,6 +16,9 @@ struct WeightInputView: View {
         .padding(.horizontal, 24)
         .padding(.vertical, 12)
         .padding(.top, 24)
+        .onAppear {
+            self.isFocused = true
+        }
     }
 }
 
@@ -35,7 +39,7 @@ private extension WeightInputView {
     }
     
     var weightInput : some View {
-        WeightInput(value: $weight, weightIsValid: $weightIsValid, formatStyle: .number, promptText: "80.4")
+        WeightInput(value: $weight, weightIsValid: $weightIsValid, isFocused: $isFocused, formatStyle: .number, promptText: "80.4")
     }
     
     var kgLabel : some View {

@@ -10,7 +10,7 @@ struct UpdateStepGoalView: View {
                 .padding(.horizontal, 24)
         }
         .padding(.horizontal, 24)
-        .padding(.vertical, 48)
+        .padding(.vertical, 48)        
     }
 }
 

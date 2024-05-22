@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SetWeightGoalView: View {
+    @FocusState.Binding var isFocused : Bool
     @Binding var weightGoal : Double?
     @State private var weightIsValid : Bool = false
     
@@ -10,6 +11,7 @@ struct SetWeightGoalView: View {
                                        subtitle: "onboarding_set_weight_goal_subtitle")
             WeightInput(value: $weightGoal,
                         weightIsValid: $weightIsValid,
+                        isFocused: $isFocused,
                         formatStyle: .number,
                         promptText: "80.4")
             .frame(maxHeight: .infinity)
@@ -17,9 +19,11 @@ struct SetWeightGoalView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.vertical, 32)
         .padding(.horizontal, 24)
+        .onAppear {
+            // There has to be a delay, as this action cancels the paged tab view animation
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.isFocused = true
+            }
+        }
     }
-}
-
-#Preview {
-    SetWeightGoalView(weightGoal: .constant(80.5))
 }

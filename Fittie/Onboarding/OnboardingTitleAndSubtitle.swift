@@ -15,6 +15,7 @@ struct OnboardingTitleAndSubtitle: View {
                 .fontWeight(.regular)
                 .multilineTextAlignment(.center)
                 .lineSpacing(Constants.lineSpacing)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

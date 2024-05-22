@@ -22,6 +22,7 @@ enum OnboardingPage : Int, CaseIterable {
 
 struct OnboardingView: View {
     @Environment(\.dismiss) private var dismiss
+    @FocusState private var isFocused : Bool
     @StateObject private var viewModel = OnboardingViewModel()
     @State private var onBoardingPage : OnboardingPage = .setStepGoal
     @Binding var hasSeenOnboarding : Bool
@@ -32,7 +33,7 @@ struct OnboardingView: View {
                 SetStepGoalView(stepGoal: $viewModel.stepGoal)
                     .tag(OnboardingPage.setStepGoal)
                 
-                SetWeightGoalView(weightGoal: $viewModel.weightGoal)
+                SetWeightGoalView(isFocused: $isFocused, weightGoal: $viewModel.weightGoal)
                     .tag(OnboardingPage.setWeightGoal)
                 
                 ActivityPermissionsView()
@@ -48,6 +49,10 @@ struct OnboardingView: View {
         }
         .padding(.bottom, 32)
         .padding(.top, 52)
+        .contentShape(RoundedRectangle(cornerRadius: Constants.sheetCornerRadius))
+        .onTapGesture {
+            self.isFocused = false
+        }
         .overlay(alignment: .topLeading) {
             backButton
                 .padding(16)
@@ -119,6 +124,7 @@ private extension OnboardingView {
                 nextPage()
             }
         case .allSet:
+            self.isFocused = false
             viewModel.finishOnboarding()
             dismiss()
             self.hasSeenOnboarding = true
@@ -126,6 +132,7 @@ private extension OnboardingView {
     }
     
     private func nextPage() {
+        self.isFocused = false
         if let nextPage = OnboardingPage(rawValue: onBoardingPage.rawValue + 1) {
             withAnimation {
                 onBoardingPage = nextPage
@@ -134,6 +141,7 @@ private extension OnboardingView {
     }
     
     private func previousPage() {
+        self.isFocused = false
         if let previousPage = OnboardingPage(rawValue: onBoardingPage.rawValue - 1) {
             withAnimation {
                 onBoardingPage = previousPage
