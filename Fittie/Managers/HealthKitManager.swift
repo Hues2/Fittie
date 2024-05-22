@@ -14,16 +14,12 @@ class HealthKitManager {
 extension HealthKitManager {
     func fetchTodaysActiveEnergyBurned(_ completion : @escaping (Double) -> Void) {
         let activeEnergyType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-        
-        let predicate = HKQuery.predicateForSamples(withStart: Date().startOfDay, end: .now, options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: activeEnergyType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
-            guard let result = result, let sum = result.sumQuantity() else {
+        let predicate = HKQuery.predicateForSamples(withStart: Date().startOfDay, end: .now)
+        let query = HKStatisticsQuery(quantityType: activeEnergyType, quantitySamplePredicate: predicate) { _, result, error in
+            guard let result = result, let activeEnergyBurned = result.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) else {
                 completion(0)
                 return
             }
-            
-            let activeEnergyBurned = sum.doubleValue(for: HKUnit.kilocalorie())
             completion(activeEnergyBurned)
         }
         
@@ -34,9 +30,9 @@ extension HealthKitManager {
 // MARK: Step Count
 extension HealthKitManager {
     func fetchTodaySteps(_ completion : @escaping (Double) -> Void) {
-        let steps = HKQuantityType(.stepCount)
-        let predicate = HKQuery.predicateForSamples(withStart: Date().startOfDay, end: Date())
-        let query = HKStatisticsQuery(quantityType: steps, quantitySamplePredicate: predicate) { _, result, error in
+        let stepsCountType = HKQuantityType(.stepCount)
+        let predicate = HKQuery.predicateForSamples(withStart: Date().startOfDay, end: .now)
+        let query = HKStatisticsQuery(quantityType: stepsCountType, quantitySamplePredicate: predicate) { _, result, error in
             guard let totalSteps = result?.sumQuantity()?.doubleValue(for: .count()), error == nil else { completion(0); return }
             completion(totalSteps)
         }

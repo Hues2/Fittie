@@ -11,6 +11,7 @@ struct HomeCardGroupBoxStyle : GroupBoxStyle {
                 configuration.label
             }
             .foregroundStyle(Color.pink)
+            
             configuration.content
                 .frame(height: height)
         }

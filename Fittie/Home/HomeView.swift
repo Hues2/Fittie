@@ -61,7 +61,7 @@ private extension HomeView {
 // MARK: - Burned Active Energy
 private extension HomeView {
     var activeBurnedEnergy : some View {
-        BasicInfoCardView(value: "\(viewModel.activeBurnedEnergy.toTwoDecimalPlacesString())",
+        BasicInfoCardView(value: "\(Int(viewModel.activeBurnedEnergy))",
                           title: "active_burned_energy_title",
                           unit: "active_burned_energy_kilocalorie_unit",
                           icon: "flame.fill",
