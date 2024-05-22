@@ -12,6 +12,7 @@
 		2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */; };
 		2E5868A32BFD471300222850 /* WeightInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A22BFD471300222850 /* WeightInput.swift */; };
 		2E5868A52BFD47A000222850 /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A42BFD47A000222850 /* WeightInputView.swift */; };
+		2E5868AA2BFD6B1F00222850 /* BasicInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */; };
 		2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */; };
 		2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */; };
 		2E5FF2C62BF6A0FA00779ADC /* AllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */; };
@@ -51,10 +52,8 @@
 		2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CADD2BEEC2A5009C7002 /* Containers.swift */; };
 		2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */; };
 		2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE12BEED1D5009C7002 /* CustomError.swift */; };
-		2EC6CAE52BEED789009C7002 /* DailyStepCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE42BEED789009C7002 /* DailyStepCountView.swift */; };
 		2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE82BEEDD46009C7002 /* Constants.swift */; };
 		2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAEB2BEEEBB5009C7002 /* Date.swift */; };
-		2ED7F5A12BF14CFB00720874 /* StepGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A02BF14CFB00720874 /* StepGoalView.swift */; };
 		2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +63,7 @@
 		2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
 		2E5868A22BFD471300222850 /* WeightInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInput.swift; sourceTree = "<group>"; };
 		2E5868A42BFD47A000222850 /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
+		2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoCardView.swift; sourceTree = "<group>"; };
 		2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPermissionsView.swift; sourceTree = "<group>"; };
 		2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetView.swift; sourceTree = "<group>"; };
@@ -105,10 +105,8 @@
 		2EC6CADD2BEEC2A5009C7002 /* Containers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Containers.swift; sourceTree = "<group>"; };
 		2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2EC6CAE12BEED1D5009C7002 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
-		2EC6CAE42BEED789009C7002 /* DailyStepCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStepCountView.swift; sourceTree = "<group>"; };
 		2EC6CAE82BEEDD46009C7002 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2EC6CAEB2BEEEBB5009C7002 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		2ED7F5A02BF14CFB00720874 /* StepGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGoalView.swift; sourceTree = "<group>"; };
 		2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetHeight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,10 +248,9 @@
 				2EC6CAC92BEE9116009C7002 /* HomeView.swift */,
 				2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */,
 				2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */,
-				2ED7F59F2BF14CE100720874 /* StepGoalView */,
-				2EC6CAE32BEED76D009C7002 /* DailyStepCountView */,
 				2EA3733F2BEFCB4100843FCA /* AverageStepsView */,
 				2EA2F5C32BFA3D25003E3526 /* WeightView */,
+				2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -306,14 +303,6 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		2EC6CAE32BEED76D009C7002 /* DailyStepCountView */ = {
-			isa = PBXGroup;
-			children = (
-				2EC6CAE42BEED789009C7002 /* DailyStepCountView.swift */,
-			);
-			path = DailyStepCountView;
-			sourceTree = "<group>";
-		};
 		2EC6CAEA2BEEEBAB009C7002 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,14 +312,6 @@
 				2EA2F5CA2BFA9304003E3526 /* Double.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		2ED7F59F2BF14CE100720874 /* StepGoalView */ = {
-			isa = PBXGroup;
-			children = (
-				2ED7F5A02BF14CFB00720874 /* StepGoalView.swift */,
-			);
-			path = StepGoalView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,7 +395,6 @@
 				2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */,
 				2EA2F5C92BFA72BA003E3526 /* LogWeightView.swift in Sources */,
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
-				2ED7F5A12BF14CFB00720874 /* StepGoalView.swift in Sources */,
 				2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */,
 				2EA373412BEFCB7A00843FCA /* AverageStepsView.swift in Sources */,
 				2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */,
@@ -424,6 +404,7 @@
 				2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */,
 				2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */,
 				2EC6CAD92BEEBF52009C7002 /* HealthKitManager.swift in Sources */,
+				2E5868AA2BFD6B1F00222850 /* BasicInfoCardView.swift in Sources */,
 				2EA2F5D42BFAB7B7003E3526 /* WeightContentUnavailableView.swift in Sources */,
 				2EA2F5D02BFAB171003E3526 /* UpdateWeightView.swift in Sources */,
 				2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */,
@@ -449,7 +430,6 @@
 				2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */,
 				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
 				2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */,
-				2EC6CAE52BEED789009C7002 /* DailyStepCountView.swift in Sources */,
 				2EA2F5CB2BFA9304003E3526 /* Double.swift in Sources */,
 				2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */,
 				2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */,

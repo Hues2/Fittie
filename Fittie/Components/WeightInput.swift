@@ -10,7 +10,7 @@ struct WeightInput<F: ParseableFormatStyle>: View where F.FormatOutput == String
     
     var body: some View {
         TextField("", value: $value, format: formatStyle, prompt: Text(promptText))
-            .font(.system(size: Constants.bigTextSize))
+            .font(.system(size: Constants.bigTextInputTextSize))
             .foregroundStyle(weightIsValid ? Color.primary : Color.red)
             .multilineTextAlignment(.center)
             .keyboardType(.decimalPad)

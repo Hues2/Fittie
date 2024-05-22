@@ -32,5 +32,5 @@ struct CardView<CardContent : View> : View {
 }
 
 #Preview {
-    DailyStepCountView(steps: 1025, isLoading: false)
+    BasicInfoCardView(value: "1098", title: "Title", unit: "Steps", icon: "shoeprints.fill", isLoading: false)
 }

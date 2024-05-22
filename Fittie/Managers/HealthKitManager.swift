@@ -6,9 +6,33 @@ class HealthKitManager {
     
     func requestAuthorization() async throws {
         guard HKHealthStore.isHealthDataAvailable() else { return }
-        try await healthStore.requestAuthorization(toShare: [], read: [HKQuantityType(.stepCount)])
+        try await healthStore.requestAuthorization(toShare: [], read: [HKQuantityType(.stepCount), HKQuantityType(.activeEnergyBurned)])
     }
-    
+}
+
+// MARK: Active Energy Burned
+extension HealthKitManager {
+    func fetchTodaysActiveEnergyBurned(_ completion : @escaping (Double) -> Void) {
+        let activeEnergyType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        
+        let predicate = HKQuery.predicateForSamples(withStart: Date().startOfDay, end: .now, options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: activeEnergyType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
+            guard let result = result, let sum = result.sumQuantity() else {
+                completion(0)
+                return
+            }
+            
+            let activeEnergyBurned = sum.doubleValue(for: HKUnit.kilocalorie())
+            completion(activeEnergyBurned)
+        }
+        
+        healthStore.execute(query)
+    }
+}
+
+// MARK: Step Count
+extension HealthKitManager {
     func fetchTodaySteps(_ completion : @escaping (Double) -> Void) {
         let steps = HKQuantityType(.stepCount)
         let predicate = HKQuery.predicateForSamples(withStart: Date().startOfDay, end: Date())

@@ -9,6 +9,7 @@ struct HomeView: View {
             .navigationTitle("home_nav_title")
             .onAppear {
                 viewModel.getDailySteps()
+                viewModel.getActiveBurnedEnergy()
             }
     }
 }
@@ -33,7 +34,7 @@ private extension HomeView {
     var firstSection : some View {
         HStack {
             dailyStepCountView
-            stepGoal
+            activeBurnedEnergy
         }
     }
     
@@ -49,17 +50,22 @@ private extension HomeView {
 // MARK: - Daily Steps
 private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
-        DailyStepCountView(steps: viewModel.todaysSteps,
-                           isLoading: viewModel.dailyStepsAreLoading)
+        BasicInfoCardView(value: "\(viewModel.todaysSteps)",
+                          title: "daily_steps_title",
+                          unit: "daily_steps_unit",
+                          icon: "shoeprints.fill",
+                          isLoading: viewModel.dailyStepsAreLoading)
     }
 }
 
-// MARK: - Achieved Step Goals View
+// MARK: - Burned Active Energy
 private extension HomeView {
-    var stepGoal : some View {
-        StepGoalView(stepGoal: viewModel.stepGoal,
-                     achievedStepGoals: viewModel.achievedStepGoals,
-                     isLoading: viewModel.achievedStepGoalsIsLoading)
+    var activeBurnedEnergy : some View {
+        BasicInfoCardView(value: "\(viewModel.activeBurnedEnergy.toTwoDecimalPlacesString())",
+                          title: "active_burned_energy_title",
+                          unit: "active_burned_energy_kilocalorie_unit",
+                          icon: "flame.fill",
+                          isLoading: viewModel.achievedStepGoalsIsLoading)
     }
 }
 

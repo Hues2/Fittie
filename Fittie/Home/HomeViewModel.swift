@@ -4,12 +4,12 @@ import Factory
 
 class HomeViewModel : ObservableObject {
     // Todays Steps
-    @Published private(set) var todaysSteps : Int?
+    @Published private(set) var todaysSteps : Int = 0
     @Published private(set) var dailyStepsAreLoading : Bool = true
     
     // Number of daily step goals achieved
-    @Published var stepGoal : Int = 0
-    @Published private(set) var achievedStepGoals : Int = 0
+    @Published var stepGoal : Int = .zero
+    @Published private(set) var achievedStepGoals : Int = .zero
     @Published private(set) var achievedStepGoalsIsLoading : Bool = true
     
     // Step Chart
@@ -19,6 +19,9 @@ class HomeViewModel : ObservableObject {
     @Published var stepsAreLoading : Bool = true
     @Published var selectedPeriod : TimePeriod = .month
     
+    // Active Burned Energy
+    @Published var activeBurnedEnergy : Double = .zero
+    @Published private(set) var burnedEnergyIsLoading : Bool = true
     
     // Dependencies
     @Injected(\.healthKitManager) private var healthKitManager
@@ -130,8 +133,22 @@ extension HomeViewModel {
         }
     }
 }
+// MARK: Active Energy Burned
+extension HomeViewModel {
+    func getActiveBurnedEnergy() {
+        healthKitManager.fetchTodaysActiveEnergyBurned { [weak self] kilocalories in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                withAnimation {
+                    self.activeBurnedEnergy = kilocalories
+                    self.burnedEnergyIsLoading = false
+                }
+            }
+        }
+    }
+}
 
-// MARK: Selected time period
+// MARK: Selected Time Period
 private extension HomeViewModel {
     func getSelectedTimePeriod() -> TimePeriod {
         let savedTimePeriodRawValue = UserDefaults.standard.value(forKey: Constants.UserDefaults.selectedTimePeriod) as? String
