@@ -3,9 +3,9 @@ import SwiftUI
 
 class Constants {
     // MARK: - UI
-    static let cornerRadius : CGFloat = 8
+    static let cornerRadius : CGFloat = 16
     static let sheetCornerRadius : CGFloat = 28
-    static let horizontalPadding : CGFloat = 12
+    static let horizontalScrollviewPadding : CGFloat = 12
     static let cardHeight : CGFloat = 72
     static let graphCardHeight : CGFloat = 272
     static let minimumScaleFactor : CGFloat = 0.3

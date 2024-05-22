@@ -7,6 +7,7 @@ struct AverageStepsView: View {
     let isLoading : Bool
     @Binding var selectedPeriod : TimePeriod
     @State private var displayedSteps : [DailyStep] = []
+    @State private var isUpdatingStepGoal : Bool = false
     
     var body: some View {
         CardView(icon: "figure.walk", title: "average_steps_title", height: Constants.graphCardHeight) {
@@ -15,6 +16,19 @@ struct AverageStepsView: View {
             } else {
                 content
             }
+        }
+        .overlay(alignment: .topTrailing) {
+            Image(systemName: "hand.tap")
+                .padding()
+                .foregroundStyle(.secondary)
+        }
+        .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        .onTapGesture {
+            self.isUpdatingStepGoal = true
+        }
+        .sheet(isPresented: $isUpdatingStepGoal) {
+            UpdateStepGoalView(stepGoal: $stepGoal)
+                .withCustomSheetHeight()
         }
     }
 }
@@ -40,6 +54,9 @@ private extension AverageStepsView {
             }
         }
         .pickerStyle(.menu)
+        .simultaneousGesture(
+            TapGesture().onEnded { }
+        )
     }
 }
 

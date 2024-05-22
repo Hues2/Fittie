@@ -9,8 +9,6 @@ class HomeViewModel : ObservableObject {
     
     // Number of daily step goals achieved
     @Published var stepGoal : Int = .zero
-    @Published private(set) var achievedStepGoals : Int = .zero
-    @Published private(set) var achievedStepGoalsIsLoading : Bool = true
     
     // Step Chart
     @Published var chartSteps : [DailyStep] = []
@@ -34,7 +32,6 @@ class HomeViewModel : ObservableObject {
         addSubscriptions()
         
         // Fetch the needed data
-        getAchievedStepGoals()
         getStepsForTimePeriod()
     }
     
@@ -108,17 +105,6 @@ extension HomeViewModel {
                     // This is to set the chart steps list for the first time (on app launch)
                     self.setChartSteps(self.selectedPeriod)
                     self.stepsAreLoading = false
-                }
-            }
-        }
-    }
-    
-    func getAchievedStepGoals() {
-        self.stepGoalManager.getNumberOfDailyStepGoalsAchieved { achievedStepGoals in
-            DispatchQueue.main.async {
-                withAnimation {
-                    self.achievedStepGoals = achievedStepGoals
-                    self.achievedStepGoalsIsLoading = false
                 }
             }
         }

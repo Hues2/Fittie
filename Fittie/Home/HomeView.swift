@@ -23,7 +23,7 @@ private extension HomeView {
                 secondSection
                 thirdSection
             }
-            .padding(.horizontal, Constants.horizontalPadding)
+            .padding(.horizontal, Constants.horizontalScrollviewPadding)
         }
         .scrollIndicators(.hidden)
     }
@@ -65,7 +65,7 @@ private extension HomeView {
                           title: "active_burned_energy_title",
                           unit: "active_burned_energy_kilocalorie_unit",
                           icon: "flame.fill",
-                          isLoading: viewModel.achievedStepGoalsIsLoading)
+                          isLoading: viewModel.burnedEnergyIsLoading)
     }
 }
 
