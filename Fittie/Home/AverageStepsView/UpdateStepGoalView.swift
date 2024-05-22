@@ -16,8 +16,8 @@ struct UpdateStepGoalView: View {
 
 private extension UpdateStepGoalView {
     var title : some View {
-        HStack {
-            Image(systemName: "target")
+        HStack(spacing: 4) {
+            Image(systemName: "figure.walk")
             Text("step_goal_update_title")
         }
         .foregroundStyle(Color.pink)

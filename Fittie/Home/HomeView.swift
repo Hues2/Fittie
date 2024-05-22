@@ -18,7 +18,7 @@ struct HomeView: View {
 private extension HomeView {
     var content : some View {
         ScrollView(.vertical) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 12) {
                 firstSection
                 secondSection
                 thirdSection
@@ -32,7 +32,7 @@ private extension HomeView {
 // MARK: - Row Sections
 private extension HomeView {
     var firstSection : some View {
-        HStack {
+        HStack(spacing: 12) {
             dailyStepCountView
             activeBurnedEnergy
         }

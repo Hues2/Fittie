@@ -16,10 +16,12 @@ struct WeightChartView: View {
     )
     
     var body: some View {
-        lineChart
-            .clipped()
-            .frame(maxHeight: .infinity)
-            .padding(.top, 8)
+        VStack(spacing: 12) {
+            lineChart
+            chartLegend
+        }
+        .clipped()
+        .frame(maxHeight: .infinity)        
     }
 }
 
@@ -89,5 +91,9 @@ private extension WeightChartView {
             maxValue = max(maxValue, weightGoal)
         }
         return maxValue + 2
+    }
+    
+    var chartLegend : some View {
+        HomeViewChartLegend(title: "weight_chart_legend_weight_goal")
     }
 }

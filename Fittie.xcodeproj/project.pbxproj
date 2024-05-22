@@ -30,6 +30,7 @@
 		2E90E78E2BFE58D5003DE59F /* UpdateStepGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E90E78D2BFE58D5003DE59F /* UpdateStepGoalView.swift */; };
 		2E90E7902BFE64B1003DE59F /* WeightGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E90E78F2BFE64B1003DE59F /* WeightGoalManager.swift */; };
 		2E90E7922BFE6554003DE59F /* SetWeightGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E90E7912BFE6554003DE59F /* SetWeightGoalView.swift */; };
+		2E90E7942BFE8FBA003DE59F /* HomeViewChartLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E90E7932BFE8FBA003DE59F /* HomeViewChartLegend.swift */; };
 		2EA2F5C52BFA3D39003E3526 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5C42BFA3D39003E3526 /* WeightView.swift */; };
 		2EA2F5C72BFA444A003E3526 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5C62BFA444A003E3526 /* Weight.swift */; };
 		2EA2F5C92BFA72BA003E3526 /* LogWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5C82BFA72BA003E3526 /* LogWeightView.swift */; };
@@ -84,6 +85,7 @@
 		2E90E78D2BFE58D5003DE59F /* UpdateStepGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStepGoalView.swift; sourceTree = "<group>"; };
 		2E90E78F2BFE64B1003DE59F /* WeightGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGoalManager.swift; sourceTree = "<group>"; };
 		2E90E7912BFE6554003DE59F /* SetWeightGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetWeightGoalView.swift; sourceTree = "<group>"; };
+		2E90E7932BFE8FBA003DE59F /* HomeViewChartLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewChartLegend.swift; sourceTree = "<group>"; };
 		2EA2F5C42BFA3D39003E3526 /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		2EA2F5C62BFA444A003E3526 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		2EA2F5C82BFA72BA003E3526 /* LogWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeightView.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				2E88060C2BF5636400E12456 /* StepGoalStepperView.swift */,
 				2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */,
 				2E5868A22BFD471300222850 /* WeightInput.swift */,
+				2E90E7932BFE8FBA003DE59F /* HomeViewChartLegend.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				2E5868A32BFD471300222850 /* WeightInput.swift in Sources */,
 				2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */,
+				2E90E7942BFE8FBA003DE59F /* HomeViewChartLegend.swift in Sources */,
 				2EA2F5C72BFA444A003E3526 /* Weight.swift in Sources */,
 				2E88060B2BF562CC00E12456 /* CustomButton.swift in Sources */,
 				2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */,

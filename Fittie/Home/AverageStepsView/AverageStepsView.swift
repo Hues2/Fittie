@@ -36,11 +36,10 @@ struct AverageStepsView: View {
 // MARK: Content
 private extension AverageStepsView {
     var content : some View {
-        VStack {
+        VStack(spacing: 12) {
             averageStepsView
             chart()
             chartLegend
-                .padding(.top, 8)
         }
     }
 }
@@ -135,17 +134,7 @@ private extension AverageStepsView {
     }
     
     var chartLegend : some View {
-        HStack {
-            RoundedRectangle(cornerRadius: 2)
-                .fill(Color.pink)
-                .frame(height: 1)
-                .frame(width: 20)
-            
-            Text("average_steps_chart_legend_step_goal")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        HomeViewChartLegend(title: "average_steps_chart_legend_step_goal")
     }
     
     func getMax() -> Int {
