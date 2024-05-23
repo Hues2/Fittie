@@ -43,12 +43,13 @@
 		2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373432BEFD69700843FCA /* DailyStep.swift */; };
 		2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */; };
 		2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */; };
+		2EC13DE52BFEB474003BD9E9 /* WeightDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */; };
 		2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABA2BEE8F2C009C7002 /* FittieApp.swift */; };
 		2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */; };
 		2EC6CABF2BEE8F2F009C7002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */; };
 		2EC6CAC22BEE8F2F009C7002 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CAC12BEE8F2F009C7002 /* Preview Assets.xcassets */; };
 		2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAC92BEE9116009C7002 /* HomeView.swift */; };
-		2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CACD2BEE91F4009C7002 /* AppScreen.swift */; };
+		2EC6CACE2BEE91F4009C7002 /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CACD2BEE91F4009C7002 /* AppTab.swift */; };
 		2EC6CAD12BEE92C2009C7002 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2EC6CAD02BEE92C2009C7002 /* Localizable.strings */; };
 		2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAD22BEE9378009C7002 /* AppTabView.swift */; };
 		2EC6CAD62BEEBF37009C7002 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 2EC6CAD52BEEBF37009C7002 /* Factory */; };
@@ -98,13 +99,14 @@
 		2EA373432BEFD69700843FCA /* DailyStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStep.swift; sourceTree = "<group>"; };
 		2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightDetailView.swift; sourceTree = "<group>"; };
 		2EC6CAB72BEE8F2C009C7002 /* Fittie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fittie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC6CABA2BEE8F2C009C7002 /* FittieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittieApp.swift; sourceTree = "<group>"; };
 		2EC6CABC2BEE8F2C009C7002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2EC6CABE2BEE8F2F009C7002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EC6CAC12BEE8F2F009C7002 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2EC6CAC92BEE9116009C7002 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		2EC6CACD2BEE91F4009C7002 /* AppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreen.swift; sourceTree = "<group>"; };
+		2EC6CACD2BEE91F4009C7002 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		2EC6CAD02BEE92C2009C7002 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		2EC6CAD22BEE9378009C7002 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		2EC6CAD82BEEBF52009C7002 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				2EA2F5C42BFA3D39003E3526 /* WeightView.swift */,
 				2EA2F5D12BFAB665003E3526 /* WeightChartView.swift */,
 				2EA2F5D32BFAB7B7003E3526 /* WeightContentUnavailableView.swift */,
+				2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */,
 			);
 			path = WeightView;
 			sourceTree = "<group>";
@@ -278,7 +281,7 @@
 		2EC6CACC2BEE91DF009C7002 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				2EC6CACD2BEE91F4009C7002 /* AppScreen.swift */,
+				2EC6CACD2BEE91F4009C7002 /* AppTab.swift */,
 				2EC6CAD22BEE9378009C7002 /* AppTabView.swift */,
 			);
 			path = Navigation;
@@ -439,10 +442,11 @@
 				2EA2F5D22BFAB665003E3526 /* WeightChartView.swift in Sources */,
 				2E8806072BF5548200E12456 /* SetStepGoalView.swift in Sources */,
 				2E90E78E2BFE58D5003DE59F /* UpdateStepGoalView.swift in Sources */,
+				2EC13DE52BFEB474003BD9E9 /* WeightDetailView.swift in Sources */,
 				2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */,
 				2E5FF2C82BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift in Sources */,
 				2E5FF2C62BF6A0FA00779ADC /* AllSetView.swift in Sources */,
-				2EC6CACE2BEE91F4009C7002 /* AppScreen.swift in Sources */,
+				2EC6CACE2BEE91F4009C7002 /* AppTab.swift in Sources */,
 				2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */,
 				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
 				2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */,

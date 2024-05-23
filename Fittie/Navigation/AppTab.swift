@@ -1,13 +1,13 @@
 import SwiftUI
 
-enum AppScreen: Codable, Hashable, Identifiable, CaseIterable {
+enum AppTab: Codable, Hashable, Identifiable, CaseIterable {
     case home
     case exercises
     
-    var id: AppScreen { self }
+    var id: AppTab { self }
 }
 
-extension AppScreen {
+extension AppTab {
     @ViewBuilder var label: some View {
         switch self {
         case .home:

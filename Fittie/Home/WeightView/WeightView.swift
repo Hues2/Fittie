@@ -17,7 +17,7 @@ struct WeightView: View {
                 } else {
                     chartView
                 }
-                deleteButton
+//                deleteButton
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

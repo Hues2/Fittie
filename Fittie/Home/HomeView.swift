@@ -3,6 +3,8 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @Environment(\.scenePhase) private var scenePhase
+    @State private var showWeightDetailView : Bool = false
+    @Namespace private var namespace
     
     var body: some View {
         content
@@ -16,14 +18,29 @@ struct HomeView: View {
 
 // MARK: - Home View Content
 private extension HomeView {
-    var content : some View {
-        ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 12) {
-                firstSection
-                secondSection
-                thirdSection
+    @ViewBuilder var content : some View {
+        ScrollView {
+            VStack {
+                if showWeightDetailView {
+                    WeightDetailView(viewModel: viewModel, namespace: namespace)
+                        .onTapGesture {
+                            withAnimation {
+                                self.showWeightDetailView = false
+                            }
+                        }
+                } else {
+                    VStack {
+                        firstSection
+                        secondSection
+                    }
+                    .padding(.horizontal, Constants.horizontalScrollviewPadding)
+                    .frame(maxWidth: .infinity)
+                    .transition(.move(edge: .leading))
+                    thirdSection
+                        .padding(.horizontal, Constants.horizontalScrollviewPadding)
+                }
             }
-            .padding(.horizontal, Constants.horizontalScrollviewPadding)
+            .frame(maxWidth: .infinity)
         }
         .scrollIndicators(.hidden)
     }
@@ -44,6 +61,7 @@ private extension HomeView {
     
     var thirdSection : some View {
         weightView
+            .matchedGeometryEffect(id: "weight_view", in: namespace)
     }
 }
 
@@ -84,6 +102,11 @@ private extension HomeView {
     var weightView : some View {
         WeightView(weightGoal: $viewModel.weightGoal)
             .padding(.bottom, 12)
+            .onTapGesture {
+                withAnimation {
+                    self.showWeightDetailView = true
+                }
+            }
     }
 }
 

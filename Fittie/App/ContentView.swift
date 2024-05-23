@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab: AppScreen? = .home
+    @State private var selectedTab: AppTab? = .home
     @State private var presentOnboarding : Bool = false
     @State private var hasSeenOnboarding : Bool = UserDefaults.standard.bool(forKey: Constants.UserDefaults.hasSeenOnboarding)
     
