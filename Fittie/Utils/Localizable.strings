@@ -68,3 +68,6 @@
 "log_weight_view_title" = "Log your weight";
 "log_weight_save_button_title" = "Save weight";
 "log_weight_kg_label" = "Kg";
+
+// Weight Detail View
+"weight_detail_view" = "Your weight";

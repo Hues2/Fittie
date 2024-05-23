@@ -8,6 +8,7 @@ struct WeightView: View {
     @State private var isAddingWeight : Bool = false
     @State private var weightToUpdate : Weight?
     @Binding var weightGoal : Double?
+    @Binding var isWeightDetailView : Bool
     
     var body: some View {
         CardView(icon: "scalemass.fill", title: "weight_title", height: Constants.graphCardHeight - 25) {
@@ -21,19 +22,14 @@ struct WeightView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .overlay(alignment: .topTrailing) {
-            if !loggedWeights.isEmpty {
-                addAndUpdateWeightButton
-                    .padding()
+        .onTapGesture {
+            withAnimation {
+                self.isWeightDetailView.toggle()
             }
         }
-        .sheet(isPresented: $isAddingWeight) {
-            LogWeightView()
-                .withCustomSheetHeight()
-        }
-        .sheet(item: $weightToUpdate) { weight in
-            UpdateWeightView(todaysWeight: weight)
-                .withCustomSheetHeight()
+        .overlay(alignment: .topTrailing) {
+            navigationButton
+                .padding()
         }
     }
     
@@ -48,18 +44,11 @@ struct WeightView: View {
 
 // MARK: Add/Update Weight
 private extension WeightView {
-    var addAndUpdateWeightButton : some View {
+    var navigationButton : some View {
         Button {
-            if userHasAddedWeightToday() {
-                // Show update weight sheet
-                guard let todaysWeight = loggedWeights.last else { return }
-                self.weightToUpdate =  todaysWeight
-            } else {
-                // Show log weight sheet
-                self.isAddingWeight = true
-            }
+            
         } label: {
-            Text(userHasAddedWeightToday() ? "weight_update_button_title" : "weight_log_button_title")
+            Image(systemName: isWeightDetailView ? "xmark" : "arrow.forward")
         }
     }
     

@@ -22,12 +22,7 @@ private extension HomeView {
         ScrollView {
             VStack {
                 if showWeightDetailView {
-                    WeightDetailView(viewModel: viewModel, namespace: namespace)
-                        .onTapGesture {
-                            withAnimation {
-                                self.showWeightDetailView = false
-                            }
-                        }
+                    weightDetailView
                 } else {
                     VStack {
                         firstSection
@@ -40,9 +35,16 @@ private extension HomeView {
                         .padding(.horizontal, Constants.horizontalScrollviewPadding)
                 }
             }
-            .frame(maxWidth: .infinity)
         }
         .scrollIndicators(.hidden)
+    }
+}
+
+// MARK: - Weight Detail View
+private extension HomeView {
+    var weightDetailView : some View {
+        WeightDetailView(viewModel: viewModel, namespace: namespace, showWeightDetailView: $showWeightDetailView)
+            .padding(.horizontal, Constants.horizontalScrollviewPadding)
     }
 }
 
@@ -100,7 +102,7 @@ private extension HomeView {
 // MARK: - Weight Section
 private extension HomeView {
     var weightView : some View {
-        WeightView(weightGoal: $viewModel.weightGoal)
+        WeightView(weightGoal: $viewModel.weightGoal, isWeightDetailView: $showWeightDetailView)
             .padding(.bottom, 12)
             .onTapGesture {
                 withAnimation {
