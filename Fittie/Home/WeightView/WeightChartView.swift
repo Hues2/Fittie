@@ -4,16 +4,6 @@ import Charts
 struct WeightChartView: View {
     let loggedWeights : [Weight]
     @Binding var weightGoal : Double?
-    private let gradient = LinearGradient(
-        gradient: Gradient (
-            colors: [
-                Color.accentColor.opacity(0.4),
-                Color.accentColor.opacity(0.0),
-            ]
-        ),
-        startPoint: .top,
-        endPoint: .bottom
-    )
     
     var body: some View {
         VStack(spacing: 12) {
@@ -72,14 +62,6 @@ private extension WeightChartView {
                                 .frame(width: 8, height: 8)
                         }
                 }
-                
-                AreaMark(
-                    x: .value("Date", loggedWeight.date),
-                    y: .value("Weight", loggedWeight.kg)
-                )
-                .alignsMarkStylesWithPlotArea()
-                .interpolationMethod(.catmullRom)
-                .foregroundStyle(gradient)
             }
         }
         .chartXAxis {
