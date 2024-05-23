@@ -8,7 +8,6 @@ struct HomeView: View {
     
     var body: some View {
         content
-            .navigationTitle("home_nav_title")
             .onAppear {
                 viewModel.getDailySteps()
                 viewModel.getActiveBurnedEnergy()
@@ -19,24 +18,37 @@ struct HomeView: View {
 // MARK: - Home View Content
 private extension HomeView {
     @ViewBuilder var content : some View {
+        VStack {
+            if showWeightDetailView {
+                weightDetailView
+//                    .zIndex(1)
+            } else {
+                mainContent
+                    .transition(.move(edge: .leading))
+//                    .zIndex(0)
+            }
+        }
+    }
+}
+
+// MARK: - Main Content
+private extension HomeView {
+    var mainContent : some View {
         ScrollView {
             VStack {
-                if showWeightDetailView {
-                    weightDetailView
-                } else {
-                    VStack {
-                        firstSection
-                        secondSection
-                    }
-                    .padding(.horizontal, Constants.horizontalScrollviewPadding)
-                    .frame(maxWidth: .infinity)
-                    .transition(.move(edge: .leading))
-                    thirdSection
-                        .padding(.horizontal, Constants.horizontalScrollviewPadding)
+                VStack {
+                    firstSection
+                    secondSection
                 }
+                .padding(.horizontal, Constants.horizontalScrollviewPadding)
+                .frame(maxWidth: .infinity)
+                thirdSection
+                    .padding(.horizontal, Constants.horizontalScrollviewPadding)
+                
             }
         }
         .scrollIndicators(.hidden)
+        .navigationTitle("home_nav_title")
     }
 }
 
