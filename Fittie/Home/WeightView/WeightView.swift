@@ -8,7 +8,6 @@ struct WeightView: View {
     @State private var isAddingWeight : Bool = false
     @State private var weightToUpdate : Weight?
     @Binding var weightGoal : Double?
-    @Binding var isWeightDetailView : Bool
     
     var body: some View {
         CardView(icon: "scalemass.fill", title: "weight_title", height: Constants.graphCardHeight - 25) {
@@ -22,13 +21,8 @@ struct WeightView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .onTapGesture {
-            withAnimation {
-                self.isWeightDetailView.toggle()
-            }
-        }
         .overlay(alignment: .topTrailing) {
-            navigationButton
+            arrowIcon
                 .padding()
         }
     }
@@ -44,12 +38,9 @@ struct WeightView: View {
 
 // MARK: Add/Update Weight
 private extension WeightView {
-    var navigationButton : some View {
-        Button {
-            
-        } label: {
-            Image(systemName: isWeightDetailView ? "xmark" : "arrow.forward")
-        }
+    var arrowIcon : some View {
+        Image(systemName: "arrow.forward")
+            .foregroundStyle(Color.accentColor)
     }
     
     func userHasAddedWeightToday() -> Bool {

@@ -3,7 +3,6 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @Environment(\.scenePhase) private var scenePhase
-    @State private var showWeightDetailView : Bool = false
     @Namespace private var namespace
     
     var body: some View {
@@ -12,51 +11,23 @@ struct HomeView: View {
                 viewModel.getDailySteps()
                 viewModel.getActiveBurnedEnergy()
             }
+            .navigationTitle("home_nav_title")
     }
 }
 
-// MARK: - Home View Content
+// MARK: - View Content
 private extension HomeView {
-    @ViewBuilder var content : some View {
-        VStack {
-            if showWeightDetailView {
-                weightDetailView
-//                    .zIndex(1)
-            } else {
-                mainContent
-                    .transition(.move(edge: .leading))
-//                    .zIndex(0)
-            }
-        }
-    }
-}
-
-// MARK: - Main Content
-private extension HomeView {
-    var mainContent : some View {
+    var content : some View {
         ScrollView {
             VStack {
-                VStack {
-                    firstSection
-                    secondSection
-                }
-                .padding(.horizontal, Constants.horizontalScrollviewPadding)
-                .frame(maxWidth: .infinity)
+                firstSection
+                secondSection
                 thirdSection
-                    .padding(.horizontal, Constants.horizontalScrollviewPadding)
-                
             }
+            .padding(.horizontal, Constants.horizontalScrollviewPadding)
+            .frame(maxWidth: .infinity)
         }
         .scrollIndicators(.hidden)
-        .navigationTitle("home_nav_title")
-    }
-}
-
-// MARK: - Weight Detail View
-private extension HomeView {
-    var weightDetailView : some View {
-        WeightDetailView(viewModel: viewModel, namespace: namespace, showWeightDetailView: $showWeightDetailView)
-            .padding(.horizontal, Constants.horizontalScrollviewPadding)
     }
 }
 
@@ -114,13 +85,8 @@ private extension HomeView {
 // MARK: - Weight Section
 private extension HomeView {
     var weightView : some View {
-        WeightView(weightGoal: $viewModel.weightGoal, isWeightDetailView: $showWeightDetailView)
-            .padding(.bottom, 12)
-            .onTapGesture {
-                withAnimation {
-                    self.showWeightDetailView = true
-                }
-            }
+        WeightView(weightGoal: $viewModel.weightGoal)
+            .padding(.bottom, 12)            
     }
 }
 

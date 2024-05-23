@@ -7,10 +7,9 @@ struct WeightDetailView: View {
     
     var body: some View {
         VStack {
-            WeightView(weightGoal: $viewModel.weightGoal, isWeightDetailView: $showWeightDetailView)
+            WeightView(weightGoal: $viewModel.weightGoal)
                 .matchedGeometryEffect(id: "weight_view", in: namespace)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)                
-                .toolbar(.hidden, for: .navigationBar)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)                                
         }
     }
 }
