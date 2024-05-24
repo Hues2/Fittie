@@ -18,6 +18,11 @@
 		2E5FF2C62BF6A0FA00779ADC /* AllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */; };
 		2E5FF2C82BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */; };
 		2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64893E2BF6CFDC00D083FB /* Int.swift */; };
+		2E68A0972BFFFDAC00C2A430 /* HomeTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */; };
+		2E68A09A2BFFFEB400C2A430 /* WeightDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A0992BFFFEB400C2A430 /* WeightDetailViewModel.swift */; };
+		2E68A09C2C0013CD00C2A430 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09B2C0013CD00C2A430 /* CornerRadius.swift */; };
+		2E68A09E2C00160100C2A430 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09D2C00160100C2A430 /* UIApplication.swift */; };
+		2E68A0A02C00196000C2A430 /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09F2C00196000C2A430 /* BackButtonStyle.swift */; };
 		2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */; };
 		2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */; };
 		2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */; };
@@ -74,6 +79,11 @@
 		2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetView.swift; sourceTree = "<group>"; };
 		2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitleAndSubtitle.swift; sourceTree = "<group>"; };
 		2E64893E2BF6CFDC00D083FB /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabScreen.swift; sourceTree = "<group>"; };
+		2E68A0992BFFFEB400C2A430 /* WeightDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightDetailViewModel.swift; sourceTree = "<group>"; };
+		2E68A09B2C0013CD00C2A430 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		2E68A09D2C00160100C2A430 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		2E68A09F2C00196000C2A430 /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
 		2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -147,6 +157,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		2E68A0982BFFFE8900C2A430 /* WeightDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */,
+				2E68A0992BFFFEB400C2A430 /* WeightDetailViewModel.swift */,
+			);
+			path = WeightDetailView;
+			sourceTree = "<group>";
+		};
 		2E8806032BF54AAE00E12456 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +187,6 @@
 				2EA2F5C42BFA3D39003E3526 /* WeightView.swift */,
 				2EA2F5D12BFAB665003E3526 /* WeightChartView.swift */,
 				2EA2F5D32BFAB7B7003E3526 /* WeightContentUnavailableView.swift */,
-				2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */,
 			);
 			path = WeightView;
 			sourceTree = "<group>";
@@ -189,6 +207,8 @@
 				2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */,
 				2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */,
 				2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */,
+				2E68A09B2C0013CD00C2A430 /* CornerRadius.swift */,
+				2E68A09F2C00196000C2A430 /* BackButtonStyle.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -262,9 +282,10 @@
 				2EC6CAC92BEE9116009C7002 /* HomeView.swift */,
 				2EC6CADF2BEEC2FC009C7002 /* HomeViewModel.swift */,
 				2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */,
+				2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */,
 				2EA3733F2BEFCB4100843FCA /* AverageStepsView */,
 				2EA2F5C32BFA3D25003E3526 /* WeightView */,
-				2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */,
+				2E68A0982BFFFE8900C2A430 /* WeightDetailView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -283,6 +304,7 @@
 			children = (
 				2EC6CACD2BEE91F4009C7002 /* AppTab.swift */,
 				2EC6CAD22BEE9378009C7002 /* AppTabView.swift */,
+				2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -325,6 +347,7 @@
 				2E64893E2BF6CFDC00D083FB /* Int.swift */,
 				2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */,
 				2EA2F5CA2BFA9304003E3526 /* Double.swift */,
+				2E68A09D2C00160100C2A430 /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,14 +449,18 @@
 				2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */,
 				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,
 				2E90E7902BFE64B1003DE59F /* WeightGoalManager.swift in Sources */,
+				2E68A09E2C00160100C2A430 /* UIApplication.swift in Sources */,
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */,
 				2E5868A32BFD471300222850 /* WeightInput.swift in Sources */,
 				2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */,
 				2E90E7942BFE8FBA003DE59F /* HomeViewChartLegend.swift in Sources */,
+				2E68A09C2C0013CD00C2A430 /* CornerRadius.swift in Sources */,
+				2E68A0A02C00196000C2A430 /* BackButtonStyle.swift in Sources */,
 				2EA2F5C72BFA444A003E3526 /* Weight.swift in Sources */,
 				2E88060B2BF562CC00E12456 /* CustomButton.swift in Sources */,
+				2E68A09A2BFFFEB400C2A430 /* WeightDetailViewModel.swift in Sources */,
 				2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */,
 				2E8806092BF5568400E12456 /* OnboardingViewModel.swift in Sources */,
 				2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */,
@@ -442,6 +469,7 @@
 				2EA2F5D22BFAB665003E3526 /* WeightChartView.swift in Sources */,
 				2E8806072BF5548200E12456 /* SetStepGoalView.swift in Sources */,
 				2E90E78E2BFE58D5003DE59F /* UpdateStepGoalView.swift in Sources */,
+				2E68A0972BFFFDAC00C2A430 /* HomeTabScreen.swift in Sources */,
 				2EC13DE52BFEB474003BD9E9 /* WeightDetailView.swift in Sources */,
 				2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */,
 				2E5FF2C82BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift in Sources */,

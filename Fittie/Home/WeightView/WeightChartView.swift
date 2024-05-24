@@ -71,11 +71,10 @@ private extension WeightChartView {
             }
         }
         .chartYAxis {
-            AxisMarks { mark in
+            AxisMarks(position: .leading, values: .stride(by: 1)) { value in
                 AxisValueLabel()
-                AxisGridLine(centered: false, stroke: .init(lineWidth: 1, dash: [5]))
-                    .foregroundStyle(Color.lightGray)
-                
+                AxisGridLine(centered: false, stroke: .init(lineWidth: 1, dash: [8]))
+                    .foregroundStyle(Color.lightGray)                    
             }
         }
         .chartYScale(domain: getMinYValue()...getMaxYValue())
@@ -103,4 +102,8 @@ private extension WeightChartView {
     var chartLegend : some View {
         HomeViewChartLegend(title: "weight_chart_legend_weight_goal")
     }
+}
+
+#Preview {
+    WeightDetailView()
 }

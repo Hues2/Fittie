@@ -2,8 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @Environment(\.scenePhase) private var scenePhase
-    @Namespace private var namespace
+    @State var showWeightDetailView : Bool = false
     
     var body: some View {
         content
@@ -12,6 +11,9 @@ struct HomeView: View {
                 viewModel.getActiveBurnedEnergy()
             }
             .navigationTitle("home_nav_title")
+            .sheet(isPresented: $showWeightDetailView) {
+                WeightDetailView()
+            }
     }
 }
 
@@ -46,7 +48,6 @@ private extension HomeView {
     
     var thirdSection : some View {
         weightView
-            .matchedGeometryEffect(id: "weight_view", in: namespace)
     }
 }
 
@@ -85,8 +86,15 @@ private extension HomeView {
 // MARK: - Weight Section
 private extension HomeView {
     var weightView : some View {
-        WeightView(weightGoal: $viewModel.weightGoal)
-            .padding(.bottom, 12)            
+//        WeightView(weightGoal: $viewModel.weightGoal)
+//            .onTapGesture {
+//                self.showWeightDetailView = true
+//            }
+        NavigationLink(value: HomeTabScreen.weightDetailView) {
+            WeightView(weightGoal: $viewModel.weightGoal)
+                .padding(.bottom, 12)
+        }
+        .buttonStyle(.plain)
     }
 }
 
