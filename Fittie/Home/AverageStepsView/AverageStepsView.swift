@@ -18,9 +18,11 @@ struct AverageStepsView: View {
             }
         }
         .overlay(alignment: .topTrailing) {
-            Image(systemName: "hand.tap")
+//            Image(systemName: "hand.tap")
+//                .padding()
+//                .foregroundStyle(.secondary)
+            picker
                 .padding()
-                .foregroundStyle(.secondary)
         }
         .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .onTapGesture {
@@ -74,7 +76,7 @@ private extension AverageStepsView {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            picker
+//            picker
         }
     }
     
