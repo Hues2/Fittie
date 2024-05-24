@@ -18,9 +18,6 @@ struct AverageStepsView: View {
             }
         }
         .overlay(alignment: .topTrailing) {
-//            Image(systemName: "hand.tap")
-//                .padding()
-//                .foregroundStyle(.secondary)
             picker
                 .padding()
         }
@@ -75,8 +72,6 @@ private extension AverageStepsView {
                     .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
-//            picker
         }
     }
     
@@ -91,7 +86,7 @@ private extension AverageStepsView {
     @ViewBuilder func chart() -> some View {
         Chart {
             RuleMark(y: .value("Step Goal", stepGoal))
-                .foregroundStyle(Color.accentColor.gradient)
+                .foregroundStyle(Color.pink.gradient)
             
             ForEach(displayedSteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
@@ -106,7 +101,6 @@ private extension AverageStepsView {
                 AxisValueLabel()
                 AxisGridLine(centered: false, stroke: .init(lineWidth: 1, dash: [5]))
                     .foregroundStyle(Color.lightGray)
-                    
             }
         }
         .chartXAxis {

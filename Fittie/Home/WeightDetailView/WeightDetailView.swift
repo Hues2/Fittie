@@ -2,15 +2,19 @@ import SwiftUI
 import SwiftData
 
 struct WeightDetailView: View {
-    @StateObject private var viewModel = WeightDetailViewModel()
     @Environment(\.modelContext) private var context
-    @Query(sort: \Weight.date) private var loggedWeights: [Weight]
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Environment(\.dismiss) private var dismiss
-    private let material : Material = .ultraThickMaterial
+    @StateObject private var viewModel = WeightDetailViewModel()
+    @Query(sort: \Weight.date) private var loggedWeights: [Weight]
+    @State private var isAddingWeight : Bool = false
     
     var body: some View {
         content
+            .sheet(isPresented: $isAddingWeight) {
+                LogWeightView()
+                    .withCustomSheetHeight()
+            }
     }
 }
 
@@ -55,7 +59,7 @@ private extension WeightDetailView {
                 .frame(height: Constants.graphCardHeight)
         }
         .padding()
-        .background(material)
+        .background(Material.thick)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
     
@@ -75,7 +79,9 @@ private extension WeightDetailView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Button {
-                    
+                    withAnimation {
+                        self.isAddingWeight = true
+                    }
                 } label: {
                     Image(systemName: "plus")
                         .font(.title2)
@@ -98,9 +104,21 @@ private extension WeightDetailView {
                     .listRowSeparator(.hidden)
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
             }
+            .onDelete(perform: { indexSet in
+                deleteWeight(at: indexSet)
+            })
         }
         .listStyle(.plain)
+        .scrollIndicators(.hidden)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private func deleteWeight(at indexSet: IndexSet) {
+        for index in indexSet {
+            withAnimation {
+                context.delete(loggedWeights[index])
+            }
+        }
     }
 }
 

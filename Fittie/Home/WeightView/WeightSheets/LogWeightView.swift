@@ -15,7 +15,7 @@ struct LogWeightView: View {
 private extension LogWeightView {
     func saveAction() {        
         guard let weight else { return }
-        let newWeight = Weight(date: .now.startOfDay, kg: weight)
+        let newWeight = Weight(date: .now, kg: weight)
         context.insert(newWeight)
     }
     
