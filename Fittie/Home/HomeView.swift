@@ -21,7 +21,7 @@ struct HomeView: View {
 private extension HomeView {
     var content : some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 12) {
                 firstSection
                 secondSection
                 thirdSection

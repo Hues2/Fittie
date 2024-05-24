@@ -42,7 +42,7 @@ private extension WeightChartView {
         Chart {
             if let weightGoal {
                 RuleMark(y: .value("Weight Goal", weightGoal))
-                    .foregroundStyle(Color.pink.gradient)
+                    .foregroundStyle(Color.accentColor.gradient)
             }
             
             ForEach(loggedWeights) { loggedWeight in
@@ -51,10 +51,10 @@ private extension WeightChartView {
                     y: .value("Weight", loggedWeight.kg)
                 )
                 .interpolationMethod(.catmullRom)
-                .foregroundStyle(Color.accentColor.gradient)
+                .foregroundStyle((loggedWeight.kg <= (weightGoal ?? .zero)) ? Color.green.gradient : Color.pink.gradient)
                 .symbol {
                     Circle()
-                        .fill(Color.accentColor)
+                        .fill((loggedWeight.kg <= (weightGoal ?? .zero)) ? Color.green.gradient : Color.pink.gradient)
                         .frame(width: 10, height: 10)
                         .overlay {
                             Circle()

@@ -18,26 +18,45 @@ struct WeightDetailView: View {
 private extension WeightDetailView {
     var content: some View {
         VStack {
-            header
-            list
+            currentWeight
+            chart
+            loggedWeightsList
         }
+        .padding()
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("weight_detail_view")
-        .toolbarBackground(material, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
+//        .navigationTitle("weight_detail_view_title")
+//        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 
-// MARK: Header
+// MARK: Current Weight
 private extension WeightDetailView {
-    var header: some View {
+    @ViewBuilder var currentWeight : some View {
+        if let currentWeight = loggedWeights.last?.kg {
+            VStack {
+                Text("weight_detail_view_current_weight")
+                    .font(.headline)
+                    .fontWeight(.light)
+                    .foregroundStyle(.secondary)
+                
+                Text("\(currentWeight.toTwoDecimalPlacesString())" + NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
+                    .font(.title)
+                    .fontWeight(.semibold)
+            }
+        }
+    }
+}
+
+// MARK: Chart
+private extension WeightDetailView {
+    var chart: some View {
         VStack(spacing: 16) {
             chartView
-                .frame(height: Constants.graphCardHeight - 10)
+                .frame(height: Constants.graphCardHeight)
         }
         .padding()
         .background(material)
-        .cornerRadius(Constants.headerCornerRadius, corners: [.bottomLeft, .bottomRight])
+        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
     
     var chartView: some View {
@@ -47,10 +66,40 @@ private extension WeightDetailView {
 
 // MARK: List content
 private extension WeightDetailView {
-    var list: some View {
+    var loggedWeightsList : some View {
         VStack {
-            Text("LOGGED WEIGHTS LIST")
+            HStack {
+                Text("weight_detail_view_logged_weights")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Button {
+                    
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title2)
+                        .fontWeight(.regular)
+                        .foregroundStyle(.accent.gradient)
+                        .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                }
+                .buttonStyle(ScaleButtonStyle())
+            }
+            
+            list
         }
+    }
+    
+    var list: some View {
+        List {
+            ForEach(loggedWeights.reversed()) { loggedWeight in
+                LoggedWeightCell(date: loggedWeight.date, kg: loggedWeight.kg)
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+            }
+        }
+        .listStyle(.plain)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

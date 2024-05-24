@@ -22,7 +22,7 @@
 		2E68A09A2BFFFEB400C2A430 /* WeightDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A0992BFFFEB400C2A430 /* WeightDetailViewModel.swift */; };
 		2E68A09C2C0013CD00C2A430 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09B2C0013CD00C2A430 /* CornerRadius.swift */; };
 		2E68A09E2C00160100C2A430 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09D2C00160100C2A430 /* UIApplication.swift */; };
-		2E68A0A02C00196000C2A430 /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09F2C00196000C2A430 /* BackButtonStyle.swift */; };
+		2E68A0A02C00196000C2A430 /* ScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09F2C00196000C2A430 /* ScaleButtonStyle.swift */; };
 		2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */; };
 		2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */; };
 		2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */; };
@@ -84,7 +84,7 @@
 		2E68A0992BFFFEB400C2A430 /* WeightDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightDetailViewModel.swift; sourceTree = "<group>"; };
 		2E68A09B2C0013CD00C2A430 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		2E68A09D2C00160100C2A430 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		2E68A09F2C00196000C2A430 /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
+		2E68A09F2C00196000C2A430 /* ScaleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonStyle.swift; sourceTree = "<group>"; };
 		2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedWeightCell.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 				2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */,
 				2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */,
 				2E68A09B2C0013CD00C2A430 /* CornerRadius.swift */,
-				2E68A09F2C00196000C2A430 /* BackButtonStyle.swift */,
+				2E68A09F2C00196000C2A430 /* ScaleButtonStyle.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 				2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */,
 				2E90E7942BFE8FBA003DE59F /* HomeViewChartLegend.swift in Sources */,
 				2E68A09C2C0013CD00C2A430 /* CornerRadius.swift in Sources */,
-				2E68A0A02C00196000C2A430 /* BackButtonStyle.swift in Sources */,
+				2E68A0A02C00196000C2A430 /* ScaleButtonStyle.swift in Sources */,
 				2EA2F5C72BFA444A003E3526 /* Weight.swift in Sources */,
 				2E88060B2BF562CC00E12456 /* CustomButton.swift in Sources */,
 				2E68A09A2BFFFEB400C2A430 /* WeightDetailViewModel.swift in Sources */,

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HomeViewChartLegend: View {
     let title : LocalizedStringKey
-    let color : Color = .pink
+    let color : Color = .accentColor
     
     var body: some View {
         HStack {
