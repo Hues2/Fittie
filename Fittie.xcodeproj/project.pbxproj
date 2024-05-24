@@ -25,6 +25,7 @@
 		2E68A0A02C00196000C2A430 /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09F2C00196000C2A430 /* BackButtonStyle.swift */; };
 		2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */; };
 		2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */; };
+		2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */; };
 		2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */; };
 		2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */; };
 		2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806042BF54AE300E12456 /* OnboardingView.swift */; };
@@ -86,6 +87,7 @@
 		2E68A09F2C00196000C2A430 /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
 		2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
+		2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedWeightCell.swift; sourceTree = "<group>"; };
 		2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardGroupBoxStyle.swift; sourceTree = "<group>"; };
 		2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGoalManager.swift; sourceTree = "<group>"; };
 		2E8806042BF54AE300E12456 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */,
 				2E68A0992BFFFEB400C2A430 /* WeightDetailViewModel.swift */,
+				2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */,
 			);
 			path = WeightDetailView;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				2EC6CACE2BEE91F4009C7002 /* AppTab.swift in Sources */,
 				2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */,
 				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
+				2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */,
 				2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */,
 				2EA2F5CB2BFA9304003E3526 /* Double.swift in Sources */,
 				2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */,
