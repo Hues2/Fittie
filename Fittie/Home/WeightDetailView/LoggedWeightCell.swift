@@ -4,6 +4,8 @@ struct LoggedWeightCell: View {
     let date : Date
     let kg : Double
     var isExpanded : Bool = false
+    let deleteAction : () -> Void
+    let editAction : () -> Void
     
     var body: some View {
         VStack {
@@ -48,17 +50,17 @@ private extension LoggedWeightCell {
     var actionButtons : some View {
         HStack(spacing: 0) {
             button(title: "weight_detail_view_logged_weight_cell_edit",
-                   color: .orange,
+                   color: .accent,
                    corner: .bottomLeft,
                    alignment: .leading) {
-                // Edit action
+                editAction()
             }
             
             button(title: "weight_detail_view_logged_weight_cell_delete",
-                   color: .red,
+                   color: .pink,
                    corner: .bottomRight,
                    alignment: .trailing) {
-                // Edit action
+                deleteAction()
             }
         }
     }
@@ -88,9 +90,11 @@ private extension LoggedWeightCell {
 
 #Preview {
     VStack {
-        LoggedWeightCell(date: .now, kg: 86.8)
-        LoggedWeightCell(date: .now, kg: 86.8)
-        LoggedWeightCell(date: .now, kg: 86.8)
-        LoggedWeightCell(date: .now, kg: 86.8)
+        LoggedWeightCell(date: .now, kg: 86.6) {
+            
+        } editAction: {
+            
+        }
+
     }
 }

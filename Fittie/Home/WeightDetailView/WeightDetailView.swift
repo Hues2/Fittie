@@ -8,12 +8,17 @@ struct WeightDetailView: View {
     @StateObject private var viewModel = WeightDetailViewModel()
     @Query(sort: \Weight.date) private var loggedWeights: [Weight]
     @State private var isAddingWeight : Bool = false
-    @State private var expandedCell : PersistentIdentifier?
+    @State private var expandedCellId : PersistentIdentifier?
+    @State private var weightToBeEdited : Weight?
     
     var body: some View {
         content
             .sheet(isPresented: $isAddingWeight) {
                 LogWeightView()
+                    .withCustomSheetHeight()
+            }
+            .sheet(item: $weightToBeEdited) { weight in
+                UpdateWeightView(weightToBeEdited: weight)
                     .withCustomSheetHeight()
             }
     }
@@ -29,8 +34,6 @@ private extension WeightDetailView {
         }
         .padding()
         .navigationBarTitleDisplayMode(.inline)
-//        .navigationTitle("weight_detail_view_title")
-//        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 
@@ -103,27 +106,40 @@ private extension WeightDetailView {
                 ForEach(loggedWeights.reversed()) { loggedWeight in
                     LoggedWeightCell(date: loggedWeight.date,
                                      kg: loggedWeight.kg,
-                                     isExpanded: self.expandedCell == loggedWeight.id)
+                                     isExpanded: (self.expandedCellId == loggedWeight.id),
+                                     deleteAction: { self.deleteAction(loggedWeight) },
+                                     editAction: { self.editAction(loggedWeight) })
                     .onTapGesture {
-                        withAnimation(.smooth) {
-                            if expandedCell == loggedWeight.id {
-                                self.expandedCell = nil
-                            } else {
-                                self.expandedCell = loggedWeight.id
-                            }
-                        }
+                        cellOnTap(loggedWeight.id)
                     }
                 }
             }
         }
         .scrollIndicators(.hidden)
     }
-    
-    private func deleteWeight(at indexSet: IndexSet) {
-        for index in indexSet {
-            withAnimation {
-                context.delete(loggedWeights[index])
+}
+
+// MARK: Functionality
+private extension WeightDetailView {
+    func cellOnTap(_ id : PersistentIdentifier) {
+        withAnimation(.smooth) {
+            if expandedCellId == id {
+                self.expandedCellId = nil
+            } else {
+                self.expandedCellId = id
             }
+        }
+    }
+    
+    func editAction(_ weight : Weight) {
+        withAnimation(.smooth) {
+            self.weightToBeEdited = weight
+        }
+    }
+    
+    func deleteAction(_ weight : Weight) {
+        withAnimation(.smooth) {
+            context.delete(weight)
         }
     }
 }
