@@ -8,6 +8,7 @@ struct WeightDetailView: View {
     @StateObject private var viewModel = WeightDetailViewModel()
     @Query(sort: \Weight.date) private var loggedWeights: [Weight]
     @State private var isAddingWeight : Bool = false
+    @State private var expandedCell : PersistentIdentifier?
     
     var body: some View {
         content
@@ -92,25 +93,30 @@ private extension WeightDetailView {
                 .buttonStyle(ScaleButtonStyle())
             }
             
-            list
+            scrollView
         }
     }
     
-    var list: some View {
-        List {
-            ForEach(loggedWeights.reversed()) { loggedWeight in
-                LoggedWeightCell(date: loggedWeight.date, kg: loggedWeight.kg)
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+    var scrollView: some View {
+        ScrollView {
+            VStack {
+                ForEach(loggedWeights.reversed()) { loggedWeight in
+                    LoggedWeightCell(date: loggedWeight.date,
+                                     kg: loggedWeight.kg,
+                                     isExpanded: self.expandedCell == loggedWeight.id)
+                    .onTapGesture {
+                        withAnimation(.smooth) {
+                            if expandedCell == loggedWeight.id {
+                                self.expandedCell = nil
+                            } else {
+                                self.expandedCell = loggedWeight.id
+                            }
+                        }
+                    }
+                }
             }
-            .onDelete(perform: { indexSet in
-                deleteWeight(at: indexSet)
-            })
         }
-        .listStyle(.plain)
         .scrollIndicators(.hidden)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     private func deleteWeight(at indexSet: IndexSet) {
