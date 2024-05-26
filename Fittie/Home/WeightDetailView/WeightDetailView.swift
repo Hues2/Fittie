@@ -3,6 +3,8 @@ import SwiftData
 
 struct WeightDetailView: View {
     @Environment(\.modelContext) private var context
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = WeightDetailViewModel()
     @Query(sort: \Weight.date) private var loggedWeights: [Weight]
     @State private var isAddingWeight : Bool = false
@@ -19,8 +21,9 @@ struct WeightDetailView: View {
                 UpdateWeightView(weightToBeEdited: weight)
                     .withCustomSheetHeight()
             }
-            .toolbarBackground(Material.thick, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+//            .toolbarBackground(Material.thick, for: .navigationBar)
+//            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar(.hidden)
     }
 }
 
@@ -46,17 +49,38 @@ private extension WeightDetailView {
 // MARK: Info Header
 private extension WeightDetailView {
     var infoHeader : some View {
-        HStack {
-            // Current weight
-            infoTextView(NSLocalizedString("weight_detail_view_start_weight", comment: "Start"),
-                         loggedWeights.first?.kg)
-            infoTextView(NSLocalizedString("weight_detail_view_current_weight", comment: "Current"),
-                         loggedWeights.last?.kg)
-            weightChangeView
+        VStack(spacing: 32) {
+            navigationBar
+            
+            HStack {
+                // Current weight
+                infoTextView(NSLocalizedString("weight_detail_view_start_weight", comment: "Start"),
+                             loggedWeights.first?.kg)
+                infoTextView(NSLocalizedString("weight_detail_view_current_weight", comment: "Current"),
+                             loggedWeights.last?.kg)
+                weightChangeView
+            }
         }
         .padding()
+        .padding(.top, safeAreaInsets.top)
         .background(Material.thick)
         .cornerRadius(24, corners: [.bottomLeft, .bottomRight])
+        .ignoresSafeArea()
+    }
+    
+    var navigationBar : some View {
+        Text("Your weight")
+            .frame(maxWidth: .infinity)
+            .overlay(alignment: .leading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .contentShape(Circle())
+                }
+                .buttonStyle(BackButtonStyle())
+            }
+            .font(.title2)
     }
     
     func infoTextView(_ title : String, _ value : Double?) -> some View {
@@ -109,7 +133,7 @@ private extension WeightDetailView {
         VStack(spacing: 16) {
             chartView
                 .frame(height: Constants.graphCardHeight)
-        }        
+        }
         //        .background(Material.thick)
         //        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
@@ -187,6 +211,20 @@ private extension WeightDetailView {
     func deleteAction(_ weight : Weight) {
         withAnimation(.smooth) {
             context.delete(weight)
+        }
+    }
+}
+
+private extension WeightDetailView {
+    struct BackButtonStyle : ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? 0.8 : 1)
+                .padding(12)
+                .overlay {
+                    Circle()
+                        .stroke(Color.accentColor)
+                }
         }
     }
 }
