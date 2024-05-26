@@ -10,30 +10,35 @@ struct WeightDetailView: View {
     @State private var weightToBeEdited : Weight?
     
     var body: some View {
-        ScrollView(.vertical) {
-            content
-                .sheet(isPresented: $isAddingWeight) {
-                    LogWeightView()
-                        .withCustomSheetHeight()
-                }
-                .sheet(item: $weightToBeEdited) { weight in
-                    UpdateWeightView(weightToBeEdited: weight)
-                        .withCustomSheetHeight()
-                }
-        }
-        .scrollIndicators(.hidden)
+        content
+            .sheet(isPresented: $isAddingWeight) {
+                LogWeightView()
+                    .withCustomSheetHeight()
+            }
+            .sheet(item: $weightToBeEdited) { weight in
+                UpdateWeightView(weightToBeEdited: weight)
+                    .withCustomSheetHeight()
+            }
+            .toolbarBackground(Material.thick, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 
 // MARK: Content
 private extension WeightDetailView {
     var content: some View {
-        VStack {
+        VStack(spacing: 0) {
             infoHeader
-            chart
-            loggedWeightsList
+            ScrollView(.vertical) {
+                VStack(spacing: 12) {
+                    chart
+                        .padding()
+                    loggedWeightsList
+                        .padding()
+                }
+            }
+            .scrollIndicators(.hidden)
         }
-        .padding()
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -49,6 +54,9 @@ private extension WeightDetailView {
                          loggedWeights.last?.kg)
             weightChangeView
         }
+        .padding()
+        .background(Material.thick)
+        .cornerRadius(24, corners: [.bottomLeft, .bottomRight])
     }
     
     func infoTextView(_ title : String, _ value : Double?) -> some View {
@@ -74,8 +82,8 @@ private extension WeightDetailView {
                 .fontWeight(.semibold)
             Text(NSLocalizedString("weight_detail_view_change", comment: "Change") + "(\(getWeightChangePercentage()?.toTwoDecimalPlacesString() ?? "-") %)")
                 .font(.caption)
-            .fontWeight(.light)
-            .foregroundStyle(.secondary)
+                .fontWeight(.light)
+                .foregroundStyle(.secondary)
         }
         .lineLimit(1)
         .minimumScaleFactor(Constants.minimumScaleFactor)
@@ -101,14 +109,13 @@ private extension WeightDetailView {
         VStack(spacing: 16) {
             chartView
                 .frame(height: Constants.graphCardHeight)
-        }
-//        .padding()
-//        .background(Material.thick)
-//        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        }        
+        //        .background(Material.thick)
+        //        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
     
     var chartView: some View {
-        WeightChartView(loggedWeights: self.loggedWeights, weightGoal: $viewModel.weightGoal)
+        WeightChartView(loggedWeights: self.loggedWeights, weightGoal: $viewModel.weightGoal, showAverage: false)
     }
 }
 

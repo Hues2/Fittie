@@ -4,10 +4,13 @@ import Charts
 struct WeightChartView: View {
     let loggedWeights : [Weight]
     @Binding var weightGoal : Double?
+    var showAverage : Bool = true
     
     var body: some View {
         VStack(spacing: 12) {
-            averageWeightView
+            if showAverage {
+                averageWeightView
+            }
             lineChart
             chartLegend
         }
