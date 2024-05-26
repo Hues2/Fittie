@@ -12,16 +12,25 @@ struct WeightDetailView: View {
     @State private var weightToBeEdited : Weight?
     
     var body: some View {
-        content
-            .sheet(isPresented: $isAddingWeight) {
-                LogWeightView()
-                    .withCustomSheetHeight()
-            }
-            .sheet(item: $weightToBeEdited) { weight in
-                UpdateWeightView(weightToBeEdited: weight)
-                    .withCustomSheetHeight()
-            }
-            .toolbar(.hidden)
+        ZStack(alignment: .top) {
+            content
+                .sheet(isPresented: $isAddingWeight) {
+                    LogWeightView()
+                        .withCustomSheetHeight()
+                }
+                .sheet(item: $weightToBeEdited) { weight in
+                    UpdateWeightView(weightToBeEdited: weight)
+                        .withCustomSheetHeight()
+                }
+                .toolbar(.hidden)
+            
+        
+                Color.clear
+                .background(Material.ultraThickMaterial)
+                .frame(height: safeAreaInsets.top, alignment: .top)
+                    .ignoresSafeArea()
+            
+        }
     }
 }
 
@@ -47,27 +56,27 @@ private extension WeightDetailView {
 // MARK: Info Header
 private extension WeightDetailView {
     var infoHeader : some View {
-        VStack(spacing: 32) {
+        VStack(spacing: 36) {
             navigationBar
             
             HStack {
-                // Current weight
+                // Start weight
                 infoTextView(NSLocalizedString("weight_detail_view_start_weight", comment: "Start"),
                              loggedWeights.first?.kg)
+                // Current weight
                 infoTextView(NSLocalizedString("weight_detail_view_current_weight", comment: "Current"),
                              loggedWeights.last?.kg)
+                // Weight change
                 weightChangeView
             }
         }
         .padding()
-        .padding(.top, safeAreaInsets.top)
-        .background(Material.thick)
+        .background(Material.ultraThickMaterial)
         .cornerRadius(24, corners: [.bottomLeft, .bottomRight])
-        .ignoresSafeArea()
     }
     
     var navigationBar : some View {
-        Text("Your weight")
+        Text("weight_detail_view_title")
             .frame(maxWidth: .infinity)
             .overlay(alignment: .leading) {
                 Button {
@@ -146,12 +155,8 @@ private extension WeightDetailView {
 // MARK: Chart
 private extension WeightDetailView {
     var chart: some View {
-        VStack(spacing: 16) {
-            chartView
-                .frame(height: Constants.graphCardHeight)
-        }
-        //        .background(Material.thick)
-        //        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        chartView
+            .frame(height: Constants.graphCardHeight)
     }
     
     var chartView: some View {
