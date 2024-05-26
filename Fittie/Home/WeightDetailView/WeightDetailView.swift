@@ -12,15 +12,18 @@ struct WeightDetailView: View {
     @State private var weightToBeEdited : Weight?
     
     var body: some View {
-        content
-            .sheet(isPresented: $isAddingWeight) {
-                LogWeightView()
-                    .withCustomSheetHeight()
-            }
-            .sheet(item: $weightToBeEdited) { weight in
-                UpdateWeightView(weightToBeEdited: weight)
-                    .withCustomSheetHeight()
-            }
+        ScrollView(.vertical) {
+            content
+                .sheet(isPresented: $isAddingWeight) {
+                    LogWeightView()
+                        .withCustomSheetHeight()
+                }
+                .sheet(item: $weightToBeEdited) { weight in
+                    UpdateWeightView(weightToBeEdited: weight)
+                        .withCustomSheetHeight()
+                }
+        }
+        .scrollIndicators(.hidden)
     }
 }
 
@@ -74,48 +77,48 @@ private extension WeightDetailView {
 
 // MARK: List content
 private extension WeightDetailView {
-    var loggedWeightsList : some View {
-        VStack {
-            HStack {
-                Text("weight_detail_view_logged_weights")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Button {
-                    withAnimation {
-                        self.isAddingWeight = true
-                    }
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.title2)
-                        .fontWeight(.regular)
-                        .foregroundStyle(.accent.gradient)
-                        .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                }
-                .buttonStyle(ScaleButtonStyle())
-            }
+    var loggedWeightsHeader : some View {
+        HStack {
+            Text("weight_detail_view_logged_weights")
+                .font(.title)
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
-            scrollView
+            Button {
+                withAnimation {
+                    self.isAddingWeight = true
+                }
+            } label: {
+                Image(systemName: "plus")
+                    .font(.title2)
+                    .fontWeight(.regular)
+                    .foregroundStyle(.accent.gradient)
+                    .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+            }
+            .buttonStyle(ScaleButtonStyle())
         }
     }
     
-    var scrollView: some View {
-        ScrollView {
-            VStack {
-                ForEach(loggedWeights.reversed()) { loggedWeight in
-                    LoggedWeightCell(date: loggedWeight.date,
-                                     kg: loggedWeight.kg,
-                                     isExpanded: (self.expandedCellId == loggedWeight.id),
-                                     deleteAction: { self.deleteAction(loggedWeight) },
-                                     editAction: { self.editAction(loggedWeight) })
-                    .onTapGesture {
-                        cellOnTap(loggedWeight.id)
-                    }
+    var loggedWeightsList : some View {
+        VStack {
+            loggedWeightsHeader
+            loggedWeightsCells
+        }
+    }
+    
+    var loggedWeightsCells: some View {
+        LazyVStack {
+            ForEach(loggedWeights.reversed()) { loggedWeight in
+                LoggedWeightCell(date: loggedWeight.date,
+                                 kg: loggedWeight.kg,
+                                 isExpanded: (self.expandedCellId == loggedWeight.id),
+                                 deleteAction: { self.deleteAction(loggedWeight) },
+                                 editAction: { self.editAction(loggedWeight) })
+                .onTapGesture {
+                    cellOnTap(loggedWeight.id)
                 }
             }
         }
-        .scrollIndicators(.hidden)
     }
 }
 
