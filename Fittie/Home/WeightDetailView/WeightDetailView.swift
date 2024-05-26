@@ -21,8 +21,6 @@ struct WeightDetailView: View {
                 UpdateWeightView(weightToBeEdited: weight)
                     .withCustomSheetHeight()
             }
-//            .toolbarBackground(Material.thick, for: .navigationBar)
-//            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar(.hidden)
     }
 }
@@ -101,9 +99,17 @@ private extension WeightDetailView {
     
     var weightChangeView : some View {
         VStack {
-            Text("\(getWeightChange()?.toTwoDecimalPlacesString() ?? "-")")
-                .font(.title2)
-                .fontWeight(.semibold)
+            HStack {
+                if let weightChange = getWeightChange(),
+                   let currentWeight = loggedWeights.last?.kg,
+                   let weightGoal = viewModel.weightGoal {
+                    Image(systemName: weightChange < 0 ? "arrow.down.right" : "arrow.up.right")
+                        .foregroundStyle(imageColor(weightGoal, currentWeight, weightChange))
+                }
+                Text("\(getWeightChange()?.toTwoDecimalPlacesString() ?? "-")")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+            }
             Text(NSLocalizedString("weight_detail_view_change", comment: "Change") + "(\(getWeightChangePercentage()?.toTwoDecimalPlacesString() ?? "-") %)")
                 .font(.caption)
                 .fontWeight(.light)
@@ -124,6 +130,16 @@ private extension WeightDetailView {
         let weightChange = currentWeight - startWeight
         let percentageChange = (weightChange / startWeight) * 100
         return percentageChange
+    }
+    
+    func imageColor(_ weightGoal : Double, _ currentWeight : Double, _ weightChange : Double) -> Color {
+        if weightGoal < currentWeight && weightChange < 0 {
+            return .green // Goal is to lose weight and weight has decreased
+        } else if weightGoal > currentWeight && weightChange > 0 {
+            return .green // Goal is to gain weight and weight has increased
+        } else {
+            return .red // Otherwise, use red
+        }
     }
 }
 
