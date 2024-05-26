@@ -3,8 +3,6 @@ import SwiftData
 
 struct WeightDetailView: View {
     @Environment(\.modelContext) private var context
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
-    @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = WeightDetailViewModel()
     @Query(sort: \Weight.date) private var loggedWeights: [Weight]
     @State private var isAddingWeight : Bool = false
@@ -31,7 +29,7 @@ struct WeightDetailView: View {
 private extension WeightDetailView {
     var content: some View {
         VStack {
-            currentWeight
+            infoHeader
             chart
             loggedWeightsList
         }
@@ -40,21 +38,60 @@ private extension WeightDetailView {
     }
 }
 
-// MARK: Current Weight
+// MARK: Info Header
 private extension WeightDetailView {
-    @ViewBuilder var currentWeight : some View {
-        if let currentWeight = loggedWeights.last?.kg {
-            VStack {
-                Text("weight_detail_view_current_weight")
-                    .font(.headline)
-                    .fontWeight(.light)
-                    .foregroundStyle(.secondary)
-                
-                Text("\(currentWeight.toTwoDecimalPlacesString())" + NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
-                    .font(.title)
-                    .fontWeight(.semibold)
-            }
+    var infoHeader : some View {
+        HStack {
+            // Current weight
+            infoTextView(NSLocalizedString("weight_detail_view_start_weight", comment: "Start"),
+                         loggedWeights.first?.kg)
+            infoTextView(NSLocalizedString("weight_detail_view_current_weight", comment: "Current"),
+                         loggedWeights.last?.kg)
+            weightChangeView
         }
+    }
+    
+    func infoTextView(_ title : String, _ value : Double?) -> some View {
+        VStack {
+            Text("\(value?.toTwoDecimalPlacesString() ?? "-")")
+                .font(.title2)
+                .fontWeight(.semibold)
+            Text(title +
+                 " (\(NSLocalizedString("log_weight_kg_label", comment: "Kg unit")))")
+            .font(.caption)
+            .fontWeight(.light)
+            .foregroundStyle(.secondary)
+        }
+        .lineLimit(1)
+        .minimumScaleFactor(Constants.minimumScaleFactor)
+        .frame(maxWidth: .infinity)
+    }
+    
+    var weightChangeView : some View {
+        VStack {
+            Text("\(getWeightChange()?.toTwoDecimalPlacesString() ?? "-")")
+                .font(.title2)
+                .fontWeight(.semibold)
+            Text(NSLocalizedString("weight_detail_view_change", comment: "Change") + "(\(getWeightChangePercentage()?.toTwoDecimalPlacesString() ?? "-") %)")
+                .font(.caption)
+            .fontWeight(.light)
+            .foregroundStyle(.secondary)
+        }
+        .lineLimit(1)
+        .minimumScaleFactor(Constants.minimumScaleFactor)
+        .frame(maxWidth: .infinity)
+    }
+    
+    func getWeightChange() -> Double? {
+        guard let startWeight = loggedWeights.first?.kg, let currentWeight = loggedWeights.last?.kg else { return nil }
+        return currentWeight - startWeight
+    }
+    
+    func getWeightChangePercentage() -> Double? {
+        guard let startWeight = loggedWeights.first?.kg, let currentWeight = loggedWeights.last?.kg else { return nil }
+        let weightChange = currentWeight - startWeight
+        let percentageChange = (weightChange / startWeight) * 100
+        return percentageChange
     }
 }
 
@@ -65,9 +102,9 @@ private extension WeightDetailView {
             chartView
                 .frame(height: Constants.graphCardHeight)
         }
-        .padding()
-        .background(Material.thick)
-        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+//        .padding()
+//        .background(Material.thick)
+//        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
     
     var chartView: some View {
