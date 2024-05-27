@@ -5,7 +5,7 @@ import Charts
 // MARK: Used for the home view weight cahrt card
 struct WeightView: View {
     @Environment(\.modelContext) private var context
-    @Query(sort: \Weight.date) private var loggedWeights : [Weight]
+    @Query(sort: \Weight.date, animation: .smooth) private var loggedWeights : [Weight]
     @State private var isAddingWeight : Bool = false    
     @Binding var weightGoal : Double?
     

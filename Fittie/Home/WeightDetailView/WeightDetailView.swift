@@ -5,7 +5,7 @@ import SwiftData
 struct WeightDetailView: View {
     @Environment(\.modelContext) private var context
     @StateObject private var viewModel = WeightDetailViewModel()
-    @Query(sort: \Weight.date) private var loggedWeights: [Weight]
+    @Query(sort: \Weight.date, animation: .smooth) private var loggedWeights: [Weight]
     // Sheets
     @State private var isAddingWeight : Bool = false
     @State private var weightToBeEdited : Weight?
