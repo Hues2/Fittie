@@ -43,7 +43,6 @@
 		2EA2F5CB2BFA9304003E3526 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5CA2BFA9304003E3526 /* Double.swift */; };
 		2EA2F5D02BFAB171003E3526 /* UpdateWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5CF2BFAB171003E3526 /* UpdateWeightView.swift */; };
 		2EA2F5D22BFAB665003E3526 /* WeightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5D12BFAB665003E3526 /* WeightChartView.swift */; };
-		2EA2F5D42BFAB7B7003E3526 /* WeightContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2F5D32BFAB7B7003E3526 /* WeightContentUnavailableView.swift */; };
 		2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */; };
 		2EA373412BEFCB7A00843FCA /* AverageStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373402BEFCB7A00843FCA /* AverageStepsView.swift */; };
 		2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA373432BEFD69700843FCA /* DailyStep.swift */; };
@@ -105,7 +104,6 @@
 		2EA2F5CA2BFA9304003E3526 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		2EA2F5CF2BFAB171003E3526 /* UpdateWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWeightView.swift; sourceTree = "<group>"; };
 		2EA2F5D12BFAB665003E3526 /* WeightChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartView.swift; sourceTree = "<group>"; };
-		2EA2F5D32BFAB7B7003E3526 /* WeightContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightContentUnavailableView.swift; sourceTree = "<group>"; };
 		2EA3733D2BEF97A000843FCA /* ReadHeightViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHeightViewModifier.swift; sourceTree = "<group>"; };
 		2EA373402BEFCB7A00843FCA /* AverageStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageStepsView.swift; sourceTree = "<group>"; };
 		2EA373432BEFD69700843FCA /* DailyStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStep.swift; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 				2EA2F5CC2BFAA319003E3526 /* WeightSheets */,
 				2EA2F5C42BFA3D39003E3526 /* WeightView.swift */,
 				2EA2F5D12BFAB665003E3526 /* WeightChartView.swift */,
-				2EA2F5D32BFAB7B7003E3526 /* WeightContentUnavailableView.swift */,
 			);
 			path = WeightView;
 			sourceTree = "<group>";
@@ -446,7 +443,6 @@
 				2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */,
 				2EC6CAD92BEEBF52009C7002 /* HealthKitManager.swift in Sources */,
 				2E5868AA2BFD6B1F00222850 /* BasicInfoCardView.swift in Sources */,
-				2EA2F5D42BFAB7B7003E3526 /* WeightContentUnavailableView.swift in Sources */,
 				2E90E7922BFE6554003DE59F /* SetWeightGoalView.swift in Sources */,
 				2EA2F5D02BFAB171003E3526 /* UpdateWeightView.swift in Sources */,
 				2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */,

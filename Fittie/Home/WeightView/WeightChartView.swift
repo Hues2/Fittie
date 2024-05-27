@@ -5,12 +5,21 @@ struct WeightChartView: View {
     let loggedWeights : [Weight]
     @Binding var weightGoal : Double?
     var showXAxis : Bool = true
+    let logFirstEntryAction : (() -> Void)
     
     var body: some View {
-        VStack(spacing: 12) {
-            averageWeightView            
-            lineChart
-            chartLegend
+        if !loggedWeights.isEmpty {
+            VStack(spacing: 12) {
+                averageWeightView
+                lineChart
+                chartLegend
+            }
+        } else {
+            CustomContentUnavailableView(title: "not_available_title",
+                                         description: "weight_content_unavailable_description",
+                                         buttonTitle: "weight_content_unavailable_button_title") {
+                logFirstEntryAction()
+            }
         }
     }
 }
@@ -87,7 +96,7 @@ private extension WeightChartView {
         if let weightGoal {
             minValue = min(minValue, weightGoal)
         }
-        return minValue - 2
+        return max((minValue - 2), 0)
     }
     
     func getMaxYValue() -> Double {

@@ -1,18 +1,32 @@
 import SwiftUI
 
 struct CustomContentUnavailableView: View {
+    var title : LocalizedStringKey = "not_available_title"
+    let description : LocalizedStringKey
+    var buttonTitle : LocalizedStringKey?
+    var action : (() -> Void)?
+    
     var body: some View {
         ContentUnavailableView {
             Label(
-                title: { Text("Not Available") },
-                icon: { Image(systemName: "exclamationmark.circle") }
+                title: { Text(title) },
+                icon: { Image(systemName: "exclamationmark.circle").foregroundStyle(.pink) }
             )
         } description: {
-            Text("Can't retrieve your steps")
+            Text(description)
+        } actions: {
+            if let buttonTitle, let action {
+                Button {
+                    action()
+                } label: {
+                    Text(buttonTitle)
+                        .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                }
+            }
         }
     }
 }
 
 #Preview {
-    CustomContentUnavailableView()
+    CustomContentUnavailableView(title: "not_available_title", description: "Log your current weight to get started")
 }

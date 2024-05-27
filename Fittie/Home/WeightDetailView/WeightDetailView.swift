@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 
+// MARK: Weight detail view
 struct WeightDetailView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.safeAreaInsets) private var safeAreaInsets
@@ -67,7 +68,8 @@ private extension WeightDetailView {
                     if showIcon,
                        let weightChange = getWeightChange(),
                        let currentWeight = loggedWeights.last?.kg,
-                       let weightGoal = viewModel.weightGoal {
+                       let weightGoal = viewModel.weightGoal,
+                       weightGoal != .zero {
                         Image(systemName: weightChange < 0 ? "arrow.down.right" : "arrow.up.right")
                             .foregroundStyle(imageColor(weightGoal, currentWeight, weightChange))
                     }
@@ -107,7 +109,13 @@ private extension WeightDetailView {
 private extension WeightDetailView {
     var chart: some View {
         CardView(icon: nil, title: "", height: Constants.graphCardHeight) {
-            WeightChartView(loggedWeights: self.loggedWeights, weightGoal: $viewModel.weightGoal, showXAxis: false)
+            WeightChartView(loggedWeights: self.loggedWeights,
+                            weightGoal: $viewModel.weightGoal,
+                            showXAxis: false) {
+                withAnimation {
+                    self.isAddingWeight = true
+                }
+            }
                 .frame(height: Constants.graphCardHeight)
         }
     }
