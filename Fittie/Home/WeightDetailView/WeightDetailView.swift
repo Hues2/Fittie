@@ -4,8 +4,6 @@ import SwiftData
 // MARK: Weight detail view
 struct WeightDetailView: View {
     @Environment(\.modelContext) private var context
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
-    @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = WeightDetailViewModel()
     @Query(sort: \Weight.date) private var loggedWeights: [Weight]
     @State private var isAddingWeight : Bool = false
@@ -34,11 +32,14 @@ struct WeightDetailView: View {
 private extension WeightDetailView {
     var content: some View {
         ScrollView(.vertical) {
-            VStack(spacing: 8) {
+            VStack(spacing: 12) {
                 infoHeader
                 chart
-                loggedWeightsList
-                    .padding(.top, 24)
+                
+                if !loggedWeights.isEmpty {
+                    loggedWeightsList
+                        .padding(.top, 24)
+                }
             }
             .padding()
         }
@@ -49,7 +50,7 @@ private extension WeightDetailView {
 // MARK: Info Header
 private extension WeightDetailView {
     var infoHeader : some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 12) {
             // Start weight
             infoTextView("weight_detail_view_start_weight", loggedWeights.first?.kg)
             
@@ -123,6 +124,13 @@ private extension WeightDetailView {
 
 // MARK: List content
 private extension WeightDetailView {
+    var loggedWeightsList : some View {
+        VStack {
+            loggedWeightsHeader
+            loggedWeightsCells
+        }
+    }
+    
     var loggedWeightsHeader : some View {
         HStack {
             Text("weight_detail_view_logged_weights")
@@ -147,13 +155,6 @@ private extension WeightDetailView {
                     .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
             }
             .buttonStyle(ScaleButtonStyle())
-        }
-    }
-    
-    var loggedWeightsList : some View {
-        VStack {
-            loggedWeightsHeader
-            loggedWeightsCells
         }
     }
     
