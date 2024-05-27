@@ -127,16 +127,16 @@ private extension WeightDetailView {
                     self.isAddingWeight = true
                 }
             } label: {
-                HStack {
-                    Image(systemName: "plus")
-                }
-                .foregroundStyle(Color.white)
-                .font(.subheadline)
-                .fontWeight(.regular)
-                .padding(12)
-                .background(Color.accentColor)
-                .clipShape(Circle())
-                .contentShape(Circle())
+                Image(systemName: "plus")
+                    .foregroundStyle(Color.white)
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                    .padding(12)
+                    .background(
+                        RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                            .fill(.accent)
+                    )
+                    .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
             }
             .buttonStyle(ScaleButtonStyle())
         }
@@ -153,7 +153,7 @@ private extension WeightDetailView {
         LazyVStack {
             ForEach(loggedWeights.reversed()) { loggedWeight in
                 LoggedWeightCell(date: loggedWeight.date,
-                                 kg: loggedWeight.kg,                                 
+                                 kg: loggedWeight.kg,
                                  deleteAction: { self.deleteAction(loggedWeight) },
                                  editAction: { self.editAction(loggedWeight) })
             }
@@ -172,19 +172,6 @@ private extension WeightDetailView {
     func deleteAction(_ weight : Weight) {
         withAnimation(.smooth) {
             context.delete(weight)
-        }
-    }
-}
-
-private extension WeightDetailView {
-    struct BackButtonStyle : ButtonStyle {
-        func makeBody(configuration: Configuration) -> some View {
-            configuration.label
-                .scaleEffect(configuration.isPressed ? 0.8 : 1)
-                .overlay {
-                    Circle()
-                        .stroke(Color.accentColor)
-                }
         }
     }
 }
