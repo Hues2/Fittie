@@ -5,7 +5,7 @@ class Constants {
     // MARK: - UI
     static let cornerRadius : CGFloat = 16
     static let headerCornerRadius : CGFloat = 28
-    static let sheetCornerRadius : CGFloat = 28
+    static let sheetCornerRadius : CGFloat = 32
     static let horizontalScrollviewPadding : CGFloat = 12
     static let cardHeight : CGFloat = 72
     static let graphCardHeight : CGFloat = 272

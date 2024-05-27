@@ -26,14 +26,14 @@ struct WeightDetailView: View {
                         .withCustomSheetHeight()
                 }
                 .toolbar(.hidden)
-            
-        
+                    
                 Color.clear
                 .background(Material.ultraThickMaterial)
                 .frame(height: safeAreaInsets.top, alignment: .top)
                     .ignoresSafeArea()
             
         }
+        .minimumScaleFactor(Constants.minimumScaleFactor)
     }
 }
 
@@ -75,17 +75,19 @@ private extension WeightDetailView {
         }
         .padding()
         .background(Material.ultraThickMaterial)
-        .cornerRadius(24, corners: [.bottomLeft, .bottomRight])
+        .cornerRadius(Constants.sheetCornerRadius, corners: [.bottomLeft, .bottomRight])
     }
     
     var navigationBar : some View {
         Text("weight_detail_view_title")
+            .fontWeight(.semibold)
             .frame(maxWidth: .infinity)
             .overlay(alignment: .leading) {
                 Button {
                     dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
+                        .padding(12)
                         .contentShape(Circle())
                 }
                 .buttonStyle(BackButtonStyle())
@@ -105,7 +107,6 @@ private extension WeightDetailView {
             .foregroundStyle(.secondary)
         }
         .lineLimit(1)
-        .minimumScaleFactor(Constants.minimumScaleFactor)
         .frame(maxWidth: .infinity)
     }
     
@@ -128,7 +129,6 @@ private extension WeightDetailView {
                 .foregroundStyle(.secondary)
         }
         .lineLimit(1)
-        .minimumScaleFactor(Constants.minimumScaleFactor)
         .frame(maxWidth: .infinity)
     }
     
@@ -146,9 +146,9 @@ private extension WeightDetailView {
     
     func imageColor(_ weightGoal : Double, _ currentWeight : Double, _ weightChange : Double) -> Color {
         if weightGoal < currentWeight && weightChange < 0 {
-            return .green // Goal is to lose weight and weight has decreased
+            return .accent // Goal is to lose weight and weight has decreased
         } else if weightGoal > currentWeight && weightChange > 0 {
-            return .green // Goal is to gain weight and weight has increased
+            return .accent // Goal is to gain weight and weight has increased
         } else {
             return .red // Otherwise, use red
         }
@@ -181,11 +181,18 @@ private extension WeightDetailView {
                     self.isAddingWeight = true
                 }
             } label: {
-                Image(systemName: "plus")
-                    .font(.title2)
-                    .fontWeight(.regular)
-                    .foregroundStyle(.accent.gradient)
-                    .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                HStack {
+                    Text("Add new")
+                    Image(systemName: "plus")
+                }
+                .foregroundStyle(Color.white)
+                .font(.subheadline)
+                .fontWeight(.regular)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 12)
+                .background(Color.accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: Constants.sheetCornerRadius))
+                .contentShape(RoundedRectangle(cornerRadius: Constants.sheetCornerRadius))
             }
             .buttonStyle(ScaleButtonStyle())
         }
@@ -244,7 +251,6 @@ private extension WeightDetailView {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .scaleEffect(configuration.isPressed ? 0.8 : 1)
-                .padding(12)
                 .overlay {
                     Circle()
                         .stroke(Color.accentColor)
