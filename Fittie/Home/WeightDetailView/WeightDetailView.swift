@@ -92,7 +92,7 @@ private extension WeightDetailView {
                        let weightChange = getWeightChange(),
                        let currentWeight = loggedWeights.last?.kg,
                        let weightGoal = viewModel.weightGoal,
-                       weightGoal != .zero {
+                       weightChange != .zero {
                         Image(systemName: weightChange < 0 ? "arrow.down.right" : "arrow.up.right")
                             .foregroundStyle(imageColor(weightGoal, currentWeight, weightChange))
                     }
