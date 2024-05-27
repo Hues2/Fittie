@@ -3,7 +3,6 @@ import SwiftUI
 struct LoggedWeightCell: View {
     let date : Date
     let kg : Double
-    var isExpanded : Bool = false
     let deleteAction : () -> Void
     let editAction : () -> Void
     
@@ -66,7 +65,7 @@ private extension LoggedWeightCell {
             action()
         } label: {
             Image(systemName: icon)
-                .padding()
+                .padding(12)
                 .background(
                     RoundedRectangle(cornerRadius: Constants.cornerRadius)
                         .stroke()

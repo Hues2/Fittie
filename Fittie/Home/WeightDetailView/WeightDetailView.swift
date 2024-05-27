@@ -8,7 +8,6 @@ struct WeightDetailView: View {
     @StateObject private var viewModel = WeightDetailViewModel()
     @Query(sort: \Weight.date) private var loggedWeights: [Weight]
     @State private var isAddingWeight : Bool = false
-    @State private var expandedCellId : PersistentIdentifier?
     @State private var weightToBeEdited : Weight?
     
     var body: some View {
@@ -154,13 +153,9 @@ private extension WeightDetailView {
         LazyVStack {
             ForEach(loggedWeights.reversed()) { loggedWeight in
                 LoggedWeightCell(date: loggedWeight.date,
-                                 kg: loggedWeight.kg,
-                                 isExpanded: (self.expandedCellId == loggedWeight.id),
+                                 kg: loggedWeight.kg,                                 
                                  deleteAction: { self.deleteAction(loggedWeight) },
                                  editAction: { self.editAction(loggedWeight) })
-                .onTapGesture {
-                    cellOnTap(loggedWeight.id)
-                }
             }
         }
     }
@@ -168,16 +163,6 @@ private extension WeightDetailView {
 
 // MARK: Functionality
 private extension WeightDetailView {
-    func cellOnTap(_ id : PersistentIdentifier) {
-        withAnimation(.smooth) {
-            if expandedCellId == id {
-                self.expandedCellId = nil
-            } else {
-                self.expandedCellId = id
-            }
-        }
-    }
-    
     func editAction(_ weight : Weight) {
         withAnimation(.smooth) {
             self.weightToBeEdited = weight
