@@ -13,6 +13,9 @@ struct WeightDetailView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
+            Color.background
+                .ignoresSafeArea()
+            
             content
                 .sheet(isPresented: $isAddingWeight) {
                     LogWeightView()

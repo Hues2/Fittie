@@ -5,15 +5,20 @@ struct HomeView: View {
     @State var showWeightDetailView : Bool = false
     
     var body: some View {
-        content
-            .onAppear {
-                viewModel.getDailySteps()
-                viewModel.getActiveBurnedEnergy()
-            }
-            .navigationTitle("home_nav_title")
-            .sheet(isPresented: $showWeightDetailView) {
-                WeightDetailView()
-            }
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
+            
+            content
+                .onAppear {
+                    viewModel.getDailySteps()
+                    viewModel.getActiveBurnedEnergy()
+                }
+                .navigationTitle("home_nav_title")
+                .sheet(isPresented: $showWeightDetailView) {
+                    WeightDetailView()
+                }
+        }
     }
 }
 

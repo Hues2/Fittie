@@ -91,7 +91,7 @@ private extension AverageStepsView {
             ForEach(displayedSteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
                         y: .value("Steps", dailyStep.animate ? dailyStep.steps : 0))
-                .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.green.gradient : Color.pink.gradient)
+                .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accentColor.gradient : Color.pink.gradient)
                 .cornerRadius(2)
             }
         }
