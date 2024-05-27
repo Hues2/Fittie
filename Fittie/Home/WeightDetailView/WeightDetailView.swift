@@ -51,45 +51,41 @@ private extension WeightDetailView {
     var infoHeader : some View {
         HStack {
             // Start weight
-            CardView(icon: nil, title: "weight_detail_view_start_weight", height: Constants.cardHeight - 8) {
-                infoTextView(loggedWeights.first?.kg)
-            }
+            infoTextView("weight_detail_view_start_weight", loggedWeights.first?.kg)
             
             // Current weight
-            CardView(icon: nil, title: "weight_detail_view_current_weight", height: Constants.cardHeight - 8) {
-                infoTextView(loggedWeights.last?.kg)
-            }
+            infoTextView("weight_detail_view_current_weight", loggedWeights.last?.kg)
             
             // Weight change
-            CardView(icon: nil, title: "weight_detail_view_change", height: Constants.cardHeight - 8) {
-                infoTextView(getWeightChange(), true)
-            }
+            infoTextView("weight_detail_view_change", getWeightChange(), true)
         }
     }
     
-    func infoTextView(_ value : Double?, _ showIcon : Bool = false) -> some View {
-        VStack {
-            HStack(spacing: 4) {
-                if showIcon,
-                   let weightChange = getWeightChange(),
-                   let currentWeight = loggedWeights.last?.kg,
-                   let weightGoal = viewModel.weightGoal {
-                    Image(systemName: weightChange < 0 ? "arrow.down.right" : "arrow.up.right")
-                        .foregroundStyle(imageColor(weightGoal, currentWeight, weightChange))
+    func infoTextView(_ title : LocalizedStringKey, _ value : Double?, _ showIcon : Bool = false) -> some View {
+        CardView(icon: nil, title: title, height: Constants.cardHeight - 16) {
+            VStack {
+                HStack(spacing: 4) {
+                    if showIcon,
+                       let weightChange = getWeightChange(),
+                       let currentWeight = loggedWeights.last?.kg,
+                       let weightGoal = viewModel.weightGoal {
+                        Image(systemName: weightChange < 0 ? "arrow.down.right" : "arrow.up.right")
+                            .foregroundStyle(imageColor(weightGoal, currentWeight, weightChange))
+                    }
+                    
+                    Text("\(value?.toTwoDecimalPlacesString() ?? "-")")
+                        .font(.title)
+                        .fontWeight(.semibold)
                 }
                 
-                Text("\(value?.toTwoDecimalPlacesString() ?? "-")")
-                    .font(.title)
-                    .fontWeight(.semibold)
+                Text(NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .foregroundStyle(.secondary)
             }
-            
-            Text(NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
-                .font(.subheadline)
-                .fontWeight(.light)
-                .foregroundStyle(.secondary)
+            .lineLimit(1)
+            .frame(maxWidth: .infinity)
         }
-        .lineLimit(1)
-        .frame(maxWidth: .infinity)
     }
     
     func getWeightChange() -> Double? {
