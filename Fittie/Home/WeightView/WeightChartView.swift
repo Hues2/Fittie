@@ -4,13 +4,11 @@ import Charts
 struct WeightChartView: View {
     let loggedWeights : [Weight]
     @Binding var weightGoal : Double?
-    var showAverage : Bool = true
+    var showXAxis : Bool = true
     
     var body: some View {
         VStack(spacing: 12) {
-            if showAverage {
-                averageWeightView
-            }
+            averageWeightView            
             lineChart
             chartLegend
         }
@@ -67,6 +65,7 @@ private extension WeightChartView {
                 }
             }
         }
+        .chartXAxis(showXAxis ? .visible : .hidden)
         .chartXAxis {
             AxisMarks { mark in
                 AxisTick()

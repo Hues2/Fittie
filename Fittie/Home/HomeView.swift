@@ -6,7 +6,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Color.background
+            BackgroundView()
                 .ignoresSafeArea()
             
             content

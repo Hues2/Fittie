@@ -13,7 +13,7 @@ struct WeightDetailView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Color.background
+            BackgroundView()
                 .ignoresSafeArea()
             
             content
@@ -34,7 +34,7 @@ struct WeightDetailView: View {
 private extension WeightDetailView {
     var content: some View {
         ScrollView(.vertical) {
-            VStack {
+            VStack(spacing: 8) {
                 infoHeader
                 chart
                 loggedWeightsList
@@ -49,7 +49,7 @@ private extension WeightDetailView {
 // MARK: Info Header
 private extension WeightDetailView {
     var infoHeader : some View {
-        HStack {
+        HStack(spacing: 8) {
             // Start weight
             infoTextView("weight_detail_view_start_weight", loggedWeights.first?.kg)
             
@@ -108,7 +108,7 @@ private extension WeightDetailView {
 private extension WeightDetailView {
     var chart: some View {
         CardView(icon: nil, title: "", height: Constants.graphCardHeight) {
-            WeightChartView(loggedWeights: self.loggedWeights, weightGoal: $viewModel.weightGoal)
+            WeightChartView(loggedWeights: self.loggedWeights, weightGoal: $viewModel.weightGoal, showXAxis: false)
                 .frame(height: Constants.graphCardHeight)
         }
     }
@@ -129,17 +129,15 @@ private extension WeightDetailView {
                 }
             } label: {
                 HStack {
-                    Text("Add new")
                     Image(systemName: "plus")
                 }
                 .foregroundStyle(Color.white)
                 .font(.subheadline)
                 .fontWeight(.regular)
-                .padding(.vertical, 8)
-                .padding(.horizontal, 12)
+                .padding(12)
                 .background(Color.accentColor)
-                .clipShape(RoundedRectangle(cornerRadius: Constants.sheetCornerRadius))
-                .contentShape(RoundedRectangle(cornerRadius: Constants.sheetCornerRadius))
+                .clipShape(Circle())
+                .contentShape(Circle())
             }
             .buttonStyle(ScaleButtonStyle())
         }
