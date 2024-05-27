@@ -6,7 +6,9 @@ struct LogWeightView: View {
     @State private var weight : Double?
     
     var body: some View {
-        WeightInputView(weight: $weight, saveAction: {
+        WeightInputView(title: "log_weight_view_title_add",
+                        weight: $weight,
+                        saveAction: {
             saveAction()
         })
     }

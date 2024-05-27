@@ -6,8 +6,11 @@ struct WeightDetailView: View {
     @Environment(\.modelContext) private var context
     @StateObject private var viewModel = WeightDetailViewModel()
     @Query(sort: \Weight.date) private var loggedWeights: [Weight]
+    // Sheets
     @State private var isAddingWeight : Bool = false
     @State private var weightToBeEdited : Weight?
+    @State private var isUpdatingWeightGoal : Bool = false
+    private let spacing : CGFloat = 12
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -23,8 +26,27 @@ struct WeightDetailView: View {
                     UpdateWeightView(weightToBeEdited: weight)
                         .withCustomSheetHeight()
                 }
+                .sheet(isPresented: $isUpdatingWeightGoal) {
+                    UpdateWeightGoal(weightGoal: $viewModel.weightGoal)
+                        .withCustomSheetHeight()
+                }
         }
         .navigationTitle("weight_detail_view_title")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    withAnimation {
+                        self.isUpdatingWeightGoal = true
+                    }
+                } label: {
+                    HStack(spacing: 2) {
+                        Image(systemName: "target")
+                        Text("weight_goal_toolbar_title")
+                    }
+                    .foregroundStyle(.accent)
+                }
+            }
+        }
     }
 }
 
@@ -32,7 +54,7 @@ struct WeightDetailView: View {
 private extension WeightDetailView {
     var content: some View {
         ScrollView(.vertical) {
-            VStack(spacing: 12) {
+            VStack(spacing: spacing) {
                 infoHeader
                 chart
                 
@@ -50,7 +72,7 @@ private extension WeightDetailView {
 // MARK: Info Header
 private extension WeightDetailView {
     var infoHeader : some View {
-        HStack(spacing: 12) {
+        HStack(spacing: spacing) {
             // Start weight
             infoTextView("weight_detail_view_start_weight", loggedWeights.first?.kg)
             
@@ -101,7 +123,7 @@ private extension WeightDetailView {
         } else if weightGoal > currentWeight && weightChange > 0 {
             return .accent // Goal is to gain weight and weight has increased
         } else {
-            return .red // Otherwise, use red
+            return .pink // Otherwise, use red
         }
     }
 }
@@ -159,7 +181,7 @@ private extension WeightDetailView {
     }
     
     var loggedWeightsCells: some View {
-        LazyVStack {
+        LazyVStack(spacing: spacing) {
             ForEach(loggedWeights.reversed()) { loggedWeight in
                 LoggedWeightCell(date: loggedWeight.date,
                                  kg: loggedWeight.kg,

@@ -6,7 +6,9 @@ struct UpdateWeightView: View {
     @Bindable var weightToBeEdited : Weight
     
     var body: some View {
-        WeightInputView(weight: $weight, saveAction: {
+        WeightInputView(title: "log_weight_view_title_update",
+                        weight: $weight,
+                        saveAction: {
             saveAction()
         })
         .onAppear {

@@ -10,7 +10,7 @@ struct WeightView: View {
     @Binding var weightGoal : Double?
     
     var body: some View {
-        CardView(icon: "scalemass.fill", title: "weight_title", height: Constants.graphCardHeight - 25) {
+        CardView(icon: "figure.mixed.cardio", title: "weight_title", height: Constants.graphCardHeight - 25) {
             chartView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

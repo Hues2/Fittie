@@ -2,14 +2,15 @@ import SwiftUI
 
 struct WeightInputView: View {
     @Environment(\.dismiss) private var dismiss
+    let title : LocalizedStringKey
     @FocusState private var isFocused : Bool
-    @State private var weightIsValid : Bool = false
+    @State private var weightIsValid : Bool = true
     @Binding var weight : Double?
     let saveAction : () -> Void
     
     var body: some View {
         VStack(alignment: .center, spacing: 40) {
-            title
+            titleText
             inputWithLabel
             saveButton
         }
@@ -23,8 +24,8 @@ struct WeightInputView: View {
 }
 
 private extension WeightInputView {
-    var title : some View {
-        Text("log_weight_view_title")
+    var titleText : some View {
+        Text(title)
             .font(.title)
             .fontWeight(.bold)
             .lineLimit(1)
