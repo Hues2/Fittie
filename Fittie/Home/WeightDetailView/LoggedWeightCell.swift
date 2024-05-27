@@ -9,13 +9,9 @@ struct LoggedWeightCell: View {
     
     var body: some View {
         VStack {
-            mainCell
+            cell
                 .padding(.horizontal)
                 .padding(.vertical, 24)
-            
-            if isExpanded {
-                actionButtons
-            }
         }
         
         .background(Material.thick)
@@ -25,22 +21,26 @@ struct LoggedWeightCell: View {
 
 // MARK: Main Cell
 private extension LoggedWeightCell {
-    var mainCell : some View {
+    var cell : some View {
         HStack {
             HStack {
                 Image(systemName: "scalemass")
                     .foregroundStyle(.pink)
-                Text(kg.toTwoDecimalPlacesString() + NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
+                    .font(.title)
+                    .fontWeight(.regular)
+                VStack(alignment: .leading) {
+                    Text(kg.toTwoDecimalPlacesString() + NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
+                        .font(.title3)
+                        .fontWeight(.regular)
+                    Text(date.formattedWithOrdinalSuffix())
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .foregroundStyle(.secondary)
+                }
             }
-            .font(.title3)
-            .fontWeight(.regular)
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text(date.formattedWithOrdinalSuffix())
-                .font(.headline)
-                .fontWeight(.light)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            actionButtons
         }
     }
 }
@@ -48,43 +48,32 @@ private extension LoggedWeightCell {
 // MARK: Buttons
 private extension LoggedWeightCell {
     var actionButtons : some View {
-        HStack(spacing: 0) {
-            button(title: "weight_detail_view_logged_weight_cell_edit",
-                   color: .accent,
-                   corner: .bottomLeft,
-                   alignment: .leading) {
+        HStack(spacing: 12) {
+            button(icon: "square.and.pencil", color: .accent) {
                 editAction()
             }
             
-            button(title: "weight_detail_view_logged_weight_cell_delete",
-                   color: .pink,
-                   corner: .bottomRight,
-                   alignment: .trailing) {
+            button(icon: "trash", color: .pink) {
                 deleteAction()
             }
         }
     }
     
-    func button(title : LocalizedStringKey,
+    func button(icon : String,
                 color : Color,
-                corner : UIRectCorner,
-                alignment : Alignment,
                 _ action : @escaping () -> Void) -> some View {
         Button {
             action()
         } label: {
-            Text(title)
-                .font(.body)
-                .fontWeight(.bold)
-                .foregroundStyle(Color.white)
+            Image(systemName: icon)
                 .padding()
-                .frame(maxWidth: .infinity)
                 .background(
-                    color
-                        .cornerRadius(Constants.cornerRadius, corners: [corner])
+                    RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                        .stroke()
                 )
+                .foregroundStyle(color)
+                .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
-        .frame(maxWidth: .infinity, alignment: alignment)
     }
 }
 
