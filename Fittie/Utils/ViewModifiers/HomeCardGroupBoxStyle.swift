@@ -2,12 +2,14 @@ import SwiftUI
 
 struct HomeCardGroupBoxStyle : GroupBoxStyle {
     let height : CGFloat
-    let icon : String
+    let icon : String?
     
     func makeBody(configuration: Configuration) -> some View {
         VStack(alignment: .leading) {
             HStack(spacing: 4) {
-                Image(systemName: icon)
+                if let icon {
+                    Image(systemName: icon)
+                }
                 configuration.label
             }
             .foregroundStyle(Color.pink)

@@ -25,106 +25,66 @@ struct WeightDetailView: View {
                     UpdateWeightView(weightToBeEdited: weight)
                         .withCustomSheetHeight()
                 }
-                .toolbar(.hidden)
-                    
-                Color.clear
-                .background(Material.ultraThickMaterial)
-                .frame(height: safeAreaInsets.top, alignment: .top)
-                    .ignoresSafeArea()
-            
         }
-        .minimumScaleFactor(Constants.minimumScaleFactor)
+        .navigationTitle("weight_detail_view_title")
     }
 }
 
 // MARK: Content
 private extension WeightDetailView {
     var content: some View {
-        VStack(spacing: 0) {
-            infoHeader
-            ScrollView(.vertical) {
-                VStack(spacing: 12) {
-                    chart
-                        .padding()
-                    loggedWeightsList
-                        .padding()
-                }
+        ScrollView(.vertical) {
+            VStack {
+                infoHeader
+                chart
+                loggedWeightsList
+                    .padding(.top, 24)
             }
-            .scrollIndicators(.hidden)
+            .padding()
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollIndicators(.hidden)
     }
 }
 
 // MARK: Info Header
 private extension WeightDetailView {
     var infoHeader : some View {
-        VStack(spacing: 36) {
-            navigationBar
+        HStack {
+            // Start weight
+            CardView(icon: nil, title: "weight_detail_view_start_weight", height: Constants.cardHeight - 8) {
+                infoTextView(loggedWeights.first?.kg)
+            }
             
-            HStack {
-                // Start weight
-                infoTextView(NSLocalizedString("weight_detail_view_start_weight", comment: "Start"),
-                             loggedWeights.first?.kg)
-                // Current weight
-                infoTextView(NSLocalizedString("weight_detail_view_current_weight", comment: "Current"),
-                             loggedWeights.last?.kg)
-                // Weight change
-                weightChangeView
+            // Current weight
+            CardView(icon: nil, title: "weight_detail_view_current_weight", height: Constants.cardHeight - 8) {
+                infoTextView(loggedWeights.last?.kg)
+            }
+            
+            // Weight change
+            CardView(icon: nil, title: "weight_detail_view_change", height: Constants.cardHeight - 8) {
+                infoTextView(getWeightChange(), true)
             }
         }
-        .padding()
-        .background(Material.ultraThickMaterial)
-        .cornerRadius(Constants.sheetCornerRadius, corners: [.bottomLeft, .bottomRight])
     }
     
-    var navigationBar : some View {
-        Text("weight_detail_view_title")
-            .fontWeight(.semibold)
-            .frame(maxWidth: .infinity)
-            .overlay(alignment: .leading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .padding(12)
-                        .contentShape(Circle())
-                }
-                .buttonStyle(BackButtonStyle())
-            }
-            .font(.title2)
-    }
-    
-    func infoTextView(_ title : String, _ value : Double?) -> some View {
+    func infoTextView(_ value : Double?, _ showIcon : Bool = false) -> some View {
         VStack {
-            Text("\(value?.toTwoDecimalPlacesString() ?? "-")")
-                .font(.title2)
-                .fontWeight(.semibold)
-            Text(title +
-                 " (\(NSLocalizedString("log_weight_kg_label", comment: "Kg unit")))")
-            .font(.caption)
-            .fontWeight(.light)
-            .foregroundStyle(.secondary)
-        }
-        .lineLimit(1)
-        .frame(maxWidth: .infinity)
-    }
-    
-    var weightChangeView : some View {
-        VStack {
-            HStack {
-                if let weightChange = getWeightChange(),
+            HStack(spacing: 4) {
+                if showIcon,
+                   let weightChange = getWeightChange(),
                    let currentWeight = loggedWeights.last?.kg,
                    let weightGoal = viewModel.weightGoal {
                     Image(systemName: weightChange < 0 ? "arrow.down.right" : "arrow.up.right")
                         .foregroundStyle(imageColor(weightGoal, currentWeight, weightChange))
                 }
-                Text("\(getWeightChange()?.toTwoDecimalPlacesString() ?? "-")")
-                    .font(.title2)
+                
+                Text("\(value?.toTwoDecimalPlacesString() ?? "-")")
+                    .font(.title)
                     .fontWeight(.semibold)
             }
-            Text(NSLocalizedString("weight_detail_view_change", comment: "Change") + "(\(getWeightChangePercentage()?.toTwoDecimalPlacesString() ?? "-") %)")
-                .font(.caption)
+            
+            Text(NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
+                .font(.subheadline)
                 .fontWeight(.light)
                 .foregroundStyle(.secondary)
         }
@@ -135,13 +95,6 @@ private extension WeightDetailView {
     func getWeightChange() -> Double? {
         guard let startWeight = loggedWeights.first?.kg, let currentWeight = loggedWeights.last?.kg else { return nil }
         return currentWeight - startWeight
-    }
-    
-    func getWeightChangePercentage() -> Double? {
-        guard let startWeight = loggedWeights.first?.kg, let currentWeight = loggedWeights.last?.kg else { return nil }
-        let weightChange = currentWeight - startWeight
-        let percentageChange = (weightChange / startWeight) * 100
-        return percentageChange
     }
     
     func imageColor(_ weightGoal : Double, _ currentWeight : Double, _ weightChange : Double) -> Color {
@@ -158,12 +111,10 @@ private extension WeightDetailView {
 // MARK: Chart
 private extension WeightDetailView {
     var chart: some View {
-        chartView
-            .frame(height: Constants.graphCardHeight)
-    }
-    
-    var chartView: some View {
-        WeightChartView(loggedWeights: self.loggedWeights, weightGoal: $viewModel.weightGoal, showAverage: false)
+        CardView(icon: nil, title: "", height: Constants.graphCardHeight) {
+            WeightChartView(loggedWeights: self.loggedWeights, weightGoal: $viewModel.weightGoal)
+                .frame(height: Constants.graphCardHeight)
+        }
     }
 }
 

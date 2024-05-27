@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct CardView<CardContent : View> : View {
-    let icon : String
+    let icon : String?
     let title : LocalizedStringKey
     let height : CGFloat
     let cardContent : CardContent
     
-    init(icon : String, title: LocalizedStringKey, height: CGFloat, @ViewBuilder cardContent: () -> CardContent) {
+    init(icon : String?, title: LocalizedStringKey, height: CGFloat, @ViewBuilder cardContent: () -> CardContent) {
         self.icon = icon
         self.title = title
         self.height = height
