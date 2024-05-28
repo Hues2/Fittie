@@ -55,7 +55,7 @@ private extension WeightChartView {
                     .foregroundStyle(Color.pink.gradient)
             }
             
-            ForEach(loggedWeights) { loggedWeight in
+            ForEach(loggedWeights.suffix(Constants.numberOfLoggedWeights)) { loggedWeight in
                 LineMark(
                     x: .value("Date", loggedWeight.date),
                     y: .value("Weight", loggedWeight.kg)

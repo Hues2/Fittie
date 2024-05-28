@@ -7,14 +7,11 @@ struct LoggedWeightCell: View {
     let editAction : () -> Void
     
     var body: some View {
-        VStack {
-            cell
-                .padding(.horizontal)
-                .padding(.vertical, 24)
-        }
-        
-        .background(Material.thick)
-        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        cell
+            .padding(.horizontal)
+            .padding(.vertical, 16)
+            .background(Material.thick)
+            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
 }
 
