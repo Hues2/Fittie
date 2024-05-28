@@ -625,6 +625,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Fittie/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Fittie;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need your permission to read your steps";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please give your permission to read your steps";
@@ -663,6 +664,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Fittie/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Fittie;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need your permission to read your steps";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please give your permission to read your steps";
