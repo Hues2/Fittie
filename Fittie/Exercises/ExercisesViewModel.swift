@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 import Combine
 
 class ExercisesViewModel : ObservableObject {
@@ -38,7 +38,14 @@ class ExercisesViewModel : ObservableObject {
     
     func filterExerciseCategories(_ newSearchText : String) {
         for (category, exercises) in allExerciseCategories {
-            filteredExerciseCategories[category] = exercises.filter { $0.starts(with: newSearchText) || $0.contains(newSearchText) }
+            let filteredExercises = exercises.filter { $0.starts(with: newSearchText) || $0.contains(newSearchText) }
+            withAnimation {
+                if filteredExercises.isEmpty {
+                    filteredExerciseCategories.removeValue(forKey: category)
+                } else {
+                    filteredExerciseCategories[category] = filteredExercises
+                }
+            }
         }
     }
 }
