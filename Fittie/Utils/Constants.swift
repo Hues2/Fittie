@@ -27,3 +27,29 @@ class Constants {
         static let selectedTimePeriod = "selected_time_period"
     }
 }
+
+// MARK: Exercises
+extension Constants {
+    static let chestExercises : [String] = [
+        "Incline Bench Press",
+        "Flat bench press",
+        "Decline bench press",
+    ]
+    
+    static let armExercises : [String] = [
+        "Bicep curl",
+    ]
+    
+    static let shoulderExercises : [String] = [
+        "Lateral raise"
+    ]
+    
+    static let backExercises : [String] = [
+        "Lat pulldown"
+    ]
+    
+    static let legExercises : [String] = [
+        "Squats",
+        "Leg extension"
+    ]        
+}

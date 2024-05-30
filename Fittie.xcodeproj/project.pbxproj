@@ -10,6 +10,9 @@
 		2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E39A9AB2BF03D7C00A93F19 /* Utils.swift */; };
 		2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */; };
 		2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */; };
+		2E551BA82C09186F0058F1B2 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BA72C09186F0058F1B2 /* ExercisesView.swift */; };
+		2E551BAA2C0918840058F1B2 /* ExercisesNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BA92C0918840058F1B2 /* ExercisesNavigationStack.swift */; };
+		2E551BAE2C0938F20058F1B2 /* ExercisesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BAD2C0938F20058F1B2 /* ExercisesViewModel.swift */; };
 		2E5868A32BFD471300222850 /* WeightInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A22BFD471300222850 /* WeightInput.swift */; };
 		2E5868A52BFD47A000222850 /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A42BFD47A000222850 /* WeightInputView.swift */; };
 		2E5868AA2BFD6B1F00222850 /* BasicInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */; };
@@ -65,6 +68,7 @@
 		2EC6CAE22BEED1D5009C7002 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE12BEED1D5009C7002 /* CustomError.swift */; };
 		2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAE82BEEDD46009C7002 /* Constants.swift */; };
 		2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAEB2BEEEBB5009C7002 /* Date.swift */; };
+		2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6E2202C08F09A0056B4B4 /* Workout.swift */; };
 		2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,9 @@
 		2E39A9AB2BF03D7C00A93F19 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStack.swift; sourceTree = "<group>"; };
 		2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
+		2E551BA72C09186F0058F1B2 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
+		2E551BA92C0918840058F1B2 /* ExercisesNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesNavigationStack.swift; sourceTree = "<group>"; };
+		2E551BAD2C0938F20058F1B2 /* ExercisesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesViewModel.swift; sourceTree = "<group>"; };
 		2E5868A22BFD471300222850 /* WeightInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInput.swift; sourceTree = "<group>"; };
 		2E5868A42BFD47A000222850 /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
 		2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoCardView.swift; sourceTree = "<group>"; };
@@ -129,6 +136,7 @@
 		2EC6CAE12BEED1D5009C7002 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		2EC6CAE82BEEDD46009C7002 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2EC6CAEB2BEEEBB5009C7002 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		2EC6E2202C08F09A0056B4B4 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetHeight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +165,16 @@
 				2E90E7932BFE8FBA003DE59F /* HomeViewChartLegend.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		2E551BA62C0918580058F1B2 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				2E551BA72C09186F0058F1B2 /* ExercisesView.swift */,
+				2E551BA92C0918840058F1B2 /* ExercisesNavigationStack.swift */,
+				2E551BAD2C0938F20058F1B2 /* ExercisesViewModel.swift */,
+			);
+			path = Exercises;
 			sourceTree = "<group>";
 		};
 		2E68A0982BFFFE8900C2A430 /* WeightDetailView */ = {
@@ -231,6 +249,7 @@
 				2EA373432BEFD69700843FCA /* DailyStep.swift */,
 				2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */,
 				2EA2F5C62BFA444A003E3526 /* Weight.swift */,
+				2EC6E2202C08F09A0056B4B4 /* Workout.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,6 +281,7 @@
 				2EC6CAD72BEEBF42009C7002 /* Managers */,
 				2E8806032BF54AAE00E12456 /* Onboarding */,
 				2EC6CAC82BEE8FB6009C7002 /* Home */,
+				2E551BA62C0918580058F1B2 /* Exercises */,
 				2EC6CACC2BEE91DF009C7002 /* Navigation */,
 				2E53A2FD2BEFF42C00D81297 /* Components */,
 				2EC6CACF2BEE9291009C7002 /* Utils */,
@@ -440,7 +460,9 @@
 				2EA373412BEFCB7A00843FCA /* AverageStepsView.swift in Sources */,
 				2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */,
 				2EC6CAE92BEEDD46009C7002 /* Constants.swift in Sources */,
+				2E551BAA2C0918840058F1B2 /* ExercisesNavigationStack.swift in Sources */,
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
+				2E551BA82C09186F0058F1B2 /* ExercisesView.swift in Sources */,
 				2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */,
 				2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */,
 				2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */,
@@ -456,6 +478,7 @@
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */,
 				2E5868A32BFD471300222850 /* WeightInput.swift in Sources */,
+				2E551BAE2C0938F20058F1B2 /* ExercisesViewModel.swift in Sources */,
 				2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */,
 				2E90E7942BFE8FBA003DE59F /* HomeViewChartLegend.swift in Sources */,
@@ -483,6 +506,7 @@
 				2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */,
 				2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */,
 				2EA2F5CB2BFA9304003E3526 /* Double.swift in Sources */,
+				2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */,
 				2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */,
 				2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */,
 				2EA2F5C52BFA3D39003E3526 /* WeightView.swift in Sources */,

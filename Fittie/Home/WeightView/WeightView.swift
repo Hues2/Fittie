@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 import Charts
 
-// MARK: Used for the home view weight cahrt card
+// MARK: Used for the home view weight chart card
 struct WeightView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \Weight.date, animation: .smooth) private var loggedWeights : [Weight]

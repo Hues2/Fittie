@@ -77,3 +77,6 @@
 "weight_detail_view_logged_weights" = "Logged weights";
 "weight_detail_view_logged_weight_cell_edit" = "Edit";
 "weight_detail_view_logged_weight_cell_delete" = "Delete";
+
+// Exercises View
+"exercises_view_title" = "Exercises";

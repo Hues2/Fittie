@@ -22,7 +22,7 @@ extension AppTab {
         case .home:
             HomeNavigationStack()
         case .exercises:
-            Text("Exercises")
+            ExercisesNavigationStack()
         }
     }
 }
