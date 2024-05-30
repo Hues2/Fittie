@@ -80,3 +80,10 @@
 
 // Exercises View
 "exercises_view_title" = "Exercises";
+
+// Exercise Categories
+"exercise_category_title_chest" = "Chest";
+"exercise_category_title_arms" = "Arms";
+"exercise_category_title_shoulders" = "Shoulders";
+"exercise_category_title_back" = "Back";
+"exercise_category_title_legs" = "Legs";

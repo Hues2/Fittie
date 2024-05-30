@@ -31,7 +31,7 @@ class Constants {
 // MARK: Exercises
 extension Constants {
     static let chestExercises : [String] = [
-        "Incline Bench Press",
+        "Incline bench press",
         "Flat bench press",
         "Decline bench press",
     ]
