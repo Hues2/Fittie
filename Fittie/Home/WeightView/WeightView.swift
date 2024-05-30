@@ -28,7 +28,7 @@ struct WeightView: View {
 // MARK: Add/Update Weight
 private extension WeightView {
     var arrowIcon : some View {
-        Image(systemName: "arrow.forward")
+        Image(systemName: "chevron.right")
             .foregroundStyle(Color.accentColor)
     }
 }
