@@ -182,7 +182,7 @@ private extension WeightDetailView {
     
     var loggedWeightsCells: some View {
         LazyVStack(spacing: spacing) {
-            ForEach(loggedWeights.reversed().suffix(Constants.numberOfLoggedWeights)) { loggedWeight in
+            ForEach(loggedWeights.reversed().prefix(Constants.numberOfLoggedWeights)) { loggedWeight in
                 LoggedWeightCell(date: loggedWeight.date,
                                  kg: loggedWeight.kg,
                                  deleteAction: { self.deleteAction(loggedWeight) },
