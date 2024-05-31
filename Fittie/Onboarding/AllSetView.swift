@@ -55,5 +55,5 @@ private extension AllSetView {
 
 #Preview {
     AllSetView()
-        .background(Material.regular)
+        .background(Constants.backgroundMaterial)
 }

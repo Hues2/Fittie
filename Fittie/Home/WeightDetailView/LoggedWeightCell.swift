@@ -10,7 +10,7 @@ struct LoggedWeightCell: View {
         cell
             .padding(.horizontal)
             .padding(.vertical, 16)
-            .background(Material.thick)
+            .background(Constants.backgroundMaterial)
             .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
 }

@@ -18,7 +18,7 @@ struct HomeCardGroupBoxStyle : GroupBoxStyle {
                 .frame(height: height)
         }
         .padding()
-        .background(Material.ultraThickMaterial)
+        .background(Constants.backgroundMaterial)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
 }

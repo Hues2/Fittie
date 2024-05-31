@@ -17,12 +17,12 @@ struct ExercisesView: View {
 private extension ExercisesView {
     var content : some View {
         ScrollView {
-            LazyVStack(alignment: .leading, spacing: 8, pinnedViews: .sectionHeaders) {
+            LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
                 ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
                     section(category, viewModel.filteredExerciseCategories[category] ?? [])
                 }
             }
-            .padding(.horizontal, 8)
+            .padding(.horizontal,16)
         }
 //        List {
 //            ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
@@ -52,7 +52,7 @@ private extension ExercisesView {
                 sectionList(exerciseNames)
                     .background(
                         Color.clear
-                            .background(Material.ultraThickMaterial)
+                            .background(Constants.backgroundMaterial)
                             .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                     )
             }
@@ -80,6 +80,7 @@ private extension ExercisesView {
     
     func sectionCategoryTitle(_ category : String) -> some View {
         Text(category)
+            .font(.headline)
             .foregroundStyle(.pink)
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)

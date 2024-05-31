@@ -14,6 +14,7 @@ class Constants {
     static let bigCardTextSize : CGFloat = 40
     static let bigTextInputTextSize : CGFloat = 50
     static let dynamicTypeSizeRange : ClosedRange<DynamicTypeSize> = .small ... .xxLarge
+    static let backgroundMaterial : Material = .ultraThickMaterial
     
     // MARK: - Values    
     static let defaultStepGoal : Int = 7500

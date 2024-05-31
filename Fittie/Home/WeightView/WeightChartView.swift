@@ -68,7 +68,7 @@ private extension WeightChartView {
                         .frame(width: 10, height: 10)
                         .overlay {
                             Circle()
-                                .fill(Material.thick)
+                                .fill(Constants.backgroundMaterial)
                                 .frame(width: 8, height: 8)
                         }
                 }
