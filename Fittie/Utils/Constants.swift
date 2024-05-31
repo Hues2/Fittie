@@ -31,25 +31,100 @@ class Constants {
 // MARK: Exercises
 extension Constants {
     static let chestExercises : [String] = [
-        "Incline bench press",
-        "Flat bench press",
-        "Decline bench press",
+        "Bench Press",
+        "Incline Bench Press",
+        "Decline Bench Press",
+        "Chest Flyes",
+        "Chest Dips",
+        "Push-Ups",
+        "Dumbbell Bench Press",
+        "Cable Crossovers",
+        "Pec Deck Machine",
+        "Smith Machine Bench Press"
     ]
     
     static let armExercises : [String] = [
-        "Bicep curl",
+        "Barbell Curls",
+        "Dumbbell Curls",
+        "Hammer Curls",
+        "Preacher Curls",
+        "Concentration Curls",
+        "Cable Curls",
+        "Chin-Ups",
+        "EZ-Bar Curls",
+        "Incline Dumbbell Curls",
+        "Spider Curls",
+        "Tricep Dips",
+        "Tricep Pushdowns",
+        "Overhead Tricep Extension",
+        "Skull Crushers",
+        "Close-Grip Bench Press",
+        "Tricep Kickbacks",
+        "Dumbbell Overhead Extension",
+        "Rope Pushdowns",
+        "Reverse Grip Tricep Pushdowns",
+        "Tricep Dips Machine"
     ]
     
     static let shoulderExercises : [String] = [
-        "Lateral raise"
+        "Shoulder Press",
+        "Dumbbell Shoulder Press",
+        "Arnold Press",
+        "Lateral Raises",
+        "Front Raises",
+        "Rear Delt Flyes",
+        "Upright Rows",
+        "Shrugs",
+        "Cable Lateral Raises",
+        "Reverse Pec Deck Flyes"
     ]
     
     static let backExercises : [String] = [
-        "Lat pulldown"
+        "Deadlifts",
+        "Pull-Ups",
+        "Lat Pulldowns",
+        "Bent Over Rows",
+        "T-Bar Rows",
+        "Seated Rows",
+        "One-Arm Dumbbell Rows",
+        "Face Pulls",
+        "Back Extensions",
+        "Inverted Rows"
     ]
     
     static let legExercises : [String] = [
         "Squats",
-        "Leg extension"
-    ]        
+        "Leg Press",
+        "Lunges",
+        "Leg Extensions",
+        "Bulgarian Split Squats",
+        "Hack Squats",
+        "Sissy Squats",
+        "Front Squats",
+        "Step-Ups",
+        "Goblet Squats",
+        "Romanian Deadlifts",
+        "Hamstring Curls",
+        "Stiff-Legged Deadlifts",
+        "Good Mornings",
+        "Glute-Ham Raises",
+        "Single-Leg Romanian Deadlifts",
+        "Cable Pull-Throughs",
+        "Kettlebell Swings",
+        "Reverse Lunges",
+        "Swiss Ball Hamstring Curls",
+        "Hip Thrusts",
+        "Glute Bridges",
+        "Cable Kickbacks",
+        "Sumo Deadlifts",
+        "Single-Leg Glute Bridges",
+        "Donkey Kicks",
+        "Fire Hydrants",
+        "Standing Calf Raises",
+        "Seated Calf Raises",
+        "Donkey Calf Raises",
+        "Calf Press on Leg Press Machine",
+        "Single-Leg Calf Raises",
+        "Smith Machine Calf Raises"
+    ]
 }

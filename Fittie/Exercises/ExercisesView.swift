@@ -16,35 +16,74 @@ struct ExercisesView: View {
 
 private extension ExercisesView {
     var content : some View {
-        List {
-            ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
-                Section {
-                    section(viewModel.filteredExerciseCategories[category] ?? [])
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                } header: {
-                    Text(category)
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 8, pinnedViews: .sectionHeaders) {
+                ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
+                    section(category, viewModel.filteredExerciseCategories[category] ?? [])
                 }
             }
+            .padding(.horizontal, 8)
         }
-        .scrollContentBackground(.hidden)
-        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer, prompt: "Search exercises")
+//        List {
+//            ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
+//                Section {
+//                    section(viewModel.filteredExerciseCategories[category] ?? [])
+//                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+//                        .listRowSeparator(.hidden)
+//                } header: {
+//                    Text(category)
+//                        .foregroundStyle(.pink)
+//                }
+//            }
+//            .listRowBackground(
+//                Color.clear
+//                    .background(Material.ultraThickMaterial)
+//            )
+//            .listSectionSpacing(12)
+//        }
+//        .scrollContentBackground(.hidden)
+//        .scrollIndicators(.hidden)
+//        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer, prompt: "Search exercises")
     }
     
-    func section(_ exerciseNames : [String]) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
+    func section(_ category : String, _ exerciseNames : [String]) -> some View {
+        Section {
+            VStack(alignment: .leading, spacing: 8) {
+                sectionList(exerciseNames)
+                    .background(
+                        Color.clear
+                            .background(Material.ultraThickMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                    )
+            }
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .listRowSeparator(.hidden)
+        } header: {
+            sectionCategoryTitle(category)
+        }
+    }
+    
+    func sectionList(_ exerciseNames : [String]) -> some View {
+        VStack {
             ForEach(exerciseNames, id: \.self) { exerciseName in
                 HStack {
                     Text(exerciseName)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemName: "chevron.right")
+                        .foregroundStyle(.accent)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-                .background(Material.ultraThickMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
             }
         }
+    }
+    
+    func sectionCategoryTitle(_ category : String) -> some View {
+        Text(category)
+            .foregroundStyle(.pink)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(BackgroundView().cornerRadius(Constants.cornerRadius, corners: [.bottomLeft, .bottomRight]))
     }
 }
 
