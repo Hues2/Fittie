@@ -3,6 +3,7 @@ import SwiftUI
 enum AppTab: Codable, Hashable, Identifiable, CaseIterable {
     case home
     case exercises
+    case calendar
     
     var id: AppTab { self }
 }
@@ -14,6 +15,8 @@ extension AppTab {
             Label("home_tab_label", systemImage: "house.fill")
         case .exercises:
             Label("exercises_tab_label", systemImage: "dumbbell.fill")
+        case .calendar:
+            Label("calendar_tab_label", systemImage: "calendar")
         }
     }
     
@@ -23,6 +26,8 @@ extension AppTab {
             HomeNavigationStack()
         case .exercises:
             ExercisesNavigationStack()
+        case .calendar:
+            CalendarNavigationStack()
         }
     }
 }
