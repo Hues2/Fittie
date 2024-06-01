@@ -39,9 +39,13 @@ extension Constants {
         "Chest Dips",
         "Push-Ups",
         "Dumbbell Bench Press",
+        "Incline Dumbbell Bench Press",
+        "Decline Dumbbell Bench Press",
         "Cable Crossovers",
         "Pec Deck Machine",
-        "Smith Machine Bench Press"
+        "Smith Machine Bench Press",
+        "Incline Smith Machine Bench Press",
+        "Decline Smith Machine Bench Press"
     ]
     
     static let armExercises : [String] = [
