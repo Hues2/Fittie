@@ -17,20 +17,18 @@ struct ExercisesView: View {
 
 private extension ExercisesView {
     var content : some View {
-        ScrollViewReader { reader in
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
-                    ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
-                        section(category, viewModel.filteredExerciseCategories[category] ?? [])
-                    }
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
+                ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
+                    section(category, viewModel.filteredExerciseCategories[category] ?? [])
                 }
-                .padding(.horizontal, 12)
-                .padding(.bottom, 8)
             }
-            .searchable(text: $viewModel.searchText,
-                        placement: .navigationBarDrawer(displayMode: .automatic),
-                        prompt: "exercises_view_searchable_prompt")            
+            .padding(.horizontal, 12)
+            .padding(.bottom, 8)
         }
+        .searchable(text: $viewModel.searchText,
+                    placement: .navigationBarDrawer(displayMode: .automatic),
+                    prompt: "exercises_view_searchable_prompt")
     }
     
     func section(_ category : String, _ exerciseNames : [String]) -> some View {
@@ -43,8 +41,8 @@ private extension ExercisesView {
                             .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                     )
             }
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .listRowSeparator(.hidden)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .listRowSeparator(.hidden)
         } header: {
             sectionCategoryTitle(category)
         }
