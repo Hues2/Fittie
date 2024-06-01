@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0A57AF2C0BE3AC00964E50 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */; };
 		2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E39A9AB2BF03D7C00A93F19 /* Utils.swift */; };
 		2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */; };
 		2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */; };
@@ -36,7 +37,6 @@
 		2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */; };
 		2E73A2C72C0BB43D00A8423E /* CalendarNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73A2C62C0BB43D00A8423E /* CalendarNavigationStack.swift */; };
 		2E73A2C92C0BB45500A8423E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73A2C82C0BB45500A8423E /* CalendarView.swift */; };
-		2E73A2CB2C0BD03100A8423E /* MonthlyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73A2CA2C0BD03100A8423E /* MonthlyCalendarView.swift */; };
 		2E7780472C05290500E9AD64 /* UpdateWeightGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7780462C05290500E9AD64 /* UpdateWeightGoal.swift */; };
 		2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806042BF54AE300E12456 /* OnboardingView.swift */; };
 		2E8806072BF5548200E12456 /* SetStepGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8806062BF5548200E12456 /* SetStepGoalView.swift */; };
@@ -79,6 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		2E39A9AB2BF03D7C00A93F19 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStack.swift; sourceTree = "<group>"; };
 		2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGoalManager.swift; sourceTree = "<group>"; };
 		2E73A2C62C0BB43D00A8423E /* CalendarNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarNavigationStack.swift; sourceTree = "<group>"; };
 		2E73A2C82C0BB45500A8423E /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		2E73A2CA2C0BD03100A8423E /* MonthlyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarView.swift; sourceTree = "<group>"; };
 		2E7780462C05290500E9AD64 /* UpdateWeightGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWeightGoal.swift; sourceTree = "<group>"; };
 		2E8806042BF54AE300E12456 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2E8806062BF5548200E12456 /* SetStepGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStepGoalView.swift; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 			children = (
 				2E73A2C62C0BB43D00A8423E /* CalendarNavigationStack.swift */,
 				2E73A2C82C0BB45500A8423E /* CalendarView.swift */,
-				2E73A2CA2C0BD03100A8423E /* MonthlyCalendarView.swift */,
+				2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -492,7 +492,6 @@
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
 				2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */,
 				2E549C4E2C0A335B00AE85CA /* Exercise.swift in Sources */,
-				2E73A2CB2C0BD03100A8423E /* MonthlyCalendarView.swift in Sources */,
 				2E73A2C72C0BB43D00A8423E /* CalendarNavigationStack.swift in Sources */,
 				2EA373412BEFCB7A00843FCA /* AverageStepsView.swift in Sources */,
 				2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */,
@@ -546,6 +545,7 @@
 				2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */,
 				2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */,
 				2EA2F5CB2BFA9304003E3526 /* Double.swift in Sources */,
+				2E0A57AF2C0BE3AC00964E50 /* CustomCalendarView.swift in Sources */,
 				2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */,
 				2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */,
 				2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */,
