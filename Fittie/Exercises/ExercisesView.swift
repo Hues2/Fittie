@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ExercisesView: View {
     @StateObject private var viewModel = ExercisesViewModel()
+    @State private var showSearchBar : Bool = false
     
     var body: some View {
         ZStack {
@@ -16,14 +17,19 @@ struct ExercisesView: View {
 
 private extension ExercisesView {
     var content : some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
-                ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
-                    section(category, viewModel.filteredExerciseCategories[category] ?? [])
+        ScrollViewReader { reader in
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
+                    ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
+                        section(category, viewModel.filteredExerciseCategories[category] ?? [])
+                    }
                 }
+                .padding(.horizontal, 12)
+                .padding(.bottom, 8)
             }
-            .padding(.horizontal,16)
-            .padding(.bottom, 8)
+            .searchable(text: $viewModel.searchText,
+                        placement: .navigationBarDrawer(displayMode: .automatic),
+                        prompt: "exercises_view_searchable_prompt")            
         }
     }
     

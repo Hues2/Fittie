@@ -80,6 +80,7 @@
 
 // Exercises View
 "exercises_view_title" = "Exercises";
+"exercises_view_searchable_prompt" = "Search exercises";
 
 // Exercise Categories
 "exercise_category_title_chest" = "Chest";
