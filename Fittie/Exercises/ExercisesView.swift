@@ -23,27 +23,8 @@ private extension ExercisesView {
                 }
             }
             .padding(.horizontal,16)
+            .padding(.bottom, 8)
         }
-//        List {
-//            ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
-//                Section {
-//                    section(viewModel.filteredExerciseCategories[category] ?? [])
-//                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-//                        .listRowSeparator(.hidden)
-//                } header: {
-//                    Text(category)
-//                        .foregroundStyle(.pink)
-//                }
-//            }
-//            .listRowBackground(
-//                Color.clear
-//                    .background(Material.ultraThickMaterial)
-//            )
-//            .listSectionSpacing(12)
-//        }
-//        .scrollContentBackground(.hidden)
-//        .scrollIndicators(.hidden)
-//        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer, prompt: "Search exercises")
     }
     
     func section(_ category : String, _ exerciseNames : [String]) -> some View {
