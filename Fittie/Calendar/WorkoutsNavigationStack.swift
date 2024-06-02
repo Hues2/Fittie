@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct CalendarNavigationStack: View {
+struct WorkoutsNavigationStack: View {
     var body: some View {
         NavigationStack {
-            CalendarView()
+            WorkoutsView()
         }
     }
 }
 
 #Preview {
-    CalendarNavigationStack()
+    WorkoutsNavigationStack()
 }

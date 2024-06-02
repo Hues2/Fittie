@@ -16,7 +16,7 @@ extension AppTab {
         case .exercises:
             Label("exercises_tab_label", systemImage: "dumbbell.fill")
         case .calendar:
-            Label("calendar_tab_label", systemImage: "calendar")
+            Label("workouts_tab_label", systemImage: "calendar")
         }
     }
     
@@ -27,7 +27,7 @@ extension AppTab {
         case .exercises:
             ExercisesNavigationStack()
         case .calendar:
-            CalendarNavigationStack()
+            WorkoutsNavigationStack()
         }
     }
 }

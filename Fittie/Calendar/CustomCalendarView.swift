@@ -6,7 +6,7 @@ struct CustomCalendarView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            LazyVStack {
                 ForEach(months) { month in
                     MonthView(month: month,
                               dayTapped: dayTapped,
@@ -14,8 +14,6 @@ struct CustomCalendarView: View {
                 }
             }
         }
-        .navigationTitle("Custom Calendar")
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func dayTapped(_ date: Date) {
@@ -24,7 +22,6 @@ struct CustomCalendarView: View {
     }
     
     private func dayColor(_ date: Date) -> Color {
-        // Example logic to decide color
         if Calendar.current.isDateInToday(date) {
             return Color.accentColor
         } else {
@@ -72,23 +69,28 @@ struct MonthView: View {
         VStack(alignment: .leading) {
             Text(month.name)
                 .font(.title)
+                .fontWeight(.semibold)
                 .padding(.bottom, 5)
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 10) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 16) {
                 ForEach(month.days, id: \.self) { day in
                     Text("\(Calendar.current.component(.day, from: day))")
-                        .frame(width: 30, height: 30)
-                        .background(Circle().fill(dayColor(day)))
+                        .frame(width: 40, height: 40)
+                        .background(
+                            Circle()
+                                .fill(dayColor(day)))
                         .onTapGesture {
                             dayTapped(day)
                         }
                 }
             }
+            .padding()
+            .background(Constants.backgroundMaterial)
+            .cornerRadius(Constants.cornerRadius, corners: .allCorners)
             .padding(.bottom, 20)
-        }
-        .padding(.horizontal)
+        }        
     }
 }
 
 #Preview {
-    CustomCalendarView()
+    WorkoutsView()
 }

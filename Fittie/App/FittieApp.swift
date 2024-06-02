@@ -18,6 +18,15 @@ struct FittieApp: App {
             ContentView()
                 .dynamicTypeSize(Constants.dynamicTypeSizeRange)
                 .modelContainer(container)
+                .onAppear {
+                    setInstallDate()
+                }
         }
+    }
+    
+    private func setInstallDate() {
+        let installDate : Date? = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date
+        guard installDate == nil else { return }
+        UserDefaults.standard.setValue(Date(), forKey: Constants.UserDefaults.installDate)
     }
 }

@@ -1,7 +1,7 @@
 // App Screens
 "home_tab_label" = "Home";
 "exercises_tab_label" = "Exercises";
-"calendar_tab_label" = "Calendar";
+"workouts_tab_label" = "Workouts";
 
 // Onboarding
 "onboarding_next_button_title" = "Next";
@@ -88,3 +88,6 @@
 "exercise_category_title_shoulders" = "Shoulders";
 "exercise_category_title_back" = "Back";
 "exercise_category_title_legs" = "Legs";
+
+// Workouts View
+"workouts_view_title" = "Workouts";
