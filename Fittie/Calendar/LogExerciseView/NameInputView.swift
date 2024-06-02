@@ -4,6 +4,7 @@ struct NameInputView: View {
     @Binding var exerciseName : String
     @Binding var filteredLoggedExercises : [Exercise]
     @State private var previouslyLoggedExercisesIsExpanded : Bool = true
+    let numberOfExercisesInCategory : Int
     
     var body: some View {
         exerciseNameInput
@@ -26,22 +27,23 @@ private extension NameInputView {
     }
     
     @ViewBuilder var previouslyLoggedExerciseNamesView : some View {
-        if !filteredLoggedExercises.isEmpty {
-            VStack(spacing: 0) {
-                previouslyLoggedExerciseNamesViewTitle
-                
-                if previouslyLoggedExercisesIsExpanded {
-                    previouslyLoggedExerciseNamesListView
-                }
+        VStack(spacing: 0) {
+            previouslyLoggedExerciseNamesViewTitle
+            
+            if previouslyLoggedExercisesIsExpanded {
+                previouslyLoggedExerciseNamesListView
             }
-            .padding(.top, 8)
         }
+        .padding(.top, 8)
     }
     
     var previouslyLoggedExerciseNamesViewTitle : some View {
         HStack {
-            Text("log_exercise_saved_exercises_title")
-                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 0) {
+                Text("log_exercise_saved_exercises_title")
+                Text(" (\(numberOfExercisesInCategory))")
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
             Image(systemName: "chevron.up")
                 .rotationEffect(previouslyLoggedExercisesIsExpanded ? Angle(degrees: 180) : .zero)
         }
