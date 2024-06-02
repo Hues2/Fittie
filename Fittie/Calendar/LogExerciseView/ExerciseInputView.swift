@@ -19,11 +19,11 @@ struct ExerciseInputView: View {
             BackgroundView()
             
             content
-                .padding(.top, 12)
+                .padding(.top, 16)
         }
         .onAppear {
-            filterExercises()
-            setExercisesInCategory()
+            filterExercises(false)
+            setExercisesInCategory(false)
         }
         .onChange(of: exerciseCategory) { oldValue, newValue in
             filterExercises()
@@ -37,20 +37,20 @@ struct ExerciseInputView: View {
         }
     }
     
-    private func filterExercises() {
+    private func filterExercises(_ animated : Bool = true) {
         let filtered = loggedExercises
             .filter { $0.exerciseCategoryRawValue == exerciseCategory.rawValue }
             .filter { $0.exerciseName.lowercased().starts(with: exerciseName.lowercased()) || $0.exerciseName.contains(exerciseName.lowercased()) }
         
         let uniqueExerciseNames = Set(filtered.map { $0.exerciseName.lowercased() })
-        withAnimation(.smooth) {
+        withAnimation(animated ? .smooth : .none) {
             filteredLoggedExercises = uniqueExerciseNames.compactMap { name in
                 filtered.first { $0.exerciseName.lowercased() == name.lowercased() }
             }
         }
     }
     
-    private func setExercisesInCategory() {
+    private func setExercisesInCategory(_ animated : Bool = true) {
         let exercises = loggedExercises
             .filter { $0.exerciseCategoryRawValue == exerciseCategory.rawValue }
         
@@ -58,7 +58,7 @@ struct ExerciseInputView: View {
         let uniqueExercises = uniqueExerciseNames.compactMap { name in
             exercises.first { $0.exerciseName.lowercased() == name.lowercased() }
         }
-        withAnimation(.smooth) {
+        withAnimation(animated ? .smooth : .none) {
             self.numberOfExercisesInCategory = uniqueExercises.count
         }
     }

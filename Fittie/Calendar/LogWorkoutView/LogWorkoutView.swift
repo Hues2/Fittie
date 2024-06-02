@@ -12,7 +12,7 @@ struct LogWorkoutView: View {
             BackgroundView()
             
             content
-                .padding(.top, 12)
+                .padding(.top, 16)
                 .onAppear {
                     // Set the exercises if a workout has already been logged for this date
                     if let loggedExercises = calendarDate.workout?.exercises {
@@ -73,7 +73,7 @@ private extension LogWorkoutView {
                 Image(systemName: "plus")
                 Text("log_workout_add_exercise_btn_title")
             }
-            .font(.title2)
+            .font(.title)
             .fontWeight(.semibold)
             .foregroundStyle(.accent)
             .frame(maxWidth: .infinity)
