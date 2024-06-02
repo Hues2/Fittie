@@ -8,6 +8,7 @@ struct LogWorkoutView: View {
     var body: some View {
         content
             .onAppear {
+                print("Workout to be edited: \(calendarDate.workout)")
                 // Set the exercises if a workout has already been logged for this date
                 if let loggedExercises = calendarDate.workout?.exercises {
                     self.exercises = loggedExercises
@@ -57,12 +58,13 @@ private extension LogWorkoutView {
 // MARK: Add exercise button
 private extension LogWorkoutView {
     var saveWorkoutButton : some View {
-        Button {
-            
-        } label: {
-            CustomButton(title: "log_workout_save_workout_btn_title") {
-                
-            }
+        CustomButton(title: "log_workout_save_workout_btn_title") {
+            let mockExercises : [Exercise] = [Exercise(exerciseName: "Dumbbell bench press",
+                                                       sets: [.init(kg: 20, reps: 10),
+                                                              .init(kg: 24, reps: 10),
+                                                              .init(kg: 28, reps: 8)])]
+            let mockWorkout = Workout(date: calendarDate.date, exercises: mockExercises)
+            saveWorkout(mockWorkout)
         }
     }
 }

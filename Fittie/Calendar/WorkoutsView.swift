@@ -15,7 +15,12 @@ struct WorkoutsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $selectedCalendarDate) { calendarDate in
             LogWorkoutView(calendarDate: calendarDate) { workout in
-                
+                saveWorkout(workout)
+            }
+        }
+        .onAppear {
+            for loggedWorkout in loggedWorkouts {
+                print("Logged workout date --> \(loggedWorkout.date.formatted())")
             }
         }
     }
@@ -35,11 +40,14 @@ private extension WorkoutsView {
 // MARK: Day view colour -- Gets the background colour for the calendar day view
 private extension WorkoutsView {
     private func dayColor(_ date: Date) -> Color {
-        if Calendar.current.isDateInToday(date) {
+        if loggedWorkouts.contains(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
             return Color.accentColor
         } else {
             return Color.pink
         }
+        //    else if Calendar.current.isDateInToday(date) {
+        //        return Color.accentColor
+        //    }
     }
 }
 
@@ -47,14 +55,20 @@ private extension WorkoutsView {
 private extension WorkoutsView {
     func dayTapped(_ date : Date) {
         let selectedDateWorkout = loggedWorkouts.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })
-        self.selectedCalendarDate = CalendarDate(date: date, workout: selectedDateWorkout)        
+        print("Workout for selected date -> \(selectedDateWorkout)")
+        self.selectedCalendarDate = CalendarDate(date: date, workout: selectedDateWorkout)
     }
 }
 
 // MARK: Save Workout
 private extension WorkoutsView {
     func saveWorkout(_ workout : Workout) {
+        // TODO: Remove this delete
+        for loggedWorkout in self.loggedWorkouts {
+            context.delete(loggedWorkout)
+        }
         // Save workout to context
+        context.insert(workout)
     }
 }
 
