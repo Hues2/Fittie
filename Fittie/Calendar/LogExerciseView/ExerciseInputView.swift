@@ -7,7 +7,7 @@ struct ExerciseInputView: View {
     @Binding var exerciseName : String
     @Query(sort: \Exercise.exerciseName, animation: .smooth) private var loggedExercises : [Exercise]
     @State private var filteredLoggedExercises : [Exercise] = []
-    @State private var previouslyLoggedExercisesIsExpanded : Bool = false
+    @State private var previouslyLoggedExercisesIsExpanded : Bool = true
     let saveExerciseAction : () -> Void
     
     var body: some View {
@@ -29,8 +29,10 @@ struct ExerciseInputView: View {
     private func filterExercises() {
         let filtered = loggedExercises.filter { $0.exerciseCategoryRawValue == exerciseCategory.rawValue }
         let uniqueExerciseNames = Set(filtered.map { $0.exerciseName.lowercased() })
-        filteredLoggedExercises = uniqueExerciseNames.compactMap { name in
-            filtered.first { $0.exerciseName.lowercased() == name.lowercased() }
+        withAnimation(.smooth) {
+            filteredLoggedExercises = uniqueExerciseNames.compactMap { name in
+                filtered.first { $0.exerciseName.lowercased() == name.lowercased() }
+            }
         }
     }
 }
@@ -82,52 +84,68 @@ private extension ExerciseInputView {
         VStack(spacing: 16) {
             inputTitle("log_exercise_exercise_title")
             
-            TextField("", text: $exerciseName, prompt: Text("Add exercise"))
+            exerciseNameTextField
             
-            if !filteredLoggedExercises.isEmpty {
-                VStack(spacing: 0) {
-                    HStack {
-                        Text("Saved exercises")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Image(systemName: "chevron.up")
-                            .rotationEffect(previouslyLoggedExercisesIsExpanded ? Angle(degrees: 180) : .zero)
-                    }
-                    .foregroundStyle(.pink)
-                    .padding(.vertical)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        withAnimation(.smooth) {
-                            self.previouslyLoggedExercisesIsExpanded.toggle()
-                        }
-                    }
-                    
-                    if previouslyLoggedExercisesIsExpanded {
-                        VStack {
-                            ForEach(filteredLoggedExercises) { loggedExercise in
-                                HStack {
-                                    Text(loggedExercise.exerciseName.capitalized)
-                                        .fontWeight(.semibold)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    if exerciseName.lowercased() == loggedExercise.exerciseName.lowercased() {
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .foregroundStyle(.accent)
-                                    }
-                                }
-                                .padding()
-                                .background(Constants.backgroundMaterial)
-                                .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                                        .stroke((exerciseName.lowercased() == loggedExercise.exerciseName.lowercased()) ? .accent : .clear)
-                                }
-                                .onTapGesture {
-                                    self.exerciseName = loggedExercise.exerciseName.capitalized
-                                }
-                            }
-                        }
+            previouslyLoggedExerciseNamesView
+        }
+    }
+    
+    var exerciseNameTextField : some View {
+        TextField("", text: $exerciseName, prompt: Text("log_exercise_name_textfield_prompt"))
+    }
+    
+    @ViewBuilder var previouslyLoggedExerciseNamesView : some View {
+        if !filteredLoggedExercises.isEmpty {
+            VStack(spacing: 0) {
+                previouslyLoggedExerciseNamesViewTitle
+                
+                if previouslyLoggedExercisesIsExpanded {
+                    previouslyLoggedExerciseNamesListView
+                }
+            }
+            .padding(.top, 8)
+        }
+    }
+    
+    var previouslyLoggedExerciseNamesViewTitle : some View {
+        HStack {
+            Text("log_exercise_saved_exercises_title")
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Image(systemName: "chevron.up")
+                .rotationEffect(previouslyLoggedExercisesIsExpanded ? Angle(degrees: 180) : .zero)
+        }
+        .foregroundStyle(.pink)
+        .padding(.vertical)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            withAnimation(.smooth) {
+                self.previouslyLoggedExercisesIsExpanded.toggle()
+            }
+        }
+    }
+    
+    var previouslyLoggedExerciseNamesListView : some View {
+        VStack {
+            ForEach(filteredLoggedExercises) { loggedExercise in
+                HStack {
+                    Text(loggedExercise.exerciseName.capitalized)
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if exerciseName.lowercased() == loggedExercise.exerciseName.lowercased() {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundStyle(.accent)
                     }
                 }
-                .padding(.top, 8)
+                .padding()
+                .background(Constants.backgroundMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                .overlay {
+                    RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                        .stroke((exerciseName.lowercased() == loggedExercise.exerciseName.lowercased()) ? .accent : .clear)
+                }
+                .onTapGesture {
+                    self.exerciseName = loggedExercise.exerciseName.capitalized
+                }
             }
         }
     }

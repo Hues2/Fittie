@@ -100,4 +100,6 @@
 // Exercise input view
 "log_exercise_exercise_title" = "Exercise";
 "log_exercise_category_title" = "Category";
+"log_exercise_name_textfield_prompt" = "Add exercise";
+"log_exercise_saved_exercises_title" = "Saved exercises";
 "log_exercise_save_btn_title" = "Save";
