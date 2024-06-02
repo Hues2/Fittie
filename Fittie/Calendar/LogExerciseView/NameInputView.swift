@@ -23,7 +23,20 @@ private extension NameInputView {
     }
     
     var exerciseNameTextField : some View {
-        TextField("", text: $exerciseName, prompt: Text("log_exercise_name_textfield_prompt"))
+        HStack {
+            TextField("", text: $exerciseName, prompt: Text("log_exercise_name_textfield_prompt"))
+            if !exerciseName.isEmpty {
+                Button {
+                    withAnimation(.smooth) {
+                        self.exerciseName = ""
+                    }
+                } label: {
+                    Image(systemName: "xmark.circle")
+                        .foregroundStyle(.pink)
+                        .font(.title3)
+                }
+            }
+        }
     }
     
     @ViewBuilder var previouslyLoggedExerciseNamesView : some View {
@@ -44,6 +57,7 @@ private extension NameInputView {
                 Text(" (\(numberOfExercisesInCategory))")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            
             Image(systemName: "chevron.up")
                 .rotationEffect(previouslyLoggedExercisesIsExpanded ? Angle(degrees: 180) : .zero)
         }
