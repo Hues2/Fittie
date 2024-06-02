@@ -22,8 +22,9 @@ private extension ExerciseInputView {
             title
             
             ScrollView {
-                VStack {
+                VStack(spacing: 32) {
                     categoryInput
+                    exerciseNameInput
                 }
             }
         }
@@ -37,17 +38,21 @@ private extension ExerciseInputView {
             .foregroundStyle(.pink)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
+    
+    func inputTitle(_ title : LocalizedStringKey) -> some View {
+        Text(title)
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .foregroundStyle(.pink)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
 }
 
-// MARK: Inputs
+// MARK: Category Input
 private extension ExerciseInputView {
     var categoryInput : some View {
-        VStack {
-            Text("Category")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .foregroundStyle(.pink)
-                .frame(maxWidth: .infinity, alignment: .leading)
+        VStack(spacing: 16) {
+            inputTitle("log_exercise_category_title")
             
             Picker("", selection: $exerciseCategory) {
                 ForEach(ExerciseCategory.allCases) { category in
@@ -58,6 +63,13 @@ private extension ExerciseInputView {
             .pickerStyle(.segmented)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+// MARK: Exercise Name Input
+private extension ExerciseInputView {
+    var exerciseNameInput : some View {
+        inputTitle("log_exercise_exercise_name_title")
     }
 }
 

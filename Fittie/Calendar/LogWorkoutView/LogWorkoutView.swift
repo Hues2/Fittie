@@ -21,6 +21,7 @@ struct LogWorkoutView: View {
                 }
         }
         .sheet(isPresented: $showLogExercisesView) {
+            // Add a new exercise
             LogExerciseView { exercise in
                 saveExercise(exercise)
             }
