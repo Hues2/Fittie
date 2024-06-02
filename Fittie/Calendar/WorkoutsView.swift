@@ -17,6 +17,8 @@ struct WorkoutsView: View {
             LogWorkoutView(calendarDate: calendarDate) { workout in
                 saveWorkout(workout)
             }
+            .presentationDragIndicator(.visible)
+            .presentationCornerRadius(Constants.sheetCornerRadius)
         }
         .onAppear {
             for loggedWorkout in loggedWorkouts {
@@ -64,9 +66,9 @@ private extension WorkoutsView {
 private extension WorkoutsView {
     func saveWorkout(_ workout : Workout) {
         // TODO: Remove this delete
-        for loggedWorkout in self.loggedWorkouts {
-            context.delete(loggedWorkout)
-        }
+//        for loggedWorkout in self.loggedWorkouts {
+//            context.delete(loggedWorkout)
+//        }
         // Save workout to context
         context.insert(workout)
     }

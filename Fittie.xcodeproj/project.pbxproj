@@ -60,6 +60,8 @@
 		2EA4631E2C0C8E5600DD89BD /* CalendarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4631D2C0C8E5600DD89BD /* CalendarDate.swift */; };
 		2EA463212C0C8F9300DD89BD /* CalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463202C0C8F9300DD89BD /* CalendarData.swift */; };
 		2EA463232C0C8FB100DD89BD /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463222C0C8FB100DD89BD /* MonthView.swift */; };
+		2EA463262C0CAC5100DD89BD /* ExerciseInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */; };
+		2EA463282C0CB2A500DD89BD /* LogExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */; };
 		2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */; };
 		2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */; };
 		2EC13DE52BFEB474003BD9E9 /* WeightDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */; };
@@ -136,6 +138,8 @@
 		2EA4631D2C0C8E5600DD89BD /* CalendarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDate.swift; sourceTree = "<group>"; };
 		2EA463202C0C8F9300DD89BD /* CalendarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarData.swift; sourceTree = "<group>"; };
 		2EA463222C0C8FB100DD89BD /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInputView.swift; sourceTree = "<group>"; };
+		2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogExerciseView.swift; sourceTree = "<group>"; };
 		2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightDetailView.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			children = (
 				2EA4631F2C0C8F7F00DD89BD /* CustomCalendarView */,
 				2EA4631A2C0C829600DD89BD /* LogWorkoutView */,
+				2EA463242C0CAC4100DD89BD /* LogExerciseView */,
 				2E73A2C62C0BB43D00A8423E /* WorkoutsNavigationStack.swift */,
 				2E73A2C82C0BB45500A8423E /* WorkoutsView.swift */,
 			);
@@ -313,6 +318,15 @@
 				2EA463222C0C8FB100DD89BD /* MonthView.swift */,
 			);
 			path = CustomCalendarView;
+			sourceTree = "<group>";
+		};
+		2EA463242C0CAC4100DD89BD /* LogExerciseView */ = {
+			isa = PBXGroup;
+			children = (
+				2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */,
+				2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */,
+			);
+			path = LogExerciseView;
 			sourceTree = "<group>";
 		};
 		2EC6CAAE2BEE8F2C009C7002 = {
@@ -518,6 +532,7 @@
 				2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */,
 				2EA2F5C92BFA72BA003E3526 /* LogWeightView.swift in Sources */,
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
+				2EA463282C0CB2A500DD89BD /* LogExerciseView.swift in Sources */,
 				2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */,
 				2E549C4E2C0A335B00AE85CA /* Exercise.swift in Sources */,
 				2E73A2C72C0BB43D00A8423E /* WorkoutsNavigationStack.swift in Sources */,
@@ -573,6 +588,7 @@
 				2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */,
 				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
 				2EA463212C0C8F9300DD89BD /* CalendarData.swift in Sources */,
+				2EA463262C0CAC5100DD89BD /* ExerciseInputView.swift in Sources */,
 				2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */,
 				2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */,
 				2EA2F5CB2BFA9304003E3526 /* Double.swift in Sources */,
