@@ -5,7 +5,6 @@ struct WorkoutsView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \Workout.date, animation: .smooth) private var loggedWorkouts : [Workout]
     @State private var selectedCalendarDate : CalendarDate?
-    @State private var selectedWorkout : Workout?
     
     var body: some View {
         ZStack {
@@ -15,7 +14,7 @@ struct WorkoutsView: View {
         .navigationTitle("workouts_view_title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $selectedCalendarDate) { calendarDate in
-            LogWorkoutView(calendarDate: calendarDate, workout: selectedWorkout) { workout in
+            LogWorkoutView(calendarDate: calendarDate) { workout in
                 
             }
         }
@@ -48,8 +47,7 @@ private extension WorkoutsView {
 private extension WorkoutsView {
     func dayTapped(_ date : Date) {
         let selectedDateWorkout = loggedWorkouts.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })
-        self.selectedWorkout = selectedDateWorkout
-        self.selectedCalendarDate = CalendarDate(date: date)
+        self.selectedCalendarDate = CalendarDate(date: date, workout: selectedDateWorkout)        
     }
 }
 

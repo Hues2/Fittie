@@ -3,14 +3,13 @@ import SwiftUI
 struct LogWorkoutView: View {
     @State private var exercises : [Exercise] = []
     let calendarDate : CalendarDate
-    let workout : Workout?
     let saveWorkout : (Workout) -> Void
     
     var body: some View {
         content
             .onAppear {
                 // Set the exercises if a workout has already been logged for this date
-                if let loggedExercises = workout?.exercises {
+                if let loggedExercises = calendarDate.workout?.exercises {
                     self.exercises = loggedExercises
                 }
             }
@@ -69,7 +68,7 @@ private extension LogWorkoutView {
 }
 
 #Preview {
-    LogWorkoutView(calendarDate: .init(date: .now), workout: nil) { _ in
+    LogWorkoutView(calendarDate: .init(date: .now, workout: nil)) { _ in
         
     }
 }
