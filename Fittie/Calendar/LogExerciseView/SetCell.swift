@@ -8,16 +8,21 @@ struct SetCell: View {
     var body: some View {
         HStack {
             Text("Set \(index)")
-                .font(.title3)
+                .fontWeight(.semibold)
+                .padding()
+                .background(.accent.opacity(0.8))
+            
+            Text("\(kg.toTwoDecimalPlacesString()) " + NSLocalizedString("kg_unit", comment: "Kg"))
+                .foregroundStyle(.secondary)
                 .fontWeight(.light)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            VStack {
-                Text("\(kg.toTwoDecimalPlacesString())")
-                Text("\(reps)")
-            }
-            .font(.title3)
+                .frame(maxWidth: .infinity)
+            
+            Text("\(reps) " + NSLocalizedString("reps_unit", comment: "Reps"))
+                .foregroundStyle(.secondary)
+                .fontWeight(.light)
+                .padding(.trailing)
         }
-        .padding()
+        .font(.title3)
         .background(Constants.backgroundMaterial)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
