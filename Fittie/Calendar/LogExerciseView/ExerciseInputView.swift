@@ -95,7 +95,7 @@ private extension ExerciseInputView {
                                     Text(loggedExercise.exerciseName.capitalized)
                                         .fontWeight(.semibold)
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                    if exerciseName == loggedExercise.exerciseName {
+                                    if exerciseName.lowercased() == loggedExercise.exerciseName.lowercased() {
                                         Image(systemName: "checkmark.circle.fill")
                                             .foregroundStyle(.accent)
                                     }
@@ -105,7 +105,7 @@ private extension ExerciseInputView {
                                 .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                                 .overlay {
                                     RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                                        .stroke((exerciseName == loggedExercise.exerciseName) ? .accent : .clear)
+                                        .stroke((exerciseName.lowercased() == loggedExercise.exerciseName.lowercased()) ? .accent : .clear)
                                 }
                                 .onTapGesture {
                                     self.exerciseName = loggedExercise.exerciseName.capitalized
