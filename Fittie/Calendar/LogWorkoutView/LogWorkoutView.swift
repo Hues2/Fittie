@@ -21,9 +21,11 @@ struct LogWorkoutView: View {
                 }
         }
         .sheet(isPresented: $showLogExercisesView) {
-            LogExerciseView()
-                .presentationDragIndicator(.visible)
-                .presentationCornerRadius(Constants.sheetCornerRadius)
+            LogExerciseView { exercise in
+                saveExercise(exercise)
+            }
+            .presentationDragIndicator(.visible)
+            .presentationCornerRadius(Constants.sheetCornerRadius)
         }
     }
 }
@@ -32,6 +34,7 @@ private extension LogWorkoutView {
     var content : some View {
         VStack(spacing: 0) {
             title
+            
             if !exercises.isEmpty {
                 loggedExercisesView
                 saveWorkoutButton
@@ -105,14 +108,15 @@ private extension LogWorkoutView {
 private extension LogWorkoutView {
     var saveWorkoutButton : some View {
         CustomButton(title: "log_workout_save_workout_btn_title") {
-            // TODO: Save actual workout
-            let mockExercises : [Exercise] = [Exercise(exerciseName: "Dumbbell bench press",
-                                                       sets: [.init(kg: 20, reps: 10),
-                                                              .init(kg: 24, reps: 10),
-                                                              .init(kg: 28, reps: 8)])]
-            let mockWorkout = Workout(date: calendarDate.date, exercises: mockExercises)
-            saveWorkout(mockWorkout)
+            // TODO: Save workout
         }
+    }
+}
+
+// MARK: Save exercise
+private extension LogWorkoutView {
+    func saveExercise(_ exercise : Exercise) {
+        // TODO: Add exercise to the list of exercises
     }
 }
 

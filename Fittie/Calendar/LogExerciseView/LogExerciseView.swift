@@ -4,12 +4,20 @@ import SwiftUI
 struct LogExerciseView: View {
     @State private var exerciseCategory : ExerciseCategory = .Arms
     @State private var exerciseName : String = ""
+    let saveExerciseAction : (Exercise) -> Void
     
     var body: some View {
-        ExerciseInputView(exerciseCategory: $exerciseCategory, exerciseName: $exerciseName)
+        ExerciseInputView(exerciseCategory: $exerciseCategory, exerciseName: $exerciseName) { saveExercise() }
+    }
+    
+    func saveExercise() {
+        let exercise = Exercise(exerciseCategoryRawValue: exerciseCategory.rawValue, exerciseName: exerciseName, sets: [])
+        saveExerciseAction(exercise)
     }
 }
 
 #Preview {
-    LogExerciseView()
+    LogExerciseView { _ in
+        
+    }
 }
