@@ -6,6 +6,7 @@ struct ExerciseInputView: View {
     @Binding var exerciseCategory : ExerciseCategory
     @Binding var exerciseName : String
     @Query(sort: \Exercise.exerciseName, animation: .smooth) private var loggedExercises : [Exercise]
+    @State private var filteredLoggedExercises : [Exercise] = []
     @State private var previouslyLoggedExercisesIsExpanded : Bool = false
     let saveExerciseAction : () -> Void
     
@@ -16,8 +17,20 @@ struct ExerciseInputView: View {
             content
                 .padding(.top, 12)
         }
-        .onAppear {
-            print("LOGGED EXERCISES -> \(loggedExercises.first?.exerciseName)")
+        .onAppear(perform: filterExercises)
+        .onChange(of: exerciseCategory, { oldValue, newValue in
+            filterExercises()
+        })
+        .onChange(of: loggedExercises, { oldValue, newValue in
+            filterExercises()
+        })
+    }
+    
+    private func filterExercises() {
+        let filtered = loggedExercises.filter { $0.exerciseCategoryRawValue == exerciseCategory.rawValue }
+        let uniqueExerciseNames = Set(filtered.map { $0.exerciseName.lowercased() })
+        filteredLoggedExercises = uniqueExerciseNames.compactMap { name in
+            filtered.first { $0.exerciseName.lowercased() == name.lowercased() }
         }
     }
 }
@@ -71,7 +84,7 @@ private extension ExerciseInputView {
             
             TextField("", text: $exerciseName, prompt: Text("Add exercise"))
             
-            if !loggedExercises.isEmpty {
+            if !filteredLoggedExercises.isEmpty {
                 VStack(spacing: 0) {
                     HStack {
                         Text("Saved exercises")
@@ -90,7 +103,7 @@ private extension ExerciseInputView {
                     
                     if previouslyLoggedExercisesIsExpanded {
                         VStack {
-                            ForEach(loggedExercises) { loggedExercise in
+                            ForEach(filteredLoggedExercises) { loggedExercise in
                                 HStack {
                                     Text(loggedExercise.exerciseName.capitalized)
                                         .fontWeight(.semibold)
