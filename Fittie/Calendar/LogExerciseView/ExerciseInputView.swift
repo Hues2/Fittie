@@ -1,9 +1,12 @@
 import SwiftUI
+import SwiftData
 
 // MARK: This view is used to edit/add exercises
 struct ExerciseInputView: View {
     @Binding var exerciseCategory : ExerciseCategory
     @Binding var exerciseName : String
+    @Query(sort: \Exercise.exerciseName, animation: .smooth) private var loggedExercises : [Exercise]
+    @State private var previouslyLoggedExercisesIsExpanded : Bool = false
     let saveExerciseAction : () -> Void
     
     var body: some View {
@@ -13,35 +16,29 @@ struct ExerciseInputView: View {
             content
                 .padding(.top, 12)
         }
+        .onAppear {
+            print("LOGGED EXERCISES -> \(loggedExercises.first?.exerciseName)")
+        }
     }
 }
 
 private extension ExerciseInputView {
     var content : some View {
         VStack {
-            title
-            
             ScrollView {
-                VStack(spacing: 32) {
+                VStack(spacing: 40) {
                     categoryInput
                     exerciseNameInput
                 }
             }
+            saveExerciseButton
         }
         .padding()
     }
     
-    var title : some View {
-        Text("log_exercise_title")
-            .font(.title)
-            .fontWeight(.bold)
-            .foregroundStyle(.pink)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-    
     func inputTitle(_ title : LocalizedStringKey) -> some View {
         Text(title)
-            .font(.subheadline)
+            .font(.title)
             .fontWeight(.semibold)
             .foregroundStyle(.pink)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -69,7 +66,57 @@ private extension ExerciseInputView {
 // MARK: Exercise Name Input
 private extension ExerciseInputView {
     var exerciseNameInput : some View {
-        inputTitle("log_exercise_exercise_name_title")
+        VStack(spacing: 16) {
+            inputTitle("log_exercise_exercise_title")
+            
+            TextField("", text: $exerciseName, prompt: Text("Add exercise"))
+            
+            if !loggedExercises.isEmpty {
+                VStack(spacing: 0) {
+                    HStack {
+                        Text("Saved exercises")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Image(systemName: "chevron.up")
+                            .rotationEffect(previouslyLoggedExercisesIsExpanded ? Angle(degrees: 180) : .zero)
+                    }
+                    .foregroundStyle(.pink)
+                    .padding(.vertical)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        withAnimation(.smooth) {
+                            self.previouslyLoggedExercisesIsExpanded.toggle()
+                        }
+                    }
+                    
+                    if previouslyLoggedExercisesIsExpanded {
+                        VStack {
+                            ForEach(loggedExercises) { loggedExercise in
+                                HStack {
+                                    Text(loggedExercise.exerciseName.capitalized)
+                                        .fontWeight(.semibold)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    if exerciseName == loggedExercise.exerciseName {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundStyle(.accent)
+                                    }
+                                }
+                                .padding()
+                                .background(Constants.backgroundMaterial)
+                                .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                                        .stroke((exerciseName == loggedExercise.exerciseName) ? .accent : .clear)
+                                }
+                                .onTapGesture {
+                                    self.exerciseName = loggedExercise.exerciseName.capitalized
+                                }
+                            }
+                        }
+                    }
+                }
+                .padding(.top, 8)
+            }
+        }
     }
 }
 
@@ -83,5 +130,5 @@ private extension ExerciseInputView {
 }
 
 #Preview {
-    ExerciseInputView(exerciseCategory: .constant(.Arms), exerciseName: .constant("Bench Press")) { }
+    ExerciseInputView(exerciseCategory: .constant(.Arms), exerciseName: .constant("")) { }
 }

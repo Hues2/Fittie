@@ -11,7 +11,9 @@ struct LogExerciseView: View {
     }
     
     func saveExercise() {
-        let exercise = Exercise(exerciseCategoryRawValue: exerciseCategory.rawValue, exerciseName: exerciseName, sets: [])
+        let exercise = Exercise(exerciseCategoryRawValue: exerciseCategory.rawValue,
+                                exerciseName: exerciseName.lowercased(),
+                                sets: [])
         saveExerciseAction(exercise)
     }
 }

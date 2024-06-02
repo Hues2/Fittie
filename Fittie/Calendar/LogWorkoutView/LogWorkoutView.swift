@@ -109,7 +109,8 @@ private extension LogWorkoutView {
 private extension LogWorkoutView {
     var saveWorkoutButton : some View {
         CustomButton(title: "log_workout_save_workout_btn_title") {
-            // TODO: Save workout
+            let workout = Workout(date: calendarDate.date, exercises: exercises)
+            saveWorkout(workout)
         }
     }
 }
@@ -118,6 +119,7 @@ private extension LogWorkoutView {
 private extension LogWorkoutView {
     func saveExercise(_ exercise : Exercise) {
         // TODO: Add exercise to the list of exercises
+        self.exercises.append(exercise)
     }
 }
 
