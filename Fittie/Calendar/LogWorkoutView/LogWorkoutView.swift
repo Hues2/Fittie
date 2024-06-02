@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LogWorkoutView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var exercises : [Exercise] = []
     @State private var showLogExercisesView : Bool = false
     let calendarDate : CalendarDate
@@ -13,7 +14,6 @@ struct LogWorkoutView: View {
             content
                 .padding(.top, 12)
                 .onAppear {
-                    print("Workout to be edited: \(calendarDate.workout)")
                     // Set the exercises if a workout has already been logged for this date
                     if let loggedExercises = calendarDate.workout?.exercises {
                         self.exercises = loggedExercises
@@ -105,21 +105,21 @@ private extension LogWorkoutView {
     }
 }
 
-// MARK: Add exercise button
+// MARK: Save exercise
+private extension LogWorkoutView {
+    func saveExercise(_ exercise : Exercise) {
+        self.exercises.append(exercise)
+    }
+}
+
+// MARK: Save workout button
 private extension LogWorkoutView {
     var saveWorkoutButton : some View {
         CustomButton(title: "log_workout_save_workout_btn_title") {
             let workout = Workout(date: calendarDate.date, exercises: exercises)
             saveWorkout(workout)
+            dismiss()
         }
-    }
-}
-
-// MARK: Save exercise
-private extension LogWorkoutView {
-    func saveExercise(_ exercise : Exercise) {
-        // TODO: Add exercise to the list of exercises
-        self.exercises.append(exercise)
     }
 }
 

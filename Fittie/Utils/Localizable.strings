@@ -100,6 +100,15 @@
 // Exercise input view
 "log_exercise_exercise_title" = "Exercise";
 "log_exercise_category_title" = "Category";
-"log_exercise_name_textfield_prompt" = "Add exercise";
-"log_exercise_saved_exercises_title" = "Saved exercises";
-"log_exercise_save_btn_title" = "Save";
+"log_exercise_sets_title" = "Sets";
+"log_exercise_name_textfield_prompt" = "Add exercise name";
+"log_exercise_saved_exercises_title" = "Saved exercise names";
+"log_exercise_add_set_weight_title" = "Weight (%@):";
+"log_exercise_add_set_weight_prompt" = "Add weight";
+"log_exercise_add_set_reps_title" = "Reps:";
+"log_exercise_add_set_reps_prompt" = "Add reps";
+"log_exercise_save_btn_title" = "Add exercise";
+"log_exercise_add_set_btn_title" = "Add set";
+
+
+"save_btn_title" = "Save";

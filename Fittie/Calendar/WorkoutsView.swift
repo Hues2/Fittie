@@ -20,11 +20,6 @@ struct WorkoutsView: View {
             .presentationDragIndicator(.visible)
             .presentationCornerRadius(Constants.sheetCornerRadius)
         }
-        .onAppear {
-            for loggedWorkout in loggedWorkouts {
-                print("Logged workout date --> \(loggedWorkout.date.formatted())")
-            }
-        }
     }
 }
 
@@ -47,9 +42,6 @@ private extension WorkoutsView {
         } else {
             return Color.pink
         }
-        //    else if Calendar.current.isDateInToday(date) {
-        //        return Color.accentColor
-        //    }
     }
 }
 
@@ -57,7 +49,6 @@ private extension WorkoutsView {
 private extension WorkoutsView {
     func dayTapped(_ date : Date) {
         let selectedDateWorkout = loggedWorkouts.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })
-        print("Workout for selected date -> \(selectedDateWorkout)")
         self.selectedCalendarDate = CalendarDate(date: date, workout: selectedDateWorkout)
     }
 }
@@ -65,10 +56,6 @@ private extension WorkoutsView {
 // MARK: Save Workout
 private extension WorkoutsView {
     func saveWorkout(_ workout : Workout) {
-        // TODO: Remove this delete
-//        for loggedWorkout in self.loggedWorkouts {
-//            context.delete(loggedWorkout)
-//        }
         // Save workout to context
         context.insert(workout)
     }

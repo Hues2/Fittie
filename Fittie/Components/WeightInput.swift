@@ -6,11 +6,12 @@ struct WeightInput<F: ParseableFormatStyle>: View where F.FormatOutput == String
     @FocusState.Binding var isFocused : Bool
     let formatStyle: F
     let promptText : String
+    var useBigFontSize : Bool = true
 
     
     var body: some View {
         TextField("", value: $value, format: formatStyle, prompt: Text(promptText))
-            .font(.system(size: Constants.bigTextInputTextSize))
+            .font(useBigFontSize ? .system(size: Constants.bigTextInputTextSize) : .title2)
             .foregroundStyle(weightIsValid ? Color.primary : Color.red)
             .multilineTextAlignment(.center)
             .keyboardType(.decimalPad)

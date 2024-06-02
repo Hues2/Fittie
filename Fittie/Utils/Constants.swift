@@ -13,6 +13,7 @@ class Constants {
     static let lineSpacing : CGFloat = 4
     static let bigCardTextSize : CGFloat = 40
     static let bigTextInputTextSize : CGFloat = 50
+    static let setInputTextSize : CGFloat = 30
     static let dynamicTypeSizeRange : ClosedRange<DynamicTypeSize> = .small ... .xxLarge
     static let backgroundMaterial : Material = .ultraThickMaterial
     
