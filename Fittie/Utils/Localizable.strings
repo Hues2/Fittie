@@ -91,3 +91,8 @@
 
 // Workouts View
 "workouts_view_title" = "Workouts";
+
+// Log Workout View
+"log_workout_title" = "Log workout";
+"log_workout_save_workout_btn_title" = "Save workout";
+"log_workout_add_exercise_btn_title" = "Add exercise";

@@ -4,7 +4,7 @@ import SwiftData
 @main
 struct FittieApp: App {
     var container : ModelContainer {
-        let schema = Schema([Weight.self])
+        let schema = Schema([Weight.self, Workout.self, Exercise.self])
         do {
             let container = try ModelContainer(for: schema, configurations: [])
             return container
