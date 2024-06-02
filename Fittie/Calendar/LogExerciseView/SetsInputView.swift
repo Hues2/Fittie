@@ -38,22 +38,8 @@ private extension SetsInputView {
     
     var addedSetsView : some View {
         ForEach(Array(zip(0..<sets.count, sets)), id: \.0) { (index, set) in
-            setCell(index + 1, set)
+            SetCell(index: index + 1, kg: set.kg, reps: set.reps)
         }
-    }
-    
-    func setCell(_ index : Int, _ set : WorkingSet) -> some View {
-        HStack {
-            Text("Set \(index)")
-                .frame(maxWidth: .infinity, alignment: .leading)
-            VStack {
-                Text("Weight: \(set.kg.toTwoDecimalPlacesString())")
-                Text("Reps: \(set.reps)")
-            }
-        }
-        .padding()
-        .background(Constants.backgroundMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
     
     func saveSet(_ set : WorkingSet) {

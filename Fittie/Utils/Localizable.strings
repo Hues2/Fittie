@@ -32,7 +32,6 @@
 
 // Step Counter
 "daily_steps_title" = "Today";
-"daily_steps_unit" = "Steps";
 
 // Step Goal
 "step_goal_update_title" = "Update step goal";
@@ -67,7 +66,6 @@
 "log_weight_view_title_update" = "Edit logged weight";
 "log_weight_view_title_update_weight_goal" = "Edit weight goal";
 "log_weight_save_button_title" = "Save weight";
-"log_weight_kg_label" = "Kg";
 
 // Weight Detail View
 "weight_detail_view_title" = "Your weight";
@@ -110,5 +108,10 @@
 "log_exercise_save_btn_title" = "Add exercise";
 "log_exercise_add_set_btn_title" = "Add set";
 
-
+// Button titles
 "save_btn_title" = "Save";
+
+// Units
+"kg_unit" = "Kg";
+"steps_unit" = "Steps";
+"reps_unit" = "Reps";

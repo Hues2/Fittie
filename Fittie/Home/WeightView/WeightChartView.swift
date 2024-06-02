@@ -32,7 +32,7 @@ private extension WeightChartView {
                 .font(.footnote)            
                 .foregroundStyle(.secondary)
             
-            Text("log_weight_kg_label")
+            Text("kg_unit")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }

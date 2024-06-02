@@ -102,7 +102,7 @@ private extension WeightDetailView {
                         .fontWeight(.semibold)
                 }
                 
-                Text(NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
+                Text(NSLocalizedString("kg_unit", comment: "Kg unit"))
                     .font(.subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(.secondary)

@@ -15,7 +15,7 @@ struct SetWeightGoalView: View {
                             isFocused: $isFocused,
                             formatStyle: .number,
                             promptText: "80.4")
-                Text("log_weight_kg_label")
+                Text("kg_unit")
                     .font(.title2)
                     .foregroundStyle(.secondary)                
             }

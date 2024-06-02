@@ -21,7 +21,7 @@ private extension AddSetView {
     var content : some View {
         VStack(spacing: 32) {
             inputRow(String(format: NSLocalizedString("log_exercise_add_set_weight_title", comment: "Weight"),
-                            NSLocalizedString("log_weight_kg_label", comment: "Weight unit")),
+                            NSLocalizedString("kg_unit", comment: "Weight unit")),
                      $weight,
                      $weightIsValid,
                      NSLocalizedString("log_exercise_add_set_weight_prompt", comment: "Prompt"))

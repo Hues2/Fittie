@@ -44,7 +44,7 @@ private extension WeightInputView {
     }
     
     var kgLabel : some View {
-        Text("log_weight_kg_label")
+        Text("kg_unit")
             .font(.title2)
             .foregroundStyle(.secondary)
     }

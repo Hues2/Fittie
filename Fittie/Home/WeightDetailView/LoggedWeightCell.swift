@@ -25,7 +25,7 @@ private extension LoggedWeightCell {
                     .font(.title)
                     .fontWeight(.regular)
                 VStack(alignment: .leading) {
-                    Text(kg.toTwoDecimalPlacesString() + NSLocalizedString("log_weight_kg_label", comment: "Kg unit"))
+                    Text(kg.toTwoDecimalPlacesString() + NSLocalizedString("kg_unit", comment: "Kg unit"))
                         .font(.title3)
                         .fontWeight(.regular)
                     Text(date.formattedWithOrdinalSuffix())

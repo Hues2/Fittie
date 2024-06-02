@@ -57,7 +57,7 @@ private extension HomeView {
     @ViewBuilder var dailyStepCountView : some View {
         BasicInfoCardView(value: "\(viewModel.todaysSteps)",
                           title: "daily_steps_title",
-                          unit: "daily_steps_unit",
+                          unit: "steps_unit",
                           icon: "shoeprints.fill",
                           isLoading: viewModel.dailyStepsAreLoading)
     }
