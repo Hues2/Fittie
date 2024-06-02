@@ -10,6 +10,10 @@
 		2E0A57AF2C0BE3AC00964E50 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */; };
 		2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E39A9AB2BF03D7C00A93F19 /* Utils.swift */; };
 		2E5225B32C0D0E1A0021C8C8 /* AddSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B22C0D0E1A0021C8C8 /* AddSetView.swift */; };
+		2E5225B52C0D22350021C8C8 /* SetsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B42C0D22350021C8C8 /* SetsInputView.swift */; };
+		2E5225B72C0D229F0021C8C8 /* InputTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B62C0D229F0021C8C8 /* InputTitle.swift */; };
+		2E5225B92C0D23C80021C8C8 /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B82C0D23C80021C8C8 /* NameInputView.swift */; };
+		2E5225BB2C0D24B30021C8C8 /* CategoryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225BA2C0D24B30021C8C8 /* CategoryInputView.swift */; };
 		2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */; };
 		2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */; };
 		2E549C4E2C0A335B00AE85CA /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E549C4D2C0A335B00AE85CA /* Exercise.swift */; };
@@ -89,6 +93,10 @@
 		2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		2E39A9AB2BF03D7C00A93F19 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2E5225B22C0D0E1A0021C8C8 /* AddSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetView.swift; sourceTree = "<group>"; };
+		2E5225B42C0D22350021C8C8 /* SetsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsInputView.swift; sourceTree = "<group>"; };
+		2E5225B62C0D229F0021C8C8 /* InputTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTitle.swift; sourceTree = "<group>"; };
+		2E5225B82C0D23C80021C8C8 /* NameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputView.swift; sourceTree = "<group>"; };
+		2E5225BA2C0D24B30021C8C8 /* CategoryInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputView.swift; sourceTree = "<group>"; };
 		2E53A2FB2BEFE5CD00D81297 /* HomeNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStack.swift; sourceTree = "<group>"; };
 		2E53A2FE2BEFF46400D81297 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
 		2E549C4D2C0A335B00AE85CA /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -336,6 +344,10 @@
 			children = (
 				2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */,
 				2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */,
+				2E5225B42C0D22350021C8C8 /* SetsInputView.swift */,
+				2E5225B62C0D229F0021C8C8 /* InputTitle.swift */,
+				2E5225B82C0D23C80021C8C8 /* NameInputView.swift */,
+				2E5225BA2C0D24B30021C8C8 /* CategoryInputView.swift */,
 			);
 			path = LogExerciseView;
 			sourceTree = "<group>";
@@ -554,6 +566,7 @@
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
 				2E551BA82C09186F0058F1B2 /* ExercisesView.swift in Sources */,
 				2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */,
+				2E5225BB2C0D24B30021C8C8 /* CategoryInputView.swift in Sources */,
 				2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */,
 				2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */,
 				2E549C522C0A339F00AE85CA /* ExerciseCategory.swift in Sources */,
@@ -590,6 +603,7 @@
 				2E90E78E2BFE58D5003DE59F /* UpdateStepGoalView.swift in Sources */,
 				2EA4631C2C0C82A400DD89BD /* LogWorkoutView.swift in Sources */,
 				2E68A0972BFFFDAC00C2A430 /* HomeTabScreen.swift in Sources */,
+				2E5225B52C0D22350021C8C8 /* SetsInputView.swift in Sources */,
 				2EC13DE52BFEB474003BD9E9 /* WeightDetailView.swift in Sources */,
 				2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */,
 				2E549C502C0A338000AE85CA /* WorkingSet.swift in Sources */,
@@ -603,10 +617,12 @@
 				2EA463262C0CAC5100DD89BD /* ExerciseInputView.swift in Sources */,
 				2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */,
 				2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */,
+				2E5225B92C0D23C80021C8C8 /* NameInputView.swift in Sources */,
 				2EA2F5CB2BFA9304003E3526 /* Double.swift in Sources */,
 				2E0A57AF2C0BE3AC00964E50 /* CustomCalendarView.swift in Sources */,
 				2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */,
 				2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */,
+				2E5225B72C0D229F0021C8C8 /* InputTitle.swift in Sources */,
 				2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */,
 				2EA2F5C52BFA3D39003E3526 /* WeightView.swift in Sources */,
 				2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */,
