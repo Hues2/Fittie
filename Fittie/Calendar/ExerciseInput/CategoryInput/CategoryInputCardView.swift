@@ -7,7 +7,8 @@ struct CategoryInputCardView: View {
     var body: some View {
         VStack {
             Text(title)
-                .font(.headline)
+                .font(.title2)
+                .fontWeight(.semibold)
                 .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)        
@@ -24,5 +25,21 @@ struct CategoryInputCardView: View {
 }
 
 #Preview {
-    CategoryInputCardView(title: "Chest", isSelected: true)
+    VStack {
+        CategoryInputCardView(title: "Chest", isSelected: true)
+            .frame(height: 150)
+            .padding()
+        CategoryInputCardView(title: "Chest", isSelected: true)
+            .frame(height: 150)
+            .padding()
+        CategoryInputCardView(title: "Chest", isSelected: true)
+            .frame(height: 150)
+            .padding()
+        CategoryInputCardView(title: "Chest", isSelected: true)
+            .frame(height: 150)
+            .padding()
+        CategoryInputCardView(title: "Chest", isSelected: true)
+            .frame(height: 150)
+            .padding()
+    }
 }

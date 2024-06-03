@@ -22,10 +22,8 @@ struct CategoryInputView: View {
                         }
                     }
                 }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.horizontal, 40)
-            .padding(.vertical)
+            }                     
+            .padding()
         }
     }
 }

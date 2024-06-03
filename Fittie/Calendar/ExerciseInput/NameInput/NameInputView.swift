@@ -14,17 +14,17 @@ struct NameInputView: View {
 private extension NameInputView {
     var exerciseNameInput : some View {
         VStack(spacing: 16) {
-//            InputTitle(title: "log_exercise_exercise_title")
-            
             exerciseNameTextField
             
             previouslyLoggedExerciseNamesView
+                .frame(maxHeight: .infinity, alignment: .top)
         }
     }
     
     var exerciseNameTextField : some View {
         HStack {
             TextField("", text: $exerciseName, prompt: Text("log_exercise_name_textfield_prompt"))
+            
             if !exerciseName.isEmpty {
                 Button {
                     withAnimation(.smooth) {
@@ -37,6 +37,9 @@ private extension NameInputView {
                 }
             }
         }
+        .padding()
+        .background(Constants.backgroundMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
     
     @ViewBuilder var previouslyLoggedExerciseNamesView : some View {
@@ -61,6 +64,7 @@ private extension NameInputView {
             Image(systemName: "chevron.up")
                 .rotationEffect(previouslyLoggedExercisesIsExpanded ? Angle(degrees: 180) : .zero)
         }
+        .font(.headline)
         .foregroundStyle(.pink)
         .padding(.vertical)
         .contentShape(Rectangle())
@@ -101,5 +105,15 @@ private extension NameInputView {
                 }
             }
         }
+    }
+}
+
+#Preview {
+    ZStack {
+        BackgroundView()
+        NameInputView(exerciseName: .constant(""),
+                      filteredLoggedExercises: .constant([]),
+                      numberOfExercisesInCategory: 2)
+        .padding()
     }
 }

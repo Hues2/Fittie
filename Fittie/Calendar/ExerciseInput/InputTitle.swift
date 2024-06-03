@@ -12,15 +12,17 @@ struct InputTitle: View {
             HStack {
                 if showBackButton {
                     Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
                 }
                 Text(title)                    
             }
             .font(.title)
-            .fontWeight(.semibold)
+            .fontWeight(.bold)
             .foregroundStyle(.pink)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .buttonStyle(ScaleButtonStyle())
+        .disabled(!showBackButton)
     }
 }
 

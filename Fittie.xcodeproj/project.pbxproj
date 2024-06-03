@@ -196,8 +196,11 @@
 			isa = PBXGroup;
 			children = (
 				2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */,
-				2E052FED2C0E250C0089C75B /* CategoryInput */,
 				2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */,
+				2E5225B62C0D229F0021C8C8 /* InputTitle.swift */,
+				2E052FED2C0E250C0089C75B /* CategoryInput */,
+				2EE9B4CF2C0E42A3001D40C8 /* NameInput */,
+				2EE9B4D02C0E42C6001D40C8 /* SetsInput */,
 			);
 			path = ExerciseInput;
 			sourceTree = "<group>";
@@ -369,10 +372,6 @@
 			isa = PBXGroup;
 			children = (
 				2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */,
-				2E5225B42C0D22350021C8C8 /* SetsInputView.swift */,
-				2E5225B62C0D229F0021C8C8 /* InputTitle.swift */,
-				2E5225B82C0D23C80021C8C8 /* NameInputView.swift */,
-				2E5225BC2C0D25880021C8C8 /* SetCell.swift */,
 			);
 			path = LogExerciseView;
 			sourceTree = "<group>";
@@ -497,6 +496,23 @@
 				2E68A09D2C00160100C2A430 /* UIApplication.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2EE9B4CF2C0E42A3001D40C8 /* NameInput */ = {
+			isa = PBXGroup;
+			children = (
+				2E5225B82C0D23C80021C8C8 /* NameInputView.swift */,
+			);
+			path = NameInput;
+			sourceTree = "<group>";
+		};
+		2EE9B4D02C0E42C6001D40C8 /* SetsInput */ = {
+			isa = PBXGroup;
+			children = (
+				2E5225B42C0D22350021C8C8 /* SetsInputView.swift */,
+				2E5225BC2C0D25880021C8C8 /* SetCell.swift */,
+			);
+			path = SetsInput;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
