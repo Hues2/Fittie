@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CategoryInputView: View {
-    @Binding var exerciseCategory : ExerciseCategory
+    @Binding var exerciseCategory : ExerciseCategory?
     
     let columns: [GridItem] = [
         GridItem(.flexible()),

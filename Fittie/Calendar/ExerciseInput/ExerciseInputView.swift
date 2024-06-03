@@ -1,41 +1,13 @@
 import SwiftUI
 import SwiftData
 
-enum ExercisePage : Int, CaseIterable {
-    case categorySelection = 0
-    case exerciseNameInput = 1
-    case setInput = 2
-    
-    var title : LocalizedStringKey {
-        switch self {
-        case .categorySelection:
-            "log_exercise_category_title"
-        case .exerciseNameInput:
-            "log_exercise_exercise_title"
-        case .setInput:
-            "log_exercise_sets_title"
-        }
-    }
-    
-    var buttonTitle : LocalizedStringKey {
-        switch self {
-        case .categorySelection:
-            return "onboarding_next_button_title"
-        case .exerciseNameInput:
-            return "onboarding_next_button_title"
-        case .setInput:
-            return "onboarding_set_permissions_button_title"
-        }
-    }
-}
-
 // MARK: This view is used to edit/add exercises
 struct ExerciseInputView: View {
     // Dismiss exercise input on save
     @Environment(\.dismiss) private var dismiss
     
     // Exercise values
-    @Binding var exerciseCategory : ExerciseCategory
+    @Binding var exerciseCategory : ExerciseCategory?
     @Binding var exerciseName : String
     @Binding var sets : [WorkingSet]
     @Query(sort: \Exercise.exerciseName, animation: .smooth) private var loggedExercises : [Exercise]
@@ -77,9 +49,8 @@ private extension ExerciseInputView {
     var content : some View {
         VStack(spacing: 36) {
             InputTitle(title: exercisePage.title,
-                       showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) {
-                previousPage()
-            }
+                       showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) { previousPage() }
+                .animation(.none, value: exercisePage)
             
             tabView
             
@@ -112,11 +83,12 @@ private extension ExerciseInputView {
 // MARK: Tabview button
 private extension ExerciseInputView {
     var nextPageButton : some View {
-        CustomButton(title: self.exercisePage.buttonTitle) {
+        CustomButton(title: exercisePage.buttonTitle) {
             buttonAction()
         }
         .padding(.bottom, 4)
         .animation(.none, value: exercisePage)
+        .disabled(buttonIsDisabled())
     }
     
     private func buttonAction() {
@@ -145,6 +117,17 @@ private extension ExerciseInputView {
             }
         }
     }
+    
+    private func buttonIsDisabled() -> Bool {
+        switch exercisePage {
+        case .categorySelection:
+            return exerciseCategory == nil
+        case .exerciseNameInput:
+            return exerciseName.isEmpty
+        case .setInput:
+            return sets.isEmpty
+        }
+    }
 }
 
 // MARK: Save exercise button
@@ -161,7 +144,7 @@ private extension ExerciseInputView {
 private extension ExerciseInputView {
     func filterExercises(_ animated : Bool = true) {
         let filtered = loggedExercises
-            .filter { $0.exerciseCategoryRawValue == exerciseCategory.rawValue }
+            .filter { $0.exerciseCategoryRawValue == exerciseCategory?.rawValue }
             .filter { $0.exerciseName.lowercased().starts(with: exerciseName.lowercased()) || $0.exerciseName.contains(exerciseName.lowercased()) }
         
         let uniqueExerciseNames = Set(filtered.map { $0.exerciseName.lowercased() })
@@ -174,7 +157,7 @@ private extension ExerciseInputView {
     
     func setExercisesInCategory(_ animated : Bool = true) {
         let exercises = loggedExercises
-            .filter { $0.exerciseCategoryRawValue == exerciseCategory.rawValue }
+            .filter { $0.exerciseCategoryRawValue == exerciseCategory?.rawValue }
         
         let uniqueExerciseNames = Set(exercises.map { $0.exerciseName.lowercased() })
         let uniqueExercises = uniqueExerciseNames.compactMap { name in

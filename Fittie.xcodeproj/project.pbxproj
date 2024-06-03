@@ -89,6 +89,7 @@
 		2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6E2202C08F09A0056B4B4 /* Workout.swift */; };
 		2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */; };
 		2EE9B4CC2C0E320A001D40C8 /* CategoryInputCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */; };
+		2EE9B4CE2C0E3EB2001D40C8 /* ExercisePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +177,7 @@
 		2EC6E2202C08F09A0056B4B4 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetHeight.swift; sourceTree = "<group>"; };
 		2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputCardView.swift; sourceTree = "<group>"; };
+		2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +195,9 @@
 		2E052FEC2C0E24FD0089C75B /* ExerciseInput */ = {
 			isa = PBXGroup;
 			children = (
+				2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */,
 				2E052FED2C0E250C0089C75B /* CategoryInput */,
+				2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */,
 			);
 			path = ExerciseInput;
 			sourceTree = "<group>";
@@ -364,7 +368,6 @@
 		2EA463242C0CAC4100DD89BD /* LogExerciseView */ = {
 			isa = PBXGroup;
 			children = (
-				2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */,
 				2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */,
 				2E5225B42C0D22350021C8C8 /* SetsInputView.swift */,
 				2E5225B62C0D229F0021C8C8 /* InputTitle.swift */,
@@ -601,6 +604,7 @@
 				2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */,
 				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,
 				2E90E7902BFE64B1003DE59F /* WeightGoalManager.swift in Sources */,
+				2EE9B4CE2C0E3EB2001D40C8 /* ExercisePage.swift in Sources */,
 				2E68A09E2C00160100C2A430 /* UIApplication.swift in Sources */,
 				2EE9B4CC2C0E320A001D40C8 /* CategoryInputCardView.swift in Sources */,
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,

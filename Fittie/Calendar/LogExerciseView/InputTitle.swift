@@ -13,7 +13,7 @@ struct InputTitle: View {
                 if showBackButton {
                     Image(systemName: "chevron.left")
                 }
-                Text(title)
+                Text(title)                    
             }
             .font(.title)
             .fontWeight(.semibold)
