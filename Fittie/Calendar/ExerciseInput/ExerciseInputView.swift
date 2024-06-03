@@ -48,19 +48,21 @@ struct ExerciseInputView: View {
 private extension ExerciseInputView {
     var content : some View {
         VStack(spacing: Constants.paddingAboveSaveButton) {
-            InputTitle(title: exercisePage.title,
-                       showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) { previousPage() }
-                .animation(.none, value: exercisePage)
-                .padding(.top, 24)
-            
+            tabViewTitle
             tabView
-            
             nextPageButton
         }
         .onAppear {
             // Block the swipe gesture for the tab view
             UIScrollView.appearance().isScrollEnabled = false
         }
+    }
+    
+    var tabViewTitle : some View {
+        InputTitle(title: exercisePage.title,
+                   showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) { previousPage() }
+            .animation(.none, value: exercisePage)
+            .padding(.top, 24)
     }
     
     var tabView : some View {

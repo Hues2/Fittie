@@ -8,7 +8,7 @@ struct SetsInputView: View {
         setsInput
             .sheet(isPresented: $showSetInputView) {
                 AddSetView { set in
-                    saveSet(set)
+                    addSet(set)
                 }
                 .withCustomSheetHeight()
             }
@@ -51,7 +51,7 @@ private extension SetsInputView {
         }
     }
     
-    func saveSet(_ set : WorkingSet) {
+    func addSet(_ set : WorkingSet) {
         self.sets.append(set)
     }
 }
