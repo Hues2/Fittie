@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LogWorkoutView: View {
+struct AddWorkoutView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var exercises : [Exercise] = []
     @State private var showLogExercisesView : Bool = false
@@ -21,7 +21,7 @@ struct LogWorkoutView: View {
         }
         .sheet(isPresented: $showLogExercisesView) {
             // Add a new exercise
-            LogExerciseView { exercise in
+            AddExerciseView { exercise in
                 addExercise(exercise)
             }
             .presentationDragIndicator(.visible)
@@ -30,7 +30,7 @@ struct LogWorkoutView: View {
     }
 }
 
-private extension LogWorkoutView {
+private extension AddWorkoutView {
     var content : some View {
         VStack(spacing: Constants.paddingAboveSaveButton) {
             title
@@ -69,7 +69,7 @@ private extension LogWorkoutView {
 }
 
 // MARK: List of exercises
-private extension LogWorkoutView {
+private extension AddWorkoutView {
     var loggedExercisesView : some View {
         VStack {
             ScrollView {
@@ -97,14 +97,14 @@ private extension LogWorkoutView {
 }
 
 // MARK: Save exercise
-private extension LogWorkoutView {
+private extension AddWorkoutView {
     func addExercise(_ exercise : Exercise) {
         self.exercises.append(exercise)
     }
 }
 
 // MARK: Save workout button
-private extension LogWorkoutView {
+private extension AddWorkoutView {
     var saveWorkoutButton : some View {
         CustomButton(title: "log_workout_save_workout_btn_title") {
             let workout = Workout(date: calendarDate.date, exercises: exercises)
@@ -115,7 +115,7 @@ private extension LogWorkoutView {
 }
 
 #Preview {
-    LogWorkoutView(calendarDate: .init(date: .now, workout: nil)) { _ in
+    AddWorkoutView(calendarDate: .init(date: .now, workout: nil)) { _ in
         
     }
 }

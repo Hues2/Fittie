@@ -1,7 +1,7 @@
 import SwiftUI
 
 // MARK: This view is used to add a new exercise
-struct LogExerciseView: View {
+struct AddExerciseView: View {
     @State private var exerciseCategory : ExerciseCategory?
     @State private var exerciseName : String = ""
     @State private var sets : [WorkingSet] = []
@@ -25,7 +25,7 @@ struct LogExerciseView: View {
 }
 
 #Preview {
-    LogExerciseView { _ in
+    AddExerciseView { _ in
         
     }
 }

@@ -14,7 +14,7 @@ struct WorkoutsView: View {
         .navigationTitle("workouts_view_title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $selectedCalendarDate) { calendarDate in
-            LogWorkoutView(calendarDate: calendarDate) { workout in
+            AddWorkoutView(calendarDate: calendarDate) { workout in
                 saveWorkout(workout)
             }
             .presentationDragIndicator(.visible)
