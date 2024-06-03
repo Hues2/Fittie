@@ -8,22 +8,22 @@ enum ExercisePage : Int, CaseIterable {
     var title : LocalizedStringKey {
         switch self {
         case .categorySelection:
-            "log_exercise_category_title"
+            "exercise_page_category_title"
         case .exerciseNameInput:
-            "log_exercise_exercise_title"
+            "exercise_page_exercise_title"
         case .setInput:
-            "log_exercise_sets_title"
+            "exercise_page_sets_title"
         }
     }
     
     var buttonTitle : LocalizedStringKey {
         switch self {
         case .categorySelection:
-            return "onboarding_next_button_title"
+            return "exercise_page_next_button_title"
         case .exerciseNameInput:
-            return "onboarding_next_button_title"
+            return "exercise_page_next_button_title"
         case .setInput:
-            return "onboarding_set_permissions_button_title"
+            return "exercise_page_save_button_title"
         }
     }
 }

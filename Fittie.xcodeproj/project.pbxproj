@@ -214,14 +214,6 @@
 			path = CategoryInput;
 			sourceTree = "<group>";
 		};
-		2E5225B12C0D0E020021C8C8 /* AddSetView */ = {
-			isa = PBXGroup;
-			children = (
-				2E5225B22C0D0E1A0021C8C8 /* AddSetView.swift */,
-			);
-			path = AddSetView;
-			sourceTree = "<group>";
-		};
 		2E53A2FD2BEFF42C00D81297 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +268,6 @@
 				2EA4631A2C0C829600DD89BD /* LogWorkoutView */,
 				2EA463242C0CAC4100DD89BD /* LogExerciseView */,
 				2E052FEC2C0E24FD0089C75B /* ExerciseInput */,
-				2E5225B12C0D0E020021C8C8 /* AddSetView */,
 				2E73A2C62C0BB43D00A8423E /* WorkoutsNavigationStack.swift */,
 				2E73A2C82C0BB45500A8423E /* WorkoutsView.swift */,
 			);
@@ -511,6 +502,7 @@
 			children = (
 				2E5225B42C0D22350021C8C8 /* SetsInputView.swift */,
 				2E5225BC2C0D25880021C8C8 /* SetCell.swift */,
+				2E5225B22C0D0E1A0021C8C8 /* AddSetView.swift */,
 			);
 			path = SetsInput;
 			sourceTree = "<group>";

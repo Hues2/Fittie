@@ -25,6 +25,7 @@ struct ExerciseInputView: View {
             BackgroundView()
             
             content
+                .padding()
                 .padding(.top, 16)
         }
         .onAppear {
@@ -56,7 +57,6 @@ private extension ExerciseInputView {
             
             nextPageButton
         }
-        .padding()
         .onAppear {
             // Block the swipe gesture for the tab view
             UIScrollView.appearance().isScrollEnabled = false
