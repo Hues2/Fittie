@@ -26,7 +26,7 @@ private extension SetsInputView {
     
     var setsInputHeader : some View {
         HStack {
-            InputTitle(title: "log_exercise_sets_title")
+//            InputTitle(title: "log_exercise_sets_title")
             Image(systemName: "plus.circle.fill")
                 .font(.title)
                 .foregroundStyle(.accent)

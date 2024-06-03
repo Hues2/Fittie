@@ -14,7 +14,7 @@ struct NameInputView: View {
 private extension NameInputView {
     var exerciseNameInput : some View {
         VStack(spacing: 16) {
-            InputTitle(title: "log_exercise_exercise_title")
+//            InputTitle(title: "log_exercise_exercise_title")
             
             exerciseNameTextField
             

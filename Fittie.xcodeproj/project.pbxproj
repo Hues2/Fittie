@@ -88,6 +88,7 @@
 		2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAEB2BEEEBB5009C7002 /* Date.swift */; };
 		2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6E2202C08F09A0056B4B4 /* Workout.swift */; };
 		2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */; };
+		2EE9B4CC2C0E320A001D40C8 /* CategoryInputCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +175,7 @@
 		2EC6CAEB2BEEEBB5009C7002 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		2EC6E2202C08F09A0056B4B4 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetHeight.swift; sourceTree = "<group>"; };
+		2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E052FEC2C0E24FD0089C75B /* ExerciseInput */ = {
+			isa = PBXGroup;
+			children = (
+				2E052FED2C0E250C0089C75B /* CategoryInput */,
+			);
+			path = ExerciseInput;
+			sourceTree = "<group>";
+		};
+		2E052FED2C0E250C0089C75B /* CategoryInput */ = {
+			isa = PBXGroup;
+			children = (
+				2E5225BA2C0D24B30021C8C8 /* CategoryInputView.swift */,
+				2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */,
+			);
+			path = CategoryInput;
+			sourceTree = "<group>";
+		};
 		2E5225B12C0D0E020021C8C8 /* AddSetView */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +268,7 @@
 				2EA4631F2C0C8F7F00DD89BD /* CustomCalendarView */,
 				2EA4631A2C0C829600DD89BD /* LogWorkoutView */,
 				2EA463242C0CAC4100DD89BD /* LogExerciseView */,
+				2E052FEC2C0E24FD0089C75B /* ExerciseInput */,
 				2E5225B12C0D0E020021C8C8 /* AddSetView */,
 				2E73A2C62C0BB43D00A8423E /* WorkoutsNavigationStack.swift */,
 				2E73A2C82C0BB45500A8423E /* WorkoutsView.swift */,
@@ -349,7 +369,6 @@
 				2E5225B42C0D22350021C8C8 /* SetsInputView.swift */,
 				2E5225B62C0D229F0021C8C8 /* InputTitle.swift */,
 				2E5225B82C0D23C80021C8C8 /* NameInputView.swift */,
-				2E5225BA2C0D24B30021C8C8 /* CategoryInputView.swift */,
 				2E5225BC2C0D25880021C8C8 /* SetCell.swift */,
 			);
 			path = LogExerciseView;
@@ -583,6 +602,7 @@
 				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,
 				2E90E7902BFE64B1003DE59F /* WeightGoalManager.swift in Sources */,
 				2E68A09E2C00160100C2A430 /* UIApplication.swift in Sources */,
+				2EE9B4CC2C0E320A001D40C8 /* CategoryInputCardView.swift in Sources */,
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */,
 				2E5868A32BFD471300222850 /* WeightInput.swift in Sources */,

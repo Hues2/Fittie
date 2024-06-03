@@ -96,8 +96,8 @@
 "log_workout_add_exercise_btn_title" = "Add exercise";
 
 // Exercise input view
-"log_exercise_exercise_title" = "Exercise";
 "log_exercise_category_title" = "Category";
+"log_exercise_exercise_title" = "Exercise";
 "log_exercise_sets_title" = "Sets";
 "log_exercise_name_textfield_prompt" = "Add exercise name";
 "log_exercise_saved_exercises_title" = "Saved exercise names";
