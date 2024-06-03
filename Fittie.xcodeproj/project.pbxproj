@@ -90,6 +90,7 @@
 		2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */; };
 		2EE9B4CC2C0E320A001D40C8 /* CategoryInputCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */; };
 		2EE9B4CE2C0E3EB2001D40C8 /* ExercisePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */; };
+		2EE9B4D22C0E80C4001D40C8 /* AddItemTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4D12C0E80C4001D40C8 /* AddItemTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +179,7 @@
 		2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetHeight.swift; sourceTree = "<group>"; };
 		2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputCardView.swift; sourceTree = "<group>"; };
 		2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePage.swift; sourceTree = "<group>"; };
+		2EE9B4D12C0E80C4001D40C8 /* AddItemTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */,
 				2E5868A22BFD471300222850 /* WeightInput.swift */,
 				2E90E7932BFE8FBA003DE59F /* HomeViewChartLegend.swift */,
+				2EE9B4D12C0E80C4001D40C8 /* AddItemTextView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				2EA463282C0CB2A500DD89BD /* LogExerciseView.swift in Sources */,
 				2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */,
 				2E549C4E2C0A335B00AE85CA /* Exercise.swift in Sources */,
+				2EE9B4D22C0E80C4001D40C8 /* AddItemTextView.swift in Sources */,
 				2E73A2C72C0BB43D00A8423E /* WorkoutsNavigationStack.swift in Sources */,
 				2EA373412BEFCB7A00843FCA /* AverageStepsView.swift in Sources */,
 				2EA3733E2BEF97A000843FCA /* ReadHeightViewModifier.swift in Sources */,

@@ -12,7 +12,6 @@ struct LogWorkoutView: View {
             BackgroundView()
             
             content
-                .padding(.top, 16)
                 .onAppear {
                     // Set the exercises if a workout has already been logged for this date
                     if let loggedExercises = calendarDate.workout?.exercises {
@@ -23,7 +22,7 @@ struct LogWorkoutView: View {
         .sheet(isPresented: $showLogExercisesView) {
             // Add a new exercise
             LogExerciseView { exercise in
-                saveExercise(exercise)
+                addExercise(exercise)
             }
             .presentationDragIndicator(.visible)
             .presentationCornerRadius(Constants.sheetCornerRadius)
@@ -33,17 +32,23 @@ struct LogWorkoutView: View {
 
 private extension LogWorkoutView {
     var content : some View {
-        VStack(spacing: 0) {
+        VStack(spacing: Constants.paddingAboveSaveButton) {
             title
+                .padding(.top, 24)
             
             if !exercises.isEmpty {
                 loggedExercisesView
                 saveWorkoutButton
             } else {
-                addExerciseButton
-                    .frame(maxHeight: .infinity)
+                AddItemTextView(title: "log_workout_add_exercise_btn_title", font: .title)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.showLogExercisesView = true
+                    }
             }
         }
+        .frame(maxHeight: .infinity)
         .padding()
     }
     
@@ -63,26 +68,6 @@ private extension LogWorkoutView {
     }
 }
 
-// MARK: Add exercise button
-private extension LogWorkoutView {
-    var addExerciseButton : some View {
-        Button {
-            self.showLogExercisesView = true
-        } label: {
-            HStack {
-                Image(systemName: "plus")
-                Text("log_workout_add_exercise_btn_title")
-            }
-            .font(.title)
-            .fontWeight(.semibold)
-            .foregroundStyle(.accent)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .contentShape(Rectangle())
-        }
-    }
-}
-
 // MARK: List of exercises
 private extension LogWorkoutView {
     var loggedExercisesView : some View {
@@ -93,8 +78,14 @@ private extension LogWorkoutView {
                         exerciseCell(exercise)
                     }
                 }
+                .frame(maxWidth: .infinity)
             }
-            addExerciseButton
+            
+            AddItemTextView(title: "log_workout_add_exercise_btn_title", font: .title3)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    self.showLogExercisesView = true
+                }
         }
     }
     
@@ -107,7 +98,7 @@ private extension LogWorkoutView {
 
 // MARK: Save exercise
 private extension LogWorkoutView {
-    func saveExercise(_ exercise : Exercise) {
+    func addExercise(_ exercise : Exercise) {
         self.exercises.append(exercise)
     }
 }

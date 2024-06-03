@@ -26,7 +26,6 @@ struct ExerciseInputView: View {
             
             content
                 .padding()
-                .padding(.top, 16)
         }
         .onAppear {
             filterExercises(false)
@@ -48,10 +47,11 @@ struct ExerciseInputView: View {
 // MARK: Content
 private extension ExerciseInputView {
     var content : some View {
-        VStack(spacing: 36) {
+        VStack(spacing: Constants.paddingAboveSaveButton) {
             InputTitle(title: exercisePage.title,
                        showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) { previousPage() }
                 .animation(.none, value: exercisePage)
+                .padding(.top, 24)
             
             tabView
             
@@ -98,6 +98,7 @@ private extension ExerciseInputView {
         case .exerciseNameInput:
             nextPage()
         case .setInput:
+            saveExercise()
             dismiss()
         }
     }
@@ -126,16 +127,6 @@ private extension ExerciseInputView {
             return exerciseName.isEmpty
         case .setInput:
             return sets.isEmpty
-        }
-    }
-}
-
-// MARK: Save exercise button
-private extension ExerciseInputView {
-    var saveExerciseButton : some View {
-        CustomButton(title: "log_exercise_save_btn_title") {
-            saveExercise()
-            dismiss()
         }
     }
 }

@@ -20,15 +20,17 @@ private extension SetsInputView {
     var setsInput : some View {
         VStack {
             if sets.isEmpty {
-                addSetText(.title)
+                AddItemTextView(title: "log_exercise_add_set_btn_title", font: .title)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         self.showSetInputView = true
                     }
             } else {
                 VStack(spacing: 16) {
                     addedSetsView
-                    addSetText(.title3)
+                    AddItemTextView(title: "log_exercise_add_set_btn_title", font: .title3)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             self.showSetInputView = true
                         }
@@ -36,18 +38,6 @@ private extension SetsInputView {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-    
-    func addSetText(_ font : Font) -> some View {
-        HStack {
-            Image(systemName: "plus.circle.fill")
-            Text("Add set")
-        }
-        .font(font)
-        .fontWeight(.semibold)
-        .foregroundStyle(.accent)
-        .frame(maxWidth: .infinity)
-        .contentShape(Rectangle())
     }
     
     var addedSetsView : some View {
