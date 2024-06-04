@@ -12,12 +12,12 @@ struct AddWorkoutView: View {
             BackgroundView()
             
             content
-                .onAppear {
-                    // Set the exercises if a workout has already been logged for this date
-                    if let loggedExercises = calendarDate.workout?.exercises {
-                        self.exercises = loggedExercises
-                    }
-                }
+        }
+        .onAppear {
+            // Set the exercises if a workout has already been logged for this date
+            if let loggedExercises = calendarDate.workout?.exercises {
+                self.exercises = loggedExercises
+            }
         }
         .sheet(isPresented: $showLogExercisesView) {
             // Add a new exercise
@@ -73,25 +73,19 @@ private extension AddWorkoutView {
     var loggedExercisesView : some View {
         VStack {
             ScrollView {
-                VStack {
-                    ForEach(exercises) { exercise in
-                        exerciseCell(exercise)
-                    }
+                ForEach(exercises) { exercise in
+                    ExerciseCellView(category: exercise.exerciseCategoryRawValue,
+                                     name: exercise.exerciseName,
+                                     sets: exercise.sets)
                 }
-                .frame(maxWidth: .infinity)
             }
+            .frame(maxWidth: .infinity)
             
             AddItemTextView(title: "log_workout_add_exercise_btn_title", font: .title3)
                 .contentShape(Rectangle())
                 .onTapGesture {
                     self.showLogExercisesView = true
                 }
-        }
-    }
-    
-    func exerciseCell(_ exercise : Exercise) -> some View {
-        HStack {
-            Text(exercise.exerciseName)
         }
     }
 }

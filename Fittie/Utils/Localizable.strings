@@ -94,6 +94,7 @@
 "log_workout_title" = "Log workout";
 "log_workout_save_workout_btn_title" = "Save workout";
 "log_workout_add_exercise_btn_title" = "Add exercise";
+"log_workout_set_value" = "Set %d";
 
 // Exercise input view
 "log_exercise_name_textfield_prompt" = "Add exercise name";
@@ -119,3 +120,4 @@
 "kg_unit" = "Kg";
 "steps_unit" = "Steps";
 "reps_unit" = "Reps";
+"set_unit" = "Set";

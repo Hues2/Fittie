@@ -20,6 +20,7 @@
 		2E549C4E2C0A335B00AE85CA /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E549C4D2C0A335B00AE85CA /* Exercise.swift */; };
 		2E549C502C0A338000AE85CA /* WorkingSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E549C4F2C0A338000AE85CA /* WorkingSet.swift */; };
 		2E549C522C0A339F00AE85CA /* ExerciseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E549C512C0A339F00AE85CA /* ExerciseCategory.swift */; };
+		2E5512422C0F79770044FB21 /* ExerciseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5512412C0F79770044FB21 /* ExerciseCellView.swift */; };
 		2E551BA82C09186F0058F1B2 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BA72C09186F0058F1B2 /* ExercisesView.swift */; };
 		2E551BAA2C0918840058F1B2 /* ExercisesNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BA92C0918840058F1B2 /* ExercisesNavigationStack.swift */; };
 		2E551BAE2C0938F20058F1B2 /* ExercisesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BAD2C0938F20058F1B2 /* ExercisesViewModel.swift */; };
@@ -67,7 +68,7 @@
 		2EA463212C0C8F9300DD89BD /* CalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463202C0C8F9300DD89BD /* CalendarData.swift */; };
 		2EA463232C0C8FB100DD89BD /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463222C0C8FB100DD89BD /* MonthView.swift */; };
 		2EA463262C0CAC5100DD89BD /* ExerciseInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */; };
-		2EA463282C0CB2A500DD89BD /* LogExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */; };
+		2EA463282C0CB2A500DD89BD /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA463272C0CB2A500DD89BD /* AddExerciseView.swift */; };
 		2EBC6EAB2BF4255F00FCDBA4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */; };
 		2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */; };
 		2EC13DE52BFEB474003BD9E9 /* WeightDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */; };
@@ -107,6 +108,7 @@
 		2E549C4D2C0A335B00AE85CA /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		2E549C4F2C0A338000AE85CA /* WorkingSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingSet.swift; sourceTree = "<group>"; };
 		2E549C512C0A339F00AE85CA /* ExerciseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategory.swift; sourceTree = "<group>"; };
+		2E5512412C0F79770044FB21 /* ExerciseCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCellView.swift; sourceTree = "<group>"; };
 		2E551BA72C09186F0058F1B2 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
 		2E551BA92C0918840058F1B2 /* ExercisesNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesNavigationStack.swift; sourceTree = "<group>"; };
 		2E551BAD2C0938F20058F1B2 /* ExercisesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesViewModel.swift; sourceTree = "<group>"; };
@@ -154,7 +156,7 @@
 		2EA463202C0C8F9300DD89BD /* CalendarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarData.swift; sourceTree = "<group>"; };
 		2EA463222C0C8FB100DD89BD /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInputView.swift; sourceTree = "<group>"; };
-		2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogExerciseView.swift; sourceTree = "<group>"; };
+		2EA463272C0CB2A500DD89BD /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		2EBC6EAA2BF4255F00FCDBA4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2EBC6EAC2BF4274A00FCDBA4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		2EC13DE42BFEB474003BD9E9 /* WeightDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightDetailView.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				2EA4631B2C0C82A400DD89BD /* AddWorkoutView.swift */,
+				2E5512412C0F79770044FB21 /* ExerciseCellView.swift */,
 			);
 			path = AddWorkoutView;
 			sourceTree = "<group>";
@@ -365,7 +368,7 @@
 		2EA463242C0CAC4100DD89BD /* AddExerciseView */ = {
 			isa = PBXGroup;
 			children = (
-				2EA463272C0CB2A500DD89BD /* LogExerciseView.swift */,
+				2EA463272C0CB2A500DD89BD /* AddExerciseView.swift */,
 			);
 			path = AddExerciseView;
 			sourceTree = "<group>";
@@ -592,7 +595,7 @@
 				2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */,
 				2EA2F5C92BFA72BA003E3526 /* LogWeightView.swift in Sources */,
 				2EC6CACA2BEE9116009C7002 /* HomeView.swift in Sources */,
-				2EA463282C0CB2A500DD89BD /* LogExerciseView.swift in Sources */,
+				2EA463282C0CB2A500DD89BD /* AddExerciseView.swift in Sources */,
 				2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */,
 				2E549C4E2C0A335B00AE85CA /* Exercise.swift in Sources */,
 				2EE9B4D22C0E80C4001D40C8 /* AddItemTextView.swift in Sources */,
@@ -619,6 +622,7 @@
 				2EE9B4CE2C0E3EB2001D40C8 /* ExercisePage.swift in Sources */,
 				2E68A09E2C00160100C2A430 /* UIApplication.swift in Sources */,
 				2EE9B4CC2C0E320A001D40C8 /* CategoryInputCardView.swift in Sources */,
+				2E5512422C0F79770044FB21 /* ExerciseCellView.swift in Sources */,
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */,
 				2E5868A32BFD471300222850 /* WeightInput.swift in Sources */,
