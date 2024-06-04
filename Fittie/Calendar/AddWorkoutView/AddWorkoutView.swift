@@ -73,13 +73,16 @@ private extension AddWorkoutView {
     var loggedExercisesView : some View {
         VStack {
             ScrollView {
-                ForEach(exercises) { exercise in
-                    ExerciseCellView(category: exercise.exerciseCategoryRawValue,
-                                     name: exercise.exerciseName,
-                                     sets: exercise.sets)
+                VStack(spacing: 16) {
+                    ForEach(exercises) { exercise in
+                        ExerciseCellView(category: exercise.exerciseCategoryRawValue,
+                                         name: exercise.exerciseName,
+                                         sets: exercise.sets)
+                    }
                 }
+                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
+            .scrollIndicators(.hidden)
             
             AddItemTextView(title: "log_workout_add_exercise_btn_title", font: .title3)
                 .contentShape(Rectangle())
