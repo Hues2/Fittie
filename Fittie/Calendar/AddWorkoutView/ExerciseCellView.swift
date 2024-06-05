@@ -53,10 +53,11 @@ private extension ExerciseCellView {
             Text("reps_unit")
                 .frame(maxWidth: .infinity)
         }
-        .font(.title3)
+        .font(.headline)
         .fontWeight(.light)
         .foregroundStyle(.pink)
         .lineLimit(1)
+        .minimumScaleFactor(0.8)
         .padding()
         .background(Constants.backgroundMaterial)
     }

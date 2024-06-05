@@ -96,9 +96,10 @@ private extension AddWorkoutView {
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(.top, 12)
+            .padding(.top, 12) // This is the inset padding for the content in the scrollview
         }
         .scrollIndicators(.hidden)
+        .padding(.horizontal)
     }
 }
 
