@@ -42,12 +42,7 @@ private extension SetsInputView {
     
     var addedSetsView : some View {
         ScrollView {
-            VStack(spacing: 12) {
-                ForEach(Array(zip(0..<sets.count, sets)), id: \.0) { (index, set) in
-                    SetCell(index: index + 1, kg: set.kg, reps: set.reps)
-                }
-            }
-            .frame(maxWidth: .infinity)
+            ExerciseCellView(category: "", name: "", sets: sets, showExerciseName: false)
         }
     }
     

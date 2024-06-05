@@ -4,6 +4,7 @@ struct ExerciseCellView: View {
     let category : String
     let name : String
     let sets : [WorkingSet]
+    let showExerciseName : Bool
     
     var body: some View {
         cellContent
@@ -13,7 +14,9 @@ struct ExerciseCellView: View {
 private extension ExerciseCellView {
     var cellContent : some View {
         VStack {
-            nameAndCategoryView
+            if showExerciseName {
+                nameAndCategoryView
+            }
             
             VStack(spacing: 16) {
                 setRowHeader
@@ -99,5 +102,6 @@ private extension ExerciseCellView {
 #Preview {
     ExerciseCellView(category: "Chest",
                      name: "Dumbbell bench press",
-                     sets: [])
+                     sets: [],
+                     showExerciseName: true)
 }

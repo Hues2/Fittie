@@ -92,7 +92,8 @@ private extension AddWorkoutView {
                 ForEach(viewModel.workout.exercises) { exercise in
                     ExerciseCellView(category: exercise.exerciseCategoryRawValue,
                                      name: exercise.exerciseName,
-                                     sets: exercise.sets)
+                                     sets: exercise.sets,
+                                     showExerciseName: true)
                 }
             }
             .frame(maxWidth: .infinity)
