@@ -2,7 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct WorkoutsView: View {
-    @Environment(\.modelContext) private var context
     @Query(sort: \Workout.date, animation: .smooth) private var loggedWorkouts : [Workout]
     @State private var selectedCalendarDate : CalendarDate?
     

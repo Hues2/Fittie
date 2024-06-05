@@ -13,11 +13,17 @@ struct FittieApp: App {
         }
     }
     
+    var context : ModelContext {
+        let context = ModelContext(container)
+        context.autosaveEnabled = true
+        return context
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .dynamicTypeSize(Constants.dynamicTypeSizeRange)
-                .modelContainer(container)
+                .modelContext(context)
                 .onAppear {
                     setInstallDate()
                 }
