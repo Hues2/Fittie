@@ -53,7 +53,8 @@ private extension AddWorkoutView {
             }
         }
         .frame(maxHeight: .infinity)
-        .padding()
+        .padding(.top)
+        .padding(.horizontal)
     }
 }
 
@@ -126,7 +127,7 @@ private extension AddWorkoutView {
             saveWorkout()
             dismiss()
         }
-        .padding(.top)
+        .padding(.vertical)
     }
     
     func saveWorkout() {
