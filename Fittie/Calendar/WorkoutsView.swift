@@ -14,9 +14,7 @@ struct WorkoutsView: View {
         .navigationTitle("workouts_view_title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $selectedCalendarDate) { calendarDate in
-            AddWorkoutView(calendarDate: calendarDate) { workout in
-                saveWorkout(workout)
-            }
+            AddWorkoutView(calendarDate: calendarDate)
             .presentationDragIndicator(.visible)
             .presentationCornerRadius(Constants.sheetCornerRadius)
         }
@@ -50,14 +48,6 @@ private extension WorkoutsView {
     func dayTapped(_ date : Date) {
         let selectedDateWorkout = loggedWorkouts.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })
         self.selectedCalendarDate = CalendarDate(date: date, workout: selectedDateWorkout)
-    }
-}
-
-// MARK: Save Workout
-private extension WorkoutsView {
-    func saveWorkout(_ workout : Workout) {
-        // Save workout to context
-        context.insert(workout)
     }
 }
 

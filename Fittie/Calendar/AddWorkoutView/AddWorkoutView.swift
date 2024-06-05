@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct AddWorkoutView: View {
+    @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @State private var exercises : [Exercise] = []
     @State private var showLogExercisesView : Bool = false
     let calendarDate : CalendarDate
-    let saveWorkout : (Workout) -> Void
     
     var body: some View {
         ZStack {
@@ -104,15 +104,20 @@ private extension AddWorkoutView {
 private extension AddWorkoutView {
     var saveWorkoutButton : some View {
         CustomButton(title: "log_workout_save_workout_btn_title") {
-            let workout = Workout(date: calendarDate.date, exercises: exercises)
-            saveWorkout(workout)
+            // Insert the workout into the context
+            let newWorkout = Workout(date: calendarDate.date)
+            context.insert(newWorkout)
+            
+            for exercise in self.exercises {
+                // Each exercise has already been added into the context, so just set up the relationship between them to the new workout
+                exercise.workout = newWorkout
+            }
+            
             dismiss()
         }
     }
 }
 
 #Preview {
-    AddWorkoutView(calendarDate: .init(date: .now, workout: nil)) { _ in
-        
-    }
+    AddWorkoutView(calendarDate: .init(date: .now, workout: nil))
 }
