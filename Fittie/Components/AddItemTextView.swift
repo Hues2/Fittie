@@ -11,8 +11,7 @@ struct AddItemTextView: View {
         }
         .font(font)
         .fontWeight(.light)
-        .foregroundStyle(.accent)
-        .frame(maxWidth: .infinity)        
+        .foregroundStyle(.accent)             
     }
 }
 

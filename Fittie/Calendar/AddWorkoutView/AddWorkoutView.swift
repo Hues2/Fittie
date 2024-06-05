@@ -31,9 +31,10 @@ struct AddWorkoutView: View {
 
 private extension AddWorkoutView {
     var content : some View {
-        VStack(spacing: Constants.paddingAboveSaveButton) {
-            title
+        VStack(spacing: 0) {
+            header
                 .padding(.top, 24)
+                .padding(.bottom, 16)
             
             if !viewModel.workout.exercises.isEmpty {
                 loggedExercisesView
@@ -50,14 +51,30 @@ private extension AddWorkoutView {
         .frame(maxHeight: .infinity)
         .padding()
     }
-    
-    var title : some View {
+}
+
+// MARK: Header
+private extension AddWorkoutView {
+    var header : some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("log_workout_title")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundStyle(.pink)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack {
+                Text("log_workout_title")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.pink)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                if !viewModel.workout.exercises.isEmpty {
+                    Text("log_workout_add_exercise_btn_title")
+                        .font(.title3)
+                        .fontWeight(.light)
+                        .foregroundStyle(.accent)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            self.showLogExercisesView = true
+                        }
+                }
+            }
             
             Text(viewModel.calendarDate.date.formattedWithOrdinalSuffix())
                 .font(.subheadline)
@@ -70,25 +87,18 @@ private extension AddWorkoutView {
 // MARK: List of exercises
 private extension AddWorkoutView {
     var loggedExercisesView : some View {
-        VStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    ForEach(viewModel.workout.exercises) { exercise in
-                        ExerciseCellView(category: exercise.exerciseCategoryRawValue,
-                                         name: exercise.exerciseName,
-                                         sets: exercise.sets)
-                    }
+        ScrollView {
+            VStack(spacing: 28) {
+                ForEach(viewModel.workout.exercises) { exercise in
+                    ExerciseCellView(category: exercise.exerciseCategoryRawValue,
+                                     name: exercise.exerciseName,
+                                     sets: exercise.sets)
                 }
-                .frame(maxWidth: .infinity)
             }
-            .scrollIndicators(.hidden)
-            
-            AddItemTextView(title: "log_workout_add_exercise_btn_title", font: .title3)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    self.showLogExercisesView = true
-                }
+            .frame(maxWidth: .infinity)
+            .padding(.top, 12)
         }
+        .scrollIndicators(.hidden)
     }
 }
 
@@ -106,6 +116,7 @@ private extension AddWorkoutView {
             saveWorkout()
             dismiss()
         }
+        .padding(.top)
     }
     
     func saveWorkout() {
