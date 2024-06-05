@@ -10,11 +10,11 @@ struct ExerciseInputView: View {
     @Binding var exerciseCategory : ExerciseCategory?
     @Binding var exerciseName : String
     @Binding var sets : [WorkingSet]
+    // This is the list of previously logged exercises
+    // This allows the user to quickly select an already saved exercise
     @Query(sort: \ExerciseModel.exerciseName, animation: .smooth) private var loggedExercises : [ExerciseModel]
-    
-    // Tabview page
+        
     @State private var exercisePage : ExercisePage = .categorySelection
-    
     @State private var filteredLoggedExercises : [Exercise] = []
     @State private var numberOfExercisesInCategory : Int = 0
     
