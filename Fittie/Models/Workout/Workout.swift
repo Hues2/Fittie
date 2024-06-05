@@ -11,6 +11,10 @@ class WorkoutModel {
     init(date: Date) {
         self.date = date
     }
+    
+    func getWorkout() -> Workout {
+        return Workout(date: self.date, exercises: self.exercises.map({ $0.getExercise() }))
+    }
 }
 
 struct Workout : Identifiable {

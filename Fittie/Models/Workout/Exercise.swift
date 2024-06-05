@@ -13,6 +13,12 @@ class ExerciseModel {
         self.exerciseCategoryRawValue = exerciseCategoryRawValue
         self.exerciseName = exerciseName
     }
+    
+    func getExercise() -> Exercise {
+        return Exercise(exerciseCategoryRawValue: self.exerciseCategoryRawValue,
+                        exerciseName: self.exerciseName,
+                        sets: self.sets.map({ $0.getWorkingSet() }))
+    }
 }
 
 struct Exercise : Identifiable {

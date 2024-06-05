@@ -11,6 +11,10 @@ class WorkingSetModel {
         self.kg = kg
         self.reps = reps
     }
+    
+    func getWorkingSet() -> WorkingSet {
+        return WorkingSet(kg: self.kg, reps: self.reps)
+    }
 }
 
 
