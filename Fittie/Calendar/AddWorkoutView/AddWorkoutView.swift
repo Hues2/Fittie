@@ -37,8 +37,12 @@ private extension AddWorkoutView {
                 .padding(.bottom, 16)
             
             if !viewModel.workout.exercises.isEmpty {
+                // There are saved or new exercises for the UI
                 loggedExercisesView
-                saveWorkoutButton
+                if !viewModel.newExercises.isEmpty {
+                    // There are new exercises that can be saved
+                    saveWorkoutButton
+                }
             } else {
                 AddItemTextView(title: "log_workout_add_exercise_btn_title", font: .title)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -104,14 +108,13 @@ private extension AddWorkoutView {
     }
 }
 
-// MARK: Save exercise
+// MARK: Append exercise to list
 private extension AddWorkoutView {
     func addExercise(_ exercise : Exercise) {
-        // Add the new exercise to the workout list of exercises
+        // Add the new exercise to the workout list of exercises -- for the UI
         self.viewModel.workout.exercises.append(exercise)
         
-        // Also add the new exercise to the list of new exercises
-        // These will be used if a workout has already logged for this date, and we don't want to "re-create" the workout and exercise models
+        // Also add the new exercise to the list of new exercises -- for saving to the context
         self.viewModel.newExercises.append(exercise)
     }
 }
