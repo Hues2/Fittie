@@ -31,7 +31,3 @@ private extension CustomCalendarView {
         self.dayTapped(date)
     }
 }
-
-#Preview {
-    WorkoutsView()
-}

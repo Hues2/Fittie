@@ -3,21 +3,20 @@ import SwiftUI
 struct AddWorkoutView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
-    @State private var exercises : [Exercise] = []
+    @StateObject private var viewModel : AddWorkoutViewModel
     @State private var showLogExercisesView : Bool = false
-    let calendarDate : CalendarDate
+    
+    init(calendarDate: CalendarDate) {
+        // Pass in the calendar date to the viewmodel.
+        // Calendar date contains the date and the optional workout that could have already been logged for this day
+        self._viewModel = StateObject(wrappedValue: AddWorkoutViewModel(calendarDate))
+    }
     
     var body: some View {
         ZStack {
             BackgroundView()
             
             content
-        }
-        .onAppear {
-            // Set the exercises if a workout has already been logged for this date
-            if let loggedExercises = calendarDate.workout?.exercises {
-                self.exercises = loggedExercises
-            }
         }
         .sheet(isPresented: $showLogExercisesView) {
             // Add a new exercise
@@ -36,7 +35,7 @@ private extension AddWorkoutView {
             title
                 .padding(.top, 24)
             
-            if !exercises.isEmpty {
+            if !viewModel.workout.exercises.isEmpty {
                 loggedExercisesView
                 saveWorkoutButton
             } else {
@@ -60,7 +59,7 @@ private extension AddWorkoutView {
                 .foregroundStyle(.pink)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text(calendarDate.date.formattedWithOrdinalSuffix())
+            Text(viewModel.calendarDate.date.formattedWithOrdinalSuffix())
                 .font(.subheadline)
                 .fontWeight(.light)
                 .foregroundStyle(.secondary)
@@ -74,7 +73,7 @@ private extension AddWorkoutView {
         VStack {
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(exercises) { exercise in
+                    ForEach(viewModel.workout.exercises) { exercise in
                         ExerciseCellView(category: exercise.exerciseCategoryRawValue,
                                          name: exercise.exerciseName,
                                          sets: exercise.sets)
@@ -96,7 +95,7 @@ private extension AddWorkoutView {
 // MARK: Save exercise
 private extension AddWorkoutView {
     func addExercise(_ exercise : Exercise) {
-        self.exercises.append(exercise)
+        self.viewModel.workout.exercises.append(exercise)
     }
 }
 
@@ -104,13 +103,28 @@ private extension AddWorkoutView {
 private extension AddWorkoutView {
     var saveWorkoutButton : some View {
         CustomButton(title: "log_workout_save_workout_btn_title") {
-            // Insert the workout into the context
-            let newWorkout = Workout(date: calendarDate.date)
-            context.insert(newWorkout)
+            // Create the new workout model that will be saved to swift data
+            let workoutModel = WorkoutModel(date: viewModel.calendarDate.date)
+            // Insert the new workout model into the context
+            context.insert(workoutModel)
             
-            for exercise in self.exercises {
-                // Each exercise has already been added into the context, so just set up the relationship between them to the new workout
-                exercise.workout = newWorkout
+            for exercise in viewModel.workout.exercises {
+                // Create a new exercise model for each exercise that was created by the user
+                let exerciseModel = ExerciseModel(exerciseCategoryRawValue: exercise.exerciseCategoryRawValue,
+                                                  exerciseName: exercise.exerciseName)
+                // Insert the new exercise model into the context
+                context.insert(exerciseModel)
+                // Set up the relationship between the exercise and the workout that it belongs to
+                exerciseModel.workout = workoutModel
+                
+                for set in exercise.sets {
+                    // Create a working set model for each set that was inputted by the user
+                    let workingSetModel = WorkingSetModel(kg: set.kg, reps: set.reps)
+                    // Insert the working set into the context
+                    context.insert(workingSetModel)
+                    // Set up the relationship between the working set model and the exercise model
+                    workingSetModel.exercise = exerciseModel
+                }
             }
             
             dismiss()

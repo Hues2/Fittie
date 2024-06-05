@@ -27,6 +27,7 @@
 		2E5868A32BFD471300222850 /* WeightInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A22BFD471300222850 /* WeightInput.swift */; };
 		2E5868A52BFD47A000222850 /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A42BFD47A000222850 /* WeightInputView.swift */; };
 		2E5868AA2BFD6B1F00222850 /* BasicInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */; };
+		2E5DE2B42C10CA63000E5D42 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5DE2B32C10CA63000E5D42 /* AddWorkoutViewModel.swift */; };
 		2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */; };
 		2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */; };
 		2E5FF2C62BF6A0FA00779ADC /* AllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */; };
@@ -115,6 +116,7 @@
 		2E5868A22BFD471300222850 /* WeightInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInput.swift; sourceTree = "<group>"; };
 		2E5868A42BFD47A000222850 /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
 		2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoCardView.swift; sourceTree = "<group>"; };
+		2E5DE2B32C10CA63000E5D42 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
 		2E5FF2C12BF67BD500779ADC /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPermissionsView.swift; sourceTree = "<group>"; };
 		2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetView.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			children = (
 				2EA4631B2C0C82A400DD89BD /* AddWorkoutView.swift */,
 				2E5512412C0F79770044FB21 /* ExerciseCellView.swift */,
+				2E5DE2B32C10CA63000E5D42 /* AddWorkoutViewModel.swift */,
 			);
 			path = AddWorkoutView;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				2E5868AA2BFD6B1F00222850 /* BasicInfoCardView.swift in Sources */,
 				2E90E7922BFE6554003DE59F /* SetWeightGoalView.swift in Sources */,
 				2EA2F5D02BFAB171003E3526 /* UpdateWeightView.swift in Sources */,
+				2E5DE2B42C10CA63000E5D42 /* AddWorkoutViewModel.swift in Sources */,
 				2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */,
 				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,
 				2E90E7902BFE64B1003DE59F /* WeightGoalManager.swift in Sources */,

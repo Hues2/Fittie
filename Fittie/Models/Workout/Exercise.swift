@@ -2,15 +2,22 @@ import Foundation
 import SwiftData
 
 @Model
-class Exercise {
+class ExerciseModel {
     var exerciseCategoryRawValue : String
     var exerciseName : String
-    @Relationship(deleteRule: .cascade, inverse: \WorkingSet.exercise)
-    var sets = [WorkingSet]()
-    var workout : Workout?
+    @Relationship(deleteRule: .cascade, inverse: \WorkingSetModel.exercise)
+    var sets = [WorkingSetModel]()
+    var workout : WorkoutModel?
     
     init(exerciseCategoryRawValue: String, exerciseName: String) {
         self.exerciseCategoryRawValue = exerciseCategoryRawValue
         self.exerciseName = exerciseName
     }
+}
+
+struct Exercise : Identifiable {
+    let id : String = UUID().uuidString
+    var exerciseCategoryRawValue : String
+    var exerciseName : String
+    var sets = [WorkingSet]()    
 }

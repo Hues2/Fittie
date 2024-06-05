@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct WorkoutsView: View {
-    @Query(sort: \Workout.date, animation: .smooth) private var loggedWorkouts : [Workout]
+    @Query(sort: \WorkoutModel.date, animation: .smooth) private var loggedWorkouts : [WorkoutModel]
     @State private var selectedCalendarDate : CalendarDate?
     
     var body: some View {
@@ -45,7 +45,11 @@ private extension WorkoutsView {
 // MARK: Day tapped -- Pass in CalendarDate to LogWorkoutView
 private extension WorkoutsView {
     func dayTapped(_ date : Date) {
-        let selectedDateWorkout = loggedWorkouts.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })
+        let selectedDateWorkout = loggedWorkouts
+            .first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })
+            .map({ Workout(date: $0.date, exercises: $0.exercises
+                .map({ Exercise(exerciseCategoryRawValue: $0.exerciseCategoryRawValue, exerciseName: $0.exerciseName, sets: $0.sets
+                    .map({ WorkingSet(kg: $0.kg, reps: $0.reps) })) })) })
         self.selectedCalendarDate = CalendarDate(date: date, workout: selectedDateWorkout)
     }
 }
