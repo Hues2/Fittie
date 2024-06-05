@@ -128,47 +128,34 @@ private extension AddWorkoutView {
     
     func saveWorkout() {
         if let savedWorkoutModel = viewModel.savedWorkoutModel {
-            for exercise in viewModel.newExercises {
-                // Create a new exercise model for each exercise that was created by the user
-                let exerciseModel = ExerciseModel(exerciseCategoryRawValue: exercise.exerciseCategoryRawValue,
-                                                  exerciseName: exercise.exerciseName)
-                // Insert the new exercise model into the context
-                context.insert(exerciseModel)
-                // Set up the relationship between the exercise and the already saved workout
-                exerciseModel.workout = savedWorkoutModel
-                
-                for set in exercise.sets {
-                    // Create a working set model for each set that was inputted by the user
-                    let workingSetModel = WorkingSetModel(kg: set.kg, reps: set.reps)
-                    // Insert the working set into the context
-                    context.insert(workingSetModel)
-                    // Set up the relationship between the working set model and the exercise model
-                    workingSetModel.exercise = exerciseModel
-                }
-            }
+            saveListOfExercises(savedWorkoutModel)
         } else {
             // Create the new workout model that will be saved to swift data
             let workoutModel = WorkoutModel(date: viewModel.calendarDate.date)
             // Insert the new workout model into the context
             context.insert(workoutModel)
             
-            for exercise in viewModel.newExercises {
-                // Create a new exercise model for each exercise that was created by the user
-                let exerciseModel = ExerciseModel(exerciseCategoryRawValue: exercise.exerciseCategoryRawValue,
-                                                  exerciseName: exercise.exerciseName)
-                // Insert the new exercise model into the context
-                context.insert(exerciseModel)
-                // Set up the relationship between the exercise and the workout that it belongs to
-                exerciseModel.workout = workoutModel
-                
-                for set in exercise.sets {
-                    // Create a working set model for each set that was inputted by the user
-                    let workingSetModel = WorkingSetModel(kg: set.kg, reps: set.reps)
-                    // Insert the working set into the context
-                    context.insert(workingSetModel)
-                    // Set up the relationship between the working set model and the exercise model
-                    workingSetModel.exercise = exerciseModel
-                }
+            saveListOfExercises(workoutModel)
+        }
+    }
+    
+    func saveListOfExercises(_ workoutModel : WorkoutModel) {
+        for exercise in viewModel.newExercises {
+            // Create a new exercise model for each exercise that was created by the user
+            let exerciseModel = ExerciseModel(exerciseCategoryRawValue: exercise.exerciseCategoryRawValue,
+                                              exerciseName: exercise.exerciseName)
+            // Insert the new exercise model into the context
+            context.insert(exerciseModel)
+            // Set up the relationship between the exercise and the workout that it belongs to
+            exerciseModel.workout = workoutModel
+            
+            for set in exercise.sets {
+                // Create a working set model for each set that was inputted by the user
+                let workingSetModel = WorkingSetModel(kg: set.kg, reps: set.reps)
+                // Insert the working set into the context
+                context.insert(workingSetModel)
+                // Set up the relationship between the working set model and the exercise model
+                workingSetModel.exercise = exerciseModel
             }
         }
     }
