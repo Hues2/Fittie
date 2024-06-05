@@ -47,7 +47,6 @@ private extension WorkoutsView {
     func dayTapped(_ date : Date) {
         let selectedDateWorkout = loggedWorkouts
             .first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })
-            .map({ $0.getWorkout() })
         self.selectedCalendarDate = CalendarDate(date: date, workout: selectedDateWorkout)
     }
 }
