@@ -18,9 +18,7 @@ struct CategoryInputView: View {
                                           isSelected: exerciseCategory == category)
                     .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                     .onTapGesture {
-                        withAnimation {
-                            self.exerciseCategory = category
-                        }
+                        self.exerciseCategory = category
                     }
                 }
             }                     

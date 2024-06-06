@@ -15,6 +15,7 @@ struct CategoryInputCardView: View {
                 .foregroundStyle(isSelected ? .accent : .secondary)
                 .padding()
                 .background(Constants.backgroundLightMaterial)
+            
             Text(title)
                 .font(.title2)
                 .fontWeight(.light)
