@@ -13,7 +13,8 @@ struct CategoryInputView: View {
             BackgroundView()
             VStack(spacing: 16) {
                 ForEach(ExerciseCategory.allCases) { category in
-                    CategoryInputCardView(title: category.rawValue,
+                    CategoryInputCardView(icon: category.icon,
+                                          title: category.rawValue,
                                           isSelected: exerciseCategory == category)
                     .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                     .onTapGesture {

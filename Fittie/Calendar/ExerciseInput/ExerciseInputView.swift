@@ -41,6 +41,9 @@ struct ExerciseInputView: View {
         .onChange(of: exerciseName) { oldValue, newValue in
             filterExercises()
         }
+        .onDisappear {
+            UIScrollView.appearance().isScrollEnabled = true
+        }
     }
 }
 
@@ -51,10 +54,6 @@ private extension ExerciseInputView {
             tabViewTitle
             tabView
             nextPageButton
-        }
-        .onAppear {
-            // Block the swipe gesture for the tab view
-            UIScrollView.appearance().isScrollEnabled = false
         }
     }
     
@@ -79,6 +78,10 @@ private extension ExerciseInputView {
                 .tag(ExercisePage.setInput)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
+        .onAppear {
+            // Block the swipe gesture for the tab view
+            UIScrollView.appearance().isScrollEnabled = false
+        }
     }
 }
 

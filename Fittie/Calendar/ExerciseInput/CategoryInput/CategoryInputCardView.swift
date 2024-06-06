@@ -1,15 +1,23 @@
 import SwiftUI
 
 struct CategoryInputCardView: View {
+    let icon : String
     let title: String
     let isSelected : Bool
     
     var body: some View {
-        VStack {
+        HStack {
+            Image(icon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 72)
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(.secondary)
             Text(title)
                 .font(.title2)
                 .fontWeight(.semibold)
                 .padding()
+                .frame(maxWidth: .infinity)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)        
         .background(Constants.backgroundMaterial)
@@ -18,28 +26,25 @@ struct CategoryInputCardView: View {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .stroke(isSelected ? .accent : .clear)
         }
-        .compositingGroup()
-        .shadow(color: isSelected ? .accent : .clear, radius: 2, x: 0, y: 0)
-        .shadow(color: isSelected ? .accent : .clear, radius: 2, x: 0, y: 0)
     }
 }
 
 #Preview {
     VStack {
-        CategoryInputCardView(title: "Chest", isSelected: true)
-            .frame(height: 150)
+        CategoryInputCardView(icon: "chest_category", title: "Chest", isSelected: true)
+            .frame(height: 100)
             .padding()
-        CategoryInputCardView(title: "Chest", isSelected: true)
-            .frame(height: 150)
+        CategoryInputCardView(icon: "shoulders_category", title: "Shoulders", isSelected: true)
+            .frame(height: 100)
             .padding()
-        CategoryInputCardView(title: "Chest", isSelected: true)
-            .frame(height: 150)
+        CategoryInputCardView(icon: "arms_category", title: "Arms", isSelected: true)
+            .frame(height: 100)
             .padding()
-        CategoryInputCardView(title: "Chest", isSelected: true)
-            .frame(height: 150)
+        CategoryInputCardView(icon: "legs_category", title: "Legs", isSelected: true)
+            .frame(height: 100)
             .padding()
-        CategoryInputCardView(title: "Chest", isSelected: true)
-            .frame(height: 150)
+        CategoryInputCardView(icon: "back_category", title: "Back", isSelected: true)
+            .frame(height: 100)
             .padding()
     }
 }
