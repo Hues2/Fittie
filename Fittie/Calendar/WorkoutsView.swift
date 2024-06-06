@@ -34,11 +34,16 @@ private extension WorkoutsView {
 // MARK: Day view colour -- Gets the background colour for the calendar day view
 private extension WorkoutsView {
     private func dayColor(_ date: Date) -> Color {
+        let installDate = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date ?? .now
         if loggedWorkouts.contains(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
             return Color.accentColor
-        } else {
-            return Color.pink
         }
+        // If date is before the install date display no circle
+        if date < installDate { return .clear }
+        // If date is in the future then show grayed out circle
+        if date > .now { return .gray.opacity(0.2)}
+        
+        return Color.pink
     }
 }
 

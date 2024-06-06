@@ -9,7 +9,7 @@ struct Month: Identifiable {
 struct MonthView: View {
     let month: Month
     let dayTapped: (Date) -> Void
-    let dayColor: (Date) -> Color
+    let dayColor: (Date) -> Color?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,7 +23,7 @@ struct MonthView: View {
                         .frame(width: 40, height: 40)
                         .background(
                             Circle()
-                                .fill(dayColor(day)))
+                                .fill(dayColor(day) ?? Color.gray.opacity(0.8)))
                         .onTapGesture {
                             dayTapped(day)
                         }
