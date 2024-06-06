@@ -17,7 +17,7 @@ class Constants {
     static let setInputTextSize : CGFloat = 30
     static let dynamicTypeSizeRange : ClosedRange<DynamicTypeSize> = .small ... .xxLarge
     static let backgroundMaterial : Material = .ultraThickMaterial
-    static let backgroundLightMaterial : Material = .ultraThickMaterial
+    static let backgroundLightMaterial : Material = .ultraThinMaterial
     
     // MARK: - Values    
     static let defaultStepGoal : Int = 7500
