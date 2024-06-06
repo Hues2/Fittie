@@ -62,7 +62,7 @@ private extension ExerciseCellView {
         .lineLimit(1)
         .minimumScaleFactor(0.8)
         .padding()
-        .background(Constants.backgroundMaterial)
+        .background(Constants.backgroundLightMaterial)
     }
     
     func setRow(_ set : Int, _ weight : Double, _ reps : Int) -> some View {
