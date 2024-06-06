@@ -23,7 +23,7 @@ struct MonthView: View {
                         .frame(width: 40, height: 40)
                         .background(
                             Circle()
-                                .fill(dayColor(day) ?? Color.gray.opacity(0.8)))
+                                .fill(dayColor(day) ?? Color.clear))
                         .onTapGesture {
                             dayTapped(day)
                         }
