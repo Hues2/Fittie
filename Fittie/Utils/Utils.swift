@@ -11,4 +11,8 @@ class Utils {
             UIApplication.shared.open(url, options: [:])
         }
     }
+    
+    static func disableScroll(_ shouldDisable : Bool) {
+        UIScrollView.appearance().isScrollEnabled = shouldDisable
+    }
 }

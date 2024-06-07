@@ -42,7 +42,7 @@ struct ExerciseInputView: View {
             filterExercises()
         }
         .onDisappear {
-            UIScrollView.appearance().isScrollEnabled = true
+            Utils.disableScroll(true)
         }
     }
 }
@@ -80,7 +80,7 @@ private extension ExerciseInputView {
         .tabViewStyle(.page(indexDisplayMode: .never))
         .onAppear {
             // Block the swipe gesture for the tab view
-            UIScrollView.appearance().isScrollEnabled = false
+            Utils.disableScroll(false)
         }
     }
 }
