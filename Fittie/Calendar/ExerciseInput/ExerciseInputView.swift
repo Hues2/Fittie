@@ -73,10 +73,12 @@ private extension ExerciseInputView {
                           filteredLoggedExercises: $filteredLoggedExercises,
                           numberOfExercisesInCategory: numberOfExercisesInCategory)
             .tag(ExercisePage.exerciseNameInput)
+            .presentationCornerRadius(Constants.sheetCornerRadius)
             
             SetsInputView(sets: $sets)
                 .tag(ExercisePage.setInput)
         }
+        .presentationCornerRadius(Constants.sheetCornerRadius)
         .tabViewStyle(.page(indexDisplayMode: .never))
         .onAppear {
             // Block the swipe gesture for the tab view
@@ -167,5 +169,9 @@ private extension ExerciseInputView {
 }
 
 #Preview {
-    ExerciseInputView(exerciseCategory: .constant(.Arms), exerciseName: .constant(""), sets: .constant([])) { }
+    Color.background
+        .sheet(isPresented: .constant(true), content: {
+            ExerciseInputView(exerciseCategory: .constant(.Arms), exerciseName: .constant(""), sets: .constant([])) { }
+//                .withCustomSheetHeight()
+        })
 }

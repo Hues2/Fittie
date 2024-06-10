@@ -109,11 +109,15 @@ private extension NameInputView {
 }
 
 #Preview {
-    ZStack {
-        BackgroundView()
-        NameInputView(exerciseName: .constant(""),
-                      filteredLoggedExercises: .constant([]),
-                      numberOfExercisesInCategory: 2)
-        .padding()
-    }
+    Color.background
+        .sheet(isPresented: .constant(true), content: {
+            ZStack {
+                BackgroundView()
+                NameInputView(exerciseName: .constant(""),
+                              filteredLoggedExercises: .constant([]),
+                              numberOfExercisesInCategory: 2)
+                .padding()
+            }
+            .withCustomSheetHeight()
+        })
 }
