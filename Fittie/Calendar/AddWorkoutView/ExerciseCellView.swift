@@ -21,7 +21,7 @@ private extension ExerciseCellView {
             VStack(spacing: 0) {
                 setRowHeader
                 
-                //                previewContent
+//                                previewContent
                 if !sets.isEmpty {
                     VStack(spacing: 0) {
                         ForEach(Array(zip(0..<sets.count, sets)), id: \.0) { (index, set) in
@@ -66,7 +66,7 @@ private extension ExerciseCellView {
     
     func setRow(_ set : Int, _ weight : Double, _ reps : Int) -> some View {
         VStack(spacing: 0) {
-            ExerciseCellContent(set: set,
+            ExerciseCellContentView(set: set,
                                 weight: weight,
                                 reps: reps) {
                 // Delete
@@ -96,76 +96,4 @@ private extension ExerciseCellView {
                      name: "Dumbbell bench press",
                      sets: [],
                      showExerciseName: true)
-}
-
-struct ExerciseCellContent: View {
-    let set: Int
-    let weight: Double
-    let reps: Int
-    let onDelete: () -> Void
-    
-    @State private var offset: CGFloat = .zero
-    @State private var isDragging = false
-    
-    private let threshold: CGFloat = -100 // Threshold for triggering the delete action
-    private let maxOffset: CGFloat = -150 // Maximum offset when fully swiped
-    
-    var body: some View {
-        ZStack {
-            HStack {
-                Button(action: {
-                    withAnimation {
-                        onDelete()
-                    }
-                }) {
-                    Text("Delete")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.red)
-                }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-            
-            // Foreground content
-            HStack {
-                Text(String(format: NSLocalizedString("log_workout_set_value", comment: "Set"), set))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("\(weight.toTwoDecimalPlacesString())")
-                    .frame(maxWidth: .infinity)
-                Text("\(reps)")
-                    .frame(maxWidth: .infinity)
-            }
-            .font(.title3)
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.background)
-            .offset(x: offset)
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        isDragging = true
-                        if gesture.translation.width < 0 {
-                            offset = gesture.translation.width
-                        }
-                    }
-                    .onEnded { _ in
-                        withAnimation {
-                            if offset < threshold {
-                                onDelete()
-                            } else {
-                                offset = .zero
-                            }
-                            isDragging = false
-                        }
-                    }
-            )
-        }
-    }
-}
-
-#Preview {
-    ExerciseCellContent(set: 1, weight: 22.5, reps: 10) {
-        
-    }
 }
