@@ -73,6 +73,7 @@ private extension ExerciseInputView {
                           filteredLoggedExercises: $filteredLoggedExercises,
                           numberOfExercisesInCategory: numberOfExercisesInCategory)
             .tag(ExercisePage.exerciseNameInput)
+            // Have to add this here, as the textfield inside this view causes the sheet to lose its corner radius (for some reason)
             .presentationCornerRadius(Constants.sheetCornerRadius)
             
             SetsInputView(sets: $sets)
