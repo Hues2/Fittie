@@ -1,32 +1,32 @@
 import SwiftUI
 
 struct ExerciseCellContentView: View {
-    let set: Int
-    let weight: Double
-    let reps: Int
-    let onDelete: () -> Void
+    let set : Int
+    let weight : Double
+    let reps : Int
+    let onDelete : () -> Void
     
     @State private var offset: CGFloat = .zero
+    @State private var previousTranslation: CGFloat = .zero
     @State private var isDragging = false
     
-    private let threshold: CGFloat = -100 // Threshold for triggering the delete action
-    private let maxOffset: CGFloat = -150 // Maximum offset when fully swiped
+    private let maxOffset : CGFloat = -150 // Maximum offset when fully swiped
+    private let iconWidth : CGFloat = 88
     
     var body: some View {
         ZStack {
-            Button(action: {
-                withAnimation(.snappy) {
-                    onDelete()
-                }
-            }) {
+            Button {
+                onDelete()
+            } label: {
                 Image(systemName: "trash.fill")
+                    .font(.headline)
                     .foregroundStyle(Color.background)
                     .padding()
+                    .frame(width: iconWidth)
                     .background(.pink)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            
-            // Foreground content
+                        
             HStack {
                 Text(String(format: NSLocalizedString("log_workout_set_value", comment: "Set"), set))
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -45,20 +45,36 @@ struct ExerciseCellContentView: View {
             .gesture(
                 DragGesture()
                     .onChanged { gesture in
-                        isDragging = true
-                        if gesture.translation.width < 0 {
-                            offset = gesture.translation.width
-                        }
+                        print("current offset \(offset)")
+                        print(gesture.translation.width)
+                        print("previous translation \(previousTranslation)")
+                            if offset < gesture.translation.width {
+                                let amountToMove = gesture.translation.width - previousTranslation
+                                offset = min(0, (offset + amountToMove))
+                                previousTranslation = gesture.translation.width
+                            } else {
+                                offset = min(0, gesture.translation.width)
+                                previousTranslation = .zero
+                            }
                     }
                     .onEnded { _ in
                         withAnimation(.snappy) {
-                            if offset < threshold {
+                            if (offset < -(iconWidth + 12)) &&
+                                offset > -(iconWidth + 62) {
+                                // Set the offset to show the delete button
+                                offset = -(iconWidth + 12)
+                                print("Show delete button")
+                            } else if offset < -(iconWidth + 62) {
+                                // User swipe enough to delete directly
+                                print("Delete")
                                 onDelete()
                             } else {
+                                print("Reset offset")
                                 offset = .zero
                             }
-                            isDragging = false
                         }
+                        self.isDragging = false
+                        self.previousTranslation = .zero
                     }
             )
         }
