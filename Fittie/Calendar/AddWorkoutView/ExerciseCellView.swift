@@ -25,7 +25,12 @@ private extension ExerciseCellView {
                 if !sets.isEmpty {
                     VStack(spacing: 0) {
                         ForEach(Array(zip(0..<sets.count, sets)), id: \.0) { (index, set) in
-                            setRow(index + 1, set.kg, set.reps)
+                            ExerciseCellContentView(set: (index + 1),
+                                                    weight: set.kg,
+                                                    reps: set.reps,
+                                                    isLastCell: ((index + 1) == sets.count)) {
+                                // Delete
+                            }
                         }
                     }
                 }
@@ -63,30 +68,36 @@ private extension ExerciseCellView {
         .padding()
         .background(Constants.backgroundLightMaterial)
     }
-    
-    func setRow(_ set : Int, _ weight : Double, _ reps : Int) -> some View {
-        VStack(spacing: 0) {
-            ExerciseCellContentView(set: set,
-                                weight: weight,
-                                reps: reps) {
-                // Delete
-            }
-            
-            if set != sets.count {
-                Divider()
-            }
-        }
-    }
 }
 
 private extension ExerciseCellView {
     // Add this for preview
     var previewContent : some View {
         VStack(spacing: 0) {
-            setRow(1, 22.5, 10)
-            setRow(1, 22.5, 10)
-            setRow(1, 22.5, 10)
-            setRow(1, 22.5, 10)
+            ExerciseCellContentView(set: 1,
+                                    weight: 22.5,
+                                    reps: 12,
+                                    isLastCell: true) {
+                // Delete
+            }
+            ExerciseCellContentView(set: 1,
+                                    weight: 22.5,
+                                    reps: 12,
+                                    isLastCell: true) {
+                // Delete
+            }
+            ExerciseCellContentView(set: 1,
+                                    weight: 22.5,
+                                    reps: 12,
+                                    isLastCell: true) {
+                // Delete
+            }
+            ExerciseCellContentView(set: 1,
+                                    weight: 22.5,
+                                    reps: 12,
+                                    isLastCell: false) {
+                // Delete
+            }
         }
     }
 }

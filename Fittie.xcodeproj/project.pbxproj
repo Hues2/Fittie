@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E0A57AF2C0BE3AC00964E50 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */; };
 		2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E39A9AB2BF03D7C00A93F19 /* Utils.swift */; };
+		2E41FB4F2C18D0F100A7B6AD /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41FB4E2C18D0F100A7B6AD /* SwipeAction.swift */; };
 		2E5225B32C0D0E1A0021C8C8 /* AddSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B22C0D0E1A0021C8C8 /* AddSetView.swift */; };
 		2E5225B52C0D22350021C8C8 /* SetsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B42C0D22350021C8C8 /* SetsInputView.swift */; };
 		2E5225B72C0D229F0021C8C8 /* InputTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B62C0D229F0021C8C8 /* InputTitle.swift */; };
@@ -98,6 +99,7 @@
 /* Begin PBXFileReference section */
 		2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		2E39A9AB2BF03D7C00A93F19 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2E41FB4E2C18D0F100A7B6AD /* SwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
 		2E5225B22C0D0E1A0021C8C8 /* AddSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetView.swift; sourceTree = "<group>"; };
 		2E5225B42C0D22350021C8C8 /* SetsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsInputView.swift; sourceTree = "<group>"; };
 		2E5225B62C0D229F0021C8C8 /* InputTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTitle.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				2E5868A22BFD471300222850 /* WeightInput.swift */,
 				2E90E7932BFE8FBA003DE59F /* HomeViewChartLegend.swift */,
 				2EE9B4D12C0E80C4001D40C8 /* AddItemTextView.swift */,
+				2E41FB4E2C18D0F100A7B6AD /* SwipeAction.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				2E7780472C05290500E9AD64 /* UpdateWeightGoal.swift in Sources */,
 				2E5868AA2BFD6B1F00222850 /* BasicInfoCardView.swift in Sources */,
 				2E90E7922BFE6554003DE59F /* SetWeightGoalView.swift in Sources */,
+				2E41FB4F2C18D0F100A7B6AD /* SwipeAction.swift in Sources */,
 				2EA2F5D02BFAB171003E3526 /* UpdateWeightView.swift in Sources */,
 				2E5DE2B42C10CA63000E5D42 /* AddWorkoutViewModel.swift in Sources */,
 				2E5374882C17AE5300D769BC /* ExerciseCellContentView.swift in Sources */,
