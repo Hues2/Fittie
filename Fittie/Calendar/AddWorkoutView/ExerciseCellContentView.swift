@@ -59,15 +59,10 @@ struct ExerciseCellContentView: View {
                     }
                     .onEnded { _ in
                         withAnimation(.snappy) {
-                            if (offset < -(iconWidth + 12)) &&
-                                offset > -(iconWidth + 62) {
+                            if (offset < -(iconWidth + 12)) {
                                 // Set the offset to show the delete button
                                 offset = -(iconWidth + 12)
                                 print("Show delete button")
-                            } else if offset < -(iconWidth + 62) {
-                                // User swipe enough to delete directly
-                                print("Delete")
-                                onDelete()
                             } else {
                                 print("Reset offset")
                                 offset = .zero

@@ -92,20 +92,21 @@ private extension AddWorkoutView {
 // MARK: List of exercises
 private extension AddWorkoutView {
     var loggedExercisesView : some View {
-        ScrollView {
-            VStack(spacing: 28) {
-                ForEach(viewModel.workout.exercises) { exercise in
-                    ExerciseCellView(category: exercise.exerciseCategoryRawValue,
-                                     name: exercise.exerciseName,
-                                     sets: exercise.sets,
-                                     showExerciseName: true)
-                }
+        List {
+            ForEach(viewModel.workout.exercises) { exercise in
+                ExerciseCellView(category: exercise.exerciseCategoryRawValue,
+                                 name: exercise.exerciseName,
+                                 sets: exercise.sets,
+                                 showExerciseName: true)
+                .padding()
             }
-            .frame(maxWidth: .infinity)
-            .padding(.top, 12) // This is the inset padding for the content in the scrollview
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
+        .listStyle(.plain)
         .scrollIndicators(.hidden)
-        .padding(.horizontal)
+        .scrollContentBackground(.hidden)
     }
 }
 
