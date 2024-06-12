@@ -49,24 +49,28 @@ private extension SetsInputView {
                 // Delete Set
                 self.deleteSet(index)
             }
-            .padding()
+                             .padding(.horizontal, 8)
         }
     }
     
     func addSet(_ set : WorkingSet) {
-        self.sets.append(set)
+        withAnimation {
+            self.sets.append(set)
+        }
     }
 }
 
 // MARK: Delete set functionality
 private extension SetsInputView {
     func deleteSet(_ index : Int) {
-        // Remove the selected set
-        self.sets.remove(at: index)
-        
-        // Reset the sets number
-        self.sets = Array(self.sets).enumerated().map { (index, set) in
-            WorkingSet(number: index + 1, kg: set.kg, reps: set.reps)
+        withAnimation {
+            // Remove the selected set
+            self.sets.remove(at: index)
+            
+            // Reset the sets number
+            self.sets = Array(self.sets).enumerated().map { (index, set) in
+                WorkingSet(number: index + 1, kg: set.kg, reps: set.reps)
+            }
         }
     }
 }

@@ -69,7 +69,18 @@ private extension AddWorkoutView {
                     .foregroundStyle(.pink)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                if !viewModel.workout.exercises.isEmpty {
+                if viewModel.calendarDate.workout != nil {
+                    // Workout is already added
+                    Text("delete")
+                        .font(.title3)
+                        .fontWeight(.light)
+                        .foregroundStyle(.pink)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            // Show delete workout alert
+                        }
+                } else if !viewModel.workout.exercises.isEmpty {
+                    // Wokout isn't already added, but there has been an exercise added
                     Text("log_workout_add_exercise_btn_title")
                         .font(.title3)
                         .fontWeight(.light)
@@ -98,7 +109,8 @@ private extension AddWorkoutView {
                                  name: exercise.exerciseName,
                                  sets: exercise.sets,
                                  showExerciseName: true)
-                .padding()
+                .padding(.vertical)
+                .padding(.horizontal, 8)
             }
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)

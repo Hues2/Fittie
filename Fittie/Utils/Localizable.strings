@@ -121,3 +121,6 @@
 "steps_unit" = "Steps";
 "reps_unit" = "Reps";
 "set_unit" = "Set";
+
+// Reusable
+"delete" = "Delete";
