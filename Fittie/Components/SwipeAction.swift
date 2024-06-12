@@ -12,6 +12,7 @@ struct SwipeAction<Content : View> : View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
                     content
+                        .foregroundStyle(.secondary)
                         .containerRelativeFrame(.horizontal)
                     
                     actionButtons()
@@ -41,7 +42,7 @@ struct SwipeAction<Content : View> : View {
                         .padding()
                         .contentShape(.rect)
                         .background(action.tint)
-                        .cornerRadius(Constants.cornerRadius, corners: .allCorners)
+                        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                 }
                 .buttonStyle(.plain)
             }

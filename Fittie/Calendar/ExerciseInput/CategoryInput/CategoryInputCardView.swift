@@ -17,7 +17,7 @@ struct CategoryInputCardView: View {
                 .background(Constants.backgroundLightMaterial)
             
             Text(title)
-                .font(.title2)
+                .font(.title2)                
                 .fontWeight(.light)
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)

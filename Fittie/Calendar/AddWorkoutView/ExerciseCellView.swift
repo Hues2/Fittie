@@ -21,7 +21,6 @@ private extension ExerciseCellView {
             VStack(spacing: 0) {
                 setRowHeader
                 
-//                                previewContent
                 if !sets.isEmpty {
                     VStack(spacing: 0) {
                         ForEach(Array(zip(0..<sets.count, sets)), id: \.0) { (index, set) in
@@ -36,7 +35,7 @@ private extension ExerciseCellView {
                 }
             }
             .background(Color.background)
-            .cornerRadius(Constants.cornerRadius, corners: .allCorners)
+            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
     }
     
@@ -103,8 +102,26 @@ private extension ExerciseCellView {
 }
 
 #Preview {
-    ExerciseCellView(category: "Chest",
+    let sets : [WorkingSet] = [
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10)
+    ]
+    
+    return ExerciseCellView(category: "Chest",
                      name: "Dumbbell bench press",
-                     sets: [],
+                     sets: sets,
                      showExerciseName: true)
+}
+
+#Preview {
+    let sets : [WorkingSet] = [
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10)
+    ]
+    
+    return SetsInputView(sets: .constant(sets))
 }

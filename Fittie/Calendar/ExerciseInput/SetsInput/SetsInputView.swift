@@ -42,7 +42,11 @@ private extension SetsInputView {
     
     var addedSetsView : some View {
         ScrollView {
-            ExerciseCellView(category: "", name: "", sets: sets, showExerciseName: false)
+            ExerciseCellView(category: "",
+                             name: "",
+                             sets: sets,
+                             showExerciseName: false)
+            .padding()
         }
     }
     
@@ -52,5 +56,12 @@ private extension SetsInputView {
 }
 
 #Preview {
-    SetsInputView(sets: .constant([]))
+    let sets : [WorkingSet] = [
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10)
+    ]
+    
+    return SetsInputView(sets: .constant(sets))
 }

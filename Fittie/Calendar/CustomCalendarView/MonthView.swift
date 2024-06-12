@@ -31,7 +31,7 @@ struct MonthView: View {
             }
             .padding()
             .background(Constants.backgroundMaterial)
-            .cornerRadius(Constants.cornerRadius, corners: .allCorners)
+            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
             .padding(.bottom, 20)
         }
     }

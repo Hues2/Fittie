@@ -29,12 +29,12 @@ struct ExerciseCellContentView: View {
                 }
             }
             .font(.title3)
-            .foregroundStyle(.secondary)
+            .fontWeight(.light)
+//            .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity)
             .frame(maxHeight: .infinity)
             .padding(.vertical, 4)
-            .background(Constants.backgroundMaterial)
-            .background(Color.background)
+            .background(Material.ultraThin)
             
             Divider()
         }
@@ -44,5 +44,19 @@ struct ExerciseCellContentView: View {
 #Preview {
     ExerciseCellContentView(set: 1, weight: 22.5, reps: 10) {
         
+    }
+}
+
+#Preview {
+    let sets : [WorkingSet] = [
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10),
+        .init(kg: 22.5, reps: 10)
+    ]
+    
+    return ZStack {
+        Color.background.ignoresSafeArea()
+        SetsInputView(sets: .constant(sets))
     }
 }
