@@ -71,14 +71,22 @@ private extension AddWorkoutView {
                 
                 if viewModel.calendarDate.workout != nil {
                     // Workout is already added
-                    Text("delete")
-                        .font(.title3)
-                        .fontWeight(.light)
-                        .foregroundStyle(.pink)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            // Show delete workout alert
-                        }
+                    Button {
+                        // Show delete workout alert
+                    } label: {
+                        Image(systemName: "trash.fill")
+                            .font(.title3)
+                            .fontWeight(.light)
+                            .foregroundStyle(.pink)
+                            .padding(12)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                                    .stroke(.pink)
+                            }
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(ScaleButtonStyle())
+                    
                 } else if !viewModel.workout.exercises.isEmpty {
                     // Wokout isn't already added, but there has been an exercise added
                     Text("log_workout_add_exercise_btn_title")
