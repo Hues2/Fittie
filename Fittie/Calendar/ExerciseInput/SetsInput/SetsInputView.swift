@@ -51,6 +51,7 @@ private extension SetsInputView {
             }
                              .padding(.horizontal, 8)
         }
+        .scrollIndicators(.hidden)
     }
     
     func addSet(_ set : WorkingSet) {
@@ -68,8 +69,10 @@ private extension SetsInputView {
             self.sets.remove(at: index)
             
             // Reset the sets number
-            self.sets = Array(self.sets).enumerated().map { (index, set) in
-                WorkingSet(number: index + 1, kg: set.kg, reps: set.reps)
+            self.sets = self.sets.sorted { $0.number < $1.number }.enumerated().map { (index, set) in
+                var newSet = set
+                newSet.number = index + 1
+                return newSet
             }
         }
     }

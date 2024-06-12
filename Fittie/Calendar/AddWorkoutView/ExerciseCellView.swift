@@ -24,14 +24,14 @@ private extension ExerciseCellView {
                 
                 if !sets.isEmpty {
                     VStack(spacing: 0) {
-                        ForEach(Array(zip(0..<sets.count, sets.sorted { $0.number < $1.number })), id: \.0) { (index, set) in
+                        ForEach(sets.sorted { $0.number < $1.number }) { set in
                             ExerciseCellContentView(setNumber: set.number,
                                                     weight: set.kg,
                                                     reps: set.reps,
                                                     isLastCell: set.id == sets.last?.id,
                                                     isScrollDisabled: (onDeleteSet == nil)) {
                                 // Delete
-                                onDeleteSet?(index)
+                                onDeleteSet?(set.number - 1)
                             }
                         }
                     }
