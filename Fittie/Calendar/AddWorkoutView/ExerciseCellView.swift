@@ -55,10 +55,10 @@ private extension ExerciseCellView {
             
             Text(String(format: NSLocalizedString("log_exercise_add_set_weight_title", comment: "Weight title"),
                         NSLocalizedString("kg_unit", comment: "Kg")))
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .trailing)
             
             Text("reps_unit")
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .font(.headline)
         .fontWeight(.light)

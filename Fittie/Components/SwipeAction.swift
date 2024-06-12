@@ -5,6 +5,7 @@ struct SwipeAction<Content : View> : View {
     @ViewBuilder var content : Content
     @ActionBuilder var actions : [Action]
     var swipeDirection : SwipeDirection = .trailing
+    @State private var showBackgroundColour : Bool = false
     
     var body: some View {
         ScrollViewReader { scrollProxy in
@@ -15,6 +16,7 @@ struct SwipeAction<Content : View> : View {
                     
                     actionButtons()
                 }
+                .padding()
                 .scrollTargetLayout()
                 .visualEffect { content, geometryProxy in
                     content
@@ -22,40 +24,29 @@ struct SwipeAction<Content : View> : View {
                 }
             }
             .scrollIndicators(.hidden)
-            .scrollTargetBehavior(.viewAligned)
-            .background {
-                if let lastAction = actions.last {
-                    Rectangle()
-                        .fill(lastAction.tint)
-                        .cornerRadius(isLastCell ? Constants.cornerRadius : 0, corners: [.bottomLeft, .bottomRight])
-                }
-            }
+            .scrollTargetBehavior(.viewAligned)                        
         }
     }
     
     // MARK: Action Buttons
     func actionButtons() -> some View {
-        Rectangle()
-            .fill(.clear)
-            .frame(width: CGFloat(actions.count) * 100)
-            .overlay(alignment: swipeDirection.alignment) {
-                HStack(spacing: 0) {
-                    ForEach(actions) { action in
-                        Button {
-                            action.action()
-                        } label: {
-                            Image(systemName: action.icon)
-                                .font(action.iconFont)
-                                .foregroundStyle(action.iconTint)
-                                .frame(width: 100)
-                                .frame(maxHeight: .infinity)
-                                .contentShape(.rect)
-                        }
-                        .buttonStyle(.plain)
+        HStack(spacing: 8) {
+            ForEach(actions) { action in
+                Button {
+                    action.action()
+                } label: {
+                    Image(systemName: action.icon)
+                        .font(action.iconFont)
+                        .foregroundStyle(action.iconTint)
+                        .padding()
+                        .contentShape(.rect)
                         .background(action.tint)
-                    }
+                        .cornerRadius(Constants.cornerRadius, corners: .allCorners)
                 }
+                .buttonStyle(.plain)
             }
+        }
+        .frame(alignment: swipeDirection.alignment)
     }
     
     
@@ -99,4 +90,10 @@ struct ActionBuilder {
         return components
     }
     
+}
+
+#Preview {
+    ExerciseCellContentView(set: 1, weight: 22.5, reps: 10) {
+        
+    }
 }

@@ -18,12 +18,7 @@ struct ExerciseCellContentView: View {
                     Text("\(reps)")
                         .frame(maxWidth: .infinity)
                 }
-                .font(.title3)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity)                
-                .padding()
-                .background(Constants.backgroundMaterial)
-                .background(Color.background)
+                .frame(maxHeight: .infinity)
             } actions: {
                 Action(tint: .accent, icon: "square.and.pencil") {
                     // Edit
@@ -33,6 +28,14 @@ struct ExerciseCellContentView: View {
                     // Delete
                 }
             }
+            .font(.title3)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity)
+            .frame(maxHeight: .infinity)
+            .padding(.vertical, 4)
+            .background(Constants.backgroundMaterial)
+            .background(Color.background)
+            
             Divider()
         }
     }
