@@ -93,11 +93,14 @@ private extension AddWorkoutView {
 private extension AddWorkoutView {
     var loggedExercisesView : some View {
         List {
-            ForEach(viewModel.workout.exercises) { exercise in
+            ForEach(Array(viewModel.workout.exercises.enumerated()), id:\.offset) { (exerciseIndex, exercise) in
                 ExerciseCellView(category: exercise.exerciseCategoryRawValue,
                                  name: exercise.exerciseName,
                                  sets: exercise.sets,
-                                 showExerciseName: true)
+                                 showExerciseName: true) { setIndex in
+                    // Delete Set
+                    deleteSet(exerciseIndex, setIndex)
+                }
                 .padding()
             }
             .listRowBackground(Color.clear)
@@ -107,6 +110,13 @@ private extension AddWorkoutView {
         .listStyle(.plain)
         .scrollIndicators(.hidden)
         .scrollContentBackground(.hidden)
+    }
+}
+
+// MARK: Delete set functionality
+private extension AddWorkoutView {
+    func deleteSet(_ exerciseIndex : Int, _ setIndex : Int) {
+        self.viewModel.workout.exercises[exerciseIndex].sets.remove(at: setIndex)
     }
 }
 
@@ -156,7 +166,7 @@ private extension AddWorkoutView {
             
             for set in exercise.sets {
                 // Create a working set model for each set that was inputted by the user
-                let workingSetModel = WorkingSetModel(kg: set.kg, reps: set.reps)
+                let workingSetModel = WorkingSetModel(number: set.number, kg: set.kg, reps: set.reps)
                 // Insert the working set into the context
                 context.insert(workingSetModel)
                 // Set up the relationship between the working set model and the exercise model

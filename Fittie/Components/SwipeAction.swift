@@ -94,7 +94,7 @@ struct ActionBuilder {
 }
 
 #Preview {
-    ExerciseCellContentView(set: 1, weight: 22.5, reps: 10) {
+    ExerciseCellContentView(setNumber: 1, weight: 22.5, reps: 10) {
         
     }
 }

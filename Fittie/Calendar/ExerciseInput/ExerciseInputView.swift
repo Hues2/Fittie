@@ -151,7 +151,7 @@ private extension ExerciseInputView {
             filteredLoggedExercises = uniqueExerciseNames.compactMap { name in
                 filtered.first { $0.exerciseName.lowercased() == name.lowercased() }
             }
-            .map({ Exercise(exerciseCategoryRawValue: $0.exerciseCategoryRawValue, exerciseName: $0.exerciseName, sets: $0.sets.map({ WorkingSet(kg: $0.kg, reps: $0.reps) })) })
+            .map({ Exercise(exerciseCategoryRawValue: $0.exerciseCategoryRawValue, exerciseName: $0.exerciseName, sets: $0.sets.map({ WorkingSet(number: $0.number, kg: $0.kg, reps: $0.reps) })) })
         }
     }
     

@@ -3,6 +3,7 @@ import SwiftUI
 struct AddSetView: View {
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focusState
+    let setNumber : Int
     @State private var weight : Double?
     @State private var weightIsValid : Bool = false
     @State private var reps : Double?
@@ -33,7 +34,7 @@ private extension AddSetView {
             
             CustomButton(title: "log_exercise_add_set_btn_title") {
                 guard let weight, let reps else { return }
-                saveSet(WorkingSet(kg: weight, reps: Int(reps)))
+                saveSet(WorkingSet(number: setNumber, kg: weight, reps: Int(reps)))
                 dismiss()
             }
             .padding(.top, 12)
@@ -60,7 +61,7 @@ private extension AddSetView {
 }
 
 #Preview {
-    AddSetView { _ in
+    AddSetView(setNumber: 1) { _ in
         
     }
 }

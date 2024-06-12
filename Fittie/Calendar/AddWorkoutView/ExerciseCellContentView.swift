@@ -1,17 +1,17 @@
 import SwiftUI
 
 struct ExerciseCellContentView: View {
-    let set : Int
+    let setNumber : Int
     let weight : Double
     let reps : Int
     var isLastCell : Bool = false
-    let onDelete : () -> Void
+    let onDeleteSet : () -> Void
     
     var body: some View {
         VStack(spacing: 0) {
             SwipeAction(isLastCell: isLastCell) {
                 HStack {
-                    Text(String(format: NSLocalizedString("log_workout_set_value", comment: "Set"), set))
+                    Text(String(format: NSLocalizedString("log_workout_set_value", comment: "Set"), setNumber))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text("\(weight.toTwoDecimalPlacesString())")
                         .frame(maxWidth: .infinity)
@@ -26,11 +26,11 @@ struct ExerciseCellContentView: View {
                 
                 Action(tint: .pink, icon: "trash.fill") {
                     // Delete
+                    onDeleteSet()
                 }
             }
-            .font(.title3)
-            .fontWeight(.light)
-//            .foregroundStyle(.secondary)
+            .font(.title3)            
+            .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity)
             .frame(maxHeight: .infinity)
             .padding(.vertical, 4)
@@ -42,17 +42,17 @@ struct ExerciseCellContentView: View {
 }
 
 #Preview {
-    ExerciseCellContentView(set: 1, weight: 22.5, reps: 10) {
+    ExerciseCellContentView(setNumber: 1, weight: 22.5, reps: 10) {
         
     }
 }
 
 #Preview {
     let sets : [WorkingSet] = [
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10)
+        .init(number: 1, kg: 22.5, reps: 10),
+        .init(number: 2, kg: 22.5, reps: 10),
+        .init(number: 3, kg: 22.5, reps: 10),
+        .init(number: 4, kg: 22.5, reps: 10)
     ]
     
     return ZStack {

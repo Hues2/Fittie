@@ -5,6 +5,7 @@ struct ExerciseCellView: View {
     let name : String
     let sets : [WorkingSet]
     let showExerciseName : Bool
+    let onDeleteSet : (Int) -> Void
     
     var body: some View {
         cellContent
@@ -23,12 +24,13 @@ private extension ExerciseCellView {
                 
                 if !sets.isEmpty {
                     VStack(spacing: 0) {
-                        ForEach(Array(zip(0..<sets.count, sets)), id: \.0) { (index, set) in
-                            ExerciseCellContentView(set: (index + 1),
+                        ForEach(Array(zip(0..<sets.count, sets.sorted { $0.number < $1.number })), id: \.0) { (index, set) in
+                            ExerciseCellContentView(setNumber: set.number,
                                                     weight: set.kg,
                                                     reps: set.reps,
-                                                    isLastCell: ((index + 1) == sets.count)) {
+                                                    isLastCell: set.id == sets.last?.id) {
                                 // Delete
+                                onDeleteSet(index)
                             }
                         }
                     }
@@ -73,25 +75,25 @@ private extension ExerciseCellView {
     // Add this for preview
     var previewContent : some View {
         VStack(spacing: 0) {
-            ExerciseCellContentView(set: 1,
+            ExerciseCellContentView(setNumber: 1,
                                     weight: 22.5,
                                     reps: 12,
                                     isLastCell: true) {
                 // Delete
             }
-            ExerciseCellContentView(set: 1,
+            ExerciseCellContentView(setNumber: 1,
                                     weight: 22.5,
                                     reps: 12,
                                     isLastCell: true) {
                 // Delete
             }
-            ExerciseCellContentView(set: 1,
+            ExerciseCellContentView(setNumber: 1,
                                     weight: 22.5,
                                     reps: 12,
                                     isLastCell: true) {
                 // Delete
             }
-            ExerciseCellContentView(set: 1,
+            ExerciseCellContentView(setNumber: 1,
                                     weight: 22.5,
                                     reps: 12,
                                     isLastCell: false) {
@@ -103,24 +105,25 @@ private extension ExerciseCellView {
 
 #Preview {
     let sets : [WorkingSet] = [
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10)
+        .init(number: 1, kg: 22.5, reps: 10),
+        .init(number: 2, kg: 22.5, reps: 10),
+        .init(number: 3, kg: 22.5, reps: 10),
+        .init(number: 4, kg: 22.5, reps: 10)
     ]
     
     return ExerciseCellView(category: "Chest",
                      name: "Dumbbell bench press",
                      sets: sets,
-                     showExerciseName: true)
+                            showExerciseName: true) { _ in
+    }
 }
 
 #Preview {
     let sets : [WorkingSet] = [
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10),
-        .init(kg: 22.5, reps: 10)
+        .init(number: 1, kg: 22.5, reps: 10),
+        .init(number: 2, kg: 22.5, reps: 10),
+        .init(number: 3, kg: 22.5, reps: 10),
+        .init(number: 4, kg: 22.5, reps: 10)
     ]
     
     return SetsInputView(sets: .constant(sets))
