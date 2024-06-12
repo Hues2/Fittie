@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SwipeAction<Content : View> : View {
     var isLastCell : Bool = false
+    let isScrollDisabled : Bool
     @ViewBuilder var content : Content
     @ActionBuilder var actions : [Action]
     var swipeDirection : SwipeDirection = .trailing
@@ -25,7 +26,8 @@ struct SwipeAction<Content : View> : View {
                 }
             }
             .scrollIndicators(.hidden)
-            .scrollTargetBehavior(.viewAligned)                        
+            .scrollTargetBehavior(.viewAligned)
+            .scrollDisabled(isScrollDisabled)
         }
     }
     
@@ -94,7 +96,7 @@ struct ActionBuilder {
 }
 
 #Preview {
-    ExerciseCellContentView(setNumber: 1, weight: 22.5, reps: 10) {
+    ExerciseCellContentView(setNumber: 1, weight: 22.5, reps: 10, isScrollDisabled: false) {
         
     }
 }

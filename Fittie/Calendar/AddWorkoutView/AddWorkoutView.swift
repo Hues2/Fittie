@@ -97,10 +97,7 @@ private extension AddWorkoutView {
                 ExerciseCellView(category: exercise.exerciseCategoryRawValue,
                                  name: exercise.exerciseName,
                                  sets: exercise.sets,
-                                 showExerciseName: true) { setIndex in
-                    // Delete Set
-                    viewModel.deleteSet(exercise.id, setIndex)
-                }
+                                 showExerciseName: true)
                 .padding()
             }
             .listRowBackground(Color.clear)

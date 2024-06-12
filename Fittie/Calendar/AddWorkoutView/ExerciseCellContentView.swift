@@ -5,11 +5,13 @@ struct ExerciseCellContentView: View {
     let weight : Double
     let reps : Int
     var isLastCell : Bool = false
-    let onDeleteSet : () -> Void
+    let isScrollDisabled : Bool
+    var onDeleteSet : () -> Void
     
     var body: some View {
         VStack(spacing: 0) {
-            SwipeAction(isLastCell: isLastCell) {
+            SwipeAction(isLastCell: isLastCell,
+                        isScrollDisabled: isScrollDisabled) {
                 HStack {
                     Text(String(format: NSLocalizedString("log_workout_set_value", comment: "Set"), setNumber))
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -29,7 +31,7 @@ struct ExerciseCellContentView: View {
                     onDeleteSet()
                 }
             }
-            .font(.title3)            
+            .font(.title3)
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity)
             .frame(maxHeight: .infinity)
@@ -42,7 +44,7 @@ struct ExerciseCellContentView: View {
 }
 
 #Preview {
-    ExerciseCellContentView(setNumber: 1, weight: 22.5, reps: 10) {
+    ExerciseCellContentView(setNumber: 1, weight: 22.5, reps: 10, isScrollDisabled: false) {
         
     }
 }
