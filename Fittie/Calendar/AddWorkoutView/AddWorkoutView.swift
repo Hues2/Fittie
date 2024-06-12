@@ -91,21 +91,9 @@ private extension AddWorkoutView {
     }
     
     var deleteButton : some View {
-        Button {
+        IconButton(icon: "trash", color: .pink) {
             // Show delete workout alert
-        } label: {
-            Image(systemName: "trash.fill")
-                .font(.headline)
-                .fontWeight(.light)
-                .foregroundStyle(.pink)
-                .padding(12)
-                .overlay {
-                    RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                        .stroke(.pink)
-                }
-                .contentShape(Rectangle())
         }
-        .buttonStyle(ScaleButtonStyle())
     }
     
     var addExerciseText : some View {

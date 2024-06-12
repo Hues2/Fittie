@@ -10,6 +10,7 @@
 		2E0A57AF2C0BE3AC00964E50 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */; };
 		2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E39A9AB2BF03D7C00A93F19 /* Utils.swift */; };
 		2E41FB4F2C18D0F100A7B6AD /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41FB4E2C18D0F100A7B6AD /* SwipeAction.swift */; };
+		2E5075682C1A629900174697 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5075672C1A629900174697 /* IconButton.swift */; };
 		2E5225B32C0D0E1A0021C8C8 /* AddSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B22C0D0E1A0021C8C8 /* AddSetView.swift */; };
 		2E5225B52C0D22350021C8C8 /* SetsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B42C0D22350021C8C8 /* SetsInputView.swift */; };
 		2E5225B72C0D229F0021C8C8 /* InputTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B62C0D229F0021C8C8 /* InputTitle.swift */; };
@@ -100,6 +101,7 @@
 		2E0A57AE2C0BE3AC00964E50 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		2E39A9AB2BF03D7C00A93F19 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2E41FB4E2C18D0F100A7B6AD /* SwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
+		2E5075672C1A629900174697 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		2E5225B22C0D0E1A0021C8C8 /* AddSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetView.swift; sourceTree = "<group>"; };
 		2E5225B42C0D22350021C8C8 /* SetsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsInputView.swift; sourceTree = "<group>"; };
 		2E5225B62C0D229F0021C8C8 /* InputTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTitle.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				2E90E7932BFE8FBA003DE59F /* HomeViewChartLegend.swift */,
 				2EE9B4D12C0E80C4001D40C8 /* AddItemTextView.swift */,
 				2E41FB4E2C18D0F100A7B6AD /* SwipeAction.swift */,
+				2E5075672C1A629900174697 /* IconButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				2E39A9AC2BF03D7C00A93F19 /* Utils.swift in Sources */,
 				2EC6CADE2BEEC2A5009C7002 /* Containers.swift in Sources */,
 				2E5225B32C0D0E1A0021C8C8 /* AddSetView.swift in Sources */,
+				2E5075682C1A629900174697 /* IconButton.swift in Sources */,
 				2EA463212C0C8F9300DD89BD /* CalendarData.swift in Sources */,
 				2EA463262C0CAC5100DD89BD /* ExerciseInputView.swift in Sources */,
 				2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */,

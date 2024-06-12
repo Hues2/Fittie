@@ -45,13 +45,13 @@ private extension LoggedWeightCell {
 private extension LoggedWeightCell {
     var actionButtons : some View {
         HStack(spacing: 12) {
-            button(icon: "square.and.pencil", color: .accent) {
+            IconButton(icon: "square.and.pencil", color: .accent) {
                 editAction()
             }
             
-            button(icon: "trash", color: .pink) {
+            IconButton(icon: "trash", color: .pink) {
                 deleteAction()
-            }
+            }        
         }
     }
     
