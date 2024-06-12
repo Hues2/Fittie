@@ -63,40 +63,15 @@ private extension AddWorkoutView {
     var header : some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("log_workout_title")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.pink)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                mainTitle
                 
                 if viewModel.calendarDate.workout != nil {
                     // Workout is already added
-                    Button {
-                        // Show delete workout alert
-                    } label: {
-                        Image(systemName: "trash.fill")
-                            .font(.title3)
-                            .fontWeight(.light)
-                            .foregroundStyle(.pink)
-                            .padding(12)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                                    .stroke(.pink)
-                            }
-                            .contentShape(Rectangle())
-                    }
-                    .buttonStyle(ScaleButtonStyle())
+                    deleteButton
                     
                 } else if !viewModel.workout.exercises.isEmpty {
                     // Wokout isn't already added, but there has been an exercise added
-                    Text("log_workout_add_exercise_btn_title")
-                        .font(.title3)
-                        .fontWeight(.light)
-                        .foregroundStyle(.accent)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            self.showLogExercisesView = true
-                        }
+                    addExerciseText
                 }
             }
             
@@ -105,6 +80,43 @@ private extension AddWorkoutView {
                 .fontWeight(.light)
                 .foregroundStyle(.secondary)
         }
+    }
+    
+    var mainTitle : some View {
+        Text(viewModel.calendarDate.workout == nil ? "log_new_workout_title" : "log_workout_title")
+            .font(.title)
+            .fontWeight(.bold)
+            .foregroundStyle(.pink)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    var deleteButton : some View {
+        Button {
+            // Show delete workout alert
+        } label: {
+            Image(systemName: "trash.fill")
+                .font(.headline)
+                .fontWeight(.light)
+                .foregroundStyle(.pink)
+                .padding(12)
+                .overlay {
+                    RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                        .stroke(.pink)
+                }
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(ScaleButtonStyle())
+    }
+    
+    var addExerciseText : some View {
+        Text("log_workout_add_exercise_btn_title")
+            .font(.title3)
+            .fontWeight(.light)
+            .foregroundStyle(.accent)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                self.showLogExercisesView = true
+            }
     }
 }
 
