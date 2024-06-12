@@ -22,3 +22,36 @@ class AddWorkoutViewModel : ObservableObject {
         self.savedWorkoutModel = savedWorkout
     }
 }
+
+// MARK: Delete set functionality
+extension AddWorkoutViewModel {
+    func deleteSet(_ exerciseId : String, _ setIndex : Int) {
+        // Delete the set from the exercise used by the UI
+        if let exerciseIndex = self.workout.exercises.firstIndex(where: { $0.id == exerciseId }) {
+            self.workout.exercises[exerciseIndex].sets.remove(at: setIndex)
+            
+            // Reset the sets number
+            self.workout.exercises[exerciseIndex].sets = Array(self.workout.exercises[exerciseIndex].sets).enumerated().map { (index, set) in
+                WorkingSet(number: index + 1, kg: set.kg, reps: set.reps)
+            }
+            
+            if self.workout.exercises[exerciseIndex].sets.isEmpty {
+                self.workout.exercises.remove(at: exerciseIndex)
+            }
+        }
+        
+        // Remove the set from the new exercise, so that the set doesn't get saved to the container
+        if let exerciseIndex = self.newExercises.firstIndex(where: { $0.id == exerciseId }) {
+            self.newExercises[exerciseIndex].sets.remove(at: setIndex)
+            
+            // Reset the sets number
+            self.newExercises[exerciseIndex].sets = Array(self.newExercises[exerciseIndex].sets).enumerated().map { (index, set) in
+                WorkingSet(number: index + 1, kg: set.kg, reps: set.reps)
+            }
+            
+            if newExercises[exerciseIndex].sets.isEmpty {
+                newExercises.remove(at: exerciseIndex)
+            }
+        }
+    }
+}

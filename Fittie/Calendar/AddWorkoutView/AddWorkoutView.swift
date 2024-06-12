@@ -93,13 +93,13 @@ private extension AddWorkoutView {
 private extension AddWorkoutView {
     var loggedExercisesView : some View {
         List {
-            ForEach(Array(viewModel.workout.exercises.enumerated()), id:\.offset) { (exerciseIndex, exercise) in
+            ForEach(viewModel.workout.exercises) { exercise in
                 ExerciseCellView(category: exercise.exerciseCategoryRawValue,
                                  name: exercise.exerciseName,
                                  sets: exercise.sets,
                                  showExerciseName: true) { setIndex in
                     // Delete Set
-                    deleteSet(exerciseIndex, setIndex)
+                    viewModel.deleteSet(exercise.id, setIndex)
                 }
                 .padding()
             }
@@ -110,13 +110,6 @@ private extension AddWorkoutView {
         .listStyle(.plain)
         .scrollIndicators(.hidden)
         .scrollContentBackground(.hidden)
-    }
-}
-
-// MARK: Delete set functionality
-private extension AddWorkoutView {
-    func deleteSet(_ exerciseIndex : Int, _ setIndex : Int) {
-        self.viewModel.workout.exercises[exerciseIndex].sets.remove(at: setIndex)
     }
 }
 
@@ -143,6 +136,7 @@ private extension AddWorkoutView {
     
     func saveWorkout() {
         if let savedWorkoutModel = viewModel.savedWorkoutModel {
+            // If there is already a saved workout, then just save the new exercises without creating a new workout
             saveListOfExercises(savedWorkoutModel)
         } else {
             // Create the new workout model that will be saved to swift data
