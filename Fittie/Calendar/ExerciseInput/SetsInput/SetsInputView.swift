@@ -7,7 +7,7 @@ struct SetsInputView: View {
     var body: some View {
         setsInput
             .sheet(isPresented: $showSetInputView) {
-                AddSetView(setNumber: sets.count + 1) { set in
+                AddSetSheet(setNumber: sets.count + 1) { set in
                     addSet(set)
                 }
                 .withCustomSheetHeight()

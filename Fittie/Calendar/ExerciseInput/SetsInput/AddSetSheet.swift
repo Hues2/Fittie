@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AddSetView: View {
+struct AddSetSheet: View {
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focusState
     let setNumber : Int
@@ -18,7 +18,7 @@ struct AddSetView: View {
     }
 }
 
-private extension AddSetView {
+private extension AddSetSheet {
     var content : some View {
         VStack(spacing: 32) {
             inputRow(String(format: NSLocalizedString("log_exercise_add_set_weight_title", comment: "Weight"),
@@ -61,7 +61,7 @@ private extension AddSetView {
 }
 
 #Preview {
-    AddSetView(setNumber: 1) { _ in
+    AddSetSheet(setNumber: 1) { _ in
         
     }
 }
