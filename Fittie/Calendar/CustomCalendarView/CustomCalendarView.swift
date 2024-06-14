@@ -22,6 +22,7 @@ private extension CustomCalendarView {
                 }
             }
         }
+        .scrollIndicators(.hidden)
     }
 }
 
