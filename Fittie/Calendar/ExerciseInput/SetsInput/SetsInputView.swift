@@ -55,7 +55,7 @@ private extension SetsInputView {
     }
     
     func addSet(_ set : WorkingSet) {
-        withAnimation {
+        withAnimation(sets.isEmpty ? .none : .snappy) {
             self.sets.append(set)
         }
     }
