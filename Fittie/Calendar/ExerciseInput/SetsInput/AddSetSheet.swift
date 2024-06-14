@@ -4,9 +4,9 @@ struct AddSetSheet: View {
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focusState
     let setNumber : Int
-    @State private var weight : Double?
+    @State var weight : Double?
     @State private var weightIsValid : Bool = false
-    @State private var reps : Double?
+    @State var reps : Double?
     @State private var repsAreValid : Bool = false
     
     let saveSet : (WorkingSet) -> Void

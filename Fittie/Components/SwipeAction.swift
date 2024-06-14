@@ -98,5 +98,7 @@ struct ActionBuilder {
 #Preview {
     ExerciseCellContentView(setNumber: 1, weight: 22.5, reps: 10, isScrollDisabled: false) {
         
+    } onEditSet: {
+        
     }
 }

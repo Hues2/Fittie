@@ -7,6 +7,7 @@ struct ExerciseCellContentView: View {
     var isLastCell : Bool = false
     let isScrollDisabled : Bool
     var onDeleteSet : () -> Void
+    var onEditSet : () -> Void
     
     var body: some View {
         VStack(spacing: 0) {
@@ -24,6 +25,7 @@ struct ExerciseCellContentView: View {
             } actions: {
                 Action(tint: .accent, icon: "square.and.pencil") {
                     // Edit
+                    onEditSet()
                 }
                 
                 Action(tint: .pink, icon: "trash.fill") {
@@ -44,7 +46,12 @@ struct ExerciseCellContentView: View {
 }
 
 #Preview {
-    ExerciseCellContentView(setNumber: 1, weight: 22.5, reps: 10, isScrollDisabled: false) {
+    ExerciseCellContentView(setNumber: 1,
+                            weight: 22.5,
+                            reps: 10,
+                            isScrollDisabled: false) {
+        
+    } onEditSet: {
         
     }
 }

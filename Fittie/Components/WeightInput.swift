@@ -18,11 +18,18 @@ struct WeightInput<F: ParseableFormatStyle>: View where F.FormatOutput == String
             .focused($isFocused)
             .frame(maxWidth: .infinity, alignment: .center)            
             .onChange(of: value) { oldValue, newValue in
-                guard newValue != nil else {
-                    self.weightIsValid = false
-                    return
-                }
-                self.weightIsValid = true
+                verifyValue(newValue)
             }
+            .onAppear {
+                verifyValue(value)
+            }
+    }
+    
+    private func verifyValue(_ value : F.FormatInput?) {
+        guard value != nil else {
+            self.weightIsValid = false
+            return
+        }
+        self.weightIsValid = true
     }
 }

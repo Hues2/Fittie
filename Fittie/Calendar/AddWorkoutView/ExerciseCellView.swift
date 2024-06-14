@@ -6,6 +6,7 @@ struct ExerciseCellView: View {
     let sets : [WorkingSet]
     let showExerciseName : Bool
     var onDeleteSet : ((Int) -> Void)? = nil
+    var onEditSet : ((Int) -> Void)? = nil
     
     var body: some View {
         cellContent
@@ -31,7 +32,12 @@ private extension ExerciseCellView {
                                                     isLastCell: set.id == sets.last?.id,
                                                     isScrollDisabled: (onDeleteSet == nil)) {
                                 // Delete
+                                // set.number - 1, will represent the index of the item
                                 onDeleteSet?(set.number - 1)
+                            } onEditSet: {
+                                // Edit
+                                // set.number - 1, will represent the index of the item
+                                onEditSet?(set.number - 1)
                             }
                         }
                     }
@@ -78,31 +84,35 @@ private extension ExerciseCellView {
         VStack(spacing: 0) {
             ExerciseCellContentView(setNumber: 1,
                                     weight: 22.5,
-                                    reps: 12,
-                                    isLastCell: true,
+                                    reps: 10,
                                     isScrollDisabled: false) {
-                // Delete
+                
+            } onEditSet: {
+                
             }
             ExerciseCellContentView(setNumber: 1,
                                     weight: 22.5,
-                                    reps: 12,
-                                    isLastCell: true,
+                                    reps: 10,
                                     isScrollDisabled: false) {
-                // Delete
+                
+            } onEditSet: {
+                
             }
             ExerciseCellContentView(setNumber: 1,
                                     weight: 22.5,
-                                    reps: 12,
-                                    isLastCell: true,
+                                    reps: 10,
                                     isScrollDisabled: false) {
-                // Delete
+                
+            } onEditSet: {
+                
             }
             ExerciseCellContentView(setNumber: 1,
                                     weight: 22.5,
-                                    reps: 12,
-                                    isLastCell: false,
+                                    reps: 10,
                                     isScrollDisabled: false) {
-                // Delete
+                
+            } onEditSet: {
+                
             }
         }
     }

@@ -3,6 +3,7 @@ import SwiftUI
 struct SetsInputView: View {
     @State private var showSetInputView : Bool = false
     @Binding var sets : [WorkingSet]
+    @State private var setToBeUpdated : WorkingSet?
     
     var body: some View {
         setsInput
@@ -12,6 +13,19 @@ struct SetsInputView: View {
                 }
                 .withCustomSheetHeight()
             }
+            .sheet(item: $setToBeUpdated) { workingSet in
+                AddSetSheet(setNumber: workingSet.number,
+                            weight: workingSet.kg,
+                            reps: Double(workingSet.reps)) { workingSet in
+                    updateSet(workingSet)
+                }
+                            .withCustomSheetHeight()
+            }
+    }
+    
+    func selectSetToBeUpdated(_ index : Int) {
+        let workingSet = sets[index]
+        self.setToBeUpdated = workingSet
     }
 }
 
@@ -45,11 +59,14 @@ private extension SetsInputView {
             ExerciseCellView(category: "",
                              name: "",
                              sets: sets,
-                             showExerciseName: false) { index in
-                // Delete Set
+                             showExerciseName: false,
+                             onDeleteSet: { index in
+                // Delete set
                 self.deleteSet(index)
-            }
-                             .padding(.horizontal, 8)
+            }, onEditSet: { index in
+                self.selectSetToBeUpdated(index)
+            })
+            .padding(.horizontal, 8)
         }
         .scrollIndicators(.hidden)
     }
@@ -75,6 +92,16 @@ private extension SetsInputView {
                 return newSet
             }
         }
+    }
+}
+
+// MARK: Edit set functionality
+private extension SetsInputView {
+    private func updateSet(_ workingSet : WorkingSet) {
+        let index = self.sets.firstIndex { $0.number == workingSet.number }
+        guard let index else { return }
+        self.sets[index].kg = workingSet.kg
+        self.sets[index].reps = workingSet.reps
     }
 }
 
