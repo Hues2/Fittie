@@ -22,11 +22,6 @@ struct SetsInputView: View {
                             .withCustomSheetHeight()
             }
     }
-    
-    func selectSetToBeUpdated(_ index : Int) {
-        let workingSet = sets[index]
-        self.setToBeUpdated = workingSet
-    }
 }
 
 // MARK: Sets Input
@@ -97,9 +92,14 @@ private extension SetsInputView {
 
 // MARK: Edit set functionality
 private extension SetsInputView {
-    private func updateSet(_ workingSet : WorkingSet) {
+    func selectSetToBeUpdated(_ index : Int) {
+        let workingSet = sets[safe: index]
+        self.setToBeUpdated = workingSet
+    }
+    
+    func updateSet(_ workingSet : WorkingSet) {
         let index = self.sets.firstIndex { $0.number == workingSet.number }
-        guard let index else { return }
+        guard let index, sets.indices.contains(index) else { return }
         self.sets[index].kg = workingSet.kg
         self.sets[index].reps = workingSet.reps
     }
