@@ -27,9 +27,9 @@ struct AddWorkoutView: View {
             .presentationDragIndicator(.visible)
             .presentationCornerRadius(Constants.sheetCornerRadius)
         }
-        .alert("Delete workout",
+        .alert("log_workout_delete_workout_alert_title",
                isPresented: $showDeleteWorkoutAlert) {
-            Button("cancel", role: .cancel) { }
+            Button("cancel", role: .cancel) { }                
             Button("delete", role: .destructive) {
                 // Add delete action here
                 print("Workout deleted")
