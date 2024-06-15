@@ -23,7 +23,7 @@ struct IconButton: View {
 }
 
 #Preview {
-    IconButton(icon: "trash", color: .pink) {
+    IconButton(icon: "trash", color: Constants.Colors.secondaryAccent) {
         
     }
 }

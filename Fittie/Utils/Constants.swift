@@ -31,6 +31,11 @@ class Constants {
         static let weightGoal = "weight_goal"
         static let selectedTimePeriod = "selected_time_period"
     }
+    
+    // MARK: Colors
+    struct Colors {
+        static let secondaryAccent : Color = .pink
+    }
 }
 
 // MARK: Exercises

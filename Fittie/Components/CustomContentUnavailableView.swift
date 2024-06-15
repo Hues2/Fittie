@@ -10,7 +10,7 @@ struct CustomContentUnavailableView: View {
         ContentUnavailableView {
             Label(
                 title: { Text(title) },
-                icon: { Image(systemName: "exclamationmark.circle").foregroundStyle(.pink) }
+                icon: { Image(systemName: "exclamationmark.circle").foregroundStyle(Constants.Colors.secondaryAccent) }
             )
         } description: {
             Text(description)

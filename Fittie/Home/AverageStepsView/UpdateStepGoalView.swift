@@ -20,7 +20,7 @@ private extension UpdateStepGoalView {
             Image(systemName: "figure.walk")
             Text("step_goal_update_title")
         }
-        .foregroundStyle(Color.pink)
+        .foregroundStyle(Constants.Colors.secondaryAccent)
         .font(.title)
         .frame(maxWidth: .infinity, alignment: .leading)
     }

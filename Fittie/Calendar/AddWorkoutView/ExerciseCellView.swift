@@ -43,7 +43,6 @@ private extension ExerciseCellView {
                     }
                 }
             }
-            .background(Color.background)
             .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
     }
@@ -70,7 +69,7 @@ private extension ExerciseCellView {
         }
         .font(.headline)
         .fontWeight(.light)
-        .foregroundStyle(.pink)
+        .foregroundStyle(Constants.Colors.secondaryAccent)
         .lineLimit(1)
         .minimumScaleFactor(0.8)
         .padding()
@@ -127,8 +126,8 @@ private extension ExerciseCellView {
     ]
     
     return ExerciseCellView(category: "Chest",
-                     name: "Dumbbell bench press",
-                     sets: sets,
+                            name: "Dumbbell bench press",
+                            sets: sets,
                             showExerciseName: true) { _ in
     }
 }

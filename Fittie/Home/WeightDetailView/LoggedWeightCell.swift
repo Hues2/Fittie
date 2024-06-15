@@ -21,7 +21,7 @@ private extension LoggedWeightCell {
         HStack {
             HStack {
                 Image(systemName: "scalemass")
-                    .foregroundStyle(.pink)
+                    .foregroundStyle(Constants.Colors.secondaryAccent)
                     .font(.title)
                     .fontWeight(.regular)
                 VStack(alignment: .leading) {
@@ -49,7 +49,7 @@ private extension LoggedWeightCell {
                 editAction()
             }
             
-            IconButton(icon: "trash", color: .pink) {
+            IconButton(icon: "trash", color: Constants.Colors.secondaryAccent) {
                 deleteAction()
             }        
         }

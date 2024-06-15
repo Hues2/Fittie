@@ -66,7 +66,7 @@ private extension ExercisesView {
     func sectionCategoryTitle(_ category : String) -> some View {
         Text(category)
             .font(.headline)
-            .foregroundStyle(.pink)
+            .foregroundStyle(Constants.Colors.secondaryAccent)
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(BackgroundView().cornerRadius(Constants.cornerRadius, corners: [.bottomLeft, .bottomRight]))

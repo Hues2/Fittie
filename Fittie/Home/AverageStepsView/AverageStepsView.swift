@@ -86,12 +86,12 @@ private extension AverageStepsView {
     @ViewBuilder func chart() -> some View {
         Chart {
             RuleMark(y: .value("Step Goal", stepGoal))
-                .foregroundStyle(Color.pink.gradient)
+                .foregroundStyle(Constants.Colors.secondaryAccent.gradient)
             
             ForEach(displayedSteps) { dailyStep in
                 BarMark(x: .value(dailyStep.date.formatted(), dailyStep.date, unit: .day),
                         y: .value("Steps", dailyStep.animate ? dailyStep.steps : 0))
-                .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accentColor.gradient : Color.pink.gradient)
+                .foregroundStyle((dailyStep.steps >= stepGoal) ? Color.accentColor.gradient : Constants.Colors.secondaryAccent.gradient)
                 .cornerRadius(2)
             }
         }

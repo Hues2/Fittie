@@ -12,7 +12,7 @@ struct HomeCardGroupBoxStyle : GroupBoxStyle {
                 }
                 configuration.label
             }
-            .foregroundStyle(Color.pink)
+            .foregroundStyle(Constants.Colors.secondaryAccent)
             
             configuration.content
                 .frame(height: height)
