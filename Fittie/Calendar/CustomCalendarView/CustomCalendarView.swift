@@ -18,9 +18,6 @@ private extension CustomCalendarView {
                     MonthView(month: month,
                               dayTapped: dayTapped,
                               dayColor: getDayViewColor)
-                    .onAppear {
-                        print("MONTH --> \(month)")
-                    }
                 }
             }
         }
