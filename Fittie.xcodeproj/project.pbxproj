@@ -35,6 +35,7 @@
 		2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */; };
 		2E5FF2C62BF6A0FA00779ADC /* AllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */; };
 		2E5FF2C82BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */; };
+		2E625C982C1E353C00D16E1C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E625C972C1E353C00D16E1C /* Color.swift */; };
 		2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64893E2BF6CFDC00D083FB /* Int.swift */; };
 		2E68A0972BFFFDAC00C2A430 /* HomeTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */; };
 		2E68A09A2BFFFEB400C2A430 /* WeightDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A0992BFFFEB400C2A430 /* WeightDetailViewModel.swift */; };
@@ -127,6 +128,7 @@
 		2E5FF2C32BF67F4500779ADC /* ActivityPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPermissionsView.swift; sourceTree = "<group>"; };
 		2E5FF2C52BF6A0FA00779ADC /* AllSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetView.swift; sourceTree = "<group>"; };
 		2E5FF2C72BF6A12800779ADC /* OnboardingTitleAndSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitleAndSubtitle.swift; sourceTree = "<group>"; };
+		2E625C972C1E353C00D16E1C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2E64893E2BF6CFDC00D083FB /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabScreen.swift; sourceTree = "<group>"; };
 		2E68A0992BFFFEB400C2A430 /* WeightDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightDetailViewModel.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				2EA2F5CA2BFA9304003E3526 /* Double.swift */,
 				2E68A09D2C00160100C2A430 /* UIApplication.swift */,
 				2E5190272C1D0C5E00C26070 /* Array.swift */,
+				2E625C972C1E353C00D16E1C /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				2E41FB4F2C18D0F100A7B6AD /* SwipeAction.swift in Sources */,
 				2EA2F5D02BFAB171003E3526 /* UpdateWeightView.swift in Sources */,
 				2E5DE2B42C10CA63000E5D42 /* AddWorkoutViewModel.swift in Sources */,
+				2E625C982C1E353C00D16E1C /* Color.swift in Sources */,
 				2E5374882C17AE5300D769BC /* ExerciseCellContentView.swift in Sources */,
 				2E5FF2C22BF67BD500779ADC /* BackgroundView.swift in Sources */,
 				2EC6CAE02BEEC2FC009C7002 /* HomeViewModel.swift in Sources */,

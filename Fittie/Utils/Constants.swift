@@ -16,12 +16,12 @@ class Constants {
     static let bigTextInputTextSize : CGFloat = 50
     static let setInputTextSize : CGFloat = 30
     static let dynamicTypeSizeRange : ClosedRange<DynamicTypeSize> = .small ... .xxLarge
-    static let cardColor : Color = Color(UIColor.systemGray6)
+    static let calendarLegendHeight : CGFloat = 40
     
     // MARK: - Values    
     static let defaultStepGoal : Int = 7500
     static let numberOfLoggedWeights : Int = 5
-    static let numberOfCalendarFutureMonths : Int = 1
+    static let numberOfCalendarFutureMonths : Int = 24
     
     // MARK: - User Defaults
     struct UserDefaults {

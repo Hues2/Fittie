@@ -2,16 +2,17 @@ import SwiftUI
 import SwiftData
 
 struct WorkoutsView: View {
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Query(sort: \WorkoutModel.date, animation: .smooth) private var loggedWorkouts : [WorkoutModel]
     @State private var selectedCalendarDate : CalendarDate?
+    @State private var offset: CGFloat = 0
     
     var body: some View {
         ZStack {
             BackgroundView()
-            calendar
+            content
         }
-        .navigationTitle("workouts_view_title")
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden)
         .sheet(item: $selectedCalendarDate) { calendarDate in
             AddWorkoutView(calendarDate: calendarDate)
             .presentationDragIndicator(.visible)
@@ -20,14 +21,99 @@ struct WorkoutsView: View {
     }
 }
 
+// MARK: Content
+private extension WorkoutsView {
+    var content : some View {
+        calendar
+            .overlay(alignment: .top) {
+                legend
+            }
+    }
+}
+
+// MARK: Calendar legend
+private extension WorkoutsView {
+    var legend : some View {
+        HStack {
+            legendItem(.thirdAccent, title: "today")
+            legendItem(.accent, title: "logged")
+            legendItem(.secondaryAccent, title: "not logged")
+        }
+        .lineLimit(1)
+        .frame(maxWidth: .infinity)
+        .frame(height: Constants.calendarLegendHeight)
+        .padding(.top, safeAreaInsets.top)
+        .padding(8)
+        .background {
+            backgroundView
+                .animation(.snappy, value: offset)
+        }
+        .cornerRadius(Constants.cornerRadius, corners: [.bottomLeft, .bottomRight])
+        .ignoresSafeArea()
+    }
+    
+    @ViewBuilder var backgroundView : some View {
+        if offset < -28 {
+            Color.clear
+                .background(Material.ultraThinMaterial)
+        } else {
+            Color.background
+        }
+    }
+    
+    func legendItem(_ color : Color, title : LocalizedStringKey) -> some View {
+        HStack {
+            Circle()
+                .stroke(color, lineWidth: 1.5)
+                .frame(width: 16, height: 16)
+            Text(title)
+                .font(.subheadline)
+                .fontWeight(.light)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+// MARK: Calendar
 private extension WorkoutsView {
     var calendar : some View {
-        CustomCalendarView(getDayViewColor: { selectedDate in
-            dayColor(selectedDate)
-        }, dayTapped: { date in
-            dayTapped(date)
-        })
-        .padding(.horizontal)
+        ScrollView {
+            scrollReader
+            CustomCalendarView(getDayViewColor: { selectedDate in
+                dayColor(selectedDate)
+            }, dayTapped: { date in
+                dayTapped(date)
+            })
+            .padding(.horizontal)
+        }
+        .contentMargins(.top, Constants.calendarLegendHeight + 32, for: .scrollContent)
+        .scrollIndicators(.hidden)
+    }
+    
+    var scrollReader : some View {
+        Color.clear
+            .frame(height: 0)
+            .background {
+                GeometryReader { proxy in
+                    Text("")
+                        .onChange(of: proxy.frame(in: .scrollView)) { oldValue, newValue in
+                            if offset > -28 && newValue.maxY < -28 {
+                                withAnimation {
+                                    offset = newValue.maxY
+                                }
+                                print("Changing to \(offset)")
+                            }
+                            
+                            if offset < -28 && newValue.maxY > -28 {
+                                withAnimation {
+                                    offset = newValue.maxY
+                                }
+                                print("Changing to \(offset)")
+                            }
+                        }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
     }
 }
 
@@ -67,3 +153,4 @@ private extension WorkoutsView {
         WorkoutsView()
     }
 }
+

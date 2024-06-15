@@ -2,8 +2,8 @@ import SwiftUI
 
 enum AppTab: Codable, Hashable, Identifiable, CaseIterable {
     case home
-    case exercises
     case calendar
+    case exercises
     
     var id: AppTab { self }
 }

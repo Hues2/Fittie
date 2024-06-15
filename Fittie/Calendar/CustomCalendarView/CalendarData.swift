@@ -10,7 +10,7 @@ struct CalendarData {
         let installDate = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date ?? .now
         let currentDate = Date()
         // Calendar will show up until the current month + 1
-        guard let endDate = calendar.date(byAdding: .month, value: 1, to: currentDate) else {
+        guard let endDate = calendar.date(byAdding: .month, value: Constants.numberOfCalendarFutureMonths, to: currentDate) else {
             return months
         }
         

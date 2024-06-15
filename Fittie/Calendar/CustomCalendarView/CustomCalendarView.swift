@@ -12,16 +12,13 @@ struct CustomCalendarView: View {
 // MARK: Content
 private extension CustomCalendarView {
     var content : some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(CalendarData.months()) { month in
-                    MonthView(month: month,
-                              dayTapped: dayTapped,
-                              dayColor: getDayViewColor)
-                }
+        LazyVStack {
+            ForEach(Array(CalendarData.months().enumerated()), id:\.offset) { item in
+                MonthView(month: item.element,
+                          dayTapped: dayTapped,
+                          dayColor: getDayViewColor)
             }
-        }
-        .scrollIndicators(.hidden)
+        }                
     }
 }
 
@@ -29,5 +26,11 @@ private extension CustomCalendarView {
 private extension CustomCalendarView {
     private func dayTapped(_ date: Date) {
         self.dayTapped(date)
+    }
+}
+
+#Preview {
+    NavigationStack {
+        WorkoutsView()
     }
 }

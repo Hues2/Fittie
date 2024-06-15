@@ -22,7 +22,7 @@ struct MonthView: View {
                     dayView(day)
                 }
             }
-            .padding()
+            .padding(12)
             .background(Color.card)
             .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
             .padding(.bottom, 20)
@@ -31,13 +31,20 @@ struct MonthView: View {
     
     private func dayView(_ day : Date) -> some View {
         Text("\(Calendar.current.component(.day, from: day))")
-            .frame(width: 40, height: 40)
+            .lineLimit(1)
+            .frame(minWidth: 40, minHeight: 40)
             .background {
                 Circle()
-                    .stroke(dayColor(day), lineWidth: 2)
+                    .stroke(dayColor(day), lineWidth: 2.5)
             }
             .onTapGesture {
                 dayTapped(day)
             }
+    }
+}
+
+#Preview {
+    NavigationStack {
+        WorkoutsView()
     }
 }
