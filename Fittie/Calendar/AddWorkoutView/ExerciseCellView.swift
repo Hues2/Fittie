@@ -73,7 +73,7 @@ private extension ExerciseCellView {
         .lineLimit(1)
         .minimumScaleFactor(0.8)
         .padding()
-        .background(Constants.backgroundLightMaterial)
+        .background(Color.lightCard)
     }
 }
 

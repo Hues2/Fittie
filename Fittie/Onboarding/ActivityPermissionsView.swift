@@ -35,5 +35,5 @@ private extension ActivityPermissionsView {
 
 #Preview {
     ActivityPermissionsView()
-        .background(Constants.backgroundMaterial)
+        .background(Color.card)
 }

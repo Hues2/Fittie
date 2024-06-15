@@ -100,7 +100,7 @@ private extension AverageStepsView {
             AxisMarks { mark in
                 AxisValueLabel()
                 AxisGridLine(centered: false, stroke: .init(lineWidth: 1, dash: [5]))
-                    .foregroundStyle(Color.lightGray)
+                    .foregroundStyle(Color.secondary)
             }
         }
         .chartXAxis {

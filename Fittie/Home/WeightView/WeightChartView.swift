@@ -68,7 +68,7 @@ private extension WeightChartView {
                         .frame(width: 10, height: 10)
                         .overlay {
                             Circle()
-                                .fill(Constants.backgroundMaterial)
+                                .fill(Color.card)
                                 .frame(width: 8, height: 8)
                         }
                 }
@@ -85,7 +85,7 @@ private extension WeightChartView {
             AxisMarks(position: .leading, values: .stride(by: 2)) { value in
                 AxisValueLabel()
                 AxisGridLine(centered: false, stroke: .init(lineWidth: 1, dash: [8]))
-                    .foregroundStyle(Color.lightGray)                    
+                    .foregroundStyle(Color.secondary)                    
             }
         }
         .chartYScale(domain: getMinYValue()...getMaxYValue())

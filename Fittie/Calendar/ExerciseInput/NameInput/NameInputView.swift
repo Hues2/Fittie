@@ -38,7 +38,7 @@ private extension NameInputView {
             }
         }
         .padding()
-        .background(Constants.backgroundMaterial)
+        .background(Color.card)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
     
@@ -88,7 +88,7 @@ private extension NameInputView {
                     }
                 }
                 .padding()
-                .background(Constants.backgroundMaterial)
+                .background(Color.card)
                 .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                 .overlay {
                     RoundedRectangle(cornerRadius: Constants.cornerRadius)

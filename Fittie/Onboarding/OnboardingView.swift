@@ -98,7 +98,7 @@ private extension OnboardingView {
         HStack(spacing: 16) {
             ForEach(OnboardingPage.allCases.indices, id:\.self) { index in
                 Circle()
-                    .fill(onBoardingPage.rawValue >= index ? Color.accentColor : Color.lightGray)
+                    .fill(onBoardingPage.rawValue >= index ? Color.accentColor : Color.secondary)
                     .frame(width: 10, height: 10)
             }
         }

@@ -37,7 +37,7 @@ private extension ExercisesView {
                 sectionList(exerciseNames)
                     .background(
                         Color.clear
-                            .background(Constants.backgroundMaterial)
+                            .background(Color.card)
                             .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                     )
             }

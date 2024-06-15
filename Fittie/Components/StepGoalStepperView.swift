@@ -37,7 +37,7 @@ struct StepGoalStepperView: View {
                 .fontWeight(.bold)
                 .padding()
                 .frame(width: 55, height: 55)
-                .background(isDisabled ? Color.lightGray : Color.accentColor)
+                .background(isDisabled ? Color.secondary : Color.accentColor)
                 .clipShape(Circle())
                 .contentShape(Circle())
         }

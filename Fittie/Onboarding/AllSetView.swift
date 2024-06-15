@@ -55,5 +55,5 @@ private extension AllSetView {
 
 #Preview {
     AllSetView()
-        .background(Constants.backgroundMaterial)
+        .background(Color.card)
 }
