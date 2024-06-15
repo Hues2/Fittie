@@ -13,7 +13,7 @@ struct IconButton: View {
                 .padding(12)
                 .background(
                     RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                        .stroke()
+                        .stroke(color)
                 )
                 .foregroundStyle(color)
                 .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))

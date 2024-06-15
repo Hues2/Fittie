@@ -33,20 +33,11 @@ struct SwipeAction<Content : View> : View {
     
     // MARK: Action Buttons
     func actionButtons() -> some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 12) {
             ForEach(actions) { action in
-                Button {
+                IconButton(icon: action.icon, color: action.tint) {
                     action.action()
-                } label: {
-                    Image(systemName: action.icon)
-                        .font(action.iconFont)
-                        .foregroundStyle(action.iconTint)
-                        .padding()
-                        .contentShape(.rect)
-                        .background(action.tint)
-                        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
                 }
-                .buttonStyle(.plain)
             }
         }
         .frame(alignment: swipeDirection.alignment)
