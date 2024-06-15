@@ -19,20 +19,7 @@ struct MonthView: View {
                 .padding(.bottom, 5)
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 16) {
                 ForEach(month.days, id: \.self) { day in
-                    Text("\(Calendar.current.component(.day, from: day))")
-                        .frame(width: 40, height: 40)
-                        .background {
-                            if dayColor(day) == Color.thirdAccent {
-                                Circle()
-                                    .stroke(Color.thirdAccent)
-                            } else {
-                                Circle()
-                                    .fill(dayColor(day))
-                            }
-                        }
-                        .onTapGesture {
-                            dayTapped(day)
-                        }
+                    dayView(day)
                 }
             }
             .padding()
@@ -40,5 +27,17 @@ struct MonthView: View {
             .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
             .padding(.bottom, 20)
         }
+    }
+    
+    private func dayView(_ day : Date) -> some View {
+        Text("\(Calendar.current.component(.day, from: day))")
+            .frame(width: 40, height: 40)
+            .background {
+                Circle()
+                    .stroke(dayColor(day), lineWidth: 2)
+            }
+            .onTapGesture {
+                dayTapped(day)
+            }
     }
 }
