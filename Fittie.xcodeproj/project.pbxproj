@@ -14,7 +14,7 @@
 		2E5190282C1D0C5E00C26070 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5190272C1D0C5E00C26070 /* Array.swift */; };
 		2E5225B32C0D0E1A0021C8C8 /* AddSetSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B22C0D0E1A0021C8C8 /* AddSetSheet.swift */; };
 		2E5225B52C0D22350021C8C8 /* SetsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B42C0D22350021C8C8 /* SetsInputView.swift */; };
-		2E5225B72C0D229F0021C8C8 /* InputTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B62C0D229F0021C8C8 /* InputTitle.swift */; };
+		2E5225B72C0D229F0021C8C8 /* ExerciseInputTabViewTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B62C0D229F0021C8C8 /* ExerciseInputTabViewTitle.swift */; };
 		2E5225B92C0D23C80021C8C8 /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225B82C0D23C80021C8C8 /* NameInputView.swift */; };
 		2E5225BB2C0D24B30021C8C8 /* CategoryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5225BA2C0D24B30021C8C8 /* CategoryInputView.swift */; };
 		2E5374882C17AE5300D769BC /* ExerciseCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5374872C17AE5300D769BC /* ExerciseCellContentView.swift */; };
@@ -106,7 +106,7 @@
 		2E5190272C1D0C5E00C26070 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		2E5225B22C0D0E1A0021C8C8 /* AddSetSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetSheet.swift; sourceTree = "<group>"; };
 		2E5225B42C0D22350021C8C8 /* SetsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsInputView.swift; sourceTree = "<group>"; };
-		2E5225B62C0D229F0021C8C8 /* InputTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTitle.swift; sourceTree = "<group>"; };
+		2E5225B62C0D229F0021C8C8 /* ExerciseInputTabViewTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInputTabViewTitle.swift; sourceTree = "<group>"; };
 		2E5225B82C0D23C80021C8C8 /* NameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputView.swift; sourceTree = "<group>"; };
 		2E5225BA2C0D24B30021C8C8 /* CategoryInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputView.swift; sourceTree = "<group>"; };
 		2E5374872C17AE5300D769BC /* ExerciseCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCellContentView.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 			children = (
 				2EA463252C0CAC5100DD89BD /* ExerciseInputView.swift */,
 				2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */,
-				2E5225B62C0D229F0021C8C8 /* InputTitle.swift */,
+				2E5225B62C0D229F0021C8C8 /* ExerciseInputTabViewTitle.swift */,
 				2E052FED2C0E250C0089C75B /* CategoryInput */,
 				2EE9B4CF2C0E42A3001D40C8 /* NameInput */,
 				2EE9B4D02C0E42C6001D40C8 /* SetsInput */,
@@ -682,7 +682,7 @@
 				2E0A57AF2C0BE3AC00964E50 /* CustomCalendarView.swift in Sources */,
 				2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */,
 				2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */,
-				2E5225B72C0D229F0021C8C8 /* InputTitle.swift in Sources */,
+				2E5225B72C0D229F0021C8C8 /* ExerciseInputTabViewTitle.swift in Sources */,
 				2E53A2FF2BEFF46400D81297 /* CustomContentUnavailableView.swift in Sources */,
 				2EA2F5C52BFA3D39003E3526 /* WeightView.swift in Sources */,
 				2EC6CAD32BEE9378009C7002 /* AppTabView.swift in Sources */,

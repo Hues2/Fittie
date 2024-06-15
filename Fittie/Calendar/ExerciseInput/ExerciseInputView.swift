@@ -58,7 +58,7 @@ private extension ExerciseInputView {
     }
     
     var tabViewTitle : some View {
-        InputTitle(title: exercisePage.title,
+        ExerciseInputTabViewTitle(title: exercisePage.title,
                    showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) { previousPage() }
             .animation(.none, value: exercisePage)
             .padding(.top, 24)

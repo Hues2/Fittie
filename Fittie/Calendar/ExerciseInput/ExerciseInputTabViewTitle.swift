@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct InputTitle: View {
+struct ExerciseInputTabViewTitle: View {
     let title : LocalizedStringKey
     let showBackButton : Bool
     let backAction : () -> Void
@@ -27,5 +27,5 @@ struct InputTitle: View {
 }
 
 #Preview {
-    InputTitle(title: "Hello", showBackButton: true) { }
+    ExerciseInputTabViewTitle(title: "Hello", showBackButton: true) { }
 }
