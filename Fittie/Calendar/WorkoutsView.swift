@@ -38,6 +38,9 @@ private extension WorkoutsView {
         if loggedWorkouts.contains(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
             return Color.accentColor
         }
+        
+        // If it's todays date, and no workout has been completed, then send this colour
+        if date.isSameDay(as: .now) { return Color.thirdAccent }
                                 
         // If the date is before the install date, return .clear
         if date < installDate { return .clear }

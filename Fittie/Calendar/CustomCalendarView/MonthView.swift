@@ -21,10 +21,15 @@ struct MonthView: View {
                 ForEach(month.days, id: \.self) { day in
                     Text("\(Calendar.current.component(.day, from: day))")
                         .frame(width: 40, height: 40)
-                        .background(
-                            Circle()
-                                .fill(dayColor(day))
-                        )
+                        .background {
+                            if dayColor(day) == Color.thirdAccent {
+                                Circle()
+                                    .stroke(Color.thirdAccent)
+                            } else {
+                                Circle()
+                                    .fill(dayColor(day))
+                            }
+                        }
                         .onTapGesture {
                             dayTapped(day)
                         }
