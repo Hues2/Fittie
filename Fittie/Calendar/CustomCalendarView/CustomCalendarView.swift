@@ -1,12 +1,11 @@
 import SwiftUI
 
 struct CustomCalendarView: View {
-    private let months = CalendarData.months()
     let getDayViewColor : (Date) -> Color?
     let dayTapped : (Date) -> Void
     
     var body: some View {
-        content            
+        content
     }
 }
 
@@ -15,7 +14,7 @@ private extension CustomCalendarView {
     var content : some View {
         ScrollView {
             LazyVStack {
-                ForEach(months) { month in
+                ForEach(CalendarData.months()) { month in
                     MonthView(month: month,
                               dayTapped: dayTapped,
                               dayColor: getDayViewColor)
