@@ -1,10 +1,10 @@
 import Foundation
 
-class AddWorkoutViewModel : ObservableObject {
+final class AddWorkoutViewModel : ObservableObject {
     // This is used for the UI
     // It is never used to create a new WorkoutModel
     @Published var workout : Workout
-    let savedWorkoutModel : WorkoutModel?
+    var savedWorkoutModel : WorkoutModel?
             
     // Exercises used to create Exercise Models to then save into the context
     var newExercises = [Exercise]()

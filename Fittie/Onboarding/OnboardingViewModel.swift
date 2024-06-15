@@ -1,7 +1,7 @@
 import Foundation
 import Factory
 
-class OnboardingViewModel : ObservableObject {
+final class OnboardingViewModel : ObservableObject {
     @Published var stepGoal : Int = Constants.defaultStepGoal
     @Published var weightGoal : Double?
     

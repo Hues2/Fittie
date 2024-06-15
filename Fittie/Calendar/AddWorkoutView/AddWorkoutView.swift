@@ -29,10 +29,15 @@ struct AddWorkoutView: View {
         }
         .alert("log_workout_delete_workout_alert_title",
                isPresented: $showDeleteWorkoutAlert) {
-            Button("cancel", role: .cancel) { }                
+            Button("cancel", role: .cancel) { }
             Button("delete", role: .destructive) {
                 // Add delete action here
-                print("Workout deleted")
+                withAnimation {
+                    guard let workoutModel = viewModel.calendarDate.workout else { return }
+                    context.delete(workoutModel)
+                    viewModel.workout = Workout(date: viewModel.calendarDate.date, exercises: [])
+                    viewModel.savedWorkoutModel = nil
+                }
             }
         } message: {
             Text("log_workout_delete_workout_alert_message")

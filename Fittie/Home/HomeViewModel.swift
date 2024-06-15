@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 import Factory
 
-class HomeViewModel : ObservableObject {
+final class HomeViewModel : ObservableObject {
     // Todays Steps
     @Published private(set) var todaysSteps : Int = 0
     @Published private(set) var dailyStepsAreLoading : Bool = true
