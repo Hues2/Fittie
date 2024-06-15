@@ -96,6 +96,7 @@
 "log_workout_save_workout_btn_title" = "Save workout";
 "log_workout_add_exercise_btn_title" = "Add exercise";
 "log_workout_set_value" = "Set %d";
+"log_workout_delete_workout_alert_message" = "Are you sure you want to delete this workout?";
 
 // Exercise input view
 "log_exercise_name_textfield_prompt" = "Add exercise name";
@@ -125,3 +126,4 @@
 
 // Reusable
 "delete" = "Delete";
+"cancel" = "Cancel";

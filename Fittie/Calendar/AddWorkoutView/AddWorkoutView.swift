@@ -5,6 +5,7 @@ struct AddWorkoutView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel : AddWorkoutViewModel
     @State private var showLogExercisesView : Bool = false
+    @State private var showDeleteWorkoutAlert : Bool = false
     
     init(calendarDate: CalendarDate) {
         // Pass in the calendar date to the viewmodel.
@@ -26,6 +27,17 @@ struct AddWorkoutView: View {
             .presentationDragIndicator(.visible)
             .presentationCornerRadius(Constants.sheetCornerRadius)
         }
+        .alert("Delete workout",
+               isPresented: $showDeleteWorkoutAlert) {
+            Button("cancel", role: .cancel) { }
+            Button("delete", role: .destructive) {
+                // Add delete action here
+                print("Workout deleted")
+            }
+        } message: {
+            Text("log_workout_delete_workout_alert_message")
+        }
+
     }
 }
 
@@ -93,6 +105,7 @@ private extension AddWorkoutView {
     var deleteButton : some View {
         IconButton(icon: "trash", color: .pink) {
             // Show delete workout alert
+            self.showDeleteWorkoutAlert = true
         }
     }
     
