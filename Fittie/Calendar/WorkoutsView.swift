@@ -35,37 +35,25 @@ private extension WorkoutsView {
 private extension WorkoutsView {
     var legend : some View {
         HStack {
-            legendItem(.thirdAccent, title: "today")
-            legendItem(.accent, title: "logged")
-            legendItem(.secondaryAccent, title: "not logged")
+            legendItem(.thirdAccent, title: "workouts_legend_today")
+            legendItem(.accent, title: "workouts_legend_logged")
+            legendItem(.secondaryAccent, title: "workouts_legend_not_logged")
         }
         .lineLimit(1)
         .frame(maxWidth: .infinity)
         .frame(height: Constants.calendarLegendHeight)
         .padding(.top, safeAreaInsets.top)
         .padding(8)
-        .background {
-            backgroundView
-                .animation(.snappy, value: offset)
-        }
-        .cornerRadius(Constants.cornerRadius, corners: [.bottomLeft, .bottomRight])
+        .background(Material.ultraThinMaterial)
+        .cornerRadius(Constants.sheetCornerRadius, corners: [.bottomLeft, .bottomRight])
         .ignoresSafeArea()
-    }
-    
-    @ViewBuilder var backgroundView : some View {
-        if offset < -28 {
-            Color.clear
-                .background(Material.ultraThinMaterial)
-        } else {
-            Color.background
-        }
     }
     
     func legendItem(_ color : Color, title : LocalizedStringKey) -> some View {
         HStack {
             Circle()
                 .stroke(color, lineWidth: 1.5)
-                .frame(width: 16, height: 16)
+                .frame(width: 20, height: 20)
             Text(title)
                 .font(.subheadline)
                 .fontWeight(.light)
@@ -77,8 +65,7 @@ private extension WorkoutsView {
 // MARK: Calendar
 private extension WorkoutsView {
     var calendar : some View {
-        ScrollView {
-            scrollReader
+        ScrollView {            
             CustomCalendarView(getDayViewColor: { selectedDate in
                 dayColor(selectedDate)
             }, dayTapped: { date in
@@ -88,32 +75,6 @@ private extension WorkoutsView {
         }
         .contentMargins(.top, Constants.calendarLegendHeight + 32, for: .scrollContent)
         .scrollIndicators(.hidden)
-    }
-    
-    var scrollReader : some View {
-        Color.clear
-            .frame(height: 0)
-            .background {
-                GeometryReader { proxy in
-                    Text("")
-                        .onChange(of: proxy.frame(in: .scrollView)) { oldValue, newValue in
-                            if offset > -28 && newValue.maxY < -28 {
-                                withAnimation {
-                                    offset = newValue.maxY
-                                }
-                                print("Changing to \(offset)")
-                            }
-                            
-                            if offset < -28 && newValue.maxY > -28 {
-                                withAnimation {
-                                    offset = newValue.maxY
-                                }
-                                print("Changing to \(offset)")
-                            }
-                        }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
     }
 }
 
