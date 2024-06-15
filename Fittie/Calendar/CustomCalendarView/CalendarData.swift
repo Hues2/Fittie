@@ -10,7 +10,7 @@ struct CalendarData {
         let installDate = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date ?? .now
         let currentDate = Date()
         // Calendar will show up until the current month + 1
-        guard let endDate = calendar.date(byAdding: .month, value: Constants.numberOfCalendarFutureMonths, to: currentDate) else {
+        guard let endDate = calendar.date(byAdding: .month, value: 1, to: currentDate) else {
             return months
         }
         
@@ -31,13 +31,14 @@ struct CalendarData {
     
     private static func createMonth(for date: Date, using calendar: Calendar) -> Month? {
         let monthName = calendar.monthSymbols[calendar.component(.month, from: date) - 1]
-        guard let monthRange = calendar.range(of: .day, in: .month, for: date) else {
+        guard let monthRange = calendar.range(of: .day, in: .month, for: date),
+              let monthStartDate = calendar.date(from: calendar.dateComponents([.year, .month], from: date)) else {
             return nil
         }
         
         var days = [Date]()
         for day in monthRange {
-            if let dayDate = calendar.date(bySetting: .day, value: day, of: date) {
+            if let dayDate = calendar.date(byAdding: .day, value: day - 1, to: monthStartDate) {
                 days.append(dayDate)
             }
         }

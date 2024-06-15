@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CustomCalendarView: View {
-    let getDayViewColor : (Date) -> Color?
+    let getDayViewColor : (Date) -> Color
     let dayTapped : (Date) -> Void
     
     var body: some View {
@@ -18,6 +18,9 @@ private extension CustomCalendarView {
                     MonthView(month: month,
                               dayTapped: dayTapped,
                               dayColor: getDayViewColor)
+                    .onAppear {
+                        print("MONTH --> \(month)")
+                    }
                 }
             }
         }

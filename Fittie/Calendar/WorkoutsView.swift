@@ -38,11 +38,20 @@ private extension WorkoutsView {
         if loggedWorkouts.contains(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
             return Color.accentColor
         }
-        // If date is before the install date display no circle
-        if date < installDate { return .clear }
-        // If date is in the future then show grayed out circle
-        if date > .now { return .gray.opacity(0.2)}
         
+        // If the date is before the install date
+        // If the date is in the future
+        // Return light gray colour
+//        print("Date --> \(date.formatted())")
+//        print("installdate --> \(installDate.formatted())")
+//        print("\n\n")
+        if date < installDate { return .clear }
+        
+        if date > .now { return  .gray.opacity(0.2) }
+//        if (date < installDate) || (date > .now) { return .gray.opacity(0.2) }
+        
+        // If the date is between now and the install date and there hasn't been a workout logged on that date
+        // return the secondary accent colour
         return Color.secondaryAccent
     }
 }
