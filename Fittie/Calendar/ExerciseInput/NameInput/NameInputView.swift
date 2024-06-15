@@ -3,7 +3,6 @@ import SwiftUI
 struct NameInputView: View {
     @Binding var exerciseName : String
     @Binding var filteredLoggedExercises : [Exercise]
-    @State private var previouslyLoggedExercisesIsExpanded : Bool = true
     let numberOfExercisesInCategory : Int
     
     var body: some View {
@@ -45,10 +44,8 @@ private extension NameInputView {
     @ViewBuilder var previouslyLoggedExerciseNamesView : some View {
         VStack(spacing: 0) {
             previouslyLoggedExerciseNamesViewTitle
-            
-            if previouslyLoggedExercisesIsExpanded {
-                previouslyLoggedExerciseNamesListView
-            }
+                        
+            previouslyLoggedExerciseNamesListView
         }
         .padding(.top, 8)
     }
@@ -61,18 +58,12 @@ private extension NameInputView {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Image(systemName: "chevron.up")
-                .rotationEffect(previouslyLoggedExercisesIsExpanded ? Angle(degrees: 180) : .zero)
+            Image(systemName: "chevron.down")
         }
         .font(.headline)
         .foregroundStyle(Color.secondaryAccent)
         .padding(.vertical)
         .contentShape(Rectangle())
-        .onTapGesture {
-            withAnimation(.smooth) {
-                self.previouslyLoggedExercisesIsExpanded.toggle()
-            }
-        }
     }
     
     var previouslyLoggedExerciseNamesListView : some View {
@@ -94,6 +85,7 @@ private extension NameInputView {
                     RoundedRectangle(cornerRadius: Constants.cornerRadius)
                         .stroke((exerciseName.lowercased() == loggedExercise.exerciseName.lowercased()) ? .accent : .clear)
                 }
+                .padding(.horizontal, 2)
                 .onTapGesture {
                     withAnimation {
                         if exerciseName == loggedExercise.exerciseName.capitalized {
@@ -113,11 +105,18 @@ private extension NameInputView {
         .sheet(isPresented: .constant(true), content: {
             ZStack {
                 BackgroundView()
-                NameInputView(exerciseName: .constant(""),
-                              filteredLoggedExercises: .constant([]),
-                              numberOfExercisesInCategory: 2)
+                NameInputPreview()
                 .padding()
             }
-            .withCustomSheetHeight()
+            .presentationCornerRadius(Constants.cornerRadius)
         })
+}
+
+fileprivate struct NameInputPreview : View {
+    @State private var name : String = ""
+    var body: some View {
+        NameInputView(exerciseName: $name,
+                      filteredLoggedExercises: .constant([Exercise(exerciseCategoryRawValue: "Chest", exerciseName: "Bench press")]),
+                      numberOfExercisesInCategory: 2)
+    }
 }

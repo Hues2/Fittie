@@ -135,7 +135,7 @@ private extension AddWorkoutView {
                                  name: exercise.exerciseName,
                                  sets: exercise.sets,
                                  showExerciseName: true)
-                .padding(.vertical)
+                .padding(.vertical, 16)
                 .padding(.horizontal, 8)
             }
             .listRowBackground(Color.clear)
