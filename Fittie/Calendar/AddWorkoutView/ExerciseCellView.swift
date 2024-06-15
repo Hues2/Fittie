@@ -69,7 +69,7 @@ private extension ExerciseCellView {
         }
         .font(.headline)
         .fontWeight(.light)
-        .foregroundStyle(Constants.Colors.secondaryAccent)
+        .foregroundStyle(Color.secondaryAccent)
         .lineLimit(1)
         .minimumScaleFactor(0.8)
         .padding()

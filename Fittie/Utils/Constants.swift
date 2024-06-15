@@ -18,6 +18,7 @@ class Constants {
     static let dynamicTypeSizeRange : ClosedRange<DynamicTypeSize> = .small ... .xxLarge
     static let backgroundMaterial : Material = .ultraThickMaterial
     static let backgroundLightMaterial : Material = .thinMaterial
+    static let cardColor : Color = Color(UIColor.systemGray6)
     
     // MARK: - Values    
     static let defaultStepGoal : Int = 7500
@@ -30,11 +31,6 @@ class Constants {
         static let stepGoal = "step_goal"
         static let weightGoal = "weight_goal"
         static let selectedTimePeriod = "selected_time_period"
-    }
-    
-    // MARK: Colors
-    struct Colors {
-        static let secondaryAccent : Color = .pink
     }
 }
 

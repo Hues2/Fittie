@@ -43,7 +43,7 @@ private extension WorkoutsView {
         // If date is in the future then show grayed out circle
         if date > .now { return .gray.opacity(0.2)}
         
-        return Constants.Colors.secondaryAccent
+        return Color.secondaryAccent
     }
 }
 

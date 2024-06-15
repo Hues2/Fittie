@@ -18,7 +18,7 @@ struct ExerciseInputTabViewTitle: View {
             }
             .font(.title)
             .fontWeight(.bold)
-            .foregroundStyle(Constants.Colors.secondaryAccent)
+            .foregroundStyle(Color.secondaryAccent)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .buttonStyle(ScaleButtonStyle())

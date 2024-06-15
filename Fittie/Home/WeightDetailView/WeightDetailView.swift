@@ -123,7 +123,7 @@ private extension WeightDetailView {
         } else if weightGoal > currentWeight && weightChange > 0 {
             return .accent // Goal is to gain weight and weight has increased
         } else {
-            return Constants.Colors.secondaryAccent // Otherwise, use the secondary accent color
+            return Color.secondaryAccent // Otherwise, use the secondary accent color
         }
     }
 }

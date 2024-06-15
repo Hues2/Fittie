@@ -52,7 +52,7 @@ private extension WeightChartView {
         Chart {
             if let weightGoal {
                 RuleMark(y: .value("Weight Goal", weightGoal))
-                    .foregroundStyle(Constants.Colors.secondaryAccent.gradient)
+                    .foregroundStyle(Color.secondaryAccent.gradient)
             }
             
             ForEach(loggedWeights.suffix(Constants.numberOfLoggedWeights)) { loggedWeight in

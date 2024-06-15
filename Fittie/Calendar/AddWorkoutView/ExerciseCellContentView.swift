@@ -28,7 +28,7 @@ struct ExerciseCellContentView: View {
                     onEditSet()
                 }
                 
-                Action(tint: Constants.Colors.secondaryAccent, icon: "trash.fill") {
+                Action(tint: Color.secondaryAccent, icon: "trash.fill") {
                     // Delete
                     onDeleteSet()
                 }

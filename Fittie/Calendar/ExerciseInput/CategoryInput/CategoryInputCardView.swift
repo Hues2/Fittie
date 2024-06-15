@@ -14,7 +14,7 @@ struct CategoryInputCardView: View {
                 .frame(alignment: .leading)
                 .foregroundStyle(isSelected ? .accent : .secondary)
                 .padding()
-                .background(Constants.backgroundLightMaterial)
+                .background(Color.lightCard)
             
             Text(title)
                 .font(.title2)                
@@ -23,8 +23,8 @@ struct CategoryInputCardView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)        
-        .background(Constants.backgroundMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))        
+        .background(Color.card)
+        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .overlay {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .stroke(isSelected ? .accent : .clear)

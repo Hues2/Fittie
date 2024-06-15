@@ -103,12 +103,12 @@ private extension AddWorkoutView {
         Text(viewModel.calendarDate.workout == nil ? "log_new_workout_title" : "log_workout_title")
             .font(.title)
             .fontWeight(.bold)
-            .foregroundStyle(Constants.Colors.secondaryAccent)
+            .foregroundStyle(Color.secondaryAccent)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     var deleteButton : some View {
-        IconButton(icon: "trash", color: Constants.Colors.secondaryAccent) {
+        IconButton(icon: "trash", color: Color.secondaryAccent) {
             // Show delete workout alert
             self.showDeleteWorkoutAlert = true
         }

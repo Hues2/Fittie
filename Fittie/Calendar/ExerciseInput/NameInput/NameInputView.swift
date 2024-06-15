@@ -32,7 +32,7 @@ private extension NameInputView {
                     }
                 } label: {
                     Image(systemName: "xmark.circle")
-                        .foregroundStyle(Constants.Colors.secondaryAccent)
+                        .foregroundStyle(Color.secondaryAccent)
                         .font(.title3)
                 }
             }
@@ -65,7 +65,7 @@ private extension NameInputView {
                 .rotationEffect(previouslyLoggedExercisesIsExpanded ? Angle(degrees: 180) : .zero)
         }
         .font(.headline)
-        .foregroundStyle(Constants.Colors.secondaryAccent)
+        .foregroundStyle(Color.secondaryAccent)
         .padding(.vertical)
         .contentShape(Rectangle())
         .onTapGesture {
