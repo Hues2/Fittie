@@ -26,7 +26,6 @@
 		2E5512422C0F79770044FB21 /* ExerciseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5512412C0F79770044FB21 /* ExerciseCellView.swift */; };
 		2E551BA82C09186F0058F1B2 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BA72C09186F0058F1B2 /* ExercisesView.swift */; };
 		2E551BAA2C0918840058F1B2 /* ExercisesNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BA92C0918840058F1B2 /* ExercisesNavigationStack.swift */; };
-		2E551BAE2C0938F20058F1B2 /* ExercisesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E551BAD2C0938F20058F1B2 /* ExercisesViewModel.swift */; };
 		2E5868A32BFD471300222850 /* WeightInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A22BFD471300222850 /* WeightInput.swift */; };
 		2E5868A52BFD47A000222850 /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A42BFD47A000222850 /* WeightInputView.swift */; };
 		2E5868AA2BFD6B1F00222850 /* BasicInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */; };
@@ -120,7 +119,6 @@
 		2E5512412C0F79770044FB21 /* ExerciseCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCellView.swift; sourceTree = "<group>"; };
 		2E551BA72C09186F0058F1B2 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
 		2E551BA92C0918840058F1B2 /* ExercisesNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesNavigationStack.swift; sourceTree = "<group>"; };
-		2E551BAD2C0938F20058F1B2 /* ExercisesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesViewModel.swift; sourceTree = "<group>"; };
 		2E5868A22BFD471300222850 /* WeightInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInput.swift; sourceTree = "<group>"; };
 		2E5868A42BFD47A000222850 /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
 		2E5868A92BFD6B1F00222850 /* BasicInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoCardView.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 			children = (
 				2E551BA72C09186F0058F1B2 /* ExercisesView.swift */,
 				2E551BA92C0918840058F1B2 /* ExercisesNavigationStack.swift */,
-				2E551BAD2C0938F20058F1B2 /* ExercisesViewModel.swift */,
 			);
 			path = Exercises;
 			sourceTree = "<group>";
@@ -647,7 +644,6 @@
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */,
 				2E5868A32BFD471300222850 /* WeightInput.swift in Sources */,
-				2E551BAE2C0938F20058F1B2 /* ExercisesViewModel.swift in Sources */,
 				2E8806052BF54AE300E12456 /* OnboardingView.swift in Sources */,
 				2EC6CABB2BEE8F2C009C7002 /* FittieApp.swift in Sources */,
 				2E90E7942BFE8FBA003DE59F /* HomeViewChartLegend.swift in Sources */,

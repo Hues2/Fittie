@@ -3,7 +3,7 @@ import SwiftData
 
 struct ExercisesView: View {
     @State private var searchText = ""
-    @Query(sort: \ExerciseModel.exerciseCategoryRawValue, animation: .smooth) private var exerciseModels: [ExerciseModel]
+    @Query(sort: \ExerciseModel.exerciseCategoryRawValue, animation: .smooth) private var allExerciseModels: [ExerciseModel]
     @State private var filteredExercises : [String: [ExerciseModel]] = [:]
     
     var body: some View {
@@ -21,15 +21,15 @@ struct ExercisesView: View {
     }
     
     func setFilteredExercises() {
-        let filteredExercises = exerciseModels.filter { exercise in
-            searchText.isEmpty ||
-            exercise.exerciseName.lowercased().contains(searchText.lowercased())
+        var seenNames = Set<String>()
+        
+        let filteredExercises = allExerciseModels.filter { exercise in
+            let isMatch = searchText.isEmpty || exercise.exerciseName.lowercased().contains(searchText.lowercased())
+            let isUnique = seenNames.insert(exercise.exerciseName.lowercased()).inserted
+            return isMatch && isUnique
         }
-        
-        let groupedExercises = Dictionary(grouping: filteredExercises, by: { $0.exerciseCategoryRawValue })
-        
         withAnimation {
-            self.filteredExercises = groupedExercises
+            self.filteredExercises = Dictionary(grouping: filteredExercises, by: { $0.exerciseCategoryRawValue })
         }
     }
 }
@@ -39,8 +39,7 @@ private extension ExercisesView {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
                 ForEach(filteredExercises.keys.sorted(), id: \.self) { category in
-                    let uniqueExerciseNames = Array(Set(filteredExercises[category]?.map { $0.exerciseName.lowercased() } ?? []))
-                    section(category, uniqueExerciseNames)
+                    section(category, filteredExercises[category]?.map({ $0.exerciseName.lowercased() }) ?? [])
                 }
             }
             .padding(.horizontal, 12)
