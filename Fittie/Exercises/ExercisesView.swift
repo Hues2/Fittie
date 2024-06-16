@@ -4,33 +4,33 @@ import SwiftData
 struct ExercisesView: View {
     @State private var searchText = ""
     @Query(sort: \ExerciseModel.exerciseCategoryRawValue, animation: .smooth) private var exerciseModels: [ExerciseModel]
-    
-    private var filteredExerciseCategories: [String: [ExerciseModel]] {
-        let filteredExercises = exerciseModels.filter { exercise in
-            searchText.isEmpty ||
-            exercise.exerciseName.lowercased().contains(searchText.lowercased()) ||
-            exercise.exerciseName.lowercased().starts(with: searchText.lowercased())
-        }
-        
-        var groupedExercises: [String: [ExerciseModel]] = [:]
-        
-        for exercise in filteredExercises {
-            let category = exercise.exerciseCategoryRawValue
-            if groupedExercises[category] == nil {
-                groupedExercises[category] = []
-            }
-            groupedExercises[category]?.append(exercise)
-        }
-        return groupedExercises
-    }
+    @State private var filteredExercises : [String: [ExerciseModel]] = [:]
     
     var body: some View {
         ZStack {
             BackgroundView()
-            
             content
         }
         .navigationTitle("exercises_view_title")
+        .onAppear {
+            setFilteredExercises()
+        }
+        .onChange(of: searchText) { oldValue, newValue in
+            setFilteredExercises()
+        }
+    }
+    
+    func setFilteredExercises() {
+        let filteredExercises = exerciseModels.filter { exercise in
+            searchText.isEmpty ||
+            exercise.exerciseName.lowercased().contains(searchText.lowercased())
+        }
+        
+        let groupedExercises = Dictionary(grouping: filteredExercises, by: { $0.exerciseCategoryRawValue })
+        
+        withAnimation {
+            self.filteredExercises = groupedExercises
+        }
     }
 }
 
@@ -38,8 +38,8 @@ private extension ExercisesView {
     var content : some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
-                ForEach(filteredExerciseCategories.keys.sorted(), id: \.self) { category in
-                    let uniqueExerciseNames = Array(Set(filteredExerciseCategories[category]?.map { $0.exerciseName.lowercased() } ?? []))
+                ForEach(filteredExercises.keys.sorted(), id: \.self) { category in
+                    let uniqueExerciseNames = Array(Set(filteredExercises[category]?.map { $0.exerciseName.lowercased() } ?? []))
                     section(category, uniqueExerciseNames)
                 }
             }
