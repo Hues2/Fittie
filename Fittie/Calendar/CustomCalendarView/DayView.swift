@@ -24,7 +24,7 @@ struct DayView : View {
                 .frame(width: 12, height: 1)
         }
         .lineLimit(1)
-        .frame(minWidth: 44, minHeight: 44)
+        .frame(minWidth: 42, minHeight: 42)
         .background {
             Circle()
                 .stroke(dayStyle(day).strokeColor, lineWidth: 2)
