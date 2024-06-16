@@ -44,7 +44,7 @@ private extension WorkoutsView {
         .frame(height: Constants.calendarLegendHeight)
         .padding(.top, safeAreaInsets.top)
         .padding(8)
-        .background(Material.ultraThinMaterial)
+        .background(Material.ultraThinMaterial.shadow(.drop(radius: 4)))
         .cornerRadius(Constants.sheetCornerRadius, corners: [.bottomLeft, .bottomRight])
         .ignoresSafeArea()
     }
