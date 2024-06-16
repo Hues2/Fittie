@@ -15,8 +15,8 @@ struct WorkoutsView: View {
         .toolbar(.hidden)
         .sheet(item: $selectedCalendarDate) { calendarDate in
             AddWorkoutView(calendarDate: calendarDate)
-            .presentationDragIndicator(.visible)
-            .presentationCornerRadius(Constants.sheetCornerRadius)
+                .presentationDragIndicator(.visible)
+                .presentationCornerRadius(Constants.sheetCornerRadius)
         }
     }
 }
@@ -65,7 +65,7 @@ private extension WorkoutsView {
 // MARK: Calendar
 private extension WorkoutsView {
     var calendar : some View {
-        ScrollView {            
+        ScrollView {
             CustomCalendarView(getDayViewColor: { selectedDate in
                 dayColor(selectedDate)
             }, dayTapped: { date in
@@ -88,7 +88,7 @@ private extension WorkoutsView {
         
         // If it's todays date, and no workout has been completed, then send this colour
         if date.isSameDay(as: .now) { return Color.thirdAccent }
-                                
+        
         // If the date is before the install date, return .clear
         if date < installDate { return .clear }
         // If the date is in the future, return gray colour

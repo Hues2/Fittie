@@ -21,7 +21,7 @@ class Constants {
     // MARK: - Values    
     static let defaultStepGoal : Int = 7500
     static let numberOfLoggedWeights : Int = 5
-    static let numberOfCalendarFutureMonths : Int = 24
+    static let numberOfCalendarFutureMonths : Int = 1
     
     // MARK: - User Defaults
     struct UserDefaults {
