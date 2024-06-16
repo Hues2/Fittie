@@ -48,9 +48,8 @@ private extension WorkoutsView {
 // MARK: Day view colour -- Gets the background colour for the calendar day view
 private extension WorkoutsView {
     private func dayStyle(_ date: Date) -> CalendarDayStyle {
-        var calendarDayStyle = CalendarDayStyle()
-        // If it's todays date, foreground colour is thirdAccent
-        if date.isSameDay(as: .now) { calendarDayStyle.foregroundColor = Color.thirdAccent }
+        var calendarDayStyle = CalendarDayStyle()        
+        calendarDayStyle.isTodaysDate = date.isSameDay(as: .now)
         
         let installDate = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date ?? .now
         if loggedWorkouts.contains(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {

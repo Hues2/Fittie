@@ -18,7 +18,7 @@ struct MonthView: View {
                 .fontWeight(.light)
                 .foregroundStyle(.secondaryAccent)
                 .padding(.bottom, 5)
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 16) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 12) {
                 ForEach(month.days, id: \.self) { day in
                     DayView(day: day, dayStyle: dayStyle) {
                         dayTapped(day)
