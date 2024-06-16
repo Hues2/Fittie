@@ -15,19 +15,19 @@ struct DayView : View {
     var body: some View {
         VStack(spacing: 0) {
             Color.clear
-                .frame(width: 5, height: 2)
+                .frame(width: 5, height: 1)
             
             Text("\(Calendar.current.component(.day, from: day))")
             
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .fill(dayStyle(day).isTodaysDate ? Color.primary : Color.clear)
-                .frame(width: 12, height: 2)
+                .frame(width: 12, height: 1)
         }
         .lineLimit(1)
         .frame(minWidth: 44, minHeight: 44)
         .background {
             Circle()
-                .stroke(dayStyle(day).strokeColor, lineWidth: 2.5)
+                .stroke(dayStyle(day).strokeColor, lineWidth: 2)
         }
         .onTapGesture {
             action()
