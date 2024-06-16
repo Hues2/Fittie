@@ -20,7 +20,7 @@ struct DayView : View {
             Text("\(Calendar.current.component(.day, from: day))")
             
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                .fill(dayStyle(day).isTodaysDate ? Color.thirdAccent : Color.clear)
+                .fill(dayStyle(day).isTodaysDate ? Color.primary : Color.clear)
                 .frame(width: 12, height: 2)
         }
         .lineLimit(1)

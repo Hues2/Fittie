@@ -12,7 +12,7 @@ struct CustomCalendarView: View {
 // MARK: Content
 private extension CustomCalendarView {
     var content : some View {
-        LazyVStack(spacing: 16) {
+        LazyVStack(spacing: 20) {
             ForEach(Array(CalendarData.months().enumerated()), id:\.offset) { item in
                 MonthView(month: item.element,
                           dayTapped: dayTapped,

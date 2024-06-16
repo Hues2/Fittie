@@ -12,12 +12,11 @@ struct MonthView: View {
     let dayStyle: (Date) -> CalendarDayStyle
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(month.name)
                 .font(.title2)
                 .fontWeight(.light)
                 .foregroundStyle(.secondaryAccent)
-                .padding(.bottom, 5)
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 12) {
                 ForEach(month.days, id: \.self) { day in
                     DayView(day: day, dayStyle: dayStyle) {
