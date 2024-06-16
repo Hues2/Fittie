@@ -24,11 +24,14 @@ struct ExercisesView: View {
         var seenNames = Set<String>()
         
         let filteredExercises = allExerciseModels.filter { exercise in
-            let isMatch = searchText.isEmpty || exercise.exerciseName.lowercased().contains(searchText.lowercased())
+            let isMatch = searchText.isEmpty ||
+            exercise.exerciseName.lowercased().contains(searchText.lowercased()) ||
+            exercise.exerciseCategoryRawValue.lowercased().contains(searchText.lowercased())
+            
             let isUnique = seenNames.insert(exercise.exerciseName.lowercased()).inserted
             return isMatch && isUnique
         }
-        withAnimation {
+        withAnimation(.snappy) {
             self.filteredExercises = Dictionary(grouping: filteredExercises, by: { $0.exerciseCategoryRawValue })
         }
     }
