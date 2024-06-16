@@ -44,6 +44,7 @@
 		2E68A0A02C00196000C2A430 /* ScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68A09F2C00196000C2A430 /* ScaleButtonStyle.swift */; };
 		2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */; };
 		2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */; };
+		2E6D86EE2C1F337100EBF30D /* ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D86ED2C1F337100EBF30D /* ConditionalModifier.swift */; };
 		2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */; };
 		2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */; };
 		2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */; };
@@ -137,6 +138,7 @@
 		2E68A09F2C00196000C2A430 /* ScaleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonStyle.swift; sourceTree = "<group>"; };
 		2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
+		2E6D86ED2C1F337100EBF30D /* ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalModifier.swift; sourceTree = "<group>"; };
 		2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedWeightCell.swift; sourceTree = "<group>"; };
 		2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardGroupBoxStyle.swift; sourceTree = "<group>"; };
 		2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGoalManager.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */,
 				2E68A09B2C0013CD00C2A430 /* CornerRadius.swift */,
 				2E68A09F2C00196000C2A430 /* ScaleButtonStyle.swift */,
+				2E6D86ED2C1F337100EBF30D /* ConditionalModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				2EC6CABD2BEE8F2C009C7002 /* ContentView.swift in Sources */,
 				2E551BA82C09186F0058F1B2 /* ExercisesView.swift in Sources */,
 				2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */,
+				2E6D86EE2C1F337100EBF30D /* ConditionalModifier.swift in Sources */,
 				2E5225BB2C0D24B30021C8C8 /* CategoryInputView.swift in Sources */,
 				2E5FF2C42BF67F4500779ADC /* ActivityPermissionsView.swift in Sources */,
 				2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */,

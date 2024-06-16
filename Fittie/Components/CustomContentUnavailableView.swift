@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CustomContentUnavailableView: View {
+    var icon : String = "exclamationmark.circle"
     var title : LocalizedStringKey = "not_available_title"
     let description : LocalizedStringKey
     var buttonTitle : LocalizedStringKey?
@@ -10,7 +11,7 @@ struct CustomContentUnavailableView: View {
         ContentUnavailableView {
             Label(
                 title: { Text(title) },
-                icon: { Image(systemName: "exclamationmark.circle").foregroundStyle(Color.secondaryAccent) }
+                icon: { Image(systemName: icon).foregroundStyle(Color.secondaryAccent) }
             )
         } description: {
             Text(description)

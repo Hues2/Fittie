@@ -13,7 +13,7 @@ struct DayView : View {
     let action : () -> Void
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 2) {
             Color.clear
                 .frame(width: 5, height: 1)
             

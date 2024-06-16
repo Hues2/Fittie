@@ -79,6 +79,12 @@
 // Exercises View
 "exercises_view_title" = "Exercises";
 "exercises_view_searchable_prompt" = "Search exercises";
+"exercises_view_no_models_title" = "No logged exercises";
+"exercises_view_no_models_description" = "Looks like you haven't logged any exercises yet. Start by logging your first exercise to keep track of your progress.";
+"exercises_view_no_models_button_title" = "Log you first workout";
+"exercises_view_no_matching_exercises_title" = "No matching exercises";
+"exercises_view_no_matching_exercises_description" = "We couldn't find any of your saved exercises that match your search criteria.";
+"exercises_view_no_matching_exercises_button_title" = "Try a new search";
 
 // Exercise Categories
 "exercise_category_title_chest" = "Chest";
