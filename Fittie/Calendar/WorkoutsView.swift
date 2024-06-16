@@ -2,7 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct WorkoutsView: View {
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Query(sort: \WorkoutModel.date, animation: .smooth) private var loggedWorkouts : [WorkoutModel]
     @State private var selectedCalendarDate : CalendarDate?
     @State private var offset: CGFloat = 0

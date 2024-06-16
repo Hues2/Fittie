@@ -1,17 +1,36 @@
 import SwiftUI
+import SwiftData
 
 struct ExercisesView: View {
-    @StateObject private var viewModel = ExercisesViewModel()
-    @State private var showSearchBar : Bool = false
+    @State private var searchText = ""
+    @Query(sort: \ExerciseModel.exerciseCategoryRawValue, animation: .smooth) private var exerciseModels: [ExerciseModel]
+    
+    private var filteredExerciseCategories: [String: [ExerciseModel]] {
+        let filteredExercises = exerciseModels.filter { exercise in
+            searchText.isEmpty ||
+            exercise.exerciseName.lowercased().contains(searchText.lowercased()) ||
+            exercise.exerciseName.lowercased().starts(with: searchText.lowercased())
+        }
+        
+        var groupedExercises: [String: [ExerciseModel]] = [:]
+        
+        for exercise in filteredExercises {
+            let category = exercise.exerciseCategoryRawValue
+            if groupedExercises[category] == nil {
+                groupedExercises[category] = []
+            }
+            groupedExercises[category]?.append(exercise)
+        }
+        return groupedExercises
+    }
     
     var body: some View {
         ZStack {
             BackgroundView()
-                .ignoresSafeArea()
             
             content
-                .navigationTitle("exercises_view_title")
         }
+        .navigationTitle("exercises_view_title")
     }
 }
 
@@ -19,14 +38,15 @@ private extension ExercisesView {
     var content : some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
-                ForEach(viewModel.filteredExerciseCategories.keys.sorted(), id:\.self) { category in
-                    section(category, viewModel.filteredExerciseCategories[category] ?? [])
+                ForEach(filteredExerciseCategories.keys.sorted(), id: \.self) { category in
+                    let uniqueExerciseNames = Array(Set(filteredExerciseCategories[category]?.map { $0.exerciseName.lowercased() } ?? []))
+                    section(category, uniqueExerciseNames)
                 }
             }
             .padding(.horizontal, 12)
             .padding(.bottom, 8)
         }
-        .searchable(text: $viewModel.searchText,
+        .searchable(text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .automatic),
                     prompt: "exercises_view_searchable_prompt")
     }
@@ -52,7 +72,7 @@ private extension ExercisesView {
         VStack {
             ForEach(exerciseNames, id: \.self) { exerciseName in
                 HStack {
-                    Text(exerciseName)
+                    Text(exerciseName.capitalized)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemName: "chevron.right")
                         .foregroundStyle(.accent)
