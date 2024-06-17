@@ -124,7 +124,7 @@ private extension ExercisesView {
                                      description: "exercises_view_no_models_description",
                                      buttonTitle: "exercises_view_no_models_button_title") {
             // Route user to the workouts tab
-            router.routeToCalendarTab()
+            router.routeToWorkoutsTab()
         }
                                      .padding()
     }

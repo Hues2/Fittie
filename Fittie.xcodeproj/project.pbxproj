@@ -46,6 +46,8 @@
 		2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */; };
 		2E6D86EE2C1F337100EBF30D /* ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D86ED2C1F337100EBF30D /* ConditionalModifier.swift */; };
 		2E6EA9A72C20B80B008EC082 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EA9A62C20B80B008EC082 /* Router.swift */; };
+		2E6EA9A92C20C209008EC082 /* WorkoutsTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EA9A82C20C209008EC082 /* WorkoutsTabScreen.swift */; };
+		2E6EA9AB2C20C22E008EC082 /* ExercisesTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EA9AA2C20C22E008EC082 /* ExercisesTabScreen.swift */; };
 		2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */; };
 		2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */; };
 		2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */; };
@@ -141,6 +143,8 @@
 		2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		2E6D86ED2C1F337100EBF30D /* ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalModifier.swift; sourceTree = "<group>"; };
 		2E6EA9A62C20B80B008EC082 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		2E6EA9A82C20C209008EC082 /* WorkoutsTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsTabScreen.swift; sourceTree = "<group>"; };
+		2E6EA9AA2C20C22E008EC082 /* ExercisesTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTabScreen.swift; sourceTree = "<group>"; };
 		2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedWeightCell.swift; sourceTree = "<group>"; };
 		2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardGroupBoxStyle.swift; sourceTree = "<group>"; };
 		2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGoalManager.swift; sourceTree = "<group>"; };
@@ -468,6 +472,8 @@
 				2EC6CAD22BEE9378009C7002 /* AppTabView.swift */,
 				2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */,
 				2E6EA9A62C20B80B008EC082 /* Router.swift */,
+				2E6EA9A82C20C209008EC082 /* WorkoutsTabScreen.swift */,
+				2E6EA9AA2C20C22E008EC082 /* ExercisesTabScreen.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -660,6 +666,7 @@
 				2E68A0A02C00196000C2A430 /* ScaleButtonStyle.swift in Sources */,
 				2EA2F5C72BFA444A003E3526 /* Weight.swift in Sources */,
 				2E88060B2BF562CC00E12456 /* CustomButton.swift in Sources */,
+				2E6EA9A92C20C209008EC082 /* WorkoutsTabScreen.swift in Sources */,
 				2E68A09A2BFFFEB400C2A430 /* WeightDetailViewModel.swift in Sources */,
 				2E625C9A2C1E714900D16E1C /* DayView.swift in Sources */,
 				2EA373442BEFD69700843FCA /* DailyStep.swift in Sources */,
@@ -691,6 +698,7 @@
 				2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */,
 				2E5225B92C0D23C80021C8C8 /* NameInputView.swift in Sources */,
 				2EA2F5CB2BFA9304003E3526 /* Double.swift in Sources */,
+				2E6EA9AB2C20C22E008EC082 /* ExercisesTabScreen.swift in Sources */,
 				2E0A57AF2C0BE3AC00964E50 /* CustomCalendarView.swift in Sources */,
 				2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */,
 				2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */,
