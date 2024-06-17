@@ -4,12 +4,19 @@ import SwiftData
 struct WorkoutsView: View {
     @Query(sort: \WorkoutModel.date, animation: .smooth) private var loggedWorkouts : [WorkoutModel]
     @State private var selectedCalendarDate : CalendarDate?
-    @State private var offset: CGFloat = 0
+    @State private var offset: CGFloat = .zero
+    
+    init(selectedCalendarDate: CalendarDate? = nil, offset: CGFloat = .zero) {
+        self._selectedCalendarDate = State(initialValue: selectedCalendarDate)
+        self.offset = offset
+    }
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            content
+        VStack {
+            ZStack {
+                BackgroundView()
+                content
+            }
         }
         .toolbar(.hidden)
         .sheet(item: $selectedCalendarDate) { calendarDate in

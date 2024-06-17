@@ -470,8 +470,8 @@
 			children = (
 				2EC6CACD2BEE91F4009C7002 /* AppTab.swift */,
 				2EC6CAD22BEE9378009C7002 /* AppTabView.swift */,
-				2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */,
 				2E6EA9A62C20B80B008EC082 /* Router.swift */,
+				2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */,
 				2E6EA9A82C20C209008EC082 /* WorkoutsTabScreen.swift */,
 				2E6EA9AA2C20C22E008EC082 /* ExercisesTabScreen.swift */,
 			);

@@ -8,6 +8,8 @@ struct HomeNavigationStack: View {
             HomeView()
                 .navigationDestination(for: HomeTabScreen.self) { screen in
                     switch screen {
+                    case .rootView:
+                        HomeView()
                     case .weightDetailView:
                         WeightDetailView()
                     }

@@ -9,9 +9,11 @@ struct ExercisesView: View {
     @State private var showNoFilteredExercisesView : Bool = false
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            content
+        VStack {
+            ZStack {
+                BackgroundView()
+                content
+            }
         }
         .navigationTitle("exercises_view_title")
         .onAppear {
@@ -123,8 +125,8 @@ private extension ExercisesView {
         CustomContentUnavailableView(title: "exercises_view_no_models_title",
                                      description: "exercises_view_no_models_description",
                                      buttonTitle: "exercises_view_no_models_button_title") {
-            // Route user to the workouts tab
-            router.routeToWorkoutsTab()
+            // Route user to the workouts tab to add their first workout
+            router.routeToAddFirstWorkout()
         }
                                      .padding()
     }

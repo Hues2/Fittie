@@ -14,10 +14,12 @@ struct AddWorkoutView: View {
     }
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            
-            content
+        VStack {
+            ZStack {
+                BackgroundView()
+                
+                content
+            }
         }
         .sheet(isPresented: $showLogExercisesView) {
             // Add a new exercise

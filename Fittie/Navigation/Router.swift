@@ -16,10 +16,28 @@ extension Router {
     }
     
     func routeToWorkoutsTab() {
-        self.selectedTab = .calendar
+        self.selectedTab = .workouts
     }
     
     func routeToExercisesTab() {
         self.selectedTab = .exercises
     }
+}
+
+// MARK: Home Navigation
+extension Router {
+    
+}
+
+// MARK: Workouts Navigation
+extension Router {
+    func routeToAddFirstWorkout() {
+        self.routeToWorkoutsTab()
+        self.workoutsNavigationPath.append(.addFirstWorkout)
+    }
+}
+
+// MARK: Exercises Navigation
+extension Router {
+    
 }

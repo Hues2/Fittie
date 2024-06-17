@@ -6,6 +6,12 @@ struct ExercisesNavigationStack: View {
     var body: some View {
         NavigationStack(path: $router.exercisesNavigationPath) {
             ExercisesView()
+                .navigationDestination(for: ExercisesTabScreen.self) { screen in
+                    switch screen {
+                    case .rootView:
+                        ExercisesView()
+                    }
+                }
         }
     }
 }
