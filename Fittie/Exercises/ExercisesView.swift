@@ -9,11 +9,9 @@ struct ExercisesView: View {
     @State private var showNoFilteredExercisesView : Bool = false
     
     var body: some View {
-        VStack {
-            ZStack {
-                BackgroundView()
-                content
-            }
+        ZStack {
+            BackgroundView()
+            content
         }
         .navigationTitle("exercises_view_title")
         .onAppear {

@@ -9,14 +9,12 @@ struct WorkoutsView: View {
     init(selectedCalendarDate: CalendarDate? = nil, offset: CGFloat = .zero) {
         self._selectedCalendarDate = State(initialValue: selectedCalendarDate)
         self.offset = offset
-    }
+    }     
     
     var body: some View {
-        VStack {
-            ZStack {
-                BackgroundView()
-                content
-            }
+        ZStack {
+            BackgroundView()
+            content
         }
         .toolbar(.hidden)
         .sheet(item: $selectedCalendarDate) { calendarDate in
@@ -54,7 +52,7 @@ private extension WorkoutsView {
 // MARK: Day View Style
 private extension WorkoutsView {
     private func dayStyle(_ date: Date) -> CalendarDayStyle {
-        var calendarDayStyle = CalendarDayStyle()        
+        var calendarDayStyle = CalendarDayStyle()
         calendarDayStyle.isTodaysDate = date.startOfDay.isSameDay(as: .now.startOfDay)
         
         let installDate = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date ?? .now

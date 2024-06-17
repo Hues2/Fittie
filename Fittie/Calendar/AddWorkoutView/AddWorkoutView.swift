@@ -14,12 +14,9 @@ struct AddWorkoutView: View {
     }
     
     var body: some View {
-        VStack {
-            ZStack {
-                BackgroundView()
-                
-                content
-            }
+        ZStack {
+            BackgroundView()            
+            content
         }
         .sheet(isPresented: $showLogExercisesView) {
             // Add a new exercise
@@ -44,7 +41,7 @@ struct AddWorkoutView: View {
         } message: {
             Text("log_workout_delete_workout_alert_message")
         }
-
+        
     }
 }
 
