@@ -93,6 +93,7 @@ private extension ExercisesView {
             ForEach(exerciseNames, id: \.self) { exerciseName in
                 HStack {
                     Text(exerciseName.capitalized)
+                        .fontWeight(.light)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemName: "chevron.right")
                         .foregroundStyle(.accent)
@@ -105,10 +106,11 @@ private extension ExercisesView {
     
     func sectionCategoryTitle(_ category : String) -> some View {
         Text(category)
-            .font(.headline)
-            .fontWeight(.light)
+            .font(.title3)
+            .fontWeight(.semibold)
             .foregroundStyle(Color.secondaryAccent)
-            .padding()
+            .padding(8)
+            .padding(.top, 12)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(BackgroundView().cornerRadius(Constants.cornerRadius, corners: [.bottomLeft, .bottomRight]))
     }
