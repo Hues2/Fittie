@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct ExercisesView: View {
+    @EnvironmentObject private var router : Router
     @State private var searchText = ""
     @Query(sort: \ExerciseModel.exerciseCategoryRawValue, animation: .smooth) private var allExerciseModels: [ExerciseModel]
     @State private var filteredExercises : [String: [ExerciseModel]] = [:]
@@ -107,7 +108,7 @@ private extension ExercisesView {
     func sectionCategoryTitle(_ category : String) -> some View {
         Text(category)
             .font(.title3)
-            .fontWeight(.semibold)
+            .fontWeight(.light)
             .foregroundStyle(Color.secondaryAccent)
             .padding(8)
             .padding(.top, 12)
@@ -123,6 +124,7 @@ private extension ExercisesView {
                                      description: "exercises_view_no_models_description",
                                      buttonTitle: "exercises_view_no_models_button_title") {
             // Route user to the workouts tab
+            router.routeToCalendarTab()
         }
                                      .padding()
     }

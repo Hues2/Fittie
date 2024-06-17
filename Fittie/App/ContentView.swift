@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab: AppTab? = .home
+    @StateObject private var router : Router = Router()
     @State private var presentOnboarding : Bool = false
     @State private var hasSeenOnboarding : Bool = UserDefaults.standard.bool(forKey: Constants.UserDefaults.hasSeenOnboarding)
     
@@ -9,7 +9,8 @@ struct ContentView: View {
         if  !hasSeenOnboarding {
             onBoardingView
         } else {
-            AppTabView(selectedTab: $selectedTab)
+            AppTabView()
+                .environmentObject(router)
         }
     }
 }

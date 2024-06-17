@@ -45,6 +45,7 @@
 		2E69B9E02BF93F2E0006E12A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */; };
 		2E6A57692BF8D0E90012F0C1 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */; };
 		2E6D86EE2C1F337100EBF30D /* ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D86ED2C1F337100EBF30D /* ConditionalModifier.swift */; };
+		2E6EA9A72C20B80B008EC082 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EA9A62C20B80B008EC082 /* Router.swift */; };
 		2E709DDB2C01074C00250717 /* LoggedWeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */; };
 		2E7183C32BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */; };
 		2E7183C52BF827DF0029CAF0 /* StepGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */; };
@@ -139,6 +140,7 @@
 		2E69B9DF2BF93F2E0006E12A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		2E6A57682BF8D0E90012F0C1 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		2E6D86ED2C1F337100EBF30D /* ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalModifier.swift; sourceTree = "<group>"; };
+		2E6EA9A62C20B80B008EC082 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		2E709DDA2C01074C00250717 /* LoggedWeightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedWeightCell.swift; sourceTree = "<group>"; };
 		2E7183C22BF8066E0029CAF0 /* HomeCardGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardGroupBoxStyle.swift; sourceTree = "<group>"; };
 		2E7183C42BF827DF0029CAF0 /* StepGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGoalManager.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				2EC6CACD2BEE91F4009C7002 /* AppTab.swift */,
 				2EC6CAD22BEE9378009C7002 /* AppTabView.swift */,
 				2E68A0962BFFFDAC00C2A430 /* HomeTabScreen.swift */,
+				2E6EA9A62C20B80B008EC082 /* Router.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6EA9A72C20B80B008EC082 /* Router.swift in Sources */,
 				2E88060D2BF5636400E12456 /* StepGoalStepperView.swift in Sources */,
 				2E53A2FC2BEFE5CD00D81297 /* HomeNavigationStack.swift in Sources */,
 				2EA2F5C92BFA72BA003E3526 /* LogWeightView.swift in Sources */,

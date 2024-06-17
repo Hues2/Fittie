@@ -95,9 +95,6 @@
 
 // Workouts View
 "workouts_view_title" = "Workouts";
-"workouts_legend_today" = "Today";
-"workouts_legend_logged" = "Logged";
-"workouts_legend_not_logged" = "Not logged";
 
 // Log Workout View
 "log_workout_title" = "Logged workout";

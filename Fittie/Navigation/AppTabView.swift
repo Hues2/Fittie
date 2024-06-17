@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct AppTabView: View {
-    @Binding var selectedTab: AppTab?
+    @EnvironmentObject private var router : Router
     
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $router.selectedTab) {
             ForEach(AppTab.allCases) { screen in
                 screen.destination
                     .tag(screen as AppTab?)
