@@ -44,19 +44,19 @@ private extension WorkoutsView {
     }
 }
 
-// MARK: Day view colour -- Gets the background colour for the calendar day view
+// MARK: Day View Style
 private extension WorkoutsView {
     private func dayStyle(_ date: Date) -> CalendarDayStyle {
         var calendarDayStyle = CalendarDayStyle()        
-        calendarDayStyle.isTodaysDate = date.isSameDay(as: .now)
+        calendarDayStyle.isTodaysDate = date.startOfDay.isSameDay(as: .now.startOfDay)
         
         let installDate = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date ?? .now
         if loggedWorkouts.contains(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
             calendarDayStyle.strokeColor = Color.accentColor
-        } else if date < installDate {
+        } else if date < installDate.startOfDay {
             // If the date is before the install date, stroke should be .clear
             calendarDayStyle.strokeColor = .clear
-        } else if date > .now {
+        } else if date > .now.startOfDay {
             // If the date is in the future, stroke should be .gray
             calendarDayStyle.strokeColor = .gray.opacity(0.2)
         } else {

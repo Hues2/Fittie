@@ -33,6 +33,6 @@ struct FittieApp: App {
     private func setInstallDate() {
         let installDate : Date? = UserDefaults.standard.value(forKey: Constants.UserDefaults.installDate) as? Date
         guard installDate == nil else { return }
-        UserDefaults.standard.setValue(Date(), forKey: Constants.UserDefaults.installDate)
+        UserDefaults.standard.setValue(Date().startOfDay, forKey: Constants.UserDefaults.installDate)
     }
 }
