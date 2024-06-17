@@ -130,7 +130,8 @@ private extension ExercisesView {
 // MARK: No filtered exercises view
 private extension ExercisesView {
     var noFilteredExercisesView : some View {
-        CustomContentUnavailableView(title: "exercises_view_no_matching_exercises_title",
+        CustomContentUnavailableView(icon: "magnifyingglass.circle",
+                                     title: "exercises_view_no_matching_exercises_title",
                                      description: "exercises_view_no_matching_exercises_description",
                                      buttonTitle: "exercises_view_no_matching_exercises_button_title") {
             // Clear search

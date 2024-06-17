@@ -15,6 +15,7 @@ struct CustomContentUnavailableView: View {
             )
         } description: {
             Text(description)
+                .padding(4)
         } actions: {
             if let buttonTitle, let action {
                 Button {
