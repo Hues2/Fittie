@@ -45,7 +45,7 @@ struct DayView : View {
 
 #Preview {
     NavigationStack {
-        WorkoutsView()
+        WorkoutsView(viewModel: .init())
     }
 }
 

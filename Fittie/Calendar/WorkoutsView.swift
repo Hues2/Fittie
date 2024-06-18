@@ -2,26 +2,18 @@ import SwiftUI
 import SwiftData
 
 struct WorkoutsView: View {
+    @EnvironmentObject private var router : Router
+    @ObservedObject var viewModel : WorkoutsViewModel
     @Query(sort: \WorkoutModel.date, animation: .smooth) private var loggedWorkouts : [WorkoutModel]
     @State private var selectedCalendarDate : CalendarDate?
-    @State private var offset: CGFloat = .zero
-    
-    init(selectedCalendarDate: CalendarDate? = nil, offset: CGFloat = .zero) {
-        self._selectedCalendarDate = State(initialValue: selectedCalendarDate)
-        self.offset = offset
-    }     
+    @State private var offset: CGFloat = .zero        
     
     var body: some View {
         ZStack {
             BackgroundView()
             content
         }
-        .toolbar(.hidden)
-        .sheet(item: $selectedCalendarDate) { calendarDate in
-            AddWorkoutView(calendarDate: calendarDate)
-                .presentationDragIndicator(.visible)
-                .presentationCornerRadius(Constants.sheetCornerRadius)
-        }
+        .toolbar(.hidden)        
     }
 }
 
@@ -79,13 +71,13 @@ private extension WorkoutsView {
     func dayTapped(_ date : Date) {
         let selectedDateWorkout = loggedWorkouts
             .first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })
-        self.selectedCalendarDate = CalendarDate(date: date, workout: selectedDateWorkout)
+        self.viewModel.setSelectedCalendarDate(CalendarDate(date: date, workout: selectedDateWorkout))
     }
 }
 
 #Preview {
     NavigationStack {
-        WorkoutsView()
+        WorkoutsView(viewModel: WorkoutsViewModel())
     }
 }
 

@@ -7,6 +7,14 @@ final class Router : ObservableObject {
     @Published var homeNavigationPath : [HomeTabScreen] = []
     @Published var workoutsNavigationPath : [WorkoutsTabScreen] = []
     @Published var exercisesNavigationPath : [ExercisesTabScreen] = []
+    
+    // Home View Values
+    
+    
+    // Workouts View Values
+    @Published var addFirstWorkoutToggle : Bool = false
+    
+    // Exercises View Values
 }
 
 // MARK: Change tabs
@@ -33,7 +41,7 @@ extension Router {
 extension Router {
     func routeToAddFirstWorkout() {
         self.routeToWorkoutsTab()
-        self.workoutsNavigationPath.append(.addFirstWorkout)
+        self.addFirstWorkoutToggle.toggle()
     }
 }
 

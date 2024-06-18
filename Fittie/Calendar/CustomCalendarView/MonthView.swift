@@ -33,6 +33,6 @@ struct MonthView: View {
 
 #Preview {
     NavigationStack {
-        WorkoutsView()
+        WorkoutsView(viewModel: .init())
     }
 }

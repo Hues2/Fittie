@@ -37,6 +37,6 @@ private extension CustomCalendarView {
 
 #Preview {
     NavigationStack {
-        WorkoutsView()
+        WorkoutsView(viewModel: .init())
     }
 }
