@@ -9,7 +9,10 @@ struct HomeNavigationStack: View {
             // Root view --> Shows when homeNavigationPath is empty
             HomeView()
                 .navigationDestination(for: HomeTabScreen.self) { screen in
-                    
+                    switch screen {
+                    case .weightDetailView:
+                        WeightDetailView()
+                    }
                 }
         }        
     }
