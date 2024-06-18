@@ -1,5 +1,4 @@
 import Foundation
 
-enum ExercisesTabScreen : Hashable {
-    case rootView
+enum ExercisesTabScreen : Hashable {    
 }
