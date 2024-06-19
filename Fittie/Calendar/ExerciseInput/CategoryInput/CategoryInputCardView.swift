@@ -1,57 +1,79 @@
 import SwiftUI
 
 struct CategoryInputCardView: View {
-    let icon : String
-    let title: String
-    let isSelected : Bool
+    let exerciseCategory : ExerciseCategory
+    @Binding var selectedExerciseCategory : ExerciseCategory?
+    @State private var isSelected : Bool = false
     
     var body: some View {
         HStack {
-            Image(icon)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80)
-                .frame(alignment: .leading)
-                .frame(maxHeight: .infinity)
-                .foregroundStyle(isSelected ? .accent : .secondary)
-                .padding()
-                .background(Color.lightCard)
-                .cornerRadius(Constants.cornerRadius, corners: .allCorners)
-                .compositingGroup()
-                .shadow(radius: isSelected ? 4 : 0)
-            
-            Text(title)
-                .font(.title2)                
-                .fontWeight(.light)
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
+            image
+            title
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)        
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.card)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .overlay {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                .stroke(isSelected ? .accent : .clear)
+                .stroke((selectedExerciseCategory == exerciseCategory) ? .accent : .clear, lineWidth: 2)
+        }
+        .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        .onTapGesture {
+            withAnimation(.easeInOut) {
+                self.selectedExerciseCategory = exerciseCategory
+            }
+        }
+        .onAppear {
+            withAnimation {
+                self.isSelected = (selectedExerciseCategory == exerciseCategory)
+            }
+        }
+        .onChange(of: selectedExerciseCategory) { oldValue, newValue in
+            withAnimation {
+                self.isSelected = (selectedExerciseCategory == exerciseCategory)
+            }
+        }
+    }
+}
+
+private extension CategoryInputCardView {
+    var title : some View {
+        Text(exerciseCategory.rawValue)
+            .font(.title2)
+            .fontWeight(.light)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    @ViewBuilder var image : some View {
+        if isSelected {
+            Image(exerciseCategory.icon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80)
+                .frame(maxHeight: .infinity, alignment: .leading)
+                .foregroundStyle(.accent)
+                .padding()
+                .background(Color.lightCard)
+                .cornerRadius(Constants.cornerRadius, corners: .allCorners)
+                .compositingGroup()
+                .shadow(radius: 4)
+                .transition(.move(edge: .leading))
+        }
+    }
+}
+
+fileprivate struct CategoryInputViewPreview : View {
+    @State private var category : ExerciseCategory?
+    
+    var body: some View {
+        ZStack {
+            BackgroundView()
+            CategoryInputView(exerciseCategory: $category)
         }
     }
 }
 
 #Preview {
-    VStack {
-        CategoryInputCardView(icon: "chest_category", title: "Chest", isSelected: false)
-            .frame(height: 100)
-            .padding()
-        CategoryInputCardView(icon: "shoulders_category", title: "Shoulders", isSelected: true)
-            .frame(height: 100)
-            .padding()
-        CategoryInputCardView(icon: "arms_category", title: "Arms", isSelected: false)
-            .frame(height: 100)
-            .padding()
-        CategoryInputCardView(icon: "legs_category", title: "Legs", isSelected: false)
-            .frame(height: 100)
-            .padding()
-        CategoryInputCardView(icon: "back_category", title: "Back", isSelected: false)
-            .frame(height: 100)
-            .padding()
-    }
+    CategoryInputViewPreview()
 }

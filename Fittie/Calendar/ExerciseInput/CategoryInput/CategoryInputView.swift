@@ -12,15 +12,16 @@ struct CategoryInputView: View {
         ZStack {
             BackgroundView()
             VStack(spacing: 16) {
-                ForEach(ExerciseCategory.allCases) { category in
-                    CategoryInputCardView(icon: category.icon,
-                                          title: category.rawValue,
-                                          isSelected: exerciseCategory == category)
-                    .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                    .onTapGesture {
-                        self.exerciseCategory = category
-                    }
-                }
+                CategoryInputCardView(exerciseCategory: .Arms,
+                                      selectedExerciseCategory: $exerciseCategory)
+                CategoryInputCardView(exerciseCategory: .Back,
+                                      selectedExerciseCategory: $exerciseCategory)
+                CategoryInputCardView(exerciseCategory: .Chest,
+                                      selectedExerciseCategory: $exerciseCategory)
+                CategoryInputCardView(exerciseCategory: .Legs,
+                                      selectedExerciseCategory: $exerciseCategory)
+                CategoryInputCardView(exerciseCategory: .Shoulders,
+                                      selectedExerciseCategory: $exerciseCategory)
             }                     
             .padding()
         }
