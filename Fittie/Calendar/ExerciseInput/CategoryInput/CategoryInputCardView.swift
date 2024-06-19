@@ -12,9 +12,13 @@ struct CategoryInputCardView: View {
                 .scaledToFit()
                 .frame(width: 80)
                 .frame(alignment: .leading)
+                .frame(maxHeight: .infinity)
                 .foregroundStyle(isSelected ? .accent : .secondary)
                 .padding()
                 .background(Color.lightCard)
+                .cornerRadius(Constants.cornerRadius, corners: .allCorners)
+                .compositingGroup()
+                .shadow(radius: isSelected ? 4 : 0)
             
             Text(title)
                 .font(.title2)                

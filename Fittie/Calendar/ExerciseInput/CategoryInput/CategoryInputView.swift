@@ -27,6 +27,17 @@ struct CategoryInputView: View {
     }
 }
 
+fileprivate struct CategoryInputViewPreview : View {
+    @State private var category : ExerciseCategory?
+    
+    var body: some View {
+        ZStack {
+            BackgroundView()
+            CategoryInputView(exerciseCategory: $category)
+        }
+    }
+}
+
 #Preview {
-    CategoryInputView(exerciseCategory: .constant(.Chest))
+    CategoryInputViewPreview()
 }
