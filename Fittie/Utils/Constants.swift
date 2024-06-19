@@ -15,7 +15,7 @@ class Constants {
     static let bigCardTextSize : CGFloat = 40
     static let bigTextInputTextSize : CGFloat = 50
     static let setInputTextSize : CGFloat = 30
-    static let dynamicTypeSizeRange : ClosedRange<DynamicTypeSize> = .small ... .xxLarge
+    static let dynamicTypeSizeRange : ClosedRange<DynamicTypeSize> = .small ... .xLarge
     static let calendarLegendHeight : CGFloat = 40
     
     // MARK: - Values    
