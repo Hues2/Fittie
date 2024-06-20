@@ -27,12 +27,10 @@ struct CategoryInputCardView: View {
         }
         .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .onTapGesture {
-            withAnimation(.easeInOut) {
-                self.selectedExerciseCategory = exerciseCategory
-            }
+            self.selectedExerciseCategory = exerciseCategory            
         }
         .onChange(of: selectedExerciseCategory) { oldValue, newValue in
-            withAnimation(.easeInOut) {
+            withAnimation(.smooth) {
                 self.isSelected = (selectedExerciseCategory == exerciseCategory)
             }
         }
