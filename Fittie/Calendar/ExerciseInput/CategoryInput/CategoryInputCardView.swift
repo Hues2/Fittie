@@ -5,6 +5,14 @@ struct CategoryInputCardView: View {
     @Binding var selectedExerciseCategory : ExerciseCategory?
     @State private var isSelected : Bool = false
     
+    init(exerciseCategory: ExerciseCategory, selectedExerciseCategory: Binding<ExerciseCategory?>) {
+        self.exerciseCategory = exerciseCategory
+        self._selectedExerciseCategory = selectedExerciseCategory
+        withAnimation {
+            self.isSelected = (selectedExerciseCategory.wrappedValue == exerciseCategory)
+        }
+    }
+    
     var body: some View {
         HStack {
             image
@@ -21,11 +29,6 @@ struct CategoryInputCardView: View {
         .onTapGesture {
             withAnimation(.easeInOut) {
                 self.selectedExerciseCategory = exerciseCategory
-            }
-        }
-        .onAppear {
-            withAnimation {
-                self.isSelected = (selectedExerciseCategory == exerciseCategory)
             }
         }
         .onChange(of: selectedExerciseCategory) { oldValue, newValue in
