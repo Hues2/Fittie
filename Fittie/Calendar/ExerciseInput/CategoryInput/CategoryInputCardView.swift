@@ -23,7 +23,7 @@ struct CategoryInputCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .overlay {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                .stroke((selectedExerciseCategory == exerciseCategory) ? .accent : .clear, lineWidth: 2)
+                .stroke(isSelected ? .accent : .clear, lineWidth: 2)
         }
         .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .onTapGesture {
@@ -32,7 +32,7 @@ struct CategoryInputCardView: View {
             }
         }
         .onChange(of: selectedExerciseCategory) { oldValue, newValue in
-            withAnimation {
+            withAnimation(.easeInOut) {
                 self.isSelected = (selectedExerciseCategory == exerciseCategory)
             }
         }
