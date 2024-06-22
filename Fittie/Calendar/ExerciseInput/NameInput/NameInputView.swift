@@ -4,6 +4,7 @@ struct NameInputView: View {
     @Binding var exerciseName : String
     @Binding var filteredLoggedExercises : [Exercise]
     let numberOfExercisesInCategory : Int
+    @FocusState private var isFocused : Bool
     
     var body: some View {
         exerciseNameInput
@@ -23,15 +24,16 @@ private extension NameInputView {
     var exerciseNameTextField : some View {
         HStack {
             TextField("", text: $exerciseName, prompt: Text("log_exercise_name_textfield_prompt"))
+                .focused($isFocused)
             
             if !exerciseName.isEmpty {
                 Button {
-                    withAnimation(.smooth) {
+                    withAnimation(.snappy(duration: 0.3)) {
                         self.exerciseName = ""
                     }
                 } label: {
                     Image(systemName: "xmark.circle")
-                        .foregroundStyle(Color.secondaryAccent)
+                        .foregroundStyle(.accent)
                         .font(.title3)
                 }
             }
@@ -39,6 +41,11 @@ private extension NameInputView {
         .padding()
         .background(Color.card)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        .overlay {
+            RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                .stroke(isFocused ? .accent : .clear)
+        }
+        .padding(2)
     }
     
     @ViewBuilder var previouslyLoggedExerciseNamesView : some View {
