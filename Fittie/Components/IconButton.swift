@@ -2,7 +2,9 @@ import SwiftUI
 
 struct IconButton: View {
     let icon : String
+    var font : Font = .body
     let color : Color
+    var showBorder : Bool = true
     let action : () -> Void
     
     var body: some View {
@@ -10,10 +12,11 @@ struct IconButton: View {
             action()
         } label: {
             Image(systemName: icon)
-                .padding(12)
+                .font(font)
+                .padding(showBorder ? 12 : 0)
                 .background(
                     RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                        .stroke(color)
+                        .stroke(showBorder ? color : .clear)
                 )
                 .foregroundStyle(color)
                 .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))

@@ -55,12 +55,13 @@ private extension ExerciseCellView {
             
             if showDeleteButton {
                 deleteButton
+                    .padding(.horizontal, 8)
             }
         }
     }
     
     var deleteButton : some View {
-        IconButton(icon: "trash", color: Color.secondaryAccent) {
+        IconButton(icon: "trash", color: Color.secondaryAccent, showBorder: false) {
             // TODO: Delete action
         }
     }
