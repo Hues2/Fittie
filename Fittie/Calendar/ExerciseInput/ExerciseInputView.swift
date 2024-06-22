@@ -9,6 +9,7 @@ struct ExerciseInputView: View {
     // Exercise values
     @Binding var exerciseCategory : ExerciseCategory?
     @Binding var exerciseName : String
+    @State private var filterText : String = ""
     @Binding var sets : [WorkingSet]
     // This is the list of previously logged exercises
     // This allows the user to quickly select an already saved exercise
@@ -38,7 +39,7 @@ struct ExerciseInputView: View {
         .onChange(of: loggedExercises) { oldValue, newValue in
             filterExercises()
         }
-        .onChange(of: exerciseName) { oldValue, newValue in
+        .onChange(of: filterText) { oldValue, newValue in
             filterExercises()
         }
         .onDisappear {
@@ -69,7 +70,8 @@ private extension ExerciseInputView {
             CategoryInputView(exerciseCategory: $exerciseCategory)
                 .tag(ExercisePage.categorySelection)
             
-            NameInputView(exerciseName: $exerciseName,
+            NameInputView(filterText: $filterText,
+                          exerciseName: $exerciseName,
                           filteredLoggedExercises: $filteredLoggedExercises,
                           numberOfExercisesInCategory: numberOfExercisesInCategory)
             .tag(ExercisePage.exerciseNameInput)
@@ -132,6 +134,7 @@ private extension ExerciseInputView {
         case .categorySelection:
             return exerciseCategory == nil
         case .exerciseNameInput:
+            // TODO: This shouldn't use the filter text
             return exerciseName.isEmpty
         case .setInput:
             return sets.isEmpty
@@ -144,7 +147,7 @@ private extension ExerciseInputView {
     func filterExercises(_ animated : Bool = true) {
         let filtered = loggedExercises
             .filter { $0.exerciseCategoryRawValue == exerciseCategory?.rawValue }
-            .filter { $0.exerciseName.lowercased().starts(with: exerciseName.lowercased()) || $0.exerciseName.contains(exerciseName.lowercased()) }
+            .filter { $0.exerciseName.lowercased().starts(with: filterText.lowercased()) || $0.exerciseName.contains(filterText.lowercased()) }
         
         let uniqueExerciseNames = Set(filtered.map { $0.exerciseName.lowercased() })
         withAnimation(animated ? .smooth : .none) {
@@ -172,7 +175,9 @@ private extension ExerciseInputView {
 #Preview {
     Color.background
         .sheet(isPresented: .constant(true), content: {
-            ExerciseInputView(exerciseCategory: .constant(.Arms), exerciseName: .constant(""), sets: .constant([])) { }
+            ExerciseInputView(exerciseCategory: .constant(.Arms),
+                              exerciseName: .constant(""),
+                              sets: .constant([])) { }
 //                .withCustomSheetHeight()
         })
 }
