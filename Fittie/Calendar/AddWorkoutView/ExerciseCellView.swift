@@ -8,6 +8,7 @@ struct ExerciseCellView: View {
     let showDeleteButton : Bool
     var onDeleteSet : ((Int) -> Void)? = nil
     var onEditSet : ((Int) -> Void)? = nil
+    var onDeleteExercise : (() -> Void)? = nil
     
     var body: some View {
         cellContent
@@ -62,7 +63,7 @@ private extension ExerciseCellView {
     
     var deleteButton : some View {
         IconButton(icon: "trash", color: Color.secondaryAccent, showBorder: false) {
-            // TODO: Delete action
+            onDeleteExercise?()
         }
     }
     

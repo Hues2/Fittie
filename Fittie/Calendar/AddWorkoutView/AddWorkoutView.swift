@@ -134,7 +134,10 @@ private extension AddWorkoutView {
                                  name: exercise.exerciseName,
                                  sets: exercise.sets,
                                  showExerciseName: true,
-                                 showDeleteButton: viewModel.isNewWorkout)
+                                 showDeleteButton: viewModel.isNewWorkout,
+                                 onDeleteExercise: {
+                    self.viewModel.deleteExercise(exercise.id)
+                })
                 .padding(.vertical, 16)
                 .padding(.horizontal, 8)
             }
@@ -151,11 +154,7 @@ private extension AddWorkoutView {
 // MARK: Append exercise to list
 private extension AddWorkoutView {
     func addExercise(_ exercise : Exercise) {
-        // Add the new exercise to the workout list of exercises -- for the UI
-        self.viewModel.workout.exercises.append(exercise)
-        
-        // Also add the new exercise to the list of new exercises -- for saving to the context
-        self.viewModel.newExercises.append(exercise)
+        viewModel.addExercise(exercise)
     }
 }
 
