@@ -81,12 +81,12 @@ private extension AddWorkoutView {
             HStack {
                 mainTitle
                 
-                if viewModel.calendarDate.workout != nil {
+                if !viewModel.isNewWorkout {
                     // Workout is already added
                     deleteButton
                     
                 } else if !viewModel.workout.exercises.isEmpty {
-                    // Wokout isn't already added, but there has been an exercise added
+                    // It's a new workout, but the first exercise has been added
                     addExerciseText
                 }
             }
@@ -133,7 +133,8 @@ private extension AddWorkoutView {
                 ExerciseCellView(category: exercise.exerciseCategoryRawValue,
                                  name: exercise.exerciseName,
                                  sets: exercise.sets,
-                                 showExerciseName: true)
+                                 showExerciseName: true,
+                                 showDeleteButton: viewModel.isNewWorkout)
                 .padding(.vertical, 16)
                 .padding(.horizontal, 8)
             }

@@ -55,6 +55,7 @@ private extension SetsInputView {
                              name: "",
                              sets: sets,
                              showExerciseName: false,
+                             showDeleteButton: false,
                              onDeleteSet: { index in
                 // Delete set
                 self.deleteSet(index)

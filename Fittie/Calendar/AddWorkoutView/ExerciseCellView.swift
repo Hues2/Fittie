@@ -5,6 +5,7 @@ struct ExerciseCellView: View {
     let name : String
     let sets : [WorkingSet]
     let showExerciseName : Bool
+    let showDeleteButton : Bool
     var onDeleteSet : ((Int) -> Void)? = nil
     var onEditSet : ((Int) -> Void)? = nil
     
@@ -16,8 +17,8 @@ struct ExerciseCellView: View {
 private extension ExerciseCellView {
     var cellContent : some View {
         VStack {
-            if showExerciseName {
-                nameAndCategoryView
+            if showExerciseName || showDeleteButton {
+                titleAndDeleteButton
             }
             
             VStack(spacing: 0) {
@@ -47,12 +48,33 @@ private extension ExerciseCellView {
         }
     }
     
+    var titleAndDeleteButton : some View {
+        HStack {
+            nameAndCategoryView
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            if showDeleteButton {
+                deleteButton
+            }
+        }
+    }
+    
+    var deleteButton : some View {
+        IconButton(icon: "trash", color: Color.secondaryAccent) {
+            // TODO: Delete action
+        }
+    }
+    
     var nameAndCategoryView : some View {
-        Text(name.capitalized + " (\(category))")
-            .font(.headline)
-            .fontWeight(.light)
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity, alignment: .leading)
+        // Is in an HStack no ensure that is pushes the delete button to the trailing side
+        HStack {
+            if showExerciseName {
+                Text(name.capitalized + " (\(category))")
+                    .font(.headline)
+                    .fontWeight(.light)
+                    .foregroundStyle(.secondary)
+            }
+        }
     }
     
     var setRowHeader : some View {
@@ -128,7 +150,8 @@ private extension ExerciseCellView {
     return ExerciseCellView(category: "Chest",
                             name: "Dumbbell bench press",
                             sets: sets,
-                            showExerciseName: true) { _ in
+                            showExerciseName: true,
+                            showDeleteButton: true) { _ in
     }
 }
 
