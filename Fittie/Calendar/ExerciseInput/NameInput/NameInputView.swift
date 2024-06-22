@@ -80,8 +80,7 @@ private extension NameInputView {
     
     @ViewBuilder var previouslyLoggedExerciseNamesView : some View {
         VStack(spacing: 0) {
-            previouslyLoggedExerciseNamesViewTitle
-                        
+            previouslyLoggedExerciseNamesViewTitle            
             previouslyLoggedExerciseNamesListView
         }
         .padding(.top, 8)
@@ -104,35 +103,38 @@ private extension NameInputView {
     }
     
     var previouslyLoggedExerciseNamesListView : some View {
-        VStack {
-            ForEach(filteredLoggedExercises) { loggedExercise in
-                HStack {
-                    Text(loggedExercise.exerciseName.capitalized)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    if exerciseName.lowercased() == loggedExercise.exerciseName.lowercased() {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.accent)
+        ScrollView {
+            VStack {
+                ForEach(filteredLoggedExercises) { loggedExercise in
+                    HStack {
+                        Text(loggedExercise.exerciseName.capitalized)
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        if exerciseName.lowercased() == loggedExercise.exerciseName.lowercased() {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(.accent)
+                        }
                     }
-                }
-                .padding()
-                .background(Color.card)
-                .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                .overlay {
-                    RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                        .stroke((exerciseName.lowercased() == loggedExercise.exerciseName.lowercased()) ? .accent : .clear)
-                }
-                .padding(.horizontal, 2)
-                .onTapGesture {
-                    withAnimation(.snappy(duration: 0.3)) {
-                        if exerciseName == loggedExercise.exerciseName.capitalized {
-                            self.exerciseName = ""
-                        } else {
-                            self.exerciseName = loggedExercise.exerciseName.capitalized
+                    .padding()
+                    .background(Color.card)
+                    .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                            .stroke((exerciseName.lowercased() == loggedExercise.exerciseName.lowercased()) ? .accent : .clear)
+                    }
+                    .padding(.horizontal, 2)
+                    .onTapGesture {
+                        withAnimation(.snappy(duration: 0.3)) {
+                            if exerciseName == loggedExercise.exerciseName.capitalized {
+                                self.exerciseName = ""
+                            } else {
+                                self.exerciseName = loggedExercise.exerciseName.capitalized
+                            }
                         }
                     }
                 }
             }
+            .frame(maxWidth: .infinity)
         }
     }
 }
