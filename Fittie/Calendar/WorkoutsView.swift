@@ -26,18 +26,14 @@ private extension WorkoutsView {
 
 // MARK: Calendar
 private extension WorkoutsView {
-    var calendar : some View {
-        ScrollView {
-            CustomCalendarView(getDayViewStyle: { selectedDate in
-                dayStyle(selectedDate)
-            }, dayTapped: { date in
-                dayTapped(date)
-            })
-            .padding(.horizontal)
-            .padding(.bottom, 16)
-        }
-        .contentMargins(.top, 24, for: .scrollContent)
-        .scrollIndicators(.hidden)
+    var calendar : some View {        
+        CustomCalendarView(getDayViewStyle: { selectedDate in
+            dayStyle(selectedDate)
+        }, dayTapped: { date in
+            dayTapped(date)
+        })
+        .padding(.horizontal)
+        .padding(.bottom, 16)            
     }
 }
 
