@@ -80,7 +80,7 @@ private extension NameInputView {
     
     @ViewBuilder var previouslyLoggedExerciseNamesView : some View {
         VStack(spacing: 0) {
-            previouslyLoggedExerciseNamesViewTitle            
+            previouslyLoggedExerciseNamesViewTitle
             previouslyLoggedExerciseNamesListView
         }
         .padding(.top, 8)
@@ -135,6 +135,7 @@ private extension NameInputView {
                 }
             }
             .frame(maxWidth: .infinity)
+            .padding(.top, 2)
         }
     }
 }

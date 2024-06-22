@@ -33,6 +33,7 @@ struct ExerciseInputView: View {
             setExercisesInCategory(false)
         }
         .onChange(of: exerciseCategory) { oldValue, newValue in
+            resetValues()
             filterExercises()
             setExercisesInCategory()
         }
@@ -142,7 +143,7 @@ private extension ExerciseInputView {
     }
 }
 
-// MARK: Filter funcitons
+// MARK: Filter functions
 private extension ExerciseInputView {
     func filterExercises(_ animated : Bool = true) {
         let filtered = loggedExercises
@@ -169,6 +170,15 @@ private extension ExerciseInputView {
         withAnimation(animated ? .smooth : .none) {
             self.numberOfExercisesInCategory = uniqueExercises.count
         }
+    }
+}
+
+// MARK: Reset values
+private extension ExerciseInputView {
+    func resetValues() {
+        self.filterText = ""
+        self.exerciseName = ""
+        self.sets = []
     }
 }
 
