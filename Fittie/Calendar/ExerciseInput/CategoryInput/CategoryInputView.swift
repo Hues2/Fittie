@@ -6,7 +6,7 @@ struct CategoryInputView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-                VStack {
+            VStack(spacing: 20) {
                     CategoryInputCardView(exerciseCategory: .Arms,
                                           selectedExerciseCategory: $exerciseCategory)
                     CategoryInputCardView(exerciseCategory: .Back,
