@@ -47,6 +47,7 @@ private extension SetsInputView {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.bottom, 12)
     }
     
     var addedSetsView : some View {
