@@ -9,7 +9,6 @@ struct ExerciseInputView: View {
     // Exercise values
     @Binding var exerciseCategory : ExerciseCategory?
     @Binding var exerciseName : String
-    @State private var filterText : String = ""
     @Binding var sets : [WorkingSet]
     // This is the list of previously logged exercises
     // This allows the user to quickly select an already saved exercise
@@ -40,7 +39,7 @@ struct ExerciseInputView: View {
         .onChange(of: loggedExercises) { oldValue, newValue in
             filterExercises()
         }
-        .onChange(of: filterText) { oldValue, newValue in
+        .onChange(of: exerciseName) { oldValue, newValue in
             filterExercises()
         }
         .onDisappear {
@@ -71,8 +70,7 @@ private extension ExerciseInputView {
             CategoryInputView(exerciseCategory: $exerciseCategory)
                 .tag(ExercisePage.categorySelection)
             
-            NameInputView(filterText: $filterText,
-                          exerciseName: $exerciseName,
+            NameInputView(exerciseName: $exerciseName,
                           filteredLoggedExercises: $filteredLoggedExercises,
                           numberOfExercisesInCategory: numberOfExercisesInCategory)
             .tag(ExercisePage.exerciseNameInput)
@@ -148,7 +146,7 @@ private extension ExerciseInputView {
     func filterExercises(_ animated : Bool = true) {
         let filtered = loggedExercises
             .filter { $0.exerciseCategoryRawValue == exerciseCategory?.rawValue }
-            .filter { $0.exerciseName.lowercased().starts(with: filterText.lowercased()) || $0.exerciseName.contains(filterText.lowercased()) }
+            .filter { $0.exerciseName.lowercased().starts(with: exerciseName.lowercased()) || $0.exerciseName.contains(exerciseName.lowercased()) }
         
         let uniqueExerciseNames = Set(filtered.map { $0.exerciseName.lowercased() })
         withAnimation(animated ? .smooth : .none) {
@@ -176,7 +174,6 @@ private extension ExerciseInputView {
 // MARK: Reset values
 private extension ExerciseInputView {
     func resetValues() {
-        self.filterText = ""
         self.exerciseName = ""
         self.sets = []
     }

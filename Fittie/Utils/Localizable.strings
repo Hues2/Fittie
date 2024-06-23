@@ -107,7 +107,7 @@
 
 // Exercise input view
 "log_exercise_name_add_new_exercise_name" = "Add exercise name";
-"log_exercise_name_textfield_filter_prompt" = "Search exercises";
+"log_exercise_name_textfield_filter_prompt" = "Enter exercise name";
 "log_exercise_saved_exercises_title" = "Previously saved";
 "log_exercise_add_set_weight_title" = "Weight (%@):";
 "log_exercise_add_set_weight_prompt" = "Add weight";

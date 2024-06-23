@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct NameInputView: View {    
-    @Binding var filterText : String
     @Binding var exerciseName : String
     @Binding var filteredLoggedExercises : [Exercise]
     let numberOfExercisesInCategory : Int
@@ -14,52 +13,30 @@ struct NameInputView: View {
     }
 }
 
+// MARK: Content
 private extension NameInputView {
     var content : some View {
-        VStack {
-            if numberOfExercisesInCategory != 0 {
-                filterSection
-            } else {
-                addNewNameText
-            }
-        }
-    }
-}
-
-private extension NameInputView {
-    var addNewNameText : some View {
-        AddItemTextView(title: "log_exercise_name_add_new_exercise_name", font: .title)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .contentShape(Rectangle())
-            .onTapGesture {
-                self.showAddExerciseNameSheet = true
-            }
-    }
-}
-
-// MARK: Filter Section
-private extension NameInputView {
-    var filterSection : some View {
         VStack(spacing: 0) {
             filterTextField
             
-            previouslyLoggedExerciseNamesView
-                .frame(maxHeight: .infinity, alignment: .top)
+            if numberOfExercisesInCategory > 0 {
+                previouslyLoggedExerciseNamesView
+                    .frame(maxHeight: .infinity, alignment: .top)
+            }
         }
     }
-    
+}
+
+private extension NameInputView {
     var filterTextField : some View {
         HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(.secondary)
-            
-            TextField("", text: $filterText, prompt: Text("log_exercise_name_textfield_filter_prompt"))
+            TextField("", text: $exerciseName, prompt: Text("log_exercise_name_textfield_filter_prompt"))
                 .focused($isFocused)
             
-            if !filterText.isEmpty {
+            if !exerciseName.isEmpty {
                 Button {
                     withAnimation(.snappy(duration: 0.3)) {
-                        self.filterText = ""
+                        self.exerciseName = ""
                     }
                 } label: {
                     Image(systemName: "xmark.circle")
@@ -68,7 +45,7 @@ private extension NameInputView {
                 .buttonStyle(.plain)
             }
         }
-        .padding(10)
+        .padding(22)
         .background(Color.card)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .overlay {
@@ -140,6 +117,8 @@ private extension NameInputView {
     }
 }
 
+
+// MARK: Preview
 #Preview {
     Color.background
         .sheet(isPresented: .constant(true), content: {
@@ -157,8 +136,7 @@ fileprivate struct NameInputPreview : View {
     @State private var filterText : String = ""
     
     var body: some View {
-        NameInputView(filterText: $filterText,
-                      exerciseName: $name,
+        NameInputView(exerciseName: $name,
                       filteredLoggedExercises: .constant([Exercise(exerciseCategoryRawValue: "Chest", exerciseName: "Bench press")]),
                       numberOfExercisesInCategory: 2)
     }
