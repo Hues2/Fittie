@@ -19,7 +19,7 @@ struct AddExerciseView: View {
     func saveExerciseAction() {
         guard let exerciseCategory else { return }
         let newExercise = Exercise(exerciseCategoryRawValue: exerciseCategory.rawValue,
-                                   exerciseName: exerciseName,
+                                   exerciseName: exerciseName.lowercased(),
                                    sets: sets)
         saveExercise(newExercise)
     }

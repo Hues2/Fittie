@@ -45,7 +45,7 @@ private extension NameInputView {
                 .buttonStyle(.plain)
             }
         }
-        .padding(22)
+        .padding(24)
         .background(Color.card)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .overlay {
@@ -69,6 +69,8 @@ private extension NameInputView {
                 Text("log_exercise_saved_exercises_title")
                 Text(" (\(numberOfExercisesInCategory))")
             }
+            .font(.subheadline)
+            .fontWeight(.light)
             .frame(maxWidth: .infinity, alignment: .leading)
             
             Image(systemName: "chevron.down")
@@ -107,6 +109,8 @@ private extension NameInputView {
                             } else {
                                 self.exerciseName = loggedExercise.exerciseName.capitalized
                             }
+                            
+                            self.isFocused = false
                         }
                     }
                 }
