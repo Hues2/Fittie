@@ -32,6 +32,7 @@ private extension CustomCalendarView {
                         .id(item.element.name)
                     }
                 }
+                .padding()
             }
             .contentMargins(.top, 24, for: .scrollContent)
             .scrollIndicators(.hidden)

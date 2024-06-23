@@ -13,7 +13,6 @@ struct WorkoutsView: View {
             BackgroundView()
             content
         }
-        .toolbar(.hidden)        
     }
 }
 
@@ -31,9 +30,7 @@ private extension WorkoutsView {
             dayStyle(selectedDate)
         }, dayTapped: { date in
             dayTapped(date)
-        })
-        .padding(.horizontal)
-        .padding(.bottom, 16)            
+        })          
     }
 }
 
