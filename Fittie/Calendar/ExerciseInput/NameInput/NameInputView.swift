@@ -69,13 +69,10 @@ private extension NameInputView {
                 Text("log_exercise_saved_exercises_title")
                 Text(" (\(numberOfExercisesInCategory))")
             }
-            .font(.subheadline)
-            .fontWeight(.light)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Image(systemName: "chevron.down")
+            .frame(maxWidth: .infinity, alignment: .leading)                        
         }
-        .font(.headline)
+        .font(.subheadline)
+        .fontWeight(.light)
         .foregroundStyle(Color.secondaryAccent)
         .padding(.vertical)
         .contentShape(Rectangle())
