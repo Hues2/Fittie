@@ -2,9 +2,9 @@ import SwiftUI
 
 struct CustomButton: View {
     let title : LocalizedStringKey
+    var backgroundColor : Color = Color.accentColor
+    var foregroundColor : Color = Color.white
     let action : () -> Void
-    let backgroundColor : Color = Color.accentColor
-    let foregroundColor : Color = Color.white
     
     var body: some View {
         Button {
