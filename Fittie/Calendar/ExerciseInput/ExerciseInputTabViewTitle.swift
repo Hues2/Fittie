@@ -21,7 +21,7 @@ struct ExerciseInputTabViewTitle: View {
             .foregroundStyle(Color.secondaryAccent)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .buttonStyle(ScaleButtonStyle())
+        .buttonStyle(ScaleButtonStyle(canScale: false))
         .disabled(!showBackButton)
     }
 }
