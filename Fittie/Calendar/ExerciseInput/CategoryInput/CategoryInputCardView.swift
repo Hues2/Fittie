@@ -14,7 +14,7 @@ struct CategoryInputCardView: View {
     }
     
     var body: some View {
-        VStack {
+        HStack {
             image
             title
         }
@@ -40,25 +40,27 @@ struct CategoryInputCardView: View {
 private extension CategoryInputCardView {
     var title : some View {
         Text(exerciseCategory.rawValue)
-            .font(.headline)
+            .font(.title2)
             .fontWeight(.light)
-            .padding(12)
+            .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     @ViewBuilder var image : some View {
-        Image(exerciseCategory.icon)
-            .resizable()
-            .scaledToFit()
-            .frame(height: 80)
-            .frame(maxHeight: .infinity, alignment: .leading)
-            .foregroundStyle(isSelected ? .accent : .secondary)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.lightCard)
-            .cornerRadius(Constants.cornerRadius, corners: .allCorners)
-            .compositingGroup()
-            .shadow(radius: 4)
+        if isSelected {
+            Image(exerciseCategory.icon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80)
+                .frame(maxHeight: .infinity, alignment: .leading)
+                .foregroundStyle(.accent)
+                .padding()
+                .background(Color.lightCard)
+                .cornerRadius(Constants.cornerRadius, corners: .allCorners)
+                .compositingGroup()
+                .shadow(radius: 4)
+                .transition(.move(edge: .leading))
+        }
     }
 }
 
