@@ -27,7 +27,7 @@ struct DayView : View {
         .frame(minWidth: 42, minHeight: 42)
         .background {
             Circle()
-                .stroke(dayStyle(day).strokeColor, lineWidth: 2)
+                .stroke(dayStyle(day).strokeColor, lineWidth: 1)
         }
         .onTapGesture {
             action()

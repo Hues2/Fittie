@@ -101,46 +101,6 @@ private extension ExerciseCellView {
     }
 }
 
-private extension ExerciseCellView {
-    // Add this for preview
-    var previewContent : some View {
-        VStack(spacing: 0) {
-            ExerciseCellContentView(setNumber: 1,
-                                    weight: 22.5,
-                                    reps: 10,
-                                    isScrollDisabled: false) {
-                
-            } onEditSet: {
-                
-            }
-            ExerciseCellContentView(setNumber: 1,
-                                    weight: 22.5,
-                                    reps: 10,
-                                    isScrollDisabled: false) {
-                
-            } onEditSet: {
-                
-            }
-            ExerciseCellContentView(setNumber: 1,
-                                    weight: 22.5,
-                                    reps: 10,
-                                    isScrollDisabled: false) {
-                
-            } onEditSet: {
-                
-            }
-            ExerciseCellContentView(setNumber: 1,
-                                    weight: 22.5,
-                                    reps: 10,
-                                    isScrollDisabled: false) {
-                
-            } onEditSet: {
-                
-            }
-        }
-    }
-}
-
 #Preview {
     let sets : [WorkingSet] = [
         .init(number: 1, kg: 22.5, reps: 10),
