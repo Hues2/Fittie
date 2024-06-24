@@ -14,11 +14,7 @@ struct CategoryInputView: View {
             }
         }
         .onAppear {
-            guard let exerciseCategory else {
-                self.selectedExerciseCategoryId = ExerciseCategory.allCases.first?.rawValue
-                return
-            }
-            self.selectedExerciseCategoryId = exerciseCategory.rawValue
+            setExerciseCategory()
         }
     }
     
@@ -37,7 +33,6 @@ struct CategoryInputView: View {
         .scrollPosition(id: $selectedExerciseCategoryId)
         .scrollIndicators(.hidden)
         .onChange(of: selectedExerciseCategoryId) { oldValue, newValue in
-            print(newValue)
             guard let newValue else { return }
             self.exerciseCategory = ExerciseCategory(rawValue: newValue)
         }
@@ -49,17 +44,28 @@ private extension CategoryInputView {
     var legend : some View {
         HStack(spacing: 8) {
             ForEach(ExerciseCategory.allCases) { exerciseCategory in
-                legendIcon(exerciseCategory.icon)
+                legendIcon(exerciseCategory)
             }
         }
-        .foregroundStyle(.secondary)
     }
     
-    func legendIcon(_ icon : String) -> some View {
-        Image(icon)
+    func legendIcon(_ exerciseCategory : ExerciseCategory) -> some View {
+        Image(exerciseCategory.icon)
             .resizable()
             .scaledToFit()
             .frame(height: 20)
+            .foregroundStyle(exerciseCategory.id == selectedExerciseCategoryId ? .accent : .secondary)
+    }
+}
+
+// MARK: Set the selected exercise category on appear
+private extension CategoryInputView {
+    func setExerciseCategory() {
+        guard let exerciseCategory else {
+            self.selectedExerciseCategoryId = ExerciseCategory.allCases.first?.id
+            return
+        }
+        self.selectedExerciseCategoryId = exerciseCategory.id
     }
 }
 
