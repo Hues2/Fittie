@@ -20,10 +20,9 @@ struct CategoryInputView: View {
     
     var scrollView : some View {
         ScrollView(.horizontal) {
-            LazyHStack(spacing: 0) {
+            HStack(spacing: 0) {
                 ForEach(ExerciseCategory.allCases) { exerciseCategory in
-                    CategoryInputCardView(exerciseCategory: exerciseCategory,
-                                          selectedExerciseCategory: $exerciseCategory)
+                    CategoryInputCardView(exerciseCategory: exerciseCategory)
                     .containerRelativeFrame(.horizontal)
                 }
             }

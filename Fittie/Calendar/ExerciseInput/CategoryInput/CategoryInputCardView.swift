@@ -2,39 +2,14 @@ import SwiftUI
 
 struct CategoryInputCardView: View {
     let exerciseCategory : ExerciseCategory
-    @Binding var selectedExerciseCategory : ExerciseCategory?
-    @State private var isSelected : Bool = false
-    
-    init(exerciseCategory: ExerciseCategory, selectedExerciseCategory: Binding<ExerciseCategory?>) {
-        self.exerciseCategory = exerciseCategory
-        self._selectedExerciseCategory = selectedExerciseCategory
-        withAnimation {
-            self.isSelected = (selectedExerciseCategory.wrappedValue == exerciseCategory)
-        }                
-    }
     
     var body: some View {
         VStack {
             image
             title
         }
+        .frame(maxWidth: .infinity)
         .padding()
-        .frame(maxWidth: .infinity)        
-        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-        .overlay {
-            RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                .stroke(isSelected ? .accent : .clear, lineWidth: 2)
-        }
-        .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-        .onTapGesture {
-            self.selectedExerciseCategory = exerciseCategory            
-        }
-        .onChange(of: selectedExerciseCategory) { oldValue, newValue in
-            withAnimation(.smooth) {
-                self.isSelected = (selectedExerciseCategory == exerciseCategory)
-            }
-        }
-        .padding()       
     }
 }
 
@@ -42,8 +17,7 @@ private extension CategoryInputCardView {
     var title : some View {
         Text(exerciseCategory.rawValue)
             .font(.title)
-            .fontWeight(.light)
-            .padding()
+            .fontWeight(.medium)            
     }
     
     var image : some View {
