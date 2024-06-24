@@ -1,8 +1,6 @@
 import Foundation
 
-enum ExerciseCategory : String, Identifiable, CaseIterable {
-    var id : String { UUID().uuidString }
-    
+enum ExerciseCategory : String, CaseIterable, Hashable {
     case Chest
     case Arms
     case Shoulders

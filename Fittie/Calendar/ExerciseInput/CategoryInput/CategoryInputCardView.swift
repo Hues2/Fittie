@@ -18,8 +18,9 @@ struct CategoryInputCardView: View {
             image
             title
         }
+        .padding()
         .frame(maxWidth: .infinity)
-//        .background(Color.card)
+        .background(Color.card)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .overlay {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
@@ -58,6 +59,8 @@ private extension CategoryInputCardView {
             .frame(height: 144)
             .foregroundStyle(.accent)
             .padding()
+            .compositingGroup()
+            .shadow(color: .black.opacity(0.4), radius: 4)
     }
 }
 
