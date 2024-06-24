@@ -20,7 +20,7 @@ struct CategoryInputView: View {
     
     var scrollView : some View {
         ScrollView(.horizontal) {
-            HStack(spacing: 0) {
+            LazyHStack(spacing: 0) {
                 ForEach(ExerciseCategory.allCases) { exerciseCategory in
                     CategoryInputCardView(exerciseCategory: exerciseCategory,
                                           selectedExerciseCategory: $exerciseCategory)
@@ -42,11 +42,16 @@ struct CategoryInputView: View {
 // MARK: Legend
 private extension CategoryInputView {
     var legend : some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 12) {
             ForEach(ExerciseCategory.allCases) { exerciseCategory in
                 legendIcon(exerciseCategory)
             }
         }
+        .padding()
+        .background(Color.card)
+        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        .compositingGroup()
+        .shadow(color: .black.opacity(0.3), radius: 4)
     }
     
     func legendIcon(_ exerciseCategory : ExerciseCategory) -> some View {
