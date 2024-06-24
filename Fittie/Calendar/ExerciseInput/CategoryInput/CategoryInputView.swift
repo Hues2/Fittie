@@ -6,19 +6,37 @@ struct CategoryInputView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            VStack(spacing: 16) {
+            ScrollView(.horizontal) {
+                HStack(spacing: 0) {
+                    // MARK: Arms
                     CategoryInputCardView(exerciseCategory: .Arms,
                                           selectedExerciseCategory: $exerciseCategory)
+                    .containerRelativeFrame(.horizontal)
+                    
+                    // MARK: Back
                     CategoryInputCardView(exerciseCategory: .Back,
                                           selectedExerciseCategory: $exerciseCategory)
+                    .containerRelativeFrame(.horizontal)
+                    
+                    // MARK: Chest
                     CategoryInputCardView(exerciseCategory: .Chest,
                                           selectedExerciseCategory: $exerciseCategory)
-                    CategoryInputCardView(exerciseCategory: .Legs,
-                                          selectedExerciseCategory: $exerciseCategory)
+                    .containerRelativeFrame(.horizontal)
+                    
+                    // MARK: Shoulders
                     CategoryInputCardView(exerciseCategory: .Shoulders,
                                           selectedExerciseCategory: $exerciseCategory)
+                    .containerRelativeFrame(.horizontal)
+                    
+                    // MARK: Legs
+                    CategoryInputCardView(exerciseCategory: .Legs,
+                                          selectedExerciseCategory: $exerciseCategory)
+                    .containerRelativeFrame(.horizontal)
                 }
-                .padding(2)
+                .scrollTargetLayout()
+            }
+            .scrollTargetBehavior(.paging)
+            .scrollIndicators(.hidden)
         }
     }
 }

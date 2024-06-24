@@ -10,16 +10,16 @@ struct CategoryInputCardView: View {
         self._selectedExerciseCategory = selectedExerciseCategory
         withAnimation {
             self.isSelected = (selectedExerciseCategory.wrappedValue == exerciseCategory)
-        }
+        }                
     }
     
     var body: some View {
-        HStack {
+        VStack {
             image
             title
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.card)
+        .frame(maxWidth: .infinity)
+//        .background(Color.card)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .overlay {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
@@ -34,33 +34,30 @@ struct CategoryInputCardView: View {
                 self.isSelected = (selectedExerciseCategory == exerciseCategory)
             }
         }
+        .padding()
+        .scrollTransition { view, phase in
+            view
+                .scaleEffect(phase.isIdentity ? 1 : 0.3)
+                .opacity(phase.isIdentity ? 1 : 0.5)                
+        }
     }
 }
 
 private extension CategoryInputCardView {
     var title : some View {
         Text(exerciseCategory.rawValue)
-            .font(.title2)
+            .font(.title)
             .fontWeight(.light)
             .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
     }
     
-    @ViewBuilder var image : some View {
-        if isSelected {
-            Image(exerciseCategory.icon)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80)
-                .frame(maxHeight: .infinity, alignment: .leading)
-                .foregroundStyle(.accent)
-                .padding()
-                .background(Color.lightCard)
-                .cornerRadius(Constants.cornerRadius, corners: .allCorners)
-                .compositingGroup()
-                .shadow(radius: 4)
-                .transition(.move(edge: .leading))
-        }
+    var image : some View {
+        Image(exerciseCategory.icon)
+            .resizable()
+            .scaledToFit()
+            .frame(height: 144)
+            .foregroundStyle(.accent)
+            .padding()
     }
 }
 
@@ -70,7 +67,7 @@ fileprivate struct CategoryInputViewPreview : View {
     var body: some View {
         ZStack {
             BackgroundView()
-            CategoryInputView(exerciseCategory: $category)
+            CategoryInputView(exerciseCategory: $category)                
         }
     }
 }
