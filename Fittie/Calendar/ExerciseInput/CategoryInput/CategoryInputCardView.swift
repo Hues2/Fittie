@@ -35,12 +35,7 @@ struct CategoryInputCardView: View {
                 self.isSelected = (selectedExerciseCategory == exerciseCategory)
             }
         }
-        .padding()
-        .scrollTransition { view, phase in
-            view
-                .scaleEffect(phase.isIdentity ? 1 : 0.3)
-                .opacity(phase.isIdentity ? 1 : 0.5)                
-        }
+        .padding()       
     }
 }
 

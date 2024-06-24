@@ -1,11 +1,15 @@
 import Foundation
 
-enum ExerciseCategory : String, CaseIterable, Hashable {
-    case Chest
+enum ExerciseCategory : String, Identifiable, CaseIterable, Hashable {
     case Arms
-    case Shoulders
     case Back
+    case Chest
+    case Shoulders
     case Legs
+    
+    var id : String {
+        self.rawValue
+    }
     
     var exerciseNames : [String] {
         switch self {
