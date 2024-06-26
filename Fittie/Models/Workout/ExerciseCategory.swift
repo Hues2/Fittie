@@ -11,20 +11,6 @@ enum ExerciseCategory : String, Identifiable, CaseIterable, Hashable {
         self.rawValue
     }
     
-    var exerciseNames : [String] {
-        switch self {
-        case .Chest:
-            Constants.chestExercises
-        case .Arms:
-            Constants.armExercises
-        case .Shoulders:
-            Constants.shoulderExercises
-        case .Back:
-            Constants.backExercises
-        case .Legs:
-            Constants.legExercises
-        }}
-    
     var icon : String {
         switch self {
         case .Chest:
