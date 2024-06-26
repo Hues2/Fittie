@@ -25,7 +25,6 @@ struct ExerciseInputView: View {
             BackgroundView()
             
             content
-                .padding()
         }
         .onAppear {
             filterExercises(false)
@@ -63,6 +62,7 @@ private extension ExerciseInputView {
                    showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) { previousPage() }
             .animation(.none, value: exercisePage)
             .padding(.top, 24)
+            .padding()
     }
     
     var tabView : some View {
@@ -76,9 +76,11 @@ private extension ExerciseInputView {
             .tag(ExercisePage.exerciseNameInput)
             // Have to add this here, as the textfield inside this view causes the sheet to lose its corner radius (for some reason)
             .presentationCornerRadius(Constants.sheetCornerRadius)
+            .padding()
             
             SetsInputView(sets: $sets)
                 .tag(ExercisePage.setInput)
+                .padding()
         }
         .presentationCornerRadius(Constants.sheetCornerRadius)
         .tabViewStyle(.page(indexDisplayMode: .never))
@@ -98,6 +100,7 @@ private extension ExerciseInputView {
         .padding(.bottom, 4)
         .animation(.none, value: exercisePage)
         .disabled(buttonIsDisabled())
+        .padding()
     }
     
     private func buttonAction() {
