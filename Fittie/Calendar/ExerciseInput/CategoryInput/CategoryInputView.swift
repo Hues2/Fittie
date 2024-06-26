@@ -18,11 +18,11 @@ struct CategoryInputView: View {
         }
     }
     
-    var scrollView : some View {
+    var scrollView : some View {        
         ScrollView(.horizontal) {
             HStack(spacing: 0) {
                 ForEach(ExerciseCategory.allCases) { exerciseCategory in
-                    CategoryInputCardView(exerciseCategory: exerciseCategory)
+                    categoryItem(exerciseCategory)
                     .containerRelativeFrame(.horizontal)
                 }
             }
@@ -38,10 +38,38 @@ struct CategoryInputView: View {
     }
 }
 
+private extension CategoryInputView {
+    func categoryItem(_ exerciseCategory : ExerciseCategory) -> some View {
+        VStack {
+            image(exerciseCategory.icon)
+            title(exerciseCategory.rawValue)
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+    }
+    
+    func title(_ title : String) -> some View {
+        Text(title)
+            .font(.title)
+            .fontWeight(.medium)
+    }
+    
+    func image(_ icon : String) -> some View {
+        Image(icon)
+            .resizable()
+            .scaledToFit()
+            .frame(height: 144)
+            .foregroundStyle(.accent)
+            .padding()
+            .compositingGroup()
+            .shadow(color: .black.opacity(0.4), radius: 4)
+    }
+}
+
 // MARK: Legend
 private extension CategoryInputView {
     var legend : some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 16) {
             ForEach(ExerciseCategory.allCases) { exerciseCategory in
                 legendIcon(exerciseCategory)
             }

@@ -99,7 +99,6 @@
 		2EC6CAEC2BEEEBB5009C7002 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6CAEB2BEEEBB5009C7002 /* Date.swift */; };
 		2EC6E2212C08F09A0056B4B4 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6E2202C08F09A0056B4B4 /* Workout.swift */; };
 		2ED7F5A32BF169FE00720874 /* CustomSheetHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */; };
-		2EE9B4CC2C0E320A001D40C8 /* CategoryInputCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */; };
 		2EE9B4CE2C0E3EB2001D40C8 /* ExercisePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */; };
 		2EE9B4D22C0E80C4001D40C8 /* AddItemTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9B4D12C0E80C4001D40C8 /* AddItemTextView.swift */; };
 /* End PBXBuildFile section */
@@ -199,7 +198,6 @@
 		2EC6CAEB2BEEEBB5009C7002 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		2EC6E2202C08F09A0056B4B4 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		2ED7F5A22BF169FE00720874 /* CustomSheetHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetHeight.swift; sourceTree = "<group>"; };
-		2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputCardView.swift; sourceTree = "<group>"; };
 		2EE9B4CD2C0E3EB2001D40C8 /* ExercisePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePage.swift; sourceTree = "<group>"; };
 		2EE9B4D12C0E80C4001D40C8 /* AddItemTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				2E5225BA2C0D24B30021C8C8 /* CategoryInputView.swift */,
-				2EE9B4CB2C0E320A001D40C8 /* CategoryInputCardView.swift */,
 			);
 			path = CategoryInput;
 			sourceTree = "<group>";
@@ -656,7 +653,6 @@
 				2E90E7902BFE64B1003DE59F /* WeightGoalManager.swift in Sources */,
 				2EE9B4CE2C0E3EB2001D40C8 /* ExercisePage.swift in Sources */,
 				2E68A09E2C00160100C2A430 /* UIApplication.swift in Sources */,
-				2EE9B4CC2C0E320A001D40C8 /* CategoryInputCardView.swift in Sources */,
 				2E5512422C0F79770044FB21 /* ExerciseCellView.swift in Sources */,
 				2EBC6EAD2BF4274A00FCDBA4 /* LoadingView.swift in Sources */,
 				2E64893F2BF6CFDC00D083FB /* Int.swift in Sources */,
