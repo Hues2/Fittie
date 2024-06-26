@@ -2,7 +2,6 @@ import SwiftUI
 
 struct CategoryInputView: View {
     @Binding var exerciseCategory : ExerciseCategory?
-    @State private var selectedExerciseCategoryId : String?
     @Namespace private var namespace
     
     var body: some View {
@@ -22,7 +21,7 @@ struct CategoryInputView: View {
     var scrollView : some View {        
         ScrollView(.horizontal) {
             LazyHStack(spacing: 0) {
-                ForEach(ExerciseCategory.allCases) { exerciseCategory in
+                ForEach(ExerciseCategory.allCases, id:\.self) { exerciseCategory in
                     categoryItem(exerciseCategory)
                         .containerRelativeFrame(.horizontal)
                 }
@@ -30,14 +29,8 @@ struct CategoryInputView: View {
             .scrollTargetLayout()
         }
         .scrollTargetBehavior(.paging)
-        .scrollPosition(id: $selectedExerciseCategoryId)
+        .scrollPosition(id: $exerciseCategory)
         .scrollIndicators(.hidden)
-        .onChange(of: selectedExerciseCategoryId) { oldValue, newValue in
-            guard let newValue else { return }
-            withAnimation {
-                self.exerciseCategory = ExerciseCategory(rawValue: newValue)
-            }
-        }
     }
 }
 
@@ -90,7 +83,7 @@ private extension CategoryInputView {
                 .resizable()
                 .scaledToFit()
                 .frame(height: 20)
-                .foregroundStyle(exerciseCategory.id == selectedExerciseCategoryId ? .accent : .secondary)
+                .foregroundStyle(exerciseCategory.id == self.exerciseCategory?.id ? .accent : .secondary)
             
             if exerciseCategory.id == self.exerciseCategory?.id {
                 Color.accentColor
@@ -110,10 +103,10 @@ private extension CategoryInputView {
 private extension CategoryInputView {
     func setExerciseCategory() {
         guard let exerciseCategory else {
-            self.selectedExerciseCategoryId = ExerciseCategory.allCases.first?.id
+            self.exerciseCategory = ExerciseCategory.allCases.first
             return
         }
-        self.selectedExerciseCategoryId = exerciseCategory.id
+        self.exerciseCategory = exerciseCategory
     }
 }
 
