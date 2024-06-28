@@ -19,9 +19,9 @@ struct CategoryInputView: View {
             setExerciseCategory()
         }
         .onChange(of: selectedExerciseCategoryId) { oldValue, newValue in
-            guard let newValue, let category = ExerciseCategory(rawValue: newValue) else { return }
+            guard let newValue else { return }
             withAnimation {
-                self.exerciseCategory = category
+                self.exerciseCategory = ExerciseCategory(rawValue: newValue)
             }
         }
     }
@@ -95,15 +95,10 @@ private extension CategoryInputView {
                 .resizable()
                 .scaledToFit()
                 .frame(height: 20)
-                .foregroundStyle(exerciseCategory.id == self.selectedExerciseCategoryId ? .accent : .secondary)
-                .scaleEffect(exerciseCategory.id == self.selectedExerciseCategoryId ? 1.2 : 0.8)
-                .onTapGesture {
-                    withAnimation {
-                        self.selectedExerciseCategoryId = exerciseCategory.id
-                    }
-                }
+                .foregroundStyle(exerciseCategory == self.exerciseCategory ? .accent : .secondary)
+                .scaleEffect(exerciseCategory == self.exerciseCategory ? 1.2 : 0.8)
             
-            if self.selectedExerciseCategoryId == exerciseCategory.id {
+            if self.exerciseCategory == exerciseCategory {
                 Color.accentColor
                     .frame(width: 16, height: 2)
                     .clipShape(.capsule)
@@ -114,7 +109,12 @@ private extension CategoryInputView {
                     .clipShape(.capsule)
             }
         }
-        .animation(.smooth, value: selectedExerciseCategoryId)
+        .onTapGesture {
+            withAnimation {
+                self.exerciseCategory = exerciseCategory
+                self.selectedExerciseCategoryId = exerciseCategory.id
+            }
+        }
     }
 }
 
@@ -123,7 +123,7 @@ private extension CategoryInputView {
     func setExerciseCategory() {
         guard let exerciseCategory else {
             self.exerciseCategory = categories.first
-            self.selectedExerciseCategoryId = self.exerciseCategory?.id
+            self.selectedExerciseCategoryId = categories.first?.id
             return
         }
         self.exerciseCategory = exerciseCategory
