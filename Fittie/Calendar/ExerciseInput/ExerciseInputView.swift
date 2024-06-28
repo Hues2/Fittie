@@ -101,6 +101,7 @@ private extension ExerciseInputView {
                       filteredLoggedExercises: $filteredLoggedExercises,
                       numberOfExercisesInCategory: numberOfExercisesInCategory)
         .id(ExercisePage.exerciseNameInput.id)
+        .padding()
         .containerRelativeFrame(.horizontal)
         // Have to add this here, as the textfield inside this view causes the sheet to lose its corner radius (for some reason)
         .presentationCornerRadius(Constants.sheetCornerRadius)
@@ -109,6 +110,7 @@ private extension ExerciseInputView {
     var setsInputView : some View {
         SetsInputView(sets: $sets)
             .id(ExercisePage.setInput.id)
+            .padding()
             .containerRelativeFrame(.horizontal)
     }
 }
