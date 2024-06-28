@@ -15,6 +15,8 @@ struct ExerciseInputView: View {
     @Query(sort: \ExerciseModel.exerciseName, animation: .smooth) private var loggedExercises : [ExerciseModel]
         
     @State private var exercisePage : ExercisePage = .categorySelection
+    @State private var exercisePageId : Int?
+    
     @State private var filteredLoggedExercises : [Exercise] = []
     @State private var numberOfExercisesInCategory : Int = 0
     
@@ -51,13 +53,13 @@ struct ExerciseInputView: View {
 private extension ExerciseInputView {
     var content : some View {
         VStack(spacing: Constants.paddingAboveSaveButton) {
-            tabViewTitle
-            tabView
+            pageTitle
+            scrollView
             nextPageButton
         }
     }
     
-    var tabViewTitle : some View {
+    var pageTitle : some View {
         ExerciseInputTabViewTitle(title: exercisePage.title,
                    showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) { previousPage() }
             .animation(.none, value: exercisePage)
@@ -65,33 +67,47 @@ private extension ExerciseInputView {
             .padding()
     }
     
-    var tabView : some View {
-        TabView(selection: $exercisePage) {
-            CategoryInputView(exerciseCategory: $exerciseCategory)
-                .tag(ExercisePage.categorySelection)
-            
-            NameInputView(exerciseName: $exerciseName,
-                          filteredLoggedExercises: $filteredLoggedExercises,
-                          numberOfExercisesInCategory: numberOfExercisesInCategory)
-            .tag(ExercisePage.exerciseNameInput)
-            // Have to add this here, as the textfield inside this view causes the sheet to lose its corner radius (for some reason)
-            .presentationCornerRadius(Constants.sheetCornerRadius)
-            .padding()
-            
-            SetsInputView(sets: $sets)
-                .tag(ExercisePage.setInput)
-                .padding()
+    var scrollView : some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 0) {
+                categoryInputPage
+                
+                nameInputView
+                
+                setsInputView
+            }
+            .scrollTargetLayout()
         }
+        .scrollTargetBehavior(.paging)
+        .contentMargins(.zero)
+        .scrollDisabled(true)
+        .scrollPosition(id: $exercisePageId)
+    }
+    
+    var categoryInputPage : some View {
+        CategoryInputView(exerciseCategory: $exerciseCategory)
+            .id(ExercisePage.categorySelection.id)
+            .containerRelativeFrame(.horizontal)
+    }
+    
+    var nameInputView : some View {
+        NameInputView(exerciseName: $exerciseName,
+                      filteredLoggedExercises: $filteredLoggedExercises,
+                      numberOfExercisesInCategory: numberOfExercisesInCategory)
+        .id(ExercisePage.exerciseNameInput.id)
+        .containerRelativeFrame(.horizontal)
+        // Have to add this here, as the textfield inside this view causes the sheet to lose its corner radius (for some reason)
         .presentationCornerRadius(Constants.sheetCornerRadius)
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .onAppear {
-            // Block the swipe gesture for the tab view
-            Utils.disableScroll(false)
-        }
+    }
+    
+    var setsInputView : some View {
+        SetsInputView(sets: $sets)
+            .id(ExercisePage.setInput.id)
+            .containerRelativeFrame(.horizontal)
     }
 }
 
-// MARK: Tabview button
+// MARK: Button
 private extension ExerciseInputView {
     var nextPageButton : some View {
         CustomButton(title: exercisePage.buttonTitle) {
@@ -119,6 +135,7 @@ private extension ExerciseInputView {
         if let nextPage = ExercisePage(rawValue: exercisePage.rawValue + 1) {
             withAnimation(.smooth) {
                 exercisePage = nextPage
+                self.exercisePageId = nextPage.id
             }
         }
     }
@@ -127,6 +144,7 @@ private extension ExerciseInputView {
         if let previousPage = ExercisePage(rawValue: exercisePage.rawValue - 1) {
             withAnimation(.smooth) {
                 exercisePage = previousPage
+                self.exercisePageId = previousPage.id
             }
         }
     }

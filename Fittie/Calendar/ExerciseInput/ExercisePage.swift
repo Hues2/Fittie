@@ -1,9 +1,11 @@
 import SwiftUI
 
-enum ExercisePage : Int, CaseIterable {
+enum ExercisePage : Int, Identifiable, CaseIterable {
     case categorySelection = 0
     case exerciseNameInput = 1
     case setInput = 2
+    
+    var id : Int { self.rawValue }
     
     var title : LocalizedStringKey {
         switch self {
