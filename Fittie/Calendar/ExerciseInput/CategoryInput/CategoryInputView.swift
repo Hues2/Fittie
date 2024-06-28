@@ -34,7 +34,7 @@ struct CategoryInputView: View {
                         .containerRelativeFrame(.horizontal)
                         .scrollTransition { view, phase in
                             view
-                                .scaleEffect(phase.isIdentity ? 1 : 0.2)
+                                .scaleEffect(phase.isIdentity ? 1 : 0.1)
                         }
                 }
             }
@@ -82,7 +82,8 @@ private extension CategoryInputView {
                 legendIcon(exerciseCategory)
             }
         }
-        .padding()
+        .padding(8)
+        .padding(.horizontal, 4)
         .background(Color.card)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .compositingGroup()
@@ -91,6 +92,10 @@ private extension CategoryInputView {
     
     func legendIcon(_ exerciseCategory : ExerciseCategory) -> some View {
         VStack {
+            Color.clear
+                .frame(width: 16, height: 2)
+                .clipShape(.capsule)
+            
             Image(exerciseCategory.icon)
                 .resizable()
                 .scaledToFit()
