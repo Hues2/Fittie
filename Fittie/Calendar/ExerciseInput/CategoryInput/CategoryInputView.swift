@@ -3,8 +3,8 @@ import SwiftUI
 struct CategoryInputView: View {
     let categories = ExerciseCategory.allCases
     @Binding var exerciseCategory : ExerciseCategory?
-    @State private var id : String?
-    @State private var selectedExerciseCategory : ExerciseCategory?
+    @State private var selectedExerciseCategoryId : String?
+    @Namespace private var namespace
     
     var body: some View {
         ZStack {
@@ -18,10 +18,9 @@ struct CategoryInputView: View {
         .onAppear {
             setExerciseCategory()
         }
-        .onChange(of: id) { oldValue, newValue in
+        .onChange(of: selectedExerciseCategoryId) { oldValue, newValue in
             guard let newValue, let category = ExerciseCategory(rawValue: newValue) else { return }
             withAnimation {
-                self.selectedExerciseCategory = category
                 self.exerciseCategory = category
             }
         }
@@ -33,12 +32,16 @@ struct CategoryInputView: View {
                 ForEach(categories) { exerciseCategory in
                     categoryItem(exerciseCategory)
                         .containerRelativeFrame(.horizontal)
+                        .scrollTransition { view, phase in
+                            view
+                                .scaleEffect(phase.isIdentity ? 1 : 0.2)
+                        }
                 }
             }
             .scrollTargetLayout()
         }
         .scrollTargetBehavior(.paging)
-        .scrollPosition(id: $id)
+        .scrollPosition(id: $selectedExerciseCategoryId)
         .scrollIndicators(.hidden)
     }
 }
@@ -87,17 +90,31 @@ private extension CategoryInputView {
     }
     
     func legendIcon(_ exerciseCategory : ExerciseCategory) -> some View {
-        Image(exerciseCategory.icon)
-            .resizable()
-            .scaledToFit()
-            .frame(height: 20)
-            .foregroundStyle(exerciseCategory == self.selectedExerciseCategory ? .accent : .secondary)
-            .scaleEffect(exerciseCategory == self.selectedExerciseCategory ? 1.4 : 0.8)
-            .onTapGesture {
-                withAnimation {
-                    self.id = exerciseCategory.id
+        VStack {
+            Image(exerciseCategory.icon)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 20)
+                .foregroundStyle(exerciseCategory.id == self.selectedExerciseCategoryId ? .accent : .secondary)
+                .scaleEffect(exerciseCategory.id == self.selectedExerciseCategoryId ? 1.2 : 0.8)
+                .onTapGesture {
+                    withAnimation {
+                        self.selectedExerciseCategoryId = exerciseCategory.id
+                    }
                 }
+            
+            if self.selectedExerciseCategoryId == exerciseCategory.id {
+                Color.accentColor
+                    .frame(width: 16, height: 2)
+                    .clipShape(.capsule)
+                    .matchedGeometryEffect(id: "legend", in: namespace)
+            } else {
+                Color.clear
+                    .frame(width: 16, height: 2)
+                    .clipShape(.capsule)
             }
+        }
+        .animation(.smooth, value: selectedExerciseCategoryId)
     }
 }
 
@@ -106,11 +123,11 @@ private extension CategoryInputView {
     func setExerciseCategory() {
         guard let exerciseCategory else {
             self.exerciseCategory = categories.first
-            self.selectedExerciseCategory = self.exerciseCategory
+            self.selectedExerciseCategoryId = self.exerciseCategory?.id
             return
         }
         self.exerciseCategory = exerciseCategory
-        self.selectedExerciseCategory = self.exerciseCategory
+        self.selectedExerciseCategoryId = exerciseCategory.id
     }
 }
 

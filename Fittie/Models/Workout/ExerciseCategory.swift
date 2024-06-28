@@ -7,9 +7,7 @@ enum ExerciseCategory : String, Identifiable, CaseIterable, Hashable {
     case Shoulders
     case Legs
     
-    var id : String {
-        self.rawValue
-    }
+    var id : String { self.rawValue }
     
     var icon : String {
         switch self {
