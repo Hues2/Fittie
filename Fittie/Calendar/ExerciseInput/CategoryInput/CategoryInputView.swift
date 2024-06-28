@@ -5,7 +5,6 @@ struct CategoryInputView: View {
     @Binding var exerciseCategory : ExerciseCategory?
     @State private var id : String?
     @State private var selectedExerciseCategory : ExerciseCategory?
-    @Namespace private var namespace
     
     var body: some View {
         ZStack {
@@ -23,6 +22,7 @@ struct CategoryInputView: View {
             guard let newValue, let category = ExerciseCategory(rawValue: newValue) else { return }
             withAnimation {
                 self.selectedExerciseCategory = category
+                self.exerciseCategory = category
             }
         }
     }
@@ -92,7 +92,12 @@ private extension CategoryInputView {
             .scaledToFit()
             .frame(height: 20)
             .foregroundStyle(exerciseCategory == self.selectedExerciseCategory ? .accent : .secondary)
-            .scaleEffect(exerciseCategory == self.selectedExerciseCategory ? 1.2 : 0.8)
+            .scaleEffect(exerciseCategory == self.selectedExerciseCategory ? 1.4 : 0.8)
+            .onTapGesture {
+                withAnimation {
+                    self.id = exerciseCategory.id
+                }
+            }
     }
 }
 
