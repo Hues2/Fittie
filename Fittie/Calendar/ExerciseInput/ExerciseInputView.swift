@@ -58,7 +58,10 @@ private extension ExerciseInputView {
             nextPageButton
         }
     }
-    
+}
+
+// MARK: Page Title
+private extension ExerciseInputView {
     var pageTitle : some View {
         ExerciseInputTabViewTitle(title: exercisePage.title,
                    showBackButton: (exercisePage.rawValue > ExercisePage.categorySelection.rawValue)) { previousPage() }
@@ -66,7 +69,10 @@ private extension ExerciseInputView {
             .padding(.top, 24)
             .padding()
     }
-    
+}
+
+// MARK: Paging ScrollView
+private extension ExerciseInputView {
     var scrollView : some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
@@ -154,7 +160,6 @@ private extension ExerciseInputView {
         case .categorySelection:
             return exerciseCategory == nil
         case .exerciseNameInput:
-            // TODO: This shouldn't use the filter text
             return exerciseName.isEmpty
         case .setInput:
             return sets.isEmpty
@@ -200,6 +205,9 @@ private extension ExerciseInputView {
     }
 }
 
+
+
+// MARK: Preview
 #Preview {
     Color.background
         .sheet(isPresented: .constant(true), content: {
