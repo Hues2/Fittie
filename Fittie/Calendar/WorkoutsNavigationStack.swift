@@ -21,7 +21,9 @@ struct WorkoutsNavigationStack: View {
         .onChange(of: router.addFirstWorkoutToggle) { _, _ in
             // This shows the add workout sheet for todays date
             // This will run when the user taps on the "Log your first workout" from the exercises view
-            self.viewModel.selectedCalendarDate = CalendarDate(date: .now.startOfDay, workout: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.viewModel.selectedCalendarDate = CalendarDate(date: .now.startOfDay, workout: nil)
+            }
         }
     }
 }
