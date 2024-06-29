@@ -77,18 +77,20 @@ private extension CategoryInputView {
 // MARK: Legend
 private extension CategoryInputView {
     var legend : some View {
-        HStack(spacing: 20) {
+        HStack(spacing: 16) {
             ForEach(categories) { exerciseCategory in
                 legendIcon(exerciseCategory)
             }
         }
         .padding(8)
         .padding(.horizontal, 4)
-        .background(Color.background)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        .overlay {
+            RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                .stroke(Color.card)
+        }
         .compositingGroup()
-//        .shadow(color: .black.opacity(0.2), radius: 4)
-        .neumorphic()
+        .shadow(color: .black.opacity(1), radius: 4)
     }
     
     func legendIcon(_ exerciseCategory : ExerciseCategory) -> some View {
@@ -101,12 +103,13 @@ private extension CategoryInputView {
                 .resizable()
                 .scaledToFit()
                 .frame(height: 24)
+                .frame(width: 20)
                 .foregroundStyle(exerciseCategory == self.exerciseCategory ? .accent : .secondary)
                 .scaleEffect(exerciseCategory == self.exerciseCategory ? 1.3 : 1)
             
             if self.exerciseCategory == exerciseCategory {
                 Color.accentColor
-                    .frame(width: 16, height: 2)
+                    .frame(width: 12, height: 2)
                     .clipShape(.capsule)
                     .matchedGeometryEffect(id: "legend", in: namespace)
             } else {
@@ -151,12 +154,4 @@ fileprivate struct CategoryInputViewPreview : View {
 
 #Preview {
     CategoryInputViewPreview()
-}
-
-extension View {
-    func neumorphic() -> some View {
-        self
-            .shadow(color: Color.black.opacity(0.9), radius: 10, x: 10, y: 10)
-            .shadow(color: Color.secondary.opacity(0.1), radius: 5, x: -5, y: -5)
-    }
 }
