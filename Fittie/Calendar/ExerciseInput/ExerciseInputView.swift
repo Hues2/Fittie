@@ -43,9 +43,6 @@ struct ExerciseInputView: View {
         .onChange(of: exerciseName) { oldValue, newValue in
             filterExercises()
         }
-        .onDisappear {
-            Utils.disableScroll(true)
-        }
     }
 }
 

@@ -1,10 +1,12 @@
 import SwiftUI
 
-enum OnboardingPage : Int, CaseIterable {
+enum OnboardingPage : Int, Identifiable, CaseIterable {
     case setStepGoal = 0
     case setWeightGoal = 1
     case getHealthKitPermission = 2
     case allSet = 3
+    
+    var id : Int { self.rawValue }
     
     var buttonTitle : LocalizedStringKey {
         switch self {
@@ -25,24 +27,27 @@ struct OnboardingView: View {
     @FocusState private var isFocused : Bool
     @StateObject private var viewModel = OnboardingViewModel()
     @State private var onBoardingPage : OnboardingPage = .setStepGoal
+    @State private var onBoardingPageId : Int?
+    
     @Binding var hasSeenOnboarding : Bool
     
     var body: some View {
         VStack {
-            TabView(selection: $onBoardingPage) {
-                SetStepGoalView(stepGoal: $viewModel.stepGoal)
-                    .tag(OnboardingPage.setStepGoal)
-                
-                SetWeightGoalView(isFocused: $isFocused, weightGoal: $viewModel.weightGoal)
-                    .tag(OnboardingPage.setWeightGoal)
-                
-                ActivityPermissionsView()
-                    .tag(OnboardingPage.getHealthKitPermission)
-                
-                AllSetView()
-                    .tag(OnboardingPage.allSet)
+            ScrollView(.horizontal) {
+                HStack {
+                    setStepGoalView
+                    
+                    setWeightGoalView
+                    
+                    activityPermissionsView
+                    
+                    allSetView
+                }
+                .scrollTargetLayout()
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
+            .scrollTargetBehavior(.paging)
+            .scrollPosition(id: $onBoardingPageId)
+            .scrollDisabled(true)
             
             pageControlView
                 .padding(.horizontal, 24)
@@ -57,13 +62,37 @@ struct OnboardingView: View {
             backButton
                 .padding(16)
         }
-        .onAppear {
-            // Block the swipe gesture for the tab view
-            UIScrollView.appearance().isScrollEnabled = false
-        }
     }
 }
 
+// MARK: Pages
+private extension OnboardingView {
+    var setStepGoalView : some View {
+        SetStepGoalView(stepGoal: $viewModel.stepGoal)
+            .id(OnboardingPage.setStepGoal.id)
+            .containerRelativeFrame(.horizontal)
+    }
+    
+    var setWeightGoalView : some View {
+        SetWeightGoalView(isFocused: $isFocused, weightGoal: $viewModel.weightGoal)
+            .id(OnboardingPage.setWeightGoal.id)
+            .containerRelativeFrame(.horizontal)
+    }
+    
+    var activityPermissionsView : some View {
+        ActivityPermissionsView()
+            .id(OnboardingPage.getHealthKitPermission.id)
+            .containerRelativeFrame(.horizontal)
+    }
+    
+    var allSetView : some View {
+        AllSetView()
+            .id(OnboardingPage.allSet.id)
+            .containerRelativeFrame(.horizontal)
+    }
+}
+
+// MARK: Back Button
 private extension OnboardingView {
     @ViewBuilder var backButton : some View {
         if onBoardingPage != .setStepGoal && onBoardingPage != .allSet {
@@ -137,7 +166,8 @@ private extension OnboardingView {
         self.isFocused = false
         if let nextPage = OnboardingPage(rawValue: onBoardingPage.rawValue + 1) {
             withAnimation {
-                onBoardingPage = nextPage
+                self.onBoardingPage = nextPage
+                self.onBoardingPageId = nextPage.id
             }
         }
     }
@@ -146,7 +176,8 @@ private extension OnboardingView {
         self.isFocused = false
         if let previousPage = OnboardingPage(rawValue: onBoardingPage.rawValue - 1) {
             withAnimation {
-                onBoardingPage = previousPage
+                self.onBoardingPage = previousPage
+                self.onBoardingPageId = previousPage.id
             }
         }
     }
