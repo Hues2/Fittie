@@ -88,9 +88,7 @@ private extension CategoryInputView {
         .overlay {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .stroke(Color.card)
-        }
-        .compositingGroup()
-        .shadow(color: .black.opacity(1), radius: 4)
+        }        
     }
     
     func legendIcon(_ exerciseCategory : ExerciseCategory) -> some View {
