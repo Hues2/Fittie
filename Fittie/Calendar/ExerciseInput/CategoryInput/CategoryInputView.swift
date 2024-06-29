@@ -10,7 +10,7 @@ struct CategoryInputView: View {
         ZStack {
             BackgroundView()
             
-            VStack(spacing: 24) {
+            VStack(spacing: 32) {
                 scrollView
                 legend
             }
@@ -77,17 +77,18 @@ private extension CategoryInputView {
 // MARK: Legend
 private extension CategoryInputView {
     var legend : some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 20) {
             ForEach(categories) { exerciseCategory in
                 legendIcon(exerciseCategory)
             }
         }
         .padding(8)
         .padding(.horizontal, 4)
-        .background(Color.card)
+        .background(Color.background)
         .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         .compositingGroup()
-        .shadow(color: .black.opacity(0.3), radius: 4)
+//        .shadow(color: .black.opacity(0.2), radius: 4)
+        .neumorphic()
     }
     
     func legendIcon(_ exerciseCategory : ExerciseCategory) -> some View {
@@ -99,9 +100,9 @@ private extension CategoryInputView {
             Image(exerciseCategory.icon)
                 .resizable()
                 .scaledToFit()
-                .frame(height: 20)
+                .frame(height: 24)
                 .foregroundStyle(exerciseCategory == self.exerciseCategory ? .accent : .secondary)
-                .scaleEffect(exerciseCategory == self.exerciseCategory ? 1.2 : 0.8)
+                .scaleEffect(exerciseCategory == self.exerciseCategory ? 1.3 : 1)
             
             if self.exerciseCategory == exerciseCategory {
                 Color.accentColor
@@ -150,4 +151,12 @@ fileprivate struct CategoryInputViewPreview : View {
 
 #Preview {
     CategoryInputViewPreview()
+}
+
+extension View {
+    func neumorphic() -> some View {
+        self
+            .shadow(color: Color.black.opacity(0.9), radius: 10, x: 10, y: 10)
+            .shadow(color: Color.secondary.opacity(0.1), radius: 5, x: -5, y: -5)
+    }
 }
