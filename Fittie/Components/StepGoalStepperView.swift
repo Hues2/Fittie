@@ -33,10 +33,10 @@ struct StepGoalStepperView: View {
         } label: {
             Image(systemName: icon)
                 .foregroundStyle(.white)
-                .font(.title)
+                .font(.title2)
                 .fontWeight(.bold)
                 .padding()
-                .frame(width: 55, height: 55)
+                .frame(width: 50, height: 50)
                 .background(isDisabled ? Color.secondary : Color.accentColor)
                 .clipShape(Circle())
                 .contentShape(Circle())
