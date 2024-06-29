@@ -26,6 +26,7 @@ struct OnboardingView: View {
     @Environment(\.dismiss) private var dismiss
     @FocusState private var isFocused : Bool
     @StateObject private var viewModel = OnboardingViewModel()
+    
     @State private var onBoardingPage : OnboardingPage = .setStepGoal
     @State private var onBoardingPageId : Int?
     
@@ -34,7 +35,7 @@ struct OnboardingView: View {
     var body: some View {
         VStack {
             ScrollView(.horizontal) {
-                HStack {
+                LazyHStack(spacing: 0) {
                     setStepGoalView
                     
                     setWeightGoalView
@@ -47,6 +48,7 @@ struct OnboardingView: View {
             }
             .scrollTargetBehavior(.paging)
             .scrollPosition(id: $onBoardingPageId)
+            .contentMargins(.zero)
             .scrollDisabled(true)
             
             pageControlView

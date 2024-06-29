@@ -41,7 +41,7 @@ private extension AllSetView {
     }
     
     func checkmark(_ title : LocalizedStringKey) -> some View {
-        HStack {
+        HStack(spacing: 12) {
             Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(Color.accentColor)
             Text(title)

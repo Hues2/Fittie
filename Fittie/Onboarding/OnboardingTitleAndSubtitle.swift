@@ -9,6 +9,7 @@ struct OnboardingTitleAndSubtitle: View {
             Text(title)                
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .foregroundStyle(.secondaryAccent)
             
             Text(subtitle)                
                 .font(.headline)
@@ -18,4 +19,8 @@ struct OnboardingTitleAndSubtitle: View {
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
+}
+
+#Preview {
+    OnboardingTitleAndSubtitle(title: "Onboarding title", subtitle: "Some sort of very long subtitle")
 }
