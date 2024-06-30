@@ -9,7 +9,7 @@ class Constants {
     static let horizontalScrollviewPadding : CGFloat = 12
     static let paddingAboveSaveButton : CGFloat = 20
     static let cardHeight : CGFloat = 72
-    static let graphCardHeight : CGFloat = 272
+    static let graphCardHeight : CGFloat = 280
     static let minimumScaleFactor : CGFloat = 0.3
     static let lineSpacing : CGFloat = 4
     static let bigCardTextSize : CGFloat = 40
