@@ -24,7 +24,7 @@ private extension AllSetView {
                 .resizable()
                 .scaledToFit()
                 .frame(maxHeight: 200)
-                .foregroundStyle(Color.accentColor, Color.accentColor.opacity(0.2))
+                .foregroundStyle(Color.accentColor, Color.card)
                 .symbolRenderingMode(.palette)
             
             Text("onboarding_all_set_title")
