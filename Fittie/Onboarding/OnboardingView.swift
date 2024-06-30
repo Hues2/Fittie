@@ -10,11 +10,14 @@ struct OnboardingView: View {
     
     @Binding var hasSeenOnboarding : Bool
     
+    // UI Values
+    private let animation : Animation = .snappy(duration: 0.3)
+    
     var body: some View {
         VStack {
             pageControlView
-                .padding(.horizontal, 24)
-                .padding(.top, 20)
+                .padding(.horizontal, 32)
+                .padding(.top, 32)
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
@@ -36,7 +39,7 @@ struct OnboardingView: View {
             nextPageButton
                 .padding(.horizontal, 24)
         }
-        .padding(.bottom, 32)
+        .padding(.bottom, 0)
         .padding(.top, 52)
         .contentShape(RoundedRectangle(cornerRadius: Constants.sheetCornerRadius))
         .onTapGesture {
@@ -78,10 +81,9 @@ private extension OnboardingView {
 
 // MARK: Page Indicator
 private extension OnboardingView {
-    @ViewBuilder var pageControlView : some View {
-        if onBoardingPage != .allSet {
-            pageControlCircleView
-        }
+    var pageControlView : some View {
+        pageControlCircleView
+            .opacity(onBoardingPage != .allSet ? 1 : 0)
     }
     
     var pageControlCircleView : some View {
@@ -98,24 +100,22 @@ private extension OnboardingView {
 
 // MARK: Back Button
 private extension OnboardingView {
-    @ViewBuilder var backButton : some View {
-        if onBoardingPage != .setStepGoal && onBoardingPage != .allSet {
-            Button {
-                previousPage()
-            } label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "chevron.left")
-                    Text("onboarding_back_button_title")
-                }
+    var backButton : some View {
+        Button {
+            previousPage()
+        } label: {
+            Image(systemName: "chevron.left")
                 .font(.title3)
+                .fontWeight(.semibold)
                 .foregroundStyle(Color.accentColor)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(12)
+                .background(.card)
+                .clipShape(Circle())
                 .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-            }
-            .transition(.move(edge: .top).combined(with: .opacity))            
-        } else {
-            EmptyView()
         }
+        .scaleEffect(onBoardingPage != .setStepGoal && onBoardingPage != .allSet ? 1 : 0)
+        .offset(y: onBoardingPage != .setStepGoal && onBoardingPage != .allSet ? 0 : -24)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
@@ -153,7 +153,7 @@ private extension OnboardingView {
     private func nextPage() {
         self.isFocused = false
         if let nextPage = OnboardingPage(rawValue: onBoardingPage.rawValue + 1) {
-            withAnimation {
+            withAnimation(animation) {
                 self.onBoardingPage = nextPage
                 self.onBoardingPageId = nextPage.id
             }
@@ -163,7 +163,7 @@ private extension OnboardingView {
     private func previousPage() {
         self.isFocused = false
         if let previousPage = OnboardingPage(rawValue: onBoardingPage.rawValue - 1) {
-            withAnimation {
+            withAnimation(animation) {
                 self.onBoardingPage = previousPage
                 self.onBoardingPageId = previousPage.id
             }
