@@ -24,11 +24,12 @@ private extension AllSetView {
                 .resizable()
                 .scaledToFit()
                 .frame(maxHeight: 200)
-                .foregroundStyle(Color.accentColor, Color.accentColor.opacity(0.3))
+                .foregroundStyle(Color.accentColor, Color.accentColor.opacity(0.2))
                 .symbolRenderingMode(.palette)
+            
             Text("onboarding_all_set_title")
-                .font(.largeTitle)
-                .fontWeight(.black)
+                .font(.title)
+                .fontWeight(.bold)
         }
     }
     
@@ -45,8 +46,8 @@ private extension AllSetView {
             Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(Color.accentColor)
             Text(title)
-                .font(.title3)
-                .fontWeight(.regular)
+                .font(.body)
+                .fontWeight(.light)
                 .lineSpacing(Constants.lineSpacing)
         }
         .frame(maxWidth: .infinity, alignment: .leading)

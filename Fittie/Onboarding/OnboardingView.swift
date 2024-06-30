@@ -11,7 +11,7 @@ struct OnboardingView: View {
     @Binding var hasSeenOnboarding : Bool
     
     // UI Values
-    private let animation : Animation = .snappy(duration: 0.3)
+    private let animation : Animation = .smooth(duration: 0.4)
     
     var body: some View {
         VStack {
