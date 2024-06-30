@@ -11,7 +11,7 @@ struct OnboardingView: View {
     @Binding var hasSeenOnboarding : Bool
     
     // UI Values
-    private let animation : Animation = .smooth(duration: 0.4)
+    private let animation : Animation = .smooth
     
     var body: some View {
         VStack {
@@ -91,7 +91,7 @@ private extension OnboardingView {
             ForEach(OnboardingPage.allCases.indices, id:\.self) { index in
                 RoundedRectangle(cornerRadius: Constants.cornerRadius)
                     .fill(onBoardingPage.rawValue >= index ? Color.accentColor : Color.secondary)
-                    .frame(height: 2)
+                    .frame(height: 3)
                     .frame(maxWidth: onBoardingPage.rawValue >= index ? .infinity : 24)
             }
         }
