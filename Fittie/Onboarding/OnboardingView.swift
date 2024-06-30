@@ -12,6 +12,10 @@ struct OnboardingView: View {
     
     var body: some View {
         VStack {
+            pageControlView
+                .padding(.horizontal, 24)
+                .padding(.top, 20)
+            
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
                     setStepGoalView
@@ -29,7 +33,7 @@ struct OnboardingView: View {
             .contentMargins(.zero)
             .scrollDisabled(true)
             
-            pageControlView
+            nextPageButton
                 .padding(.horizontal, 24)
         }
         .padding(.bottom, 32)
@@ -40,7 +44,7 @@ struct OnboardingView: View {
         }
         .overlay(alignment: .topLeading) {
             backButton
-                .padding(16)
+                .padding(20)
         }
     }
 }
@@ -72,6 +76,26 @@ private extension OnboardingView {
     }
 }
 
+// MARK: Page Indicator
+private extension OnboardingView {
+    @ViewBuilder var pageControlView : some View {
+        if onBoardingPage != .allSet {
+            pageControlCircleView
+        }
+    }
+    
+    var pageControlCircleView : some View {
+        HStack(spacing: 16) {
+            ForEach(OnboardingPage.allCases.indices, id:\.self) { index in
+                RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                    .fill(onBoardingPage.rawValue >= index ? Color.accentColor : Color.secondary)
+                    .frame(height: 2)
+                    .frame(maxWidth: onBoardingPage.rawValue >= index ? .infinity : 24)
+            }
+        }
+    }
+}
+
 // MARK: Back Button
 private extension OnboardingView {
     @ViewBuilder var backButton : some View {
@@ -93,26 +117,10 @@ private extension OnboardingView {
             EmptyView()
         }
     }
-    
-    var pageControlView : some View {
-        VStack(spacing: 20) {
-            if onBoardingPage != .allSet {
-                pageControlCircleView
-            }
-            nextPageButton
-        }
-    }
-    
-    var pageControlCircleView : some View {
-        HStack(spacing: 16) {
-            ForEach(OnboardingPage.allCases.indices, id:\.self) { index in
-                Circle()
-                    .fill(onBoardingPage.rawValue >= index ? Color.accentColor : Color.secondary)
-                    .frame(width: 10, height: 10)
-            }
-        }
-    }
-    
+}
+
+// MARK: Next Page Button
+private extension OnboardingView {
     var nextPageButton : some View {
         CustomButton(title: self.onBoardingPage.buttonTitle) {
             buttonAction()
