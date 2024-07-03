@@ -90,11 +90,11 @@ private extension OnboardingView {
     }
     
     var pageControlCircleView : some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 12) {
             ForEach(OnboardingPage.allCases.indices, id:\.self) { index in
                 RoundedRectangle(cornerRadius: Constants.cornerRadius)
                     .fill(onBoardingPage.rawValue >= index ? Color.accentColor : Color.secondary)
-                    .frame(height: 3)
+                    .frame(height: 4)
                     .frame(maxWidth: .infinity)
             }
         }
