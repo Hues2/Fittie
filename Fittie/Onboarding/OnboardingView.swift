@@ -17,7 +17,7 @@ struct OnboardingView: View {
         VStack {
             pageControlView
                 .padding(.horizontal, 32)
-                .padding(.top, 32)
+                .padding(.top, 36)
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
@@ -46,7 +46,10 @@ struct OnboardingView: View {
             self.isFocused = false
         }
         .overlay(alignment: .topLeading) {
-            backButton
+            HStack {
+                backButton
+                
+            }
                 .padding(20)
         }
     }
@@ -92,7 +95,7 @@ private extension OnboardingView {
                 RoundedRectangle(cornerRadius: Constants.cornerRadius)
                     .fill(onBoardingPage.rawValue >= index ? Color.accentColor : Color.secondary)
                     .frame(height: 3)
-                    .frame(maxWidth: onBoardingPage.rawValue >= index ? .infinity : 24)
+                    .frame(maxWidth: .infinity)
             }
         }
     }
@@ -114,7 +117,7 @@ private extension OnboardingView {
                 .contentShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
         }
         .scaleEffect(onBoardingPage != .setStepGoal && onBoardingPage != .allSet ? 1 : 0)
-        .offset(y: onBoardingPage != .setStepGoal && onBoardingPage != .allSet ? 0 : -24)
+        .offset(y: onBoardingPage != .setStepGoal && onBoardingPage != .allSet ? 0 : -40)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
@@ -125,7 +128,7 @@ private extension OnboardingView {
         CustomButton(title: self.onBoardingPage.buttonTitle) {
             buttonAction()
         }
-        .padding(.bottom, 4)
+        .padding(.bottom, 8)
         .animation(.none, value: onBoardingPage)
     }
 }
