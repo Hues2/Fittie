@@ -27,7 +27,7 @@ final class OnboardingViewModel : ObservableObject {
     }
     
     private func setHasSeenOnboarding() {
-        UserDefaults.standard.setValue(false, forKey: Constants.UserDefaults.hasSeenOnboarding)
+        UserDefaults.standard.setValue(true, forKey: Constants.UserDefaults.hasSeenOnboarding)
     }
     
     private func setStepGoal() {
