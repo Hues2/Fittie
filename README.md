@@ -10,6 +10,7 @@ Fittie is your all-in-one fitness companion app designed to help you stay on top
 
 Stay fit and achieve your goals with Fittie!
 
+**Screenshots:**
 <p float="left">
   <img src="https://github.com/user-attachments/assets/1ee97ee2-3c94-4a8c-b34a-a2c9b1808878" width="150" />
   <img src="https://github.com/user-attachments/assets/eca14d67-f26a-4d8d-ab89-a519b6fb40e7" width="150" />
