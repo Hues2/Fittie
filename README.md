@@ -16,3 +16,5 @@ Stay fit and achieve your goals with Fittie!
   <img src="https://github.com/user-attachments/assets/59eded62-d06b-43e4-82eb-90277ee4a590" width="150" />
  <img src="https://github.com/user-attachments/assets/09ba25a7-d7e3-45c6-8655-80e0c27643eb" width="150" />
 </p>
+
+*Built with Swift, SwiftUI, SwiftData, and HealthKit.*
