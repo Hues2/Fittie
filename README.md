@@ -10,7 +10,9 @@ Fittie is your all-in-one fitness companion app designed to help you stay on top
 
 Stay fit and achieve your goals with Fittie!
 
-![IMG_2473](https://github.com/user-attachments/assets/1ee97ee2-3c94-4a8c-b34a-a2c9b1808878)
-![IMG_2474](https://github.com/user-attachments/assets/eca14d67-f26a-4d8d-ab89-a519b6fb40e7)
-![IMG_2476](https://github.com/user-attachments/assets/59eded62-d06b-43e4-82eb-90277ee4a590)
-![IMG_2477](https://github.com/user-attachments/assets/09ba25a7-d7e3-45c6-8655-80e0c27643eb)
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/1ee97ee2-3c94-4a8c-b34a-a2c9b1808878" width="150" />
+  <img src="https://github.com/user-attachments/assets/eca14d67-f26a-4d8d-ab89-a519b6fb40e7" width="150" />
+  <img src="https://github.com/user-attachments/assets/59eded62-d06b-43e4-82eb-90277ee4a590" width="150" />
+ <img src="[https://user-images.githubusercontent.com/80175028/202476026-d97af637-04a2-4fba-9ed7-d3bed244f9f0.png](https://github.com/user-attachments/assets/09ba25a7-d7e3-45c6-8655-80e0c27643eb)" width="150" />
+</p>
